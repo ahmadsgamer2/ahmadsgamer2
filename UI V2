@@ -2023,9 +2023,4 @@ function library:AddWindow(title, options)
 end
 
 do 
-	local Window = library:AddWindow("Speed-Hub", {
-		main_color = Color3.fromRGB(255,10,10),
-		min_size = Vector2.new(475, 500),
-		toggle_key = Enum.KeyCode.RightShift,
-		can_resize = true,
-	})
+
