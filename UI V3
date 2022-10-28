@@ -1,3 +1,9 @@
+
+
+
+
+
+
 local ui_options = {
 	main_color = Color3.fromRGB(41, 74, 122),
 	min_size = Vector2.new(500, 500),
@@ -140,7 +146,7 @@ Toggle.BackgroundTransparency = 1
 Toggle.Position = UDim2.new(0, 5, 0, -2)
 Toggle.Rotation = 0
 coroutine.wrap(function()
-	while(wait(.))do
+	while(wait(.0))do
 		Toggle.Rotation = 0
 	end
 end)()
@@ -966,12 +972,6 @@ function library:AddWindow(title, options)
 		local Top = Bar:FindFirstChild("Top")
 		local SplitFrame = Window:FindFirstChild("TabSelection"):FindFirstChild("Frame")
 		local Toggle = Bar:FindFirstChild("Toggle")
-		Toggle.Rotation = 0
-		coroutine.wrap(function()
-			Toggle:GetPropertyChangedSignal("Rotation"):Connect(function()
-				Toggle.Rotation = 0
-			end)
-		end)()
 
 		spawn(function()
 			while true do
@@ -1464,7 +1464,7 @@ function library:AddWindow(title, options)
 								if dropdown_open then return end
 								dropdown_open = true
 								Resize(box, {Size = UDim2.new(1, 0, 0, len)}, options.tween_time)
-								Resize(indicator, {Rotation = 0}, options.tween_time)
+								Resize(indicator, {Rotation = 90}, options.tween_time)
 							else -- Close
 								dropdown_open = false
 								Resize(box, {Size = UDim2.new(1, 0, 0, 0)}, options.tween_time)
@@ -1664,22 +1664,8 @@ function library:AddWindow(title, options)
 
 						do -- Highlighting (thanks to whoever made this)
 							local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}
-							local global_env = {"getrawmetatable", "newcclosure", "islclosure", "setclipboard", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16", "load", "fire", "Fire","task","Parent","Name","Size","Position","Transparency","LocalPlayer","Character","HumanoidRootPart","Humanoid","Health","WalkSpeed","JumpPower","Gravity","HipHeight","MaxHealth","FogEnd","FogColor","Value","table.concat","string.find","table.find","table.clear","table.remove"}
-							for i,v in pairs(getgenv())do
-							    if(not global_env[i])then
-							        table.insert(global_env,i)
-							    end
-							end
-							for i,v in pairs(getfenv())do
-							    if(not global_env[i])then
-							        table.insert(global_env,i)
-							    end
-							end
-							for i,v in pairs(game:GetChildren())do
-							    if(not global_env[v.Name])then
-							        table.insert(global_env,v.Name)
-							    end
-							end
+							local global_env = {"getrawmetatable", "newcclosure", "islclosure", "setclipboard", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16", "load", "fire", "Fire"}
+
 							local Highlight = function(string, keywords)
 							    local K = {}
 							    local S = string
@@ -1858,7 +1844,7 @@ function library:AddWindow(title, options)
 
 									Source.Keywords.Text = Highlight(s, lua_keywords)
 									Source.Globals.Text = Highlight(s, global_env)
-									Source.RemoteHighlight.Text = Highlight(s, {"FireServer", "fireServer", "InvokeServer", "invokeServer","GetService","Connect","Disconnect","GetFullName","GetChildren","GetDescendants","SetCore","GetCore","Destroy","Remove","ClearAllChildren"})
+									Source.RemoteHighlight.Text = Highlight(s, {"FireServer", "fireServer", "InvokeServer", "invokeServer"})
 									Source.Tokens.Text = hTokens(s)
 									Source.Numbers.Text = numbers(s)
 									Source.Strings.Text = strings(s)
@@ -2041,4 +2027,3 @@ function library:AddWindow(title, options)
 	return window_data, Window
 end
 return library
-
