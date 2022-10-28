@@ -1,7 +1,7 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Dex%202", true))()
+loadstring(game:HttpGet("https://pastebin.com/raw/wTXraxVn", true))()
 
 -- Dex Bypasses
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Dex%201", true))()
+loadstring(game:HttpGet("https://pastebin.com/raw/E540Heh8", true))()
 
 getgenv().Bypassed_Dex = game:GetObjects("rbxassetid://9352453730")[1]
 
