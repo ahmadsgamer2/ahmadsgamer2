@@ -1,5 +1,5 @@
 local Flux = {RainbowColorValue = 0, HueSelectionPosition = 0}
-local PresetColor = Color3.fromRGB(41, 74, 122))
+local PresetColor = Color3.fromRGB(41, 74, 122)
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
