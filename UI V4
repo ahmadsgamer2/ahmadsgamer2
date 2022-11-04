@@ -371,7 +371,7 @@ do
                 Font = Enum.Font.Gotham,
                 Text = title,
                 TextColor3 = themes.TextColor,
-                TextSize = 12,
+                TextSize = 14,
                 TextTransparency = 0.65,
                 TextXAlignment = Enum.TextXAlignment.Left
             }),
