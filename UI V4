@@ -13,15 +13,15 @@ local utility = {}
 -- themes
 local objects = {}
 local themes = {
-    NotToggledColor =  Color3.fromRGB(255, 100, 89),
+    NotToggledColor =  Color3.fromRGB(255, 0, 0),
     Background = Color3.fromRGB(25,25,25),
     Glow = Color3.fromRGB(0,0,0),
-    Accent = Color3.fromRGB(255, 113, 51),
+    Accent = Color3.fromRGB(255, 255, 255),
     LightContrast = Color3.fromRGB(40,40,40),
     DarkContrast = Color3.fromRGB(30,30,30),
     TextColor = Color3.fromRGB(255, 255, 255),
     ButtonColor = Color3.fromRGB(0,0,0),
-    ToggledColor = Color3.fromRGB(0,0,0),
+    ToggledColor = Color3.fromRGB(124,252,0),
     SliderColor = Color3.fromRGB(0,0,0),
     TopBarColor = Color3.fromRGB(35,35,35),
 }
