@@ -21,7 +21,7 @@ local themes = {
     DarkContrast = Color3.fromRGB(35,35,35),
     TextColor = Color3.fromRGB(255, 255, 255),
     ButtonColor = Color3.fromRGB(35,35,35),
-    ToggledColor = Color3.fromRGB(124,252,0),
+    ToggledColor = Color3.fromRGB(8,148,4),
     SliderColor = Color3.fromRGB(0,0,0),
     TopBarColor = Color3.fromRGB(35,35,35),
 }
