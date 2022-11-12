@@ -7,6 +7,11 @@ local run = game:GetService("RunService")
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 
+do
+	local SpeedHub = game:GetService("CoreGui"):FindFirstChild("SpeedHub")
+	if imgui then SpeedHub:Destroy() end
+end
+
 -- additional
 local utility = {}
 
