@@ -1,0 +1,7 @@
+local ui1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/GUI1"))()
+local Window = ui1:AddWindow("GUI")
+local Main = Window:AddTab("GUI-TOGGLE")
+Main:AddButton("Gui-Toggle", function()
+  win:toggle()
+  end, function()
+  end)
