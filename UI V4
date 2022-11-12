@@ -793,7 +793,7 @@ do
 		return toggle
 	end
 	
-	function section:Textbox(title, default, callback)
+	function section:addTextbox(title, default, callback)
 		local textbox = utility:Create("ImageButton", {
 			Name = "Textbox",
 			Parent = self.container,
