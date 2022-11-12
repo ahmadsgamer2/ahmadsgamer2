@@ -270,6 +270,7 @@ do
                         AnchorPoint = Vector2.new(0.5,0),
                         Position = UDim2.new(0.5, 0, 0, 65),
                         Size = UDim2.new(0,60,0,2),
+                        ScaleType = Enum.ScaleType.Slice,
                         ZIndex = 5,
             
                     }),
@@ -281,6 +282,7 @@ do
                         Position = UDim2.new(0.5, 0, 0, 5),
                         Size = UDim2.new(0,70,0,70),
                         ZIndex = 5,
+                        ScaleType = Enum.ScaleType.Slice,
                         ImageColor3 = Color3.new(0,0,0),
                         Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=11393235951",
                 
@@ -297,6 +299,7 @@ do
                         ScrollBarThickness = 5,
                         ScrollBarImageTransparency = 0,
                         ScrollBarImageColor3 = themes.LightContrast
+                        ScaleType = Enum.ScaleType.Slice,
                     }, {
                         utility:Create("UIListLayout", {
                             SortOrder = Enum.SortOrder.LayoutOrder,
