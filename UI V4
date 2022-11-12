@@ -1989,7 +1989,7 @@ do
 		}, 0.1)
 	end
 	
-	function section:Textbox(textbox, title, value)
+	function section:updateTextbox(textbox, title, value)
 		textbox = self:getModule(textbox)
 		
 		if title then
