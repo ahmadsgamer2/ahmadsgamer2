@@ -20,8 +20,6 @@ local themes = {
 	LightContrast = Color3.fromRGB(20, 20, 20), 
 	DarkContrast = Color3.fromRGB(14, 14, 14),  
 	TextColor = Color3.fromRGB(255, 255, 255)
-	ToggledColor = Color3.fromRGB(8,148,4),
-        NotToggledColor =  Color3.fromRGB(255, 0, 0),
 }
 
 do
@@ -422,7 +420,7 @@ do
 		}, section) 
 	end
 	
-	function library:addPage(...)
+	function library:NewPage(...)
 	
 		local page = page.new(self, ...)
 		local button = page.button
@@ -436,7 +434,7 @@ do
 		return page
 	end
 	
-	function page:addSection(...)
+	function page:NewSecction(...)
 		local section = section.new(self, ...)
 		
 		table.insert(self.sections, section)
@@ -662,7 +660,7 @@ do
 		end)
 	end
 	
-	function section:addButton(title, callback)
+	function section:Button(title, callback)
 		local button = utility:Create("ImageButton", {
 			Name = "Button",
 			Parent = self.container,
@@ -722,7 +720,7 @@ do
 		return button
 	end
 	
-	function section:addToggle(title, default, callback)
+	function section:Toggle(title, default, callback)
 		local toggle = utility:Create("ImageButton", {
 			Name = "Toggle",
 			Parent = self.container,
@@ -795,7 +793,7 @@ do
 		return toggle
 	end
 	
-	function section:addTextbox(title, default, callback)
+	function section:Textbox(title, default, callback)
 		local textbox = utility:Create("ImageButton", {
 			Name = "Textbox",
 			Parent = self.container,
@@ -903,7 +901,7 @@ do
 		return textbox
 	end
 	
-	function section:addKeybind(title, default, callback, changedCallback)
+	function section:Keybind(title, default, callback, changedCallback)
 		local keybind = utility:Create("ImageButton", {
 			Name = "Keybind",
 			Parent = self.container,
@@ -1683,7 +1681,7 @@ do
 		return slider
 	end
 	
-	function section:addDropdown(title, list, callback)
+	function section:Dropdown(title, list, callback)
 		local dropdown = utility:Create("Frame", {
 			Name = "Dropdown",
 			Parent = self.container,
@@ -1971,14 +1969,9 @@ do
 			In = UDim2.new(0, 2, 0.5, -6),
 			Out = UDim2.new(0, 20, 0.5, -6)
 		}
-	local color = {
-                In = themes.NotToggledColor,
-                Out = themes.ToggledColor
-            }
 		
-            local frame = toggle.Button.Frame
-            local btn = toggle.Button
-            value = value and "Out" or "In"
+		local frame = toggle.Button.Frame
+		value = value and "Out" or "In"
 		
 		if title then
 			toggle.Title.Text = title
@@ -1996,7 +1989,7 @@ do
 		}, 0.1)
 	end
 	
-	function section:updateTextbox(textbox, title, value)
+	function section:Textbox(textbox, title, value)
 		textbox = self:getModule(textbox)
 		
 		if title then
@@ -2175,5 +2168,4 @@ do
 	end
 end
 
-print("dino was here :\)")
 return library
