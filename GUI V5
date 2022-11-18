@@ -148,7 +148,7 @@ local objects = {}
 
 getgenv().GUI_Color = {
    Bacground = Color3.fromRGB(27, 27, 27),
-   DarkContrast = Color3.fromRGB(20, 20, 10),
+   DarkContrast = Color3.fromRGB(35, 35, 35),
    TextColor = Color3.fromRGB(255, 255, 255)
 }
 
@@ -1008,7 +1008,7 @@ function Tabs:Tab(Title)
    TabTitle.TextSize = 17.000
    TabTitle.TextXAlignment = Enum.TextXAlignment.Left
    
-   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(41, 74, 122)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
+   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(41, 74, 122)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
    TabGradient.Name = "TabGradient"
    TabGradient.Parent = Tab
 
