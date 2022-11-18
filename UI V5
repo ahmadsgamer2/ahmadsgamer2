@@ -1,5 +1,5 @@
-if game.CoreGui:FindFirstChild("Speed-Hub") then
-   game.CoreGui.Speed-Hub:Destroy()
+if game.CoreGui:FindFirstChild("woof") then
+   game.CoreGui.woof:Destroy()
 end
 
 if game:GetService("CoreGui"):FindFirstChild("Notifaction") then
@@ -136,9 +136,9 @@ end)
    end)
 
 
-local Speed-Hub = Instance.new("ScreenGui")
-Speed-Hub.Name = "Speed-Hub"
-Speed-Hub.Parent = game.CoreGui
+local woof = Instance.new("ScreenGui")
+woof.Name = "woof"
+woof.Parent = game.CoreGui
 
 -- or Color3.fromRGB(27, 27, 27),
 -- or Color3.fromRGB(35, 35, 35)
