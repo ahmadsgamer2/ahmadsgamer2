@@ -148,7 +148,7 @@ local objects = {}
 
 getgenv().GUI_Color = {
    Bacground = Color3.fromRGB(27, 27, 27),
-   DarkContrast = Color3.fromRGB(14, 14, 14),
+   DarkContrast = Color3.fromRGB(20, 20, 10),
    TextColor = Color3.fromRGB(255, 255, 255)
 }
 
@@ -203,7 +203,7 @@ function Mainholder:Window(hubname, gamename)
    MainFrame.Parent = woof
    MainFrame.BackgroundColor3 = getgenv().GUI_Color.Bacground
    MainFrame.Position = UDim2.new(0.590548515, -325, 0.683814943, -250)
-   MainFrame.Size = UDim2.new(0, 650, 0, 500)
+   MainFrame.Size = UDim2.new(0, 650, 0, 410)
    -- 0, 650, 0, 410 ^^
    
    MainCorner.CornerRadius = UDim.new(0, 5)
