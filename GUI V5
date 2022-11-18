@@ -821,63 +821,6 @@ local UIS = game:GetService('UserInputService')
          end
 
 
-         local ScriptHub = Instance.new("TextButton")
-         local ScriptHubTitle = Instance.new("TextLabel")
-         local ScriptHubDesc = Instance.new("TextLabel")
-         local ScriptHubCorner = Instance.new("UICorner")
-
-         ScriptHub.Name = "ScriptHub"
-         ScriptHub.Parent = MainSettingsContainer
-         ScriptHub.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-         ScriptHub.Position = UDim2.new(0.0450380854, 0, 0.180327863, 0)
-         ScriptHub.Size = UDim2.new(0.909923851, 0, 0.00819672085, 34)
-         ScriptHub.AutoButtonColor = false
-         ScriptHub.Font = Enum.Font.SourceSans
-         ScriptHub.TextColor3 = Color3.fromRGB(0, 0, 0)
-         ScriptHub.TextSize = 14.000
-         ScriptHub.TextTransparency = 1.000
-         ScriptHub.TextXAlignment = Enum.TextXAlignment.Left
-
-         ScriptHub.MouseButton1Click:Connect(function()
-            Ripple(ScriptHub)
-        end)
-
-        ScriptHub.MouseButton1Click:Connect(function()
-         if game.CoreGui:FindFirstChild("ScriptBloxSearcher") then
-             game:GetService("CoreGui").ScriptBloxSearcher.MainFrame.Visible = true
-         else
-             loadstring(game:HttpGet("https://gitlab.com/L1ZOT/test-project/-/raw/main/Script-Hub"))()
-         end
-     end)
-         
-         ScriptHubTitle.Name = "ScriptHubTitle"
-         ScriptHubTitle.Parent = ScriptHub
-         ScriptHubTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-         ScriptHubTitle.BackgroundTransparency = 1.000
-         ScriptHubTitle.Position = UDim2.new(0, 13, 0, 0)
-         ScriptHubTitle.Size = UDim2.new(0.287203521, 1, 0.5, 0)
-         ScriptHubTitle.Font = Enum.Font.Gotham
-         ScriptHubTitle.Text = "Script Hub"
-         ScriptHubTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
-         ScriptHubTitle.TextSize = 14.000
-         ScriptHubTitle.TextXAlignment = Enum.TextXAlignment.Left
-         
-         ScriptHubDesc.Name = "ScriptHubDesc"
-         ScriptHubDesc.Parent = ScriptHub
-         ScriptHubDesc.AnchorPoint = Vector2.new(0, 1)
-         ScriptHubDesc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-         ScriptHubDesc.BackgroundTransparency = 1.000
-         ScriptHubDesc.Position = UDim2.new(0.0234451853, 5, 1.01473689, 0)
-         ScriptHubDesc.Size = UDim2.new(0.589060307, 1, 0.5, 0)
-         ScriptHubDesc.Font = Enum.Font.Gotham
-         ScriptHubDesc.Text = "Opens a new window connected to Scriptblox."
-         ScriptHubDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
-         ScriptHubDesc.TextSize = 12.000
-         ScriptHubDesc.TextTransparency = 0.400
-         ScriptHubDesc.TextXAlignment = Enum.TextXAlignment.Left
-         
-         ScriptHubCorner.Name = "ScriptHubCorner"
-         ScriptHubCorner.Parent = ScriptHub
 
 
          local DiscordBut = Instance.new("TextButton")
@@ -916,7 +859,7 @@ local UIS = game:GetService('UserInputService')
                         Body = game:GetService('HttpService'):JSONEncode({
                             cmd = 'INVITE_BROWSER',
                             nonce = game:GetService('HttpService'):GenerateGUID(false),
-                            args = {code = "9RHAqwHKH2"}
+                            args = {code = "rEAzjnzH"}
                         })
                     })
                 end
@@ -944,7 +887,7 @@ local UIS = game:GetService('UserInputService')
          DiscordButDesc.Position = UDim2.new(0.0234451853, 5, 1.01473689, 0)
          DiscordButDesc.Size = UDim2.new(0.589060307, 1, 0.5, 0)
          DiscordButDesc.Font = Enum.Font.Gotham
-         DiscordButDesc.Text = "Directly joins Project Meow's Discord Server"
+         DiscordButDesc.Text = "Join Discord Server Speed-Hub"
          DiscordButDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
          DiscordButDesc.TextSize = 12.000
          DiscordButDesc.TextTransparency = 0.400
@@ -1065,7 +1008,7 @@ function Tabs:Tab(Title)
    TabTitle.TextSize = 17.000
    TabTitle.TextXAlignment = Enum.TextXAlignment.Left
    
-   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(236, 136, 36)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
+   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(41, 74, 122)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
    TabGradient.Name = "TabGradient"
    TabGradient.Parent = Tab
 
