@@ -702,8 +702,8 @@ local TextButton = Instance.new("TextButton")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.Position = UDim2.new(10.798682928, 0, 0.633684218, 0)
-Frame.Size = UDim2.new(5, 49, 0, 43)
+Frame.Position = UDim2.new(0.798682928, 0, 0.633684218, 0)
+Frame.Size = UDim2.new(0, 49, 0, 43)
 Frame.Selectable = true
 Frame.Active = true
 Frame.Draggable = true
@@ -718,8 +718,6 @@ TextButton.TextSize = 34.000
 TextButton.MouseButton1Down:connect(function()
             if checks.binding then return end
             checks.binding = true
-	    BText.Text = "[...]"
-            local a, b = UIS.InputBegan:Wait()
 end)
 
 
