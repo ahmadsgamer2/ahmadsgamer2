@@ -718,8 +718,8 @@ TextButton.TextSize = 34.000
 TextButton.MouseButton1Down:connect(function()
             if checks.binding then return end
             checks.binding = true
+	    BText.Text = "[...]"
             local a, b = UIS.InputBegan:Wait()
-            keybind_data:SetKeybind(a.KeyCode)
 end)
 
 
