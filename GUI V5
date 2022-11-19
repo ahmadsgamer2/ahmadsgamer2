@@ -717,7 +717,7 @@ TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 34.000
 TextButton.MouseButton1Down:connect(function()
             if checks.binding then return end
-            BText.Text = "[...]"
+            --BText.Text = "[...]"
             checks.binding = true
             local a, b = UIS.InputBegan:Wait()
             --keybind_data:SetKeybind(a.KeyCode)
