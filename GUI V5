@@ -716,8 +716,6 @@ TextButton.Text = "UI"
 TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 34.000
 TextButton.MouseButton1Down:connect(function()
-            if checks.binding then return end
-            checks.binding = true
 end)
 
 
