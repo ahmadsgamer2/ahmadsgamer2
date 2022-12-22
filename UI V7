@@ -734,7 +734,7 @@ function lib:NewTab(name, desc)
 	   TextBox.Name = "TextBox"
 	   TextBox.Parent = ScrollingFrame
 	   TextBox.Size = UDim2.new(0.95,0,0,50)
-	   TextBox.BackgroundColor3 = Color3.fromRGB(27,27,27)
+	   TextBox.BackgroundColor3 = Color3.fromRGB(28,28,28)
 	   TextBox.TextTransparency = 1;
 	   TextBox.AutoButtonColor = false;
 	   TextBox.BackgroundTransparency = 1
