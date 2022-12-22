@@ -1,3 +1,4 @@
+
 local plr = game:GetService('Players').LocalPlayer
 local runS = game:GetService('RunService')
 local pgui = plr.PlayerGui
@@ -734,7 +735,7 @@ function lib:NewTab(name, desc)
 	   TextBox.Name = "TextBox"
 	   TextBox.Parent = ScrollingFrame
 	   TextBox.Size = UDim2.new(0.95,0,0,50)
-	   TextBox.BackgroundColor3 = Color3.fromRGB(28,28,28)
+	   TextBox.BackgroundColor3 = Color3.fromRGB(27,27,27)
 	   TextBox.TextTransparency = 1;
 	   TextBox.AutoButtonColor = false;
 	   TextBox.BackgroundTransparency = 1
@@ -760,7 +761,7 @@ function lib:NewTab(name, desc)
 	   Box.Parent = TextBox
 	   Box.Size = UDim2.new(0,333,0,50)
 	   Box.Position = UDim2.new(0.283,0,0,0)
-	   Box.BackgroundColor3 = Color3.fromRGB(28,28,28)
+	   Box.BackgroundColor3 = Color3.fromRGB(24,24,24)
 	   Box.TextColor3 = Color3.fromRGB(105,122,141)
 	   Box.Font = Enum.Font.SourceSansSemibold
 	   Box.BorderSizePixel = 0;
