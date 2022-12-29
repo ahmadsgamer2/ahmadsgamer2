@@ -1,4 +1,23 @@
 
+local Players = game:GetService("Players")
+local AntiScriptPlayers = {
+    "letty_glitch1",
+    "therealraswant",
+    "raswant35",
+    "raswantsalt"
+}
+
+for _, v in pairs(Players:GetPlayers()) do 
+    if table.find(AntiScriptPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Anti-Ras")
+    end
+end
+
+Players.PlayerAdded:Connect(function(v)
+    if table.find(AntiScriptPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Anti-Ras")
+    end
+end)
 
 local ui_options = {
 	main_color = Color3.fromRGB(50, 50, 50),
