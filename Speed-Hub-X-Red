@@ -185,6 +185,7 @@ function DiscordLib:Window(text,mainclr,cls)
 	local GlowFrameCorner = Instance.new("UICorner")
 
 	MainFrame.Name = "MainFrame"
+	MainFrame.Visible = false
 	MainFrame.Parent = Discord
 	MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 	MainFrame.BackgroundColor3 = Color3.fromRGB(32, 34, 37)
