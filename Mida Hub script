@@ -41,6 +41,60 @@ AutoFarm:Toggle("Auto Races", false, function(v)
         AutoRaces = v
 end)    
     
+Settings:Toggle("Faster Race Without Snow Queen", FasterHuge, function()
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Character = LocalPlayer.Character
+local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+function rm()
+    for i,v in pairs(Character:GetDescendants()) do
+        if v:IsA("BasePart") then
+            if v.Name == "Handle" or v.Name == "Head" then
+                if Character.Head:FindFirstChild("OriginalSize") then
+                    Character.Head.OriginalSize:Destroy()
+                end
+            else
+                for i,cav in pairs(v:GetDescendants()) do
+                    if cav:IsA("Attachment") then
+                        if cav:FindFirstChild("OriginalPosition") then
+                            cav.OriginalPosition:Destroy()
+                        end
+                    end
+                end
+                v:FindFirstChild("OriginalSize"):Destroy()
+                if v:FindFirstChild("AvatarPartScaleType") then
+                    v:FindFirstChild("AvatarPartScaleType"):Destroy()
+                end
+            end
+        end
+    end
+end
+
+rm()
+wait(0.25)
+Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+wait(0.25)
+
+rm()
+wait(0.25)
+Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+wait(0.25)
+
+rm()
+wait(0.25)
+Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+wait(0.25)
+
+rm()
+wait(0.25)
+Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
+wait(0.25)
+
+rm()
+wait(0.25)
+Humanoid:FindFirstChild("HeadScale"):Destroy()
+wait(0.25)
+end)
 
 Settings:Toggle("Infinits-Jump", InfiniteJump, function(v)
     getgenv().InfiniteJump = v
@@ -187,4 +241,3 @@ spawn(function()
                     end
                 end
             end)
-
