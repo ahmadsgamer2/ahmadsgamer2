@@ -1,0 +1,192 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Mida%20Hub%20Ui%20By%20Mida", true))()	
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Open%20and%20Close%20By%20Mida", true))()	
+	
+
+local win = library:Window("Legends Of Speed", _G.Color, _G.Toggle)	
+	
+local serv = win:Server("Mida Hub",")	
+	
+
+local AutoFarm = serv:Channel("Auto-Farm", "http://www.roblox.com/asset/?id=7040410130")	
+local Settings = serv:Channel("Settings", "http://www.roblox.com/asset/?id=8997386997")	
+	
+	
+local TimeTp1 = .1	
+	
+Time = AutoFarm:Label("Time Script")	
+	
+function UpdateTime()	
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)	
+local Hour = math.floor(GameTime/(60^2))%24	
+local Minute = math.floor(GameTime/(60^1))%60	
+local Second = math.floor(GameTime/(60^0))%60	
+    Time:Refresh("Hour : "..Hour.." Minute : "..Minute.." Second : "..Second)	
+end	
+	
+spawn(function()	
+    while true do	
+        UpdateTime()	
+        wait()	
+    end	
+end)
+    
+Autofarm:Toggle("Auto Farm Red Orb (City)", false, function()
+        AutoFarmRed = v
+end)
+
+Autofarm:Toggle("Auto Rebirths", false, function()
+        AutoRebirths = v
+end) 
+
+Autofarm:Toggle("Auto Races", false, function()
+        AutoRaces = v
+end)    
+    
+
+Settings:Toggle("Infinits-Jump", InfiniteJump, function(v)
+    getgenv().InfiniteJump = v
+    game.UserInputService.JumpRequest:connect(function()
+        if not getgenv().InfiniteJump then return end
+        player.Character.Humanoid:ChangeState('Jumping')
+    end)
+end)
+
+Settings:Toggle("Noclip", Noclip, function(v)
+    getgenv().Noclip = v
+    while true do
+        if not getgenv().Noclip then return end
+        game.RunService.Stepped:wait()
+        for i, v in pairs(player.Character:GetDescendants()) do
+            if v:IsA('BasePart') then
+                v.CanCollide = false
+            end
+        end
+    end
+end)
+
+Settings:Toggle("Fps/Ping", function()
+	for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v:IsA("BasePart") and not v.Parent:FindFirstChild("Humanoid") then
+            v.Material = Enum.Material.SmoothPlastic
+            if v:IsA("Texture") then
+                v:Destroy()
+            end
+        end
+    end
+end)
+
+Settings:Toggle("CPU-10", function()
+    local a = game
+    local b = a.Workspace
+    local c = a.Lighting
+    local d = b.Terrain
+    d.WaterWaveSize = 0
+    d.WaterWaveSpeed = 0
+    d.WaterReflectance = 0
+    d.WaterTransparency = 0
+    c.GlobalShadows = false
+    c.FogEnd = 9e9
+    settings().Rendering.QualityLevel = "Level01"
+    for e, f in pairs(a:GetDescendants()) do
+       if f:IsA("Part") or f:IsA("Union") or f:IsA("CornerWedgePart") or f:IsA("TrussPart") then
+           f.Reflectance = 0
+       elseif f:IsA("Decal") or f:IsA("Texture") then
+           f.Transparency = 0
+       elseif f:IsA("ParticleEmitter") or f:IsA("Trail") then
+           f.Lifetime = NumberRange.new(0)
+       elseif f:IsA("Explosion") then
+           f.BlastPressure = 0
+           f.BlastRadius = 0
+       elseif f:IsA("Fire") or f:IsA("SpotLight") or f:IsA("Smoke") or f:IsA("Sparkles") then
+           f.Enabled = false
+       elseif f:IsA("MeshPart") then
+           f.Reflectance = 0
+       end
+       if f:IsA("Fire") then
+           f:Destroy()
+           wait()
+       end
+       if string.find(f.Name:lower(), "door") then
+           f:Destroy()
+       end
+       if string.find(f.Name:lower(), "tree") then
+           f:Destroy()
+       end
+       if f:IsA("ParticleEmitter") then
+           f:Destroy()
+                end
+            end
+        end)
+
+        Settings:Line()
+
+        Settings:Button("Copy Link Discord : Mida Hub", function()
+            setclipboard("https://discord.gg/akxWR269")
+        end)
+    
+--Script Lua
+    
+    
+spawn(function()
+            while wait() do
+                if AutoRaces then
+                    pcall(function()
+                            game:GetService("ReplicatedStorage").rEvents.raceEvent:FireServer("joinRace")
+                    task.wait()
+                    local Workspace = game:GetService("Workspace")
+                    local part = game.Players.LocalPlayer.Character.HumanoidRootPart
+                    for k, v in pairs(Workspace.raceMaps:GetDescendants()) do 
+                        if v.Name == "Decal" and v.Parent then
+                            firetouchinterest(part, v.Parent, 0)
+                            wait()
+                            firetouchinterest(part, v.Parent, 1)
+                        end
+                    end
+                end)
+             end
+         end
+       end)       
+            
+    
+spawn(function()
+            while wait() do
+                if AutoRebirths then
+                    pcall(function                         game.ReplicatedStorage.rEvents.rebirthEvent:FireServer('rebirthRequest')
+                        end)
+                    end
+                end
+            end)
+                    
+    
+spawn(function()
+            while wait() do 
+                if AutoFarmRed then
+                    pcall(function()                          game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer("collectOrb", "Red Orb", "City")
+                            
+                       end)
+                    end
+                end
+            end)
