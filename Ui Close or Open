@@ -15,7 +15,7 @@ TextButton.Draggable = true
 TextButton.Active = true
 TextButton.Font = Enum.Font.SourceSans
 TextButton.Text = "S"
-TextButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextSize = 48.000
 TextButton.MouseButton1Down:connect(function()
 	game.CoreGui:FindFirstChild("Speed-Hub-X GUI").Enabled = not game.CoreGui:FindFirstChild("Speed-Hub-X GUI").Enabled
