@@ -1,0 +1,19 @@
+local UIStroke = Instance.new("UIStroke")
+local UICorner = Instance.new("UICorner")
+
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 80, 0, 80)
+ImageButton.Draggable = true
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
+ImageButton.BackgroundTransparency = 1.000
+ImageButton.Image = "rbxassetid://12438642669"
+ImageButton.MouseButton1Down:connect(function()
+game.CoreGui:FindFirstChild("ZENHUB").Enabled = not game.CoreGui:FindFirstChild("ZENHUB").Enabled
+end)
