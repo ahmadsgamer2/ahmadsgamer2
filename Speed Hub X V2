@@ -128,7 +128,7 @@ Name.Font = Enum.Font.Cartoon
 Name.Text = "Speed Hub X"
 Name.TextColor3 = Color3.fromRGB(255,255,255)
 Name.TextScaled = true
-Name.TextSize = 14.000
+Name.TextSize = 16.000
 Name.TextWrapped = true
 
 
