@@ -1630,7 +1630,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(5,5,5)
+Textbox.BackgroundColor3 = Color3.new(10,10,10)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 387, 0, 31)
 
