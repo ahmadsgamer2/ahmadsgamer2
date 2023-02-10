@@ -1510,7 +1510,7 @@ TextboxCorner.Parent = Textbox
 
 Textboxx.Name = "Textboxx"
 Textboxx.Parent = Textbox
-Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Textboxx.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
 Textboxx.Position = UDim2.new(0, 1, 0, 1)
 Textboxx.Size = UDim2.new(0, 385, 0, 29)
 
@@ -1527,7 +1527,7 @@ TextboxLabel.Text = text
 TextboxLabel.Size = UDim2.new(0, 145, 0, 31)
 TextboxLabel.Font = Enum.Font.GothamSemibold
 TextboxLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
-TextboxLabel.TextSize = 16.000
+TextboxLabel.TextSize = 17.000
 TextboxLabel.TextTransparency = 0
 TextboxLabel.TextXAlignment = Enum.TextXAlignment.Left
 
