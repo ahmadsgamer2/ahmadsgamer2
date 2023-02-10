@@ -128,7 +128,7 @@ Name.Font = Enum.Font.Cartoon
 Name.Text = "Speed Hub X"
 Name.TextColor3 = Color3.fromRGB(255,255,255)
 Name.TextScaled = true
-Name.TextSize = 16.000
+Name.TextSize = 18.000
 Name.TextWrapped = true
 
 
@@ -1630,7 +1630,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(125,125,125)
+Textbox.BackgroundColor3 = Color3.new(5,5,5)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 387, 0, 31)
 
@@ -1640,7 +1640,7 @@ TextboxCorner.Parent = Textbox
 
 Textboxx.Name = "Textboxx"
 Textboxx.Parent = Textbox
-Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Textboxx.BackgroundColor3 = Color3.fromRGB(5, 5,5)
 Textboxx.Position = UDim2.new(0, 1, 0, 1)
 Textboxx.Size = UDim2.new(0, 385, 0, 29)
 
