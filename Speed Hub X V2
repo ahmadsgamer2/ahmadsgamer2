@@ -1724,7 +1724,7 @@ txtbtn.TextSize = 15.000
 
 RealTextbox.Name = "RealTextbox"
 RealTextbox.Parent = Textbox
-RealTextbox.BackgroundColor3 = Color3.fromRGB(1,1,1)
+RealTextbox.BackgroundColor3 = Color3.fromRGB(15,15,15)
 RealTextbox.BackgroundTransparency = 0
 RealTextbox.Position = UDim2.new(0, 275, 0, 4)
 RealTextbox.Size = UDim2.new(0, 100, 0, 24)
