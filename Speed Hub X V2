@@ -1680,7 +1680,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(10,10,10)
+Textbox.BackgroundColor3 = Color3.new(20,20,20)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 387, 0, 31)
 
@@ -1720,7 +1720,7 @@ txtbtn.Size = UDim2.new(0, 387, 0, 29)
 txtbtn.Font = Enum.Font.SourceSans
 txtbtn.Text = ""
 txtbtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-txtbtn.TextSize = 14.000
+txtbtn.TextSize = 15.000
 
 RealTextbox.Name = "RealTextbox"
 RealTextbox.Parent = Textbox
