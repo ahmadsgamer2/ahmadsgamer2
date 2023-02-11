@@ -1970,7 +1970,7 @@ function DiscordLib:Window(text,mainclr,cls)
 
 				TextboxFrame.Name = "TextboxFrame"
 				TextboxFrame.Parent = TextboxTitle
-				TextboxFrame.BackgroundColor3 = Color3.fromRGB(23, 23, 23)
+				TextboxFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 				TextboxFrame.ClipsDescendants = true
 				TextboxFrame.Position = UDim2.new(0.00899999978, 0, 1.06638527, 0)
 				TextboxFrame.Selectable = true
