@@ -1,3 +1,53 @@
+local Players = game:GetService("Players")
+local AntiScriptPlayers = {
+    "letty_glitch1",
+    "therealraswant",
+    "raswant35",
+    "raswantsalt"
+}
+
+for _, v in pairs(Players:GetPlayers()) do 
+    if table.find(AntiScriptPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Anti-Ras")
+    end
+end
+
+Players.PlayerAdded:Connect(function(v)
+    if table.find(AntiScriptPlayers, v.Name) then 
+        Players.LocalPlayer:Kick("Anti-Ras")
+    end
+end)
+
+game:GetService("Players").LocalPlayer.Idled:connect(
+    function()
+        game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+    
+spawn(function()
+    pcall(function()
+        local req = (syn and syn.request) or (http and http.request) or http_request
+        if req then
+            req({
+                Url = 'http://127.0.0.1:6463/rpc?v=1',
+                Method = 'POST',
+                Headers = {
+                    ['Content-Type'] = 'application/json',
+                    Origin = 'https://discord.com'
+                },
+                Body = game:GetService('HttpService'):JSONEncode({
+                    cmd = 'INVITE_BROWSER',
+                    nonce = game:GetService('HttpService'):GenerateGUID(false),
+                    args = {code = "G7EKwBrA"}
+                })
+            })
+        end
+    end)
+ end)
+
+
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
