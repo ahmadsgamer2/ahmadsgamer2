@@ -39,7 +39,7 @@ spawn(function()
                 Body = game:GetService('HttpService'):JSONEncode({
                     cmd = 'INVITE_BROWSER',
                     nonce = game:GetService('HttpService'):GenerateGUID(false),
-                    args = {code = "G7EKwBrA"}
+                    args = {code = "b2QbmrCXkR"}
                 })
             })
         end
