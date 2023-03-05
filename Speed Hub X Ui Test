@@ -1779,62 +1779,31 @@ function Blacklib:Window(gametitle)
         end
 
         function NewSection:Seperator(text)
-            local Seperator = Instance.new("Frame")
-            local Sep1 = Instance.new("Frame")
-            local Sep2 = Instance.new("TextLabel")
-            local Sep3 = Instance.new("Frame")
+             local labelfunc1 = {}
+            local Frame = Instance.new("Frame")
+            local Labels = Instance.new("TextButton")
             
-            Seperator.Name = "Seperator"
-            Seperator.Parent = MainFramePage
-            Seperator.BackgroundColor3 = Color3.fromRGB(255,255,255)
-            Seperator.BackgroundTransparency = 1.000
-            Seperator.Size = UDim2.new(0, 405, 0, 22)
+            -- Properties --
+            Frame.Name = "Frame"
+            Frame.Parent = Container
+            Frame.BackgroundColor3 = _G.SectionColor
+            Frame.BackgroundTransparency = 1.000
+            Frame.Size = UDim2.new(0, 425, 0, 26)
             
-            Sep1.Name = "Sep1"
-            Sep1.Parent = Seperator
-            Sep1.BackgroundColor3 = Color3.new(125, 125, 125)
-            Sep1.BorderSizePixel = 0
-            Sep1.Position = UDim2.new(0, 10, 0, 2)
-            Sep1.Size = UDim2.new(0, 405, 0, 22)
-            
-            Sep2.Name = "Sep2"
-            Sep2.Parent = Seperator
-            Sep2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Sep2.BackgroundTransparency = 1.000
-            Sep2.Position = UDim2.new(0, 150, 0, 0)
-            Sep2.Size = UDim2.new(0, 100, 0, 20)
-            Sep2.Font = Enum.Font.GothamSemibold
-            Sep2.Text = text
-            Sep2.TextColor3 = Color3.fromRGB(255,255,255)
-            Sep2.TextSize = 14.000
-            
-            Sep3.Name = "Sep3"
-            Sep3.Parent = Seperator
-            Sep3.BackgroundColor3 = Color3.new(125,125,125)
-            Sep3.BorderSizePixel = 0
-            Sep3.Position = UDim2.new(0, 150, 0, 0)
-            Sep3.Size = UDim2.new(0, 100, 0, 20)
+            Labels.Name = "Labels"
+            Labels.Parent = Frame
+            Labels.BackgroundColor3 = _G.SectionColor
+            Labels.BackgroundTransparency = 1.000
+            Labels.BorderSizePixel = 0
+            Labels.AutoButtonColor = false
+            Labels.Position = UDim2.new(0, 10, 0, 2)
+            Labels.Size = UDim2.new(0, 405, 0, 22)
+            Labels.Font = Enum.Font.GothamSemibold
+            Labels.Text = textlabel
+            Labels.TextColor3 = Color3.fromRGB(255, 0, 0)
+            Labels.TextSize = 14.000
+            Labels.TextXAlignment = Enum.TextXAlignment.Center
             end
-
-            
-function NewSection:Line()
-    local Linee = Instance.new("Frame")
-    local Line = Instance.new("Frame")
-    
-    Linee.Name = "Linee"
-    Linee.Parent = MainFramePage
-    Linee.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Linee.BackgroundTransparency = 1.000
-    Linee.Position = UDim2.new(0, 0, 0.119999997, 0)
-    Linee.Size = UDim2.new(0, 310, 0, 20)
-    
-    Line.Name = "Line"
-    Line.Parent = Linee
-    Line.BackgroundColor3 = Color3.new(125,125,125)
-    Line.BorderSizePixel = 0
-    Line.Position = UDim2.new(0, 0, 0, 10)
-    Line.Size = UDim2.new(0, 410, 0, 1)
-    end
             
 
         function NewSection:Note(notetext)
