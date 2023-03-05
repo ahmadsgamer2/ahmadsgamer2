@@ -1779,7 +1779,7 @@ function Blacklib:Window(gametitle)
         end
 
         function NewSection:Seperator(text)
-             local labelfunc1 = {}
+             local labelfunc = {}
             local Frame = Instance.new("Frame")
             local Labels = Instance.new("TextButton")
             
