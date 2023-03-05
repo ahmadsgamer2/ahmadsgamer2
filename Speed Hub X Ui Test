@@ -53,7 +53,7 @@ UICorner.Parent = MAIN
 
 BAR.Name = "BAR"
 BAR.Parent = MAIN
-BAR.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+BAR.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 BAR.BorderSizePixel = 0
 BAR.Position = UDim2.new(0.106, 0,0.835, 0)
 BAR.Size = UDim2.new(0, 0, 0, 15)
@@ -1498,3 +1498,4 @@ return main
 end
 return uitab
 end
+return Update
