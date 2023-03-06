@@ -8,106 +8,6 @@ local player = game.Players.LocalPlayer
 local result, code = pcall(function()
 	return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)   
-local ScreenGui = Instance.new("ScreenGui")
-local MAIN = Instance.new("Frame")
-local LOGO = Instance.new("ImageLabel")
-local UICorner = Instance.new("UICorner")
-local BAR = Instance.new("Frame")
-local UICorner_2 = Instance.new("UICorner")
-local TITLE = Instance.new("TextLabel")
-local LOADING = Instance.new("TextLabel")
-local WindowStroke = Instance.new("UIStroke")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-MAIN.Name = "MAIN"
-MAIN.Parent = ScreenGui
-MAIN.BackgroundColor3 = Color3.fromRGB(4, 4, 4)
-MAIN.AnchorPoint = Vector2.new(0.5,0.5)
-MAIN.Position = UDim2.new(0.5, 0, 0.5, 0)
-MAIN.Size = UDim2.new(0, 357, 0, 158)
-
-WindowStroke.Name = "WindowStroke"
-WindowStroke.Parent = MAIN
-WindowStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-WindowStroke.Color = Color3.fromRGB(255,255,255)
-WindowStroke.LineJoinMode = Enum.LineJoinMode.Round
-WindowStroke.Thickness = 2
-WindowStroke.Transparency = 0
-WindowStroke.Enabled = true
-WindowStroke.Archivable = true
-
-LOGO.Name = "LOGO"
-LOGO.Parent = MAIN
-LOGO.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LOGO.BackgroundTransparency = 1.000
-LOGO.Position = UDim2.new(-0.0323287919, 0, -0.079336822, 0)
-LOGO.Size = UDim2.new(0, 162, 0, 160)
-LOGO.Image = "rbxassetid://12438642669"
-
-UICorner.CornerRadius = UDim.new(0, 5)
-UICorner.Parent = MAIN
-
-BAR.Name = "BAR"
-BAR.Parent = MAIN
-BAR.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-BAR.BorderSizePixel = 0
-BAR.Position = UDim2.new(0.106, 0,0.835, 0)
-BAR.Size = UDim2.new(0, 0, 0, 15)
-
-UICorner_2.Parent = BAR
-
-TITLE.Name = "TITLE"
-TITLE.Parent = MAIN
-TITLE.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TITLE.BackgroundTransparency = 1.000
-TITLE.Position = UDim2.new(0.403277725, 0, 0.0506329127, 0)
-TITLE.Size = UDim2.new(0, 169, 0, 44)
-TITLE.Font = Enum.Font.Highway
-TITLE.Text = "Speed Hub X | Loader"
-TITLE.TextColor3 = Color3.fromRGB(255, 255, 255)
-TITLE.TextScaled = true
-TITLE.TextSize = 14.000
-TITLE.TextWrapped = true
-
-LOADING.Name = "LOADING"
-LOADING.Parent = MAIN
-LOADING.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-LOADING.BackgroundTransparency = 1.000
-LOADING.Position = UDim2.new(0.378, 0,0.43, 0)
-LOADING.Size = UDim2.new(0, 169, 0, 44)
-LOADING.Font = Enum.Font.SourceSansItalic
-LOADING.Text = "Loading"
-LOADING.TextColor3 = Color3.fromRGB(255, 255, 255)
-LOADING.TextSize = 20.000
-LOADING.TextWrapped = true
-wait(1)
-LOADING.Text = "Getting Data..."
-BAR:TweenSize(UDim2.new(0, 150,0, 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-wait(1)
-LOADING.Text = "Hello" ..game.Players.LocalPlayer.DisplayName.. " From: ".. code
-BAR:TweenSize(UDim2.new(0, 200,0, 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-wait(1)
-LOADING.Text = "Checking Game"
-BAR:TweenSize(UDim2.new(0, 250,0, 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-wait(1)
-LOADING.Text = "Game Found"
-BAR:TweenSize(UDim2.new(0, 260,0, 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-wait(1)
-LOADING.Text = "Loading Script"
-BAR:TweenSize(UDim2.new(0, 285,0, 15), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-wait(1)
-MAIN:TweenSize(UDim2.new(0,0,0,5),"Out","Quad",1,true)
-LOGO:Destroy()
-TITLE:Destroy()
-LOADING:Destroy()
-BAR:Destroy()
-wait(1)
-MAIN:Destroy()
-wait("5")
 
 local openshit = Instance.new("ScreenGui")
 local mainopen = Instance.new("TextButton")
@@ -296,7 +196,7 @@ Name.TextSize = 17.000
 local Hub = Instance.new("TextLabel")
 Hub.Name = "Hub"
 Hub.Parent = Top
-Hub.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Hub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Hub.BackgroundTransparency = 1.000
 Hub.Position = UDim2.new(0, 130, 0, 0)
 Hub.Size = UDim2.new(0, 81, 0, 27)
@@ -316,7 +216,7 @@ ServerTime.Size = UDim2.new(0, 225, 0, 25)
 ServerTime.Font = Enum.Font.GothamSemibold
 ServerTime.Text = ""
 ServerTime.TextSize = 14.000
-ServerTime.TextColor3 = Color3.fromRGB(255,0,0)
+ServerTime.TextColor3 = Color3.fromRGB(255,255,255)
 ServerTime.TextXAlignment = Enum.TextXAlignment.Left
 
 
@@ -483,7 +383,7 @@ TabImage.BackgroundColor3 = _G.Color
 TabImage.BackgroundTransparency = 1.000
 TabImage.Position = UDim2.new(0, 0, 0, 0)
 TabImage.Size = UDim2.new(0, 20, 0, 20)
-TabImage.Image = img or "rbxassetid://8666601749"
+TabImage.Image = img or ""
 TabImage.ImageColor3 = _G.Color
 
 local MainFramePage = Instance.new("ScrollingFrame")
@@ -859,12 +759,12 @@ Title.TextXAlignment = Enum.TextXAlignment.Left
 
 ImageButton.Name = "ImageButton"
 ImageButton.Parent = CheckFrame2
-ImageButton.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ImageButton.BackgroundColor3 = Color3.fromRGB(0,0,0)
 ImageButton.BackgroundTransparency = 1.000
 ImageButton.Position = UDim2.new(0, 352, 0, 4)
 ImageButton.Size = UDim2.new(0, 23, 0, 23)
 ImageButton.ZIndex = 2
-ImageButton.Image = "rbxassetid://3926311105"
+ImageButton.Image = "rbxassetid://12438642669"
 ImageButton.ImageColor3 = Color3.fromRGB(255,255,255)
 ImageButton.ImageRectOffset = Vector2.new(940, 784)
 ImageButton.ImageRectSize = Vector2.new(48, 48)
