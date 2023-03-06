@@ -9,47 +9,26 @@ local result, code = pcall(function()
 	return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)   
 
-local openshit = Instance.new("ScreenGui")
-local mainopen = Instance.new("TextButton")
-local mainopens = Instance.new("UICorner")
-local loki = Instance.new("ImageLabel")
-local posto = Instance.new("UIStroke")
+local UIStroke = Instance.new("UIStroke")
+local UICorner = Instance.new("UICorner")
 
-openshit.Name = "openshit"
-openshit.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-openshit.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
 
-mainopen.Name = "mainopen"
-mainopen.Parent = openshit
-mainopen.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-mainopen.Position = UDim2.new(0.101969875, 0, 0.110441767, 0)
-mainopen.Size = UDim2.new(0, 64, 0, 42)
-mainopen.Text = ""
-mainopen.MouseButton1Click:Connect(function()
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = ScreenGui
+ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ImageButton.Size = UDim2.new(0, 80, 0, 80)
+ImageButton.Draggable = true
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
+ImageButton.BackgroundTransparency = 1.000
+ImageButton.Image = "rbxassetid://12438642669"
+ImageButton.MouseButton1Down:connect(function()
 	game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
 	game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
 end)
-
-mainopens.Name = "mainopens"
-mainopens.Parent = mainopen
-
-loki.Name = "loki"
-loki.Parent = mainopen
-loki.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-loki.BackgroundTransparency = 1.000
-loki.Position = UDim2.new(-0.0529999994, 0, -0.244000003, 0)
-loki.Size = UDim2.new(0, 69, 0, 62)
-loki.Image = "rbxassetid://12438642669"
-
-posto.Name = "posto"
-posto.Parent = mainopen
-posto.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-posto.Color = Color3.fromRGB(255,255,255)
-posto.LineJoinMode = Enum.LineJoinMode.Round
-posto.Thickness = 1
-posto.Transparency = 0
-posto.Enabled = true
-posto.Archivable = true
 
 
 local UserInputService = game:GetService("UserInputService")
@@ -189,7 +168,7 @@ Name.BackgroundTransparency = 1.000
 Name.Position = UDim2.new(0.0909756112, 0, 0, 0)
 Name.Size = UDim2.new(0, 61, 0, 27)
 Name.Font = Enum.Font.GothamSemibold
-Name.Text = text
+Name.Text = "Speed Hub X"
 Name.TextColor3 = Color3.fromRGB(225, 225, 225)
 Name.TextSize = 17.000
 
