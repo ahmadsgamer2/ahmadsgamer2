@@ -1,3 +1,34 @@
+
+game:GetService("Players").LocalPlayer.Idled:connect(
+    function()
+        game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+    
+spawn(function()
+    pcall(function()
+        local req = (syn and syn.request) or (http and http.request) or http_request
+        if req then
+            req({
+                Url = 'http://127.0.0.1:6463/rpc?v=1',
+                Method = 'POST',
+                Headers = {
+                    ['Content-Type'] = 'application/json',
+                    Origin = 'https://discord.com'
+                },
+                Body = game:GetService('HttpService'):JSONEncode({
+                    cmd = 'INVITE_BROWSER',
+                    nonce = game:GetService('HttpService'):GenerateGUID(false),
+                    args = {code = "bWuHErgF"}
+                })
+            })
+        end
+    end)
+ end)
+
+
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
@@ -128,7 +159,7 @@ Name.Font = Enum.Font.Cartoon
 Name.Text = "Speed Hub X"
 Name.TextColor3 = Color3.fromRGB(255,255,255)
 Name.TextScaled = true
-Name.TextSize = 16.000
+Name.TextSize = 19.000
 Name.TextWrapped = true
 
 
@@ -1510,7 +1541,7 @@ TextboxCorner.Parent = Textbox
 
 Textboxx.Name = "Textboxx"
 Textboxx.Parent = Textbox
-Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Textboxx.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
 Textboxx.Position = UDim2.new(0, 1, 0, 1)
 Textboxx.Size = UDim2.new(0, 385, 0, 29)
 
@@ -1527,7 +1558,7 @@ TextboxLabel.Text = text
 TextboxLabel.Size = UDim2.new(0, 145, 0, 31)
 TextboxLabel.Font = Enum.Font.GothamSemibold
 TextboxLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
-TextboxLabel.TextSize = 16.000
+TextboxLabel.TextSize = 17.000
 TextboxLabel.TextTransparency = 0
 TextboxLabel.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -1630,7 +1661,7 @@ local UICorner = Instance.new("UICorner")
 
 Textbox.Name = "Textbox"
 Textbox.Parent = MainFramePage
-Textbox.BackgroundColor3 = Color3.new(125,125,125)
+Textbox.BackgroundColor3 = Color3.new(20,20,20)
 Textbox.BackgroundTransparency = 0
 Textbox.Size = UDim2.new(0, 387, 0, 31)
 
@@ -1640,7 +1671,7 @@ TextboxCorner.Parent = Textbox
 
 Textboxx.Name = "Textboxx"
 Textboxx.Parent = Textbox
-Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Textboxx.BackgroundColor3 = Color3.fromRGB(5, 5,5)
 Textboxx.Position = UDim2.new(0, 1, 0, 1)
 Textboxx.Size = UDim2.new(0, 385, 0, 29)
 
@@ -1670,11 +1701,11 @@ txtbtn.Size = UDim2.new(0, 387, 0, 29)
 txtbtn.Font = Enum.Font.SourceSans
 txtbtn.Text = ""
 txtbtn.TextColor3 = Color3.fromRGB(0, 0, 0)
-txtbtn.TextSize = 14.000
+txtbtn.TextSize = 15.000
 
 RealTextbox.Name = "RealTextbox"
 RealTextbox.Parent = Textbox
-RealTextbox.BackgroundColor3 = Color3.fromRGB(1,1,1)
+RealTextbox.BackgroundColor3 = Color3.fromRGB(15,15,15)
 RealTextbox.BackgroundTransparency = 0
 RealTextbox.Position = UDim2.new(0, 275, 0, 4)
 RealTextbox.Size = UDim2.new(0, 100, 0, 24)
