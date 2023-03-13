@@ -27,6 +27,9 @@ spawn(function()
     end)
  end)
 
+if game.CoreGui:FindFirstChild("SpeedHubX") then
+    game.CoreGui:FindFirstChild("SpeedHubX"):Destroy()
+end
 
 
 local UserInputService = game:GetService("UserInputService")
