@@ -1,15 +1,15 @@
-if game.CoreGui:FindFirstChild("SpeedHubXScreenGui") then
-    game.CoreGui:FindFirstChild("SpeedHubXScreenGui"):Destroy()
+if game.CoreGui:FindFirstChild("ScreenGuiSpeedHubX") then
+    game.CoreGui:FindFirstChild("ScreenGuiSpeedHubX"):Destroy()
 end
 
 local UIStroke = Instance.new("UIStroke")
 local UICorner = Instance.new("UICorner")
 
-local SpeedHubXScreenGui = Instance.new("SpeedHubXScreenGui")
+local ScreenGuiSpeedHubX = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 
-SpeedHubXScreenGui.Parent = game.CoreGui
-SpeedHubXScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGuiSpeedHubX.Parent = game.CoreGui
+ScreenGuiSpeedHubX.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 ImageButton.Parent = ScreenGui
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
@@ -21,3 +21,4 @@ ImageButton.Image = "rbxassetid://12438642669"
 ImageButton.MouseButton1Down:connect(function()
 game.CoreGui:FindFirstChild("SpeedHubX").Enabled = not game.CoreGui:FindFirstChild("SpeedHubX").Enabled
 end)
+
