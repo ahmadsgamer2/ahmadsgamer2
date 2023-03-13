@@ -11,7 +11,7 @@ local ImageButton = Instance.new("ImageButton")
 ScreenGuiSpeedHubX.Parent = game.CoreGui
 ScreenGuiSpeedHubX.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-ImageButton.Parent = ScreenGui
+ImageButton.Parent = ScreenGuiSpeedHubX
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 80, 0, 80)
 ImageButton.Draggable = true
