@@ -254,7 +254,7 @@ function Mainholder:Window(hubname)
    GameTitle.Position = UDim2.new(0.0297903754, 0, 0.0987561122, 6)
    GameTitle.Size = UDim2.new(0, 159, 0, 20)
    GameTitle.Font = Enum.Font.Gotham
-   GameTitle.Text = gamename
+   GameTitle.Text = ""
    GameTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
    GameTitle.TextSize = 17.000
    GameTitle.TextTransparency = 0.400
