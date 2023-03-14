@@ -1954,7 +1954,7 @@ function ContainerItems:Slider(text, min, max, start, callback)
 end
 
 
-function ContainerItems:line()
+function ContainerItems:Line()
    local line = Instance.new("TextButton")
    local lineCorner = Instance.new("UICorner")
 
