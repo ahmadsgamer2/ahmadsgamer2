@@ -152,7 +152,7 @@ getgenv().GUI_Color = {
    TextColor = Color3.fromRGB(255, 255, 255)
 }
 
-function Mainholder:Window(hubname, gamename)
+function Mainholder:Window(hubname)
    local FirstTab = false
 
    local MainFrame = Instance.new("Frame")
@@ -266,7 +266,7 @@ function Mainholder:Window(hubname, gamename)
    MainTitle.Position = UDim2.new(0.0322690085, 0, 0.035682939, 0)
    MainTitle.Size = UDim2.new(0, 159, 0, 20)
    MainTitle.Font = Enum.Font.Gotham
-   MainTitle.Text = hubname
+   MainTitle.Text = "Speed Hub X"
    MainTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
    MainTitle.TextSize = 25.000
    
@@ -1954,7 +1954,7 @@ function ContainerItems:Slider(text, min, max, start, callback)
 end
 
 
-function ContainerItems:Line()
+function ContainerItems:line()
    local line = Instance.new("TextButton")
    local lineCorner = Instance.new("UICorner")
 
@@ -4077,4 +4077,4 @@ end
 return Tabs
 end
 
-return Mainholder
+  return Mainholder
