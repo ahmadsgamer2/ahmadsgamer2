@@ -1,24 +1,20 @@
-if game.CoreGui:FindFirstChild("ScreenGuiSpeedHubX") then
-    game.CoreGui:FindFirstChild("ScreenGuiSpeedHubX"):Destroy()
-end
 
-local UIStroke = Instance.new("UIStroke")
-local UICorner = Instance.new("UICorner")
-
-local ScreenGuiSpeedHubX = Instance.new("ScreenGui")
+local ScreenGui = Instance.new("ScreenGui")
 local ImageButton = Instance.new("ImageButton")
 
-ScreenGuiSpeedHubX.Parent = game.CoreGui
-ScreenGuiSpeedHubX.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-ImageButton.Parent = ScreenGuiSpeedHubX
-ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ImageButton.Size = UDim2.new(0, 80, 0, 80)
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
 ImageButton.Draggable = true
-ImageButton.BackgroundColor3 = Color3.fromRGB(255, 0, 255)
-ImageButton.BackgroundTransparency = 1.000
-ImageButton.Image = "rbxassetid://12438642669"
+ImageButton.Position = UDim2.new(0.102097899, 0, 0.0742971897, 0)
+ImageButton.Size = UDim2.new(0, 59, 0, 49)
+ImageButton.Style = Enum.ButtonStyle.RobloxButton
+ImageButton.Image = "http://www.roblox.com/asset/?id=12800687277"
 ImageButton.MouseButton1Down:connect(function()
-game.CoreGui:FindFirstChild("SpeedHubX").Enabled = not game.CoreGui:FindFirstChild("SpeedHubX").Enabled
+	game.CoreGui:FindFirstChild("SpeedHubX").Enabled = not game.CoreGui:FindFirstChild("SpeedHubX").Enabled
 end)
 
