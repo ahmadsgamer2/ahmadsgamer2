@@ -120,7 +120,7 @@ local BtnStroke = Instance.new("UIStroke")
 BtnStroke.Name = "BtnStroke"
             BtnStroke.Parent = Main
             BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-            BtnStroke.Color = Color3.fromRGB(255,0,0)
+            BtnStroke.Color = Color3.fromRGB(255,255,255)
             BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
         BtnStroke.Thickness = 1
         BtnStroke.Transparency = 0
@@ -134,7 +134,7 @@ MCNR.Parent = Main
 local Top = Instance.new("Frame")
 Top.Name = "Top"
 Top.Parent = Main
-Top.BackgroundColor3 = Color3.fromRGB(255,0,0)
+Top.BackgroundColor3 = Color3.fromRGB(255,255,255)
 --Top.Size = UDim2.new(0, 656, 0, 27)
 Top.Size = UDim2.new(0, 556, 0, 30)
 
@@ -212,7 +212,7 @@ local Logo = Instance.new("ImageLabel")
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, 2, 0, 22)
 	Logo.Size = UDim2.new(0, 140, 0, 140)
-	Logo.Image = "rbxassetid://12438642669"
+	Logo.Image = "http://www.roblox.com/asset/?id=12800687277"
 local Tab = Instance.new("Frame")
 Tab.Name = "Tab"
 Tab.Parent = Main
@@ -337,6 +337,7 @@ local BtnStroke = Instance.new("UIStroke")
 local bc = Instance.new("UICorner")
 local TabButton = Instance.new("TextButton")
 local title = Instance.new("TextLabel")
+local TabImage = Instance.new("ImageLabel")
 local TUICorner = Instance.new("UICorner")
 TabButton.Parent = ScrollTab
 TabButton.Name = text.."Server"
@@ -354,7 +355,7 @@ TUICorner.CornerRadius = UDim.new(0, 3)
 BtnStroke.Name = "BtnStroke"
             BtnStroke.Parent = TabButton
             BtnStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-            BtnStroke.Color = Color3.fromRGB(255,0,0)
+            BtnStroke.Color = Color3.fromRGB(255, 255, 255)
             BtnStroke.LineJoinMode = Enum.LineJoinMode.Round
         BtnStroke.Thickness = 1
         BtnStroke.Transparency = 0
@@ -377,6 +378,16 @@ TabFrame.Size = UDim2.new(0, 0, 0, 0)
 UICornerFrame.CornerRadius = UDim.new(0, 5)
 UICornerFrame.Parent = TabFrame
 ]]--
+
+TabImage.Name = text or "TabImage"
+		TabImage.Parent = TabButton
+		TabImage.BackgroundColor3 = Color3.fromRGB("255,255,255")
+		TabImage.BackgroundTransparency = 1.000
+		TabImage.Position = UDim2.new(0, 7, 0, 7)
+		TabImage.Size = UDim2.new(0, 18, 0, 15)
+		TabImage.Image = img or "rbxassetid://8666601749"
+		TabImage.ImageColor3 = Color3.fromRGB(255,255,255)
+
 local MainFramePage = Instance.new("ScrollingFrame")
 MainFramePage.Name = text.."_Page"
 MainFramePage.Parent = PageList
@@ -547,7 +558,7 @@ NotificationTitle.Size = UDim2.new(0, 400, 0, 25)
 NotificationTitle.ZIndex = 3
 NotificationTitle.Font = Enum.Font.GothamSemibold
 NotificationTitle.Text = "Notification"
-NotificationTitle.TextColor3 = Color3.fromRGB(255, 0, 0)
+NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 NotificationTitle.TextSize = 22.000
 
 Line.Name = "Line"
@@ -616,7 +627,7 @@ UICorner.Parent = Button
 
 TextBtn.Name = "TextBtn"
 TextBtn.Parent = Button
-TextBtn.BackgroundColor3 = Color3.fromRGB(255,0,0)
+TextBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextBtn.Position = UDim2.new(0, 1, 0, 1)
 TextBtn.Size = UDim2.new(0, 385, 0, 32)
 TextBtn.AutoButtonColor = false
@@ -766,8 +777,8 @@ ImageButton.MouseButton1Click:Connect(function()
  toggle = not toggle
  pcall(callback, toggle)
  end)
-end
-]]--
+end--]]
+
 function main:Toggle(text,config,callback)
 			config = config or false
 			local toggled = config
@@ -781,6 +792,8 @@ _G.Color = Color3.fromRGB(0, 250, 255)
 			local UICorner_3 = Instance.new("UICorner")
 			local Circle = Instance.new("Frame")
 			local UICorner_4 = Instance.new("UICorner")
+      local ImageLabel = Instance.new("ImageLabel")
+      local Space = Instance.new("TextLabel")
 
 			
 
@@ -797,7 +810,7 @@ _G.Color = Color3.fromRGB(0, 250, 255)
             UIStroke.Name = "UIStroke"
 UIStroke.Parent = Button
 UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-UIStroke.Color = Color3.fromRGB(255,0,0)
+UIStroke.Color = Color3.fromRGB(255,255,255)
 UIStroke.LineJoinMode = Enum.LineJoinMode.Round
 UIStroke.Thickness = 1
 UIStroke.Transparency = 0
@@ -806,6 +819,28 @@ UIStroke.Archivable = true
 
 			UICorner_2.CornerRadius = UDim.new(0, 3)
 			UICorner_2.Parent = Button
+
+ImageLabel.Name = "ImageLabel"
+ImageLabel.Parent = Button
+ImageLabel.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+ImageLabel.BackgroundTransparency = 1.000
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Position = UDim2.new(-0.018, 0,-0.252, 0)
+ImageLabel.Size = UDim2.new(0, 45,0, 45)
+ImageLabel.Image = "http://www.roblox.com/asset/?id=12800687277"
+ImageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
+ 
+Space.Name = "Space"
+Space.Parent = Button
+Space.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+Space.BackgroundTransparency = 1.000
+Space.Position = UDim2.new(0, 30, 0, 0)
+Space.Size = UDim2.new(0, 15, 0, 30)
+Space.Font = Enum.Font.GothamSemibold
+Space.Text = "|"
+Space.TextSize = 15.000
+Space.TextColor3 = Color3.fromRGB(255,225,225)
+Space.TextXAlignment = Enum.TextXAlignment.Center
 
 			Title.Parent = Button
 Title.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
@@ -889,7 +924,7 @@ Dropdown.Size = UDim2.new(0, 387, 0, 31)
 UIStroke.Name = "UIStroke"
 UIStroke.Parent = Dropdown
 UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-UIStroke.Color = Color3.fromRGB(255,0,0)
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
 UIStroke.LineJoinMode = Enum.LineJoinMode.Round
 UIStroke.Thickness = 1
 UIStroke.Transparency = 0
@@ -1103,7 +1138,7 @@ local posto = Instance.new("UIStroke")
 
 Slider.Name = "Slider"
 Slider.Parent = MainFramePage
-Slider.BackgroundColor3 = Color3.fromRGB(255,0,0)
+Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Slider.BackgroundTransparency = 0
 Slider.Size = UDim2.new(0, 387, 0, 51)
 
