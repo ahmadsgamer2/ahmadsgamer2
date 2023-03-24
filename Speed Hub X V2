@@ -1697,7 +1697,7 @@ RealTextbox.FocusLost:Connect(function()
 UICorner.CornerRadius = UDim.new(0, 5)
 UICorner.Parent = RealTextbox
 end
-function main:Label(text)
+function main:Label1(text)
 local Label = Instance.new("TextLabel")
 local PaddingLabel = Instance.new("UIPadding")
 local labelfunc = {}
