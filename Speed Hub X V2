@@ -19,7 +19,7 @@ spawn(function()
                 Body = game:GetService('HttpService'):JSONEncode({
                     cmd = 'INVITE_BROWSER',
                     nonce = game:GetService('HttpService'):GenerateGUID(false),
-                    args = {code = "ZbhCk9hs"}
+                    args = {code = "EcchJs8U"}
                 })
             })
         end
@@ -1643,7 +1643,7 @@ TextboxCorner.Parent = Textbox
 
 Textboxx.Name = "Textboxx"
 Textboxx.Parent = Textbox
-Textboxx.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Textboxx.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Textboxx.Position = UDim2.new(0, 1, 0, 1)
 Textboxx.Size = UDim2.new(0, 385, 0, 29)
 
@@ -1853,7 +1853,7 @@ end
 return labelfunc
 end
 
-function main:Label1(text)
+function main:Label(text)
 local Label1 = Instance.new("TextLabel")
 local PaddingLabel1 = Instance.new("UIPadding")
 local Label1func = {}
@@ -1902,7 +1902,7 @@ Labeld.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Labeld.BackgroundTransparency = 1.000
 Labeld.Size = UDim2.new(0, 410, 0, 20)
 Labeld.Font = Enum.Font.GothamSemibold
-Labeld.TextColor3 = Color3.fromRGB(255,130,0)
+Labeld.TextColor3 = Color3.fromRGB(255,255,255)
 Labeld.TextSize = 15.000
 Labeld.Text = display or ""
 Labeld.TextXAlignment = Enum.TextXAlignment.Left
