@@ -2003,37 +2003,6 @@ end)
 Main:Button("Reset Character", function(v)
     game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
 end)
-
-Main:Toggle("Auto Hoops", AutoHoops, function(vu)
-        getgenv().AutoHoops = vu
-        while true do
-            if not getgenv().AutoHoops then return end
-            wait()
-            for i,v in pairs(game:GetService("Workspace").Hoops:GetChildren()) do
-				v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            end
-        end
-    end)
-
-
-local TimeTp1 = .1	
-	
-Time = AutoFarm:Label("Time Script")	
-	
-function UpdateTime()	
-local GameTime = math.floor(workspace.DistributedGameTime+0.5)	
-local Hour = math.floor(GameTime/(60^2))%24	
-local Minute = math.floor(GameTime/(60^1))%60	
-local Second = math.floor(GameTime/(60^0))%60	
-    Time:Refresh("Hour : "..Hour.." Minute : "..Minute.." Second : "..Second)	
-end	
-	
-spawn(function()	
-    while true do	
-        UpdateTime()	
-        wait()	
-    end	
-end)
     
 AutoFarm:Toggle("Auto Farm Red Orb (City)", false, function(v)
         AutoFarmRed = v
@@ -2059,6 +2028,7 @@ end)
                 firetouchinterest(v, game:GetService('Players').LocalPlayer.Character.HumanoidRootPart, 0)
                 wait()
                 firetouchinterest(v, game:GetService('Players').LocalPlayer.Character.HumanoidRootPart, 1)
+		end
 		end)
 		end
 		end
