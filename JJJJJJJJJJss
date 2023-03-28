@@ -68,7 +68,7 @@ function library:Window(text,keybind)
     local currenttab = ""
 
     local DoctorShiba = Instance.new("ScreenGui")
-    DoctorShiba.Name = "UlLib"
+    DoctorShiba.Name = "SpeedHubX"
     DoctorShiba.Parent = game.CoreGui
     DoctorShiba.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -76,7 +76,7 @@ function library:Window(text,keybind)
     Main.Name = "Main"
     Main.Parent = DoctorShiba
     Main.AnchorPoint = Vector2.new(0.5, 0.5)
-    Main.BackgroundColor3 = Color3.fromRGB(30, 28, 39)
+    Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
     Main.BackgroundTransparency = 0.100
     Main.BorderSizePixel = 0
     Main.ClipsDescendants = true
@@ -107,7 +107,7 @@ function library:Window(text,keybind)
     NameHub.Position = UDim2.new(0.113333493, 0, 0, 0)
     NameHub.Size = UDim2.new(0, 110, 0, 20)
     NameHub.Font = Enum.Font.GothamSemibold
-    NameHub.Text = "Speed Hub X - "..NameGames1..""
+    NameHub.Text = "Speed Hub X"
     NameHub.TextColor3 = Color3.fromRGB(225, 255, 255)
     NameHub.TextSize = 11.000
     NameHub.TextXAlignment = Enum.TextXAlignment.Left
@@ -129,53 +129,7 @@ function library:Window(text,keybind)
     UserText.Size = UDim2.new(0, 80, 0, 20)
     UserText.Font = Enum.Font.Gotham
     UserText.Text = tostring(game.Players.LocalPlayer.Name) 
-    spawn(function()
-        while wait() do
-            pcall(function()
-                wait(0.1) 
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 155, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 255, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 255, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 255, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 155, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    UserText,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 155)}
-                ):Play() 
-                wait(.5)
-            end)
-        end
-    end)
+    UserText.Text = Color3.fromRGB(255, 0, 0)
     UserText.TextScaled = true
     UserText.TextSize = 11.000
     UserText.TextWrapped = true
@@ -273,7 +227,7 @@ function library:Window(text,keybind)
         local MainTab = Instance.new("Frame")
         MainTab.Name = "MainTab"
         MainTab.Parent = TabFolder
-        MainTab.BackgroundColor3 = Color3.fromRGB(30, 28, 39)
+        MainTab.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
         MainTab.BorderSizePixel = 0
         MainTab.Position = UDim2.new(0.208333328, 0, 0, 0)
         MainTab.Size = UDim2.new(0, 475, 0, 350)
@@ -376,7 +330,7 @@ function library:Window(text,keybind)
                 TweenService:Create(
                     Button,
                     TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                    {TextColor3 = Color3.fromRGB(255,255,255)}
+                    {TextColor3 = Color3.fromRGB(255,0,0)}
                 ):Play()
             end)
             
@@ -405,7 +359,7 @@ function library:Window(text,keybind)
             local Toggle = Instance.new("TextButton")
             Toggle.Name = "Toggle"
             Toggle.Parent = ScrollTab
-            Toggle.BackgroundColor3 = Color3.fromRGB(50, 48, 59)
+            Toggle.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             Toggle.BackgroundTransparency = 0.1
             Toggle.BorderSizePixel = 0
             Toggle.AutoButtonColor = false
@@ -461,7 +415,7 @@ function library:Window(text,keybind)
                 TweenService:Create(
                     ToggleLabel,
                     TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                    {TextColor3 = Color3.fromRGB(0, 255, 0)}
+                    {TextColor3 = Color3.fromRGB(255, 0, 0)}
                 ):Play()
             end)
 
@@ -496,7 +450,7 @@ function library:Window(text,keybind)
             end
         end
 
-        function main:Textbox(text,holder,disappear,callback)
+        function main:Textbox(text,disappear,callback)
             local Textboxx = Instance.new("Frame")
             local TextboxxCorner = Instance.new("UICorner")
             local TextboxTitle = Instance.new("TextLabel")
@@ -523,6 +477,7 @@ function library:Window(text,keybind)
             TextboxTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
             TextboxTitle.TextSize = 11.000
             TextboxTitle.TextXAlignment = Enum.TextXAlignment.Left
+            TextboxTitle.TextScaled = true
 
             Textbox.Name = "Textbox"
             Textbox.Parent = Textboxx
@@ -530,7 +485,7 @@ function library:Window(text,keybind)
             Textbox.Position = UDim2.new(0, 310, 0, 5)
             Textbox.Size = UDim2.new(0, 140, 0, 20)
             Textbox.Font = Enum.Font.Gotham
-            Textbox.Text = holder
+            Textbox.Text = ""
             Textbox.TextColor3 = Color3.fromRGB(225, 225, 225)
             Textbox.TextSize = 11.000
 
@@ -949,7 +904,7 @@ function library:Window(text,keybind)
             Label.BackgroundTransparency = 1.000
             Label.Size = UDim2.new(0, 455, 0, 20)
             Label.Font = Enum.Font.Gotham
-            Label.TextColor3 = Color3.fromRGB(225, 225, 225)
+            Label.TextColor3 = Color3.fromRGB(225, 0, 0)
             Label.TextSize = 11.000
             Label.Text = text
             Label.TextXAlignment = Enum.TextXAlignment.Left
@@ -969,3 +924,4 @@ function library:Window(text,keybind)
     end
     return uitab
 end
+return library
