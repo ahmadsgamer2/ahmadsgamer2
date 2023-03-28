@@ -129,7 +129,6 @@ function library:Window(text,keybind)
     UserText.Size = UDim2.new(0, 80, 0, 20)
     UserText.Font = Enum.Font.Gotham
     UserText.Text = tostring(game.Players.LocalPlayer.Name) 
-    UserText.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
     UserText.TextScaled = true
     UserText.TextSize = 11.000
     UserText.TextWrapped = true
