@@ -3,8 +3,6 @@ if game.CoreGui:FindFirstChild("SpeedHubXOpenClose") then
     game.CoreGui:FindFirstChild("SpeedHubXOpenClose"):Destroy()
 end
 
-local CheckSpeedHubX = (game.CoreGui:FindFirstChild("SpeedHubX"))
-
 local UIStroke = Instance.new("UIStroke")
 local UICorner = Instance.new("UICorner")
 
@@ -25,7 +23,5 @@ ImageButton.Size = UDim2.new(0, 59, 0, 49)
 ImageButton.Style = Enum.ButtonStyle.RobloxButton
 ImageButton.Image = "http://www.roblox.com/asset/?id=12800687277"
 ImageButton.MouseButton1Down:connect(function()
-    if CheckSpeedHubX then
         game.CoreGui:FindFirstChild("SpeedHubX").Enabled = not game.CoreGui:FindFirstChild("SpeedHubX").Enabled
-    end
 end)
