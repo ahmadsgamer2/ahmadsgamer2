@@ -6,7 +6,8 @@ game:GetService("Players").LocalPlayer.Idled:connect(
         wait(1)
         game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
     end)
- do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("UiFuji")  if ui then ui:Destroy() end end
+
+do  local ui =  game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("UiFuji")  if ui then ui:Destroy() end end
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -77,7 +78,7 @@ local function MakeDraggable(topbarobject, object)
 end
 
 local Update = {}
-    function Create:window()
+    function Update:Window()
         local FocusUI = false ; -- tap
         local Main = Instance.new("Frame")
         Main.Name = "Main"
