@@ -185,7 +185,7 @@ local Logo = Instance.new("ImageLabel")
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, 2, 0, 22)
 	Logo.Size = UDim2.new(0, 140, 0, 140)
-	Logo.Image = "http://www.roblox.com/asset/?id=15284164137"
+	Logo.Image = "http://www.roblox.com/asset/?id=15306889718"
 local Tab = Instance.new("Frame")
 Tab.Name = "Tab"
 Tab.Parent = Main
