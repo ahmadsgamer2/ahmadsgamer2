@@ -2016,7 +2016,7 @@ local posZ = 5
 local TweenSpeed = 340
 
 ----------------
-local Library = Update:window()
+local Library = Update:Window()
 ----------------------
 local Stats = Library:Tab("Stats", "rbxassetid://11447069304")
 ---------------------------------------
