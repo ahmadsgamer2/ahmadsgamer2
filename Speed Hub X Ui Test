@@ -1,34 +1,7 @@
 
-game:GetService("Players").LocalPlayer.Idled:connect(
-    function()
-        game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-        wait(1)
-        game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-    end)
-    
-spawn(function()
-    pcall(function()
-        local req = (syn and syn.request) or (http and http.request) or http_request
-        if req then
-            req({
-                Url = 'http://127.0.0.1:6463/rpc?v=1',
-                Method = 'POST',
-                Headers = {
-                    ['Content-Type'] = 'application/json',
-                    Origin = 'https://discord.com'
-                },
-                Body = game:GetService('HttpService'):JSONEncode({
-                    cmd = 'INVITE_BROWSER',
-                    nonce = game:GetService('HttpService'):GenerateGUID(false),
-                    args = {code = "ZbhCk9hs"}
-                })
-            })
-        end
-    end)
- end)
 
-if game.CoreGui:FindFirstChild("SpeedHubX") then
-    game.CoreGui:FindFirstChild("SpeedHubX"):Destroy()
+if game.CoreGui:FindFirstChild("DragonHub") then
+    game.CoreGui:FindFirstChild("DragonHub"):Destroy()
 end
 
 
@@ -98,14 +71,14 @@ local currentpage = ""
 local keybind = keybind or Enum.KeyCode.RightControl
 local yoo = string.gsub(tostring(keybind),"Enum.KeyCode.","")
 
-local SpeedHubX = Instance.new("ScreenGui")
-SpeedHubX.Name = "SpeedHubX"
-SpeedHubX.Parent = game.CoreGui
-SpeedHubX.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local DragonHub = Instance.new("ScreenGui")
+DragonHub.Name = "DragonHub"
+DragonHub.Parent = game.CoreGui
+DragonHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 local Main = Instance.new("Frame")
 Main.Name = "Main"
-Main.Parent = SpeedHubX
+Main.Parent = DragonHub
 Main.ClipsDescendants = true
 Main.AnchorPoint = Vector2.new(0.5,0.5)
 Main.BackgroundColor3 = Color3.fromRGB(1,1,1)
@@ -212,7 +185,7 @@ local Logo = Instance.new("ImageLabel")
 	Logo.BackgroundTransparency = 1.000
 	Logo.Position = UDim2.new(0, 2, 0, 22)
 	Logo.Size = UDim2.new(0, 140, 0, 140)
-	Logo.Image = "http://www.roblox.com/asset/?id=12800687277"
+	Logo.Image = "http://www.roblox.com/asset/?id=15284164137"
 local Tab = Instance.new("Frame")
 Tab.Name = "Tab"
 Tab.Parent = Main
