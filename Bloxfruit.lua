@@ -2018,6 +2018,8 @@ local TweenSpeed = 340
 ----------------
 local Library = Update:Window()
 ----------------------
+local Main = Library:Tab("Main", "rbxassetid://7040391851")
+----------------------
 local Stats = Library:Tab("Stats", "rbxassetid://11447069304")
 ---------------------------------------
 local Teleport = Library:Tab("Teleport", "rbxassetid://6035190846")
@@ -2044,9 +2046,6 @@ local Setting = Library:Tab("Settings", "rbxassetid://9606644121")
 
 
 
-
-
-Main:Label("Select Weapon")
 
 local Weaponlist = {"Melee","Sword","Fruit"}
 
