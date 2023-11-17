@@ -87,7 +87,7 @@ Main.Parent = DragonHub
 Main.ClipsDescendants = true
 Main.AnchorPoint = Vector2.new(0.5,0.5)
 Main.BackgroundColor3 = Color3.fromRGB(1,1,1)
-Main.BackgroundTransparency = 1.000
+Main.BackgroundTransparency = 4.000
 Main.Position = UDim2.new(0.5, 0, 0.5, 0)
 Main.Size = UDim2.new(0, 0, 0, 0)
 
@@ -121,7 +121,7 @@ TCNR.CornerRadius = UDim.new(0,5)
 local Name = Instance.new("TextLabel")
 Name.Parent = Top
 Name.BackgroundColor3 = Color3.fromRGB(255,255,255)
-Name.BackgroundTransparency = 1.000
+Name.BackgroundTransparency = 3.000
 Name.Position = UDim2.new( 0.0827338099, 0, 0, 0)
 Name.Size = UDim2.new(0, 81, 0, 27)
 Name.Font = Enum.Font.Cartoon
