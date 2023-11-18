@@ -1206,7 +1206,7 @@ function CheckQuest()
 	local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 	if World1 then
 	if MyLevel == 1 or MyLevel <= 9 then -- Bandit
-		LevelFarm = 1
+		LevelQuest = 1
 	
 		Name = "Bandit"
 		QuestName = "BanditQuest1"
@@ -1220,7 +1220,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(1060, 17, 1547)
 		VectorQuest = Vector3.new(1060, 17, 1547)
 	elseif MyLevel == 10 or MyLevel <= 14 then -- Monkey
-		LevelFarm = 3
+		LevelQuest = 3
 	
 		Name = "Monkey"
 		QuestName = "JungleQuest"
@@ -1234,7 +1234,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-1602, 37, 152)
 		VectorQuest = Vector3.new(-1602, 37, 152)
 	elseif MyLevel == 15 or MyLevel <= 29 then -- Gorilla
-		LevelFarm = 4
+		LevelQuest = 4
 	
 		Name = "Gorilla"
 		QuestName = "JungleQuest"
@@ -1248,7 +1248,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-1602, 37, 152)
 		VectorQuest = Vector3.new(-1602, 37, 152)
 	elseif MyLevel == 30 or MyLevel <= 59 then -- Pirate
-		LevelFarm = 6
+		LevelQuest = 6
 	
 		Name = "Pirate"
 		QuestName = "BuggyQuest1"
@@ -1262,7 +1262,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-1140, 5, 3828)
 		VectorQuest = Vector3.new(-1140, 5, 3828)
 	elseif MyLevel == 60 or MyLevel <= 74 then -- Desert Bandit
-		LevelFarm = 9
+		LevelQuest = 9
 	
 		Name = "Desert Bandit"
 		QuestName = "DesertQuest"
@@ -1276,7 +1276,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(897, 7, 4388)
 		VectorQuest = Vector3.new(897, 7, 4388)
 	elseif MyLevel == 75 or MyLevel <= 89 then -- Desert Officre
-		LevelFarm = 10
+		LevelQuest = 10
 	
 		Name = "Desert Officer"
 		QuestName = "DesertQuest"
@@ -1290,7 +1290,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(897, 7, 4388)
 		VectorQuest = Vector3.new(897, 7, 4388)
 	elseif MyLevel == 90 or MyLevel <= 99 then -- Snow Bandits
-		LevelFarm = 12
+		LevelQuest = 12
 	
 		Name = "Snow Bandit"
 		QuestName = "SnowQuest"
@@ -1304,7 +1304,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(1386, 87, -1297)
 		VectorQuest = Vector3.new(1386, 87, -1297)
 	elseif MyLevel == 100 or MyLevel <= 119 then -- Snowman
-		LevelFarm = 13
+		LevelQuest = 13
 	
 		Name = "Snowman"
 		QuestName = "SnowQuest"
@@ -1318,7 +1318,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(1386, 87, -1297)
 		VectorQuest = Vector3.new(1386, 87, -1297)
 	elseif MyLevel == 120 or MyLevel <= 149 then -- Chief Petty Officer
-		LevelFarm = 15
+		LevelQuest = 15
 	
 		Name = "Chief Petty Officer"
 		QuestName = "MarineQuest2"
@@ -1332,7 +1332,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5036, 29, 4325)
 		VectorQuest = Vector3.new(-5036, 29, 4325)
 	elseif MyLevel == 150 or MyLevel <= 174 then -- Sky Bandit
-		LevelFarm = 17
+		LevelQuest = 17
 	
 		Name = "Sky Bandit"
 		QuestName = "SkyQuest"
@@ -1346,7 +1346,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-4842, 718, -2623)
 		VectorQuest = Vector3.new(-4842, 718, -2623)
 	elseif MyLevel == 175 or MyLevel <= 189 then -- Dark Master
-		LevelFarm = 18
+		LevelQuest = 18
 	
 		Name = "Dark Master"
 		QuestName = "SkyQuest"
@@ -1360,7 +1360,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-4842, 718, -2623)
 		VectorQuest = Vector3.new(-4842, 718, -2623)
 	elseif MyLevel == 190 or MyLevel <= 209 then -- Dark Master
-		LevelFarm = 20
+		LevelQuest = 20
 	
 		Name = "Prisoner"
 		QuestName = "PrisonerQuest"
@@ -1374,7 +1374,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5308, 2, 474)
 		VectorQuest = Vector3.new(5308, 2, 474)
 	elseif MyLevel == 210 or MyLevel <= 249 then -- Dark Master
-		LevelFarm = 21
+		LevelQuest = 21
 	
 		Name = "Dangerous Prisoner"
 		QuestName = "PrisonerQuest"
@@ -1388,7 +1388,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5308, 2, 474)
 		VectorQuest = Vector3.new(5308, 2, 474)
 	elseif MyLevel == 250 or MyLevel <= 299 then -- Toga Warrior
-		LevelFarm = 23
+		LevelQuest = 23
 	
 		Name = "Toga Warrior"
 		QuestName = "ColosseumQuest"
@@ -1402,7 +1402,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-1576, 8, -2985)
 		VectorQuest = Vector3.new(-1576, 8, -2985)
 	elseif MyLevel == 300 or MyLevel <= 329 then -- Military Soldier
-		LevelFarm = 25
+		LevelQuest = 25
 	
 		Name = "Military Soldier"
 		QuestName = "MagmaQuest"
@@ -1416,7 +1416,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5316, 12, 8517)
 		VectorQuest = Vector3.new(-5316, 12, 8517)
 	elseif MyLevel == 330 or MyLevel <= 374 then -- Military Spy
-		LevelFarm = 26
+		LevelQuest = 26
 	
 		Name = "Military Spy"
 		QuestName = "MagmaQuest"
@@ -1430,7 +1430,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5316, 12, 8517)
 		VectorQuest = Vector3.new(-5316, 12, 8517)
 	elseif MyLevel == 375 or MyLevel <= 399 then -- Fishman Warrior
-		LevelFarm = 28
+		LevelQuest = 28
 	
 		Name = "Fishman Warrior"
 		QuestName = "FishmanQuest"
@@ -1444,7 +1444,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(61123, 19, 1569)
 		VectorQuest = Vector3.new(61123, 19, 1569)
 	elseif MyLevel == 400 or MyLevel <= 449 then -- Fishman Commando
-		LevelFarm = 29
+		LevelQuest = 29
 	
 		Name = "Fishman Commando"
 		QuestName = "FishmanQuest"
@@ -1458,7 +1458,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(61123, 19, 1569)
 		VectorQuest = Vector3.new(61123, 19, 1569)
 	elseif MyLevel == 450 or MyLevel <= 474 then -- God's Guards
-		LevelFarm = 31
+		LevelQuest = 31
 	
 		Name = "God's Guard"
 		QuestName = "SkyExp1Quest"
@@ -1472,7 +1472,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-4722, 845, -1954)
 		VectorQuest = Vector3.new(-4722, 846, -1954)
 	elseif MyLevel == 475 or MyLevel <= 524 then -- Shandas
-		LevelFarm = 33
+		LevelQuest = 33
 	
 		Name = "Shanda"
 		QuestName = "SkyExp1Quest"
@@ -1486,7 +1486,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-7862, 5546, -380)
 		VectorQuest = Vector3.new(-7862, 5546, -380)
 	elseif MyLevel == 525 or MyLevel <= 549 then -- Royal Squad
-		LevelFarm = 34
+		LevelQuest = 34
 	
 		Name = "Royal Squad"
 		QuestName = "SkyExp2Quest"
@@ -1500,7 +1500,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-7904, 5636, -1412)
 		VectorQuest = Vector3.new(-7904, 5636, -1412)
 	elseif MyLevel == 550 or MyLevel <= 624 then -- Royal Soldier
-		LevelFarm = 35
+		LevelQuest = 35
 	
 		Name = "Royal Soldier"
 		QuestName = "SkyExp2Quest"
@@ -1514,7 +1514,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-7904, 5636, -1412)
 		VectorQuest = Vector3.new(-7904, 5636, -1412)
 	elseif MyLevel == 625 or MyLevel <= 649 then -- Galley Pirate
-		LevelFarm = 37
+		LevelQuest = 37
 	
 		Name = "Galley Pirate"
 		QuestName = "FountainQuest"
@@ -1528,7 +1528,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5256, 39, 4050)
 		VectorQuest = Vector3.new(5256, 39, 4050)
 	elseif MyLevel >= 650 then -- Galley Captain
-		LevelFarm = 38
+		LevelQuest = 38
 	
 		Name = "Galley Captain"
 		QuestName = "FountainQuest"
@@ -1545,7 +1545,7 @@ function CheckQuest()
 	end
 	if World2 then
 	if MyLevel == 700 or MyLevel <= 724 then -- Raider [Lv. 700]
-		LevelFarm = 1
+		LevelQuest = 1
 	
 		Name = "Raider"
 		QuestName = "Area1Quest"
@@ -1559,7 +1559,7 @@ function CheckQuest()
 		CFrameMon = CFrame.new(-746, 39, 2390)
 		VectorMon = Vector3.new(-746, 39, 2389)
 	elseif MyLevel == 725 or MyLevel <= 774 then -- Mercenary [Lv. 725]
-		LevelFarm = 2
+		LevelQuest = 2
 	
 		Name = "Mercenary"
 		QuestName = "Area1Quest"
@@ -1573,7 +1573,7 @@ function CheckQuest()
 		CFrameMon = CFrame.new(-856.213134765625, 135.4429473876953, 1407.4842529296875)
 		VectorMon = Vector3.new(-856.213134765625, 135.4429473876953, 1407.4842529296875)
 	elseif MyLevel == 775 or MyLevel <= 799 then -- Swan Pirate [Lv. 775]
-		LevelFarm = 3
+		LevelQuest = 3
 	
 		Name = "Swan Pirate"
 		QuestName = "Area2Quest"
@@ -1587,7 +1587,7 @@ function CheckQuest()
 		CFrameMon = CFrame.new(878, 122, 1235)
 		VectorMon = Vector3.new(878, 122, 1235)
 	elseif MyLevel == 800 or MyLevel <= 874 then -- Factory Staff [Lv. 800]
-		LevelFarm = 4
+		LevelQuest = 4
 	
 		Name = "Factory Staff"
 		QuestName = "Area2Quest"
@@ -1601,7 +1601,7 @@ function CheckQuest()
 		CFrameMon = CFrame.new(295, 73, -56)
 		VectorMon = Vector3.new(295, 73, -56)
 	elseif MyLevel == 875 or MyLevel <= 899 then -- Marine Lieutenant [Lv. 875]
-		LevelFarm = 6
+		LevelQuest = 6
 	
 		Name = "Marine Lieutenant"
 		QuestName = "MarineQuest3"
@@ -1615,7 +1615,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2443, 73, -3219)
 		VectorQuest = Vector3.new(-2443, 73, -3219)
 	elseif MyLevel == 900 or MyLevel <= 949 then -- Marine Captain [Lv. 900]
-		LevelFarm = 7
+		LevelQuest = 7
 	
 		Name = "Marine Captain"
 		QuestName = "MarineQuest3"
@@ -1629,7 +1629,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2443, 73, -3219)
 		VectorQuest = Vector3.new(-2443, 73, -3219)
 	elseif MyLevel == 950 or MyLevel <= 974 then -- Zombie [Lv. 950]
-		LevelFarm = 9
+		LevelQuest = 9
 	
 		Name = "Zombie"
 		QuestName = "ZombieQuest"
@@ -1643,7 +1643,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5494, 49, -795)
 		VectorQuest = Vector3.new(-5494, 49, -794)
 	elseif MyLevel == 975 or MyLevel <= 999 then -- Vampire [Lv. 975]
-		LevelFarm = 10
+		LevelQuest = 10
 	
 		Name = "Vampire"
 		QuestName = "ZombieQuest"
@@ -1657,7 +1657,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5494, 49, -795)
 		VectorQuest = Vector3.new(-5494, 49, -795)
 	elseif MyLevel == 1000 or MyLevel <= 1049 then -- Snow Trooper [Lv. 1000] **
-		LevelFarm = 12
+		LevelQuest = 12
 	
 		Name = "Snow Trooper"
 		QuestName = "SnowMountainQuest"
@@ -1671,7 +1671,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(605, 402, -5371)
 		VectorQuest = Vector3.new(605, 402, -5371)
 	elseif MyLevel == 1050 or MyLevel <= 1099 then -- Winter Warrior [Lv. 1050]
-		LevelFarm = 13
+		LevelQuest = 13
 	
 		Name = "Winter Warrior"
 		QuestName = "SnowMountainQuest"
@@ -1685,7 +1685,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(605, 402, -5371)
 		VectorQuest = Vector3.new(605, 402, -5371)
 	elseif MyLevel == 1100 or MyLevel <= 1124 then -- Lab Subordinate [Lv. 1100]
-		LevelFarm = 15
+		LevelQuest = 15
 	
 		Name = "Lab Subordinate"
 		QuestName = "IceSideQuest"
@@ -1699,7 +1699,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-6060, 16, -4905)
 		VectorQuest = Vector3.new(-6060, 16, -4905)
 	elseif MyLevel == 1125 or MyLevel <= 1174 then -- Horned Warrior [Lv. 1125]
-		LevelFarm = 16
+		LevelQuest = 16
 	
 		Name = "Horned Warrior"
 		QuestName = "IceSideQuest"
@@ -1713,7 +1713,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-6060, 16, -4905)
 		VectorQuest = Vector3.new(-6060, 16, -4905)
 	elseif MyLevel == 1175 or MyLevel <= 1199 then -- Magma Ninja [Lv. 1175]
-		LevelFarm = 18
+		LevelQuest = 18
 	
 		Name = "Magma Ninja"
 		QuestName = "FireSideQuest"
@@ -1726,7 +1726,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5430, 16, -5295)
 		VectorQuest = Vector3.new(-5430, 16, -5296)
 	elseif MyLevel == 1200 or MyLevel <= 1249 then -- Lava Pirate [Lv. 1200]
-		LevelFarm = 19
+		LevelQuest = 19
 	
 		Name = "Lava Pirate"
 		QuestName = "FireSideQuest"
@@ -1740,7 +1740,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-5430, 16, -5295)
 		VectorQuest = Vector3.new(-5430, 16, -5296)
 	elseif MyLevel == 1250 or MyLevel <= 1274 then -- Ship Deckhand [Lv. 1250]
-		LevelFarm = 21
+		LevelQuest = 21
 	
 		Name = "Ship Deckhand"
 		QuestName = "ShipQuest1"
@@ -1754,7 +1754,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(1038, 125, 32913)
 		VectorQuest = Vector3.new(1038, 125, 32913)
 	elseif MyLevel == 1275 or MyLevel <= 1299 then -- Ship Engineer [Lv. 1275]
-		LevelFarm = 22
+		LevelQuest = 22
 	
 		Name = "Ship Engineer"
 		QuestName = "ShipQuest1"
@@ -1768,7 +1768,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(1038, 125, 32913)
 		VectorQuest = Vector3.new(1038, 125, 32913)
 	elseif MyLevel == 1300 or MyLevel <= 1324 then -- Ship Steward [Lv. 1300]
-		LevelFarm = 23
+		LevelQuest = 23
 	
 		Name = "Ship Steward"
 		QuestName = "ShipQuest2"
@@ -1782,7 +1782,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(969, 125, 33245)
 		VectorQuest = Vector3.new(969, 125, 33245)
 	elseif MyLevel == 1325 or MyLevel <= 1349 then -- Ship Officer [Lv. 1325]
-		LevelFarm = 24
+		LevelQuest = 24
 	
 		Name = "Ship Officer"
 		QuestName = "ShipQuest2"
@@ -1796,7 +1796,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(969, 125, 33245)
 		VectorQuest = Vector3.new(969, 125, 33245)
 	elseif MyLevel == 1350 or MyLevel <= 1374 then -- Arctic Warrior [Lv. 1350]
-		LevelFarm = 26
+		LevelQuest = 26
 	
 		Name = "Arctic Warrior"
 		QuestName = "FrostQuest"
@@ -1810,7 +1810,7 @@ function CheckQuest()
 		VectorQuest = Vector3.new(5669, 28, -6482)
 		CFrameQuest = CFrame.new(5669, 28, -6482)
 	elseif MyLevel == 1375 or MyLevel <= 1424 then -- Snow Lurker [Lv. 1375]
-		LevelFarm = 27
+		LevelQuest = 27
 	
 		Name = "Snow Lurker"
 		QuestName = "FrostQuest"
@@ -1824,7 +1824,8 @@ function CheckQuest()
 		VectorQuest = Vector3.new(5669, 28, -6482)
 		CFrameQuest = CFrame.new(5669, 28, -6482)
 	elseif MyLevel == 1425 or MyLevel <= 1449 then -- Sea Soldier [Lv. 1425]
-		LevelFarm = 29
+		LevelQuest = 29
+
 		Name = "Sea Soldier"
 		QuestName = "ForgottenQuest"
 	
@@ -1837,7 +1838,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-3054, 237, -10148)
 		VectorQuest = Vector3.new(-3054, 237, -10148)
 	elseif MyLevel >= 1450 then -- Water Fighter [Lv. 1450]
-		LevelFarm = 30
+		LevelQuest = 30
 		Name = "Water Fighter"
 		QuestName = "ForgottenQuest"
 	
@@ -1853,7 +1854,7 @@ function CheckQuest()
 	end
 	if World3 then
 	if MyLevel == 1500 or MyLevel <= 1524 then
-		LevelFarm = 1
+		LevelQuest = 1
 	
 		Name = "Pirate Millionaire"
 		QuestName = "PiratePortQuest"
@@ -1867,7 +1868,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-288, 44, 5576)
 		VectorQuest = Vector3.new(-288, 44, 5576)
 	elseif MyLevel == 1525 or MyLevel <= 1574 then
-		LevelFarm = 2
+		LevelQuest = 2
 	
 		Name = "Pistol Billionaire"
 		QuestName = "PiratePortQuest"
@@ -1881,8 +1882,8 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-288, 44, 5576)
 		VectorQuest = Vector3.new(-288, 44, 5576)
 	elseif MyLevel == 1575 or MyLevel <= 1599 then
-		LevelFarm = 4
-	
+		LevelQuest = 4
+		
 		Name = "Dragon Crew Warrior"
 		QuestName = "AmazonQuest"
 	
@@ -1895,7 +1896,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5835, 52, -1105)
 		VectorQuest = Vector3.new(5835, 52, -1105)
 	elseif MyLevel == 1600 or MyLevel <= 1624 then
-		LevelFarm = 5
+		LevelQuest = 5
 	
 		Name = "Dragon Crew Archer"
 		QuestName = "AmazonQuest"
@@ -1909,7 +1910,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5835, 52, -1105)
 		VectorQuest = Vector3.new(5835, 52, -1105)
 	elseif MyLevel == 1625 or MyLevel <= 1649 then
-		LevelFarm = 6
+		LevelQuest = 6
 	
 		Name = "Female Islander"
 		QuestName = "AmazonQuest2"
@@ -1923,7 +1924,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5443, 602, 751)
 		VectorQuest = Vector3.new(5443, 602, 751)
 	elseif MyLevel == 1650 or MyLevel <= 1699 then
-		LevelFarm = 7
+		LevelQuest = 7
 	
 		Name = "Giant Islander"
 		QuestName = "AmazonQuest2"
@@ -1937,7 +1938,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(5443, 602, 751)
 		VectorQuest = Vector3.new(5443, 602, 751)
 	elseif MyLevel == 1700 or MyLevel <= 1724 then
-		LevelFarm = 9
+		LevelQuest = 9
 	
 		Name = "Marine Commodore"
 		QuestName = "MarineTreeIsland"
@@ -1951,7 +1952,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(2180, 29, -6737)
 		VectorQuest = Vector3.new(2180, 29, -6737)
 	elseif MyLevel == 1725 or MyLevel <= 1774 then
-		LevelFarm = 10
+		LevelQuest = 10
 	
 		Name = "Marine Rear Admiral"
 		QuestName = "MarineTreeIsland"
@@ -1965,7 +1966,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(2180, 29, -6737)
 		VectorQuest = Vector3.new(2180, 29, -6737)
 	elseif MyLevel == 1775 or MyLevel <= 1800 then
-		LevelFarm = 12
+		LevelQuest = 12
 	
 		Name = "Fishman Raider"
 		QuestName = "DeepForestIsland3"
@@ -1979,7 +1980,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-10584, 332, -8758)
 		VectorQuest = Vector3.new(-10584, 332, -8758)
 	elseif MyLevel == 1800 or MyLevel <= 1824 then
-		LevelFarm = 13
+		LevelQuest = 13
 	
 		Name = "Fishman Captain"
 		QuestName = "DeepForestIsland3"
@@ -1993,7 +1994,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-10584, 332, -8758)
 		VectorQuest = Vector3.new(-10584, 332, -8758)
 	elseif MyLevel == 1825 or MyLevel <= 1849 then
-		LevelFarm = 14
+		LevelQuest = 14
 	
 		Name = "Forest Pirate"
 		QuestName = "DeepForestIsland"
@@ -2007,7 +2008,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-13232, 333, -7627)
 		VectorQuest = Vector3.new(-13232, 333, -7627)
 	elseif MyLevel == 1850 or MyLevel <= 1899 then
-		LevelFarm = 15
+		LevelQuest = 15
 	
 		Name = "Mythological Pirate"
 		QuestName = "DeepForestIsland"
@@ -2021,7 +2022,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-13232, 333, -7627)
 		VectorQuest = Vector3.new(-13232, 333, -7627)
 	elseif MyLevel == 1900 or MyLevel <= 1924 then
-		LevelFarm = 16
+		LevelQuest = 16
 	
 		Name = "Jungle Pirate"
 		QuestName = "DeepForestIsland2"
@@ -2035,7 +2036,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-12684, 391, -9902)
 		VectorQuest = Vector3.new(-12684, 391, -9902)
 	elseif MyLevel == 1925 or MyLevel <= 1974 then
-		LevelFarm = 17
+		LevelQuest = 17
 	
 		Name = "Musketeer Pirate"
 		QuestName = "DeepForestIsland2"
@@ -2049,7 +2050,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-12684, 391, -9902)
 		VectorQuest = Vector3.new(-12684, 391, -9902)
 	elseif MyLevel == 1975 or MyLevel <= 1999 then
-		LevelFarm = 19
+		LevelQuest = 19
 		Name = "Reborn Skeleton"
 		QuestName = "HauntedQuest1"
 	
@@ -2062,7 +2063,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-9482, 142, 5567)
 		VectorQuest = Vector3.new(-9482, 142, 5567)
 	elseif MyLevel == 2000 or MyLevel <= 2024 then
-		LevelFarm = 20
+		LevelQuest = 20
 	
 		Name = "Living Zombie"
 		QuestName = "HauntedQuest1"
@@ -2076,7 +2077,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-9482, 142, 5567)
 		VectorQuest = Vector3.new(-9482, 142, 5567)
 	elseif MyLevel == 2025 or MyLevel <= 2049 then
-		LevelFarm = 21
+		LevelQuest = 21
 	
 		Name = "Demonic Soul"
 		QuestName = "HauntedQuest2"
@@ -2090,7 +2091,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-9513, 172, 6079)
 		VectorQuest = Vector3.new(-9513, 172, 6079)
 	elseif MyLevel == 2050 or MyLevel <= 2074 then
-		LevelFarm = 22
+		LevelQuest = 22
 	
 		Name = "Posessed Mummy"
 		QuestName = "HauntedQuest2"
@@ -2104,7 +2105,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-9513, 172, 6079)
 		VectorQuest = Vector3.new(-9513, 172, 6079)
 	elseif MyLevel == 2075 or MyLevel <= 2099 then
-		LevelFarm = 24
+		LevelQuest = 24
 	
 		Name = "Peanut Scout"
 		QuestName = "NutsIslandQuest"
@@ -2118,7 +2119,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2104, 38, -10192)
 		VectorQuest = Vector3.new(-2104, 38, -10192)
 	elseif MyLevel == 2100 or MyLevel <= 2124 then
-		LevelFarm = 25
+		LevelQuest = 25
 	
 		Name = "Peanut President"
 		QuestName = "NutsIslandQuest"
@@ -2132,7 +2133,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2104, 38, -10192)
 		VectorQuest = Vector3.new(-2104, 38, -10192)
 	elseif MyLevel == 2125 or MyLevel <= 2149 then
-		LevelFarm = 26
+		LevelQuest = 26
 	
 		Name = "Ice Cream Chef"
 		QuestName = "IceCreamIslandQuest"
@@ -2146,7 +2147,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-822, 66, -10965)
 		VectorQuest = Vector3.new(-822, 66, -10965)
 	elseif MyLevel == 2150 or MyLevel <= 2199 then
-		LevelFarm = 27
+		LevelQuest = 27
 	
 		Name = "Ice Cream Commander"
 		QuestName = "IceCreamIslandQuest"
@@ -2161,7 +2162,7 @@ function CheckQuest()
 		VectorQuest = Vector3.new(-822, 66, -10965)
 		---------------------------------------------------------------
 	elseif MyLevel == 2200 or MyLevel <= 2224 then
-		LevelFarm = 29
+		LevelQuest = 29
 	
 		Name = "Cookie Crafter"
 		QuestName = "CakeQuest1"
@@ -2175,7 +2176,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2020, 38, -12025)
 		VectorQuest = Vector3.new(-2020, 38, -12025)
 	elseif MyLevel == 2225 or MyLevel <= 2249 then
-		LevelFarm = 30
+		LevelQuest = 30
 	
 		Name = "Cake Guard"
 		QuestName = "CakeQuest1"
@@ -2189,7 +2190,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-2020, 38, -12025)
 		VectorQuest = Vector3.new(-2020, 38, -12025)
 	elseif MyLevel == 2250 or MyLevel <= 2274 then
-		LevelFarm = 31
+		LevelQuest = 31
 	
 		Name = "Baking Staff"
 		QuestName = "CakeQuest2"
@@ -2203,7 +2204,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(-1926, 38, -12850)
 		VectorQuest = Vector3.new(-1926, 38, -12850)
 	elseif MyLevel == 2275 or MyLevel <= 2299 then
-		LevelFarm = 32
+		LevelQuest = 32
 	
 		Name = "Head Baker"
 		QuestName = "CakeQuest2"
@@ -2218,7 +2219,7 @@ function CheckQuest()
 		VectorQuest = Vector3.new(-1926, 38, -12850)
 		---------------------------------------------------------------
 	elseif MyLevel == 2300 or MyLevel <= 2324 then
-		LevelFarm = 34
+		LevelQuest = 34
 	
 		Name = "Cocoa Warrior"
 		QuestName = "ChocQuest1"
@@ -2232,7 +2233,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(231, 23, -12194)
 		VectorQuest = Vector3.new(231, 23, -12194)
 	elseif MyLevel == 2325 or MyLevel <= 2349 then
-		LevelFarm = 35
+		LevelQuest = 35
 	
 		Name = "Chocolate Bar Battler"
 		QuestName = "ChocQuest1"
@@ -2246,7 +2247,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(231, 23, -12194)
 		VectorQuest = Vector3.new(231, 23, -12194)
 	elseif MyLevel == 2350 or MyLevel <= 2374 then
-		LevelFarm = 36
+		LevelQuest = 36
 	
 		Name = "Sweet Thief"
 		QuestName = "ChocQuest2"
@@ -2260,7 +2261,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(151, 23, -12774)
 		VectorQuest = Vector3.new(151, 23, -12774)
 	elseif MyLevel == 2375 or MyLevel <= 2399 then
-		LevelFarm = 37
+		LevelQuest = 37
 	
 		Name = "Candy Rebel"
 		QuestName = "ChocQuest2"
@@ -2274,7 +2275,7 @@ function CheckQuest()
 		CFrameQuest = CFrame.new(151, 23, -12774)
 		VectorQuest = Vector3.new(151, 23, -12774)
 	elseif MyLevel == 2400 or MyLevel <= 2424 then
-		LevelFarm = 39
+		LevelQuest = 39
 	
 		Name = "Candy Pirate"
 		QuestName = "CandyQuest1"
@@ -2290,7 +2291,7 @@ function CheckQuest()
 		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
 	elseif MyLevel == 2425 or MyLevel <= 2449 then
-		LevelFarm = 40
+		LevelQuest = 40
 	
 		Name = "Snow Demon"
 		QuestName = "CandyQuest1"
@@ -2306,7 +2307,7 @@ function CheckQuest()
 		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
 		elseif MyLevel == 2450 or MyLevel <= 2474 then
-			LevelFarm = 42
+			LevelQuest = 42
 	
 			Name = "Isle Outlaw"
 			QuestName = "TikiQuest1"
@@ -2320,7 +2321,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 		elseif MyLevel == 2475 or MyLevel <= 2500 then
-			LevelFarm = 43
+			LevelQuest = 43
 	
 			Name = "Island Boy"
 			QuestName = "TikiQuest1"
@@ -2334,7 +2335,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 		elseif MyLevel == 2500 or MyLevel <= 2524 then
-			LevelFarm = 44
+			LevelQuest = 44
 	
 			Name = "Sun-kissed Warrior"
 			QuestName = "TikiQuest2"
@@ -2348,7 +2349,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
 			VectorQuest = Vector3.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
 		elseif MyLevel == 2525 or MyLevel <= 2600 then
-			LevelFarm = 45
+			LevelQuest = 45
 	
 			Name = "Isle Champion"
 			QuestName = "TikiQuest2"
