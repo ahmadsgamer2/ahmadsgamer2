@@ -9538,7 +9538,6 @@ end)
 
 Settings:Toggle("Bring Mob",true,function(Mag)
 _G.BringMonster = Mag
-BringMobs = Mag
 end)
 spawn(function()
 	while task.wait() do
