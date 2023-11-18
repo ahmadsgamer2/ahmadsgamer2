@@ -2694,13 +2694,13 @@ task.spawn(function()
 	end
 end)
 
-Main3:Toggle("Auto Farm Level",_G.AutoFarm,function(value)
-	_G.AutoFarm = value
+Main3:Toggle("Auto Farm Level",_G.AutoFarm1,function(value)
+	_G.AutoFarm1 = value
 	_G.AutoC = value
-	StopTween(_G.AutoFarm)
+	StopTween(_G.AutoFarm1)
 end)
 
---[[
+
 spawn(function()
 	while wait() do
 		if _G.AutoFarm then
@@ -2762,11 +2762,11 @@ spawn(function()
 			end)
 		end
 	end
-end)]]
+end)
 
 spawn(function()
 	while task.wait() do
-	if _G.AutoFarm then
+	if _G.AutoFarm1 then
 	pcall(function()
 	  CheckQuest()
 	  if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
@@ -2792,7 +2792,7 @@ spawn(function()
 	  MonFarm = v.Name
 	  Click()
 	  Click1()
-	  until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
+	  until not _G.AutoFarm1 or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
 	  end
 		   
 	  end
@@ -9937,7 +9937,7 @@ Settings:Toggle("Anti Crash On Fast Attack",nil,function(value)
 end) 
 ]]
 
-Settings:Line()
+--Settings:Line()
 
 
 Settings:Toggle("remove attack",true,function(value)
