@@ -9573,48 +9573,7 @@ spawn(function()
 	end
 end)
 
-task.spawn(function()
-	while task.wait() do
-	if BringMobs then
-	pcall(function()
-	  for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-	  if not string.find(v.Name,"Boss") and v.Name == MonFarm and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
-	  if InMyNetWork(v.HumanoidRootPart) then
-		if InMyNetWork(v.HumanoidRootPart) then
-	  v.HumanoidRootPart.CFrame = FarmPos
-	  v.HumanoidRootPart.CanCollide = false
-	  v.HumanoidRootPart.Size = Vector3.new(1,1,1)
-	  end
-	end
-	  end
-	  end
-	  end)
-	end
-
-end
-	end)
   
-  task.spawn(function()
-	while true do wait()
-	if setscriptable then
-	setscriptable(game.Players.LocalPlayer,"SimulationRadius",true)
-	end
-	if sethiddenproperty then
-	sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
-	end
-	end
-	end)
-  
-  function InMyNetWork(object)
-  if isnetworkowner then
-  return isnetworkowner(object)
-  else
-	if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
-  return true
-  end
-  return false
-  end
-  end
 
 
 Settings:Toggle("Auto Haki",true,function(value)
