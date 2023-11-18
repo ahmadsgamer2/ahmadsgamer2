@@ -3422,7 +3422,7 @@ spawn(function()
 				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 					StartMagnet = false
 					CheckQuest()
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,QuestLv)
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
 					topos(CFrameMon)
 				elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
 					CheckQuest()
