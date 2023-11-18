@@ -2379,6 +2379,20 @@ function Click()
 	game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
 
+function Click1()
+	if not _G.FastAttack then
+		local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
+		local CombatFramework = debug.getupvalues(Module)[2]
+		local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
+		CamShake:Stop()
+		CombatFramework.activeController.attacking = false
+		CombatFramework.activeController.timeToNextAttack = 0
+		CombatFramework.activeController.hitboxMagnitude = 180
+		game:GetService'VirtualUser':CaptureController()
+		game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+	end
+end
+
 function AutoHaki()
 	if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
@@ -2680,13 +2694,13 @@ task.spawn(function()
 	end
 end)
 
-Main3:Toggle("Auto Farm Level",_G.AutoFarmQuest,function(value)
-	--_G.AutoFarm = value
-	_G.AutoFarmQuest = value
+Main3:Toggle("Auto Farm Level",_G.AutoFarm,function(value)
+	_G.AutoFarm = value
 	_G.AutoC = value
-	StopTween(_G.AutoFarmQuest)
+	StopTween(_G.AutoFarm)
 end)
 
+--[[
 spawn(function()
 	while wait() do
 		if _G.AutoFarm then
@@ -2748,11 +2762,11 @@ spawn(function()
 			end)
 		end
 	end
-end)
+end)]]
 
 spawn(function()
 	while task.wait() do
-	if _G.AutoFarmQuest then
+	if _G.AutoFarm then
 	pcall(function()
 	  CheckQuest()
 	  if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
@@ -2776,8 +2790,8 @@ spawn(function()
 	  v.HumanoidRootPart.CanCollide = false
 	  FarmPos = v.HumanoidRootPart.CFrame
 	  MonFarm = v.Name
-	  Click()
-	  until not _G.AutoFarmQuest or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
+	  Click1()
+	  until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
 	  end
 		   
 	  end
@@ -9530,7 +9544,7 @@ spawn(function()
 			if _G.BringMonster then
 				CheckQuest()
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-					if _G.AutoFarmQuest and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
+					if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(14)
@@ -9540,7 +9554,7 @@ spawn(function()
 							v.Humanoid.Animator:Destroy()
 						end
 						sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-					elseif _G.AutoFarmQuest and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 275 then
+					elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 275 then
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(14)
