@@ -9907,7 +9907,7 @@ end)
 						   end
 					   end
 				   )
-
+--[[
 Settings:Toggle("Anti Crash On Fast Attack",nil,function(value)
 	_G.AntiCrashOnsupervery = value
 	local function Check(v)
@@ -9935,6 +9935,7 @@ Settings:Toggle("Anti Crash On Fast Attack",nil,function(value)
 	
 	workspace.DescendantAdded:Connect(Check);
 end) 
+]]
 
 Settings:Line()
 
