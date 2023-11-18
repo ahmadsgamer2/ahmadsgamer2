@@ -2775,9 +2775,8 @@ spawn(function()
 	  v.Humanoid.WalkSpeed = 0
 	  v.HumanoidRootPart.CanCollide = false
 	  FarmPos = v.HumanoidRootPart.CFrame
-	  game:GetService'VirtualUser':CaptureController()
-	  game:GetService'VirtualUser':Button1Down(Vector2.new(0.9, 0.9))
 	  MonFarm = v.Name
+	  Click()
 	  until not _G.AutoFarmQuest or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
 	  end
 		   
@@ -2906,7 +2905,7 @@ Main3:Toggle("Auto Teleport To Gear [HOP]",false,function(value)
 			while wait(.1) do
 			if _G.AutoFarmSelectMonster then
 			pcall(function()
-				CheckQuest(SelectMonster)
+				tableMon(SelectMonster)
 			 if game:GetService("Workspace").Enemies:FindFirstChild(SelectMonster) then
 			 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 			 if v.Name == SelectMonster then
@@ -2933,7 +2932,7 @@ Main3:Toggle("Auto Teleport To Gear [HOP]",false,function(value)
 			 end
 			 end
 			 else
-			  checkselect(SelectMonster)
+				tableMon(SelectMonster)
 			 SelectMonsterMagnet = false
 			 topos(CFrameMon)
 			 end
@@ -2950,7 +2949,7 @@ spawn(function()
 	while wait(.1) do
 		if _G.AutoFarmSelectMonster then
 			pcall(function()
-			    CheckQuest(SelectMonster)
+			    tableMon(SelectMonster)
 				if game:GetService("Workspace").Enemies:FindFirstChild(SelectMonster) then
 					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 						if v.Name == SelectMonster then
@@ -2977,7 +2976,7 @@ spawn(function()
 						end
 					end
 				else
-					CheckQuest(SelectMonster)
+					tableMon(SelectMonster)
 					SelectMonsterMagnet = false
 					topos(CFrameMon)
 				end
@@ -9531,7 +9530,7 @@ spawn(function()
 			if _G.BringMonster then
 				CheckQuest()
 				for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-					if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
+					if _G.AutoFarmQuest and StartMagnet and v.Name == Mon and (Mon == "Factory Staff [Lv. 800]" or Mon == "Monkey [Lv. 14]" or Mon == "Dragon Crew Warrior [Lv. 1575]" or Mon == "Dragon Crew Archer [Lv. 1600]") and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 220 then
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(14)
@@ -9541,7 +9540,7 @@ spawn(function()
 							v.Humanoid.Animator:Destroy()
 						end
 						sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
-					elseif _G.AutoFarm and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 275 then
+					elseif _G.AutoFarmQuest and StartMagnet and v.Name == Mon and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 275 then
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						v.HumanoidRootPart.CFrame = PosMon
 						v.Humanoid:ChangeState(14)
