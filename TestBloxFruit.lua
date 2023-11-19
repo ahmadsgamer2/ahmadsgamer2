@@ -1506,10 +1506,24 @@ task.spawn(function()
 	end
 end)
 
+function Tween(Pos)
+	Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+	if game.Players.LocalPlayer.Character.Humanoid.Sit == true then game.Players.LocalPlayer.Character.Humanoid.Sit = true end
+	pcall(function() tween = game:GetService("TweenService"):Create(game.Players.LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(Distance/300, Enum.EasingStyle.Linear),{CFrame = Pos}) end)
+	tween:Play()
+	if Distance <= 150 then
+		tween:Cancel()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Pos
+	end
+	if _G.StopTween == true then
+		tween:Cancel()
+		_G.Clip = false
+	end
+end
+
 Main3:Toggle("Auto Farm Level",_G.AutoFarm,function(value)
 	_G.AutoFarm = value
 	_G.AutoC = value
-	StopTween(_G.AutoFarm)
 end)
 
 
@@ -1520,7 +1534,7 @@ spawn(function()
 	  CheckQuest()
 	  if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 	  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-	  topos(CFrameQ)
+	  Tween(CFrameQ)
 	  if (CFrameQ.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
 	  game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,QuestLv)
 	  end
@@ -1531,16 +1545,13 @@ spawn(function()
 	  repeat game:GetService("RunService").Heartbeat:wait()
 	  AutoHaki()
 	  EquipWeapon(_G.SelectWeapon)
-	  topos(v.HumanoidRootPart.CFrame * CFrame.new(0,20,1))
+	  Tween(v.HumanoidRootPart.CFrame * CFrame.new(0,20,1))
 	  v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 	  v.HumanoidRootPart.Transparency = 1
 	  v.Humanoid.JumpPower = 0
 	  v.Humanoid.WalkSpeed = 0
 	  v.HumanoidRootPart.CanCollide = false
-	  FarmPos = v.HumanoidRootPart.CFrame
-	  MonFarm = v.Name
 	  Click()
-	  Click1()
 	  until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
 	  end
 		   
