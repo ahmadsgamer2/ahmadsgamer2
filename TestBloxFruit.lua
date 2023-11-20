@@ -1093,7 +1093,7 @@ function CheckQuest()
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
 		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-	elseif MyLevel == 2425 or MyLevel <= 2449 then
+	elseif MyLevel == 2425 or MyLevel <= 2425 then
 		LevelFarm = 40
 	
 		Name = "Snow Demon"
@@ -1109,7 +1109,7 @@ function CheckQuest()
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
 		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
 			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-		elseif MyLevel == 2450 or MyLevel <= 2474 then
+		elseif MyLevel == 2450 or MyLevel <= 2450 then
 			LevelFarm = 42
 	
 			Name = "Isle Outlaw"
@@ -1123,7 +1123,7 @@ function CheckQuest()
 	
 			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-		elseif MyLevel == 2475 or MyLevel <= 2500 then
+		elseif MyLevel == 2475 or MyLevel <= 2475 then
 			LevelFarm = 43
 	
 			Name = "Island Boy"
@@ -1137,7 +1137,7 @@ function CheckQuest()
 	
 			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
 			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-		elseif MyLevel == 2500 or MyLevel <= 2524 then
+		elseif MyLevel == 2500 or MyLevel <= 2500 then
 			LevelFarm = 44
 	
 			Name = "Sun-kissed Warrior"
@@ -1151,7 +1151,7 @@ function CheckQuest()
 	
 			CFrameQuest = CFrame.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
 			VectorQuest = Vector3.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
-		elseif MyLevel == 2525 or MyLevel <= 2600 then
+		elseif MyLevel == 2525 or MyLevel <= 2525 then
 			LevelFarm = 45
 	
 			Name = "Isle Champion"
