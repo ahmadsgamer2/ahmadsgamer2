@@ -6,1168 +6,8 @@ elseif game.PlaceId == 4442272183 then
 elseif game.PlaceId == 7449423635 then
 	W3 = true
 end
-function CheckQuest()
-	local MyLevel = game.Players.LocalPlayer.Data.Level.Value
-	if W then
-	if MyLevel == 1 or MyLevel <= 9 then -- Bandit
-		LevelFarm = 1
-	
-		Name = "Bandit"
-		QuestName = "BanditQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Bandit"
-	
-		CFrameMon = CFrame.new(1145, 17, 1634)
-		VectorMon = Vector3.new(1145, 17, 1634)
-	
-		CFrameQuest = CFrame.new(1060, 17, 1547)
-		VectorQuest = Vector3.new(1060, 17, 1547)
-	elseif MyLevel == 10 or MyLevel <= 14 then -- Monkey
-		LevelFarm = 3
-	
-		Name = "Monkey"
-		QuestName = "JungleQuest"
-	
-		LevelQuest = 1
-		NameMon = "Monkey"
-	
-		CFrameMon = CFrame.new(-1496, 39, 35)
-		VectorMon = Vector3.new(-1496, 39, 35)
-	
-		CFrameQuest = CFrame.new(-1602, 37, 152)
-		VectorQuest = Vector3.new(-1602, 37, 152)
-	elseif MyLevel == 15 or MyLevel <= 29 then -- Gorilla
-		LevelFarm = 4
-	
-		Name = "Gorilla"
-		QuestName = "JungleQuest"
-	
-		LevelQuest = 2
-		NameMon = "Gorilla"
-	
-		CFrameMon = CFrame.new(-1237, 6, -486)
-		VectorMon = Vector3.new(-1237, 7, -486)
-	
-		CFrameQuest = CFrame.new(-1602, 37, 152)
-		VectorQuest = Vector3.new(-1602, 37, 152)
-	elseif MyLevel == 30 or MyLevel <= 59 then -- Pirate
-		LevelFarm = 6
-	
-		Name = "Pirate"
-		QuestName = "BuggyQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Pirate"
-	
-		CFrameMon = CFrame.new(-1115, 14, 3938)
-		VectorMon = Vector3.new(-1115, 14, 3938)
-	
-		CFrameQuest = CFrame.new(-1140, 5, 3828)
-		VectorQuest = Vector3.new(-1140, 5, 3828)
-	elseif MyLevel == 60 or MyLevel <= 74 then -- Desert Bandit
-		LevelFarm = 9
-	
-		Name = "Desert Bandit"
-		QuestName = "DesertQuest"
-	
-		LevelQuest = 1
-		NameMon = "Desert Bandit"
-	
-		CFrameMon = CFrame.new(932, 7, 4484)
-		VectorMon = Vector3.new(932, 7, 4484)
-	
-		CFrameQuest = CFrame.new(897, 7, 4388)
-		VectorQuest = Vector3.new(897, 7, 4388)
-	elseif MyLevel == 75 or MyLevel <= 89 then -- Desert Officre
-		LevelFarm = 10
-	
-		Name = "Desert Officer"
-		QuestName = "DesertQuest"
-	
-		LevelQuest = 2
-		NameMon = "Desert Officer"
-	
-		CFrameMon = CFrame.new(1572, 10, 4373)
-		VectorMon = Vector3.new(1572, 10, 4373)
-	
-		CFrameQuest = CFrame.new(897, 7, 4388)
-		VectorQuest = Vector3.new(897, 7, 4388)
-	elseif MyLevel == 90 or MyLevel <= 99 then -- Snow Bandits
-		LevelFarm = 12
-	
-		Name = "Snow Bandit"
-		QuestName = "SnowQuest"
-	
-		LevelQuest = 1
-		NameMon = "Snow Bandits"
-	
-		CFrameMon = CFrame.new(1289, 150, -1442)
-		VectorMon = Vector3.new(1289, 106, -1442)
-	
-		CFrameQuest = CFrame.new(1386, 87, -1297)
-		VectorQuest = Vector3.new(1386, 87, -1297)
-	elseif MyLevel == 100 or MyLevel <= 119 then -- Snowman
-		LevelFarm = 13
-	
-		Name = "Snowman"
-		QuestName = "SnowQuest"
-	
-		LevelQuest = 2
-		NameMon = "Snowman"
-	
-		CFrameMon = CFrame.new(1289, 150, -1442)
-		VectorMon = Vector3.new(1289, 106, -1442)
-	
-		CFrameQuest = CFrame.new(1386, 87, -1297)
-		VectorQuest = Vector3.new(1386, 87, -1297)
-	elseif MyLevel == 120 or MyLevel <= 149 then -- Chief Petty Officer
-		LevelFarm = 15
-	
-		Name = "Chief Petty Officer"
-		QuestName = "MarineQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Chief Petty Officer"
-	
-		CFrameMon = CFrame.new(-4855, 23, 4308)
-		VectorMon = Vector3.new(-4855, 23, 4308)
-	
-		CFrameQuest = CFrame.new(-5036, 29, 4325)
-		VectorQuest = Vector3.new(-5036, 29, 4325)
-	elseif MyLevel == 150 or MyLevel <= 174 then -- Sky Bandit
-		LevelFarm = 17
-	
-		Name = "Sky Bandit"
-		QuestName = "SkyQuest"
-	
-		LevelQuest = 1
-		NameMon = "Sky Bandit"
-	
-		CFrameMon = CFrame.new(-4981, 278, -2830)
-		VectorMon = Vector3.new(-4981, 278, -2830)
-	
-		CFrameQuest = CFrame.new(-4842, 718, -2623)
-		VectorQuest = Vector3.new(-4842, 718, -2623)
-	elseif MyLevel == 175 or MyLevel <= 189 then -- Dark Master
-		LevelFarm = 18
-	
-		Name = "Dark Master"
-		QuestName = "SkyQuest"
-	
-		LevelQuest = 2
-		NameMon = "Dark Master"
-	
-		CFrameMon = CFrame.new(-5250, 389, -2272)
-		VectorMon = Vector3.new(-5250, 389, -2272)
-	
-		CFrameQuest = CFrame.new(-4842, 718, -2623)
-		VectorQuest = Vector3.new(-4842, 718, -2623)
-	elseif MyLevel == 190 or MyLevel <= 209 then -- Dark Master
-		LevelFarm = 20
-	
-		Name = "Prisoner"
-		QuestName = "PrisonerQuest"
-	
-		LevelQuest = 1
-		NameMon = "Prisoner"
-	
-		CFrameMon = CFrame.new(5411, 96, 690)
-		VectorMon = Vector3.new(5411, 96, 690)
-	
-		CFrameQuest = CFrame.new(5308, 2, 474)
-		VectorQuest = Vector3.new(5308, 2, 474)
-	elseif MyLevel == 210 or MyLevel <= 249 then -- Dark Master
-		LevelFarm = 21
-	
-		Name = "Dangerous Prisoner"
-		QuestName = "PrisonerQuest"
-	
-		LevelQuest = 2
-		NameMon = "Dangerous Prisoner"
-	
-		CFrameMon = CFrame.new(5411, 96, 690)
-		VectorMon = Vector3.new(5411, 96, 690)
-	
-		CFrameQuest = CFrame.new(5308, 2, 474)
-		VectorQuest = Vector3.new(5308, 2, 474)
-	elseif MyLevel == 250 or MyLevel <= 299 then -- Toga Warrior
-		LevelFarm = 23
-	
-		Name = "Toga Warrior"
-		QuestName = "ColosseumQuest"
-	
-		LevelQuest = 1
-		NameMon = "Toga Warrior"
-	
-		CFrameMon = CFrame.new(-1824, 50, -2743)
-		VectorMon = Vector3.new(-1824, 50, -2743)
-	
-		CFrameQuest = CFrame.new(-1576, 8, -2985)
-		VectorQuest = Vector3.new(-1576, 8, -2985)
-	elseif MyLevel == 300 or MyLevel <= 329 then -- Military Soldier
-		LevelFarm = 25
-	
-		Name = "Military Soldier"
-		QuestName = "MagmaQuest"
-	
-		LevelQuest = 1
-		NameMon = "Military Soldier"
-	
-		CFrameMon = CFrame.new(-5555.064453125, 16.73392105102539, 8377.623046875)
-		VectorMon = Vector3.new(-5555.064453125, 16.73392105102539, 8377.623046875)
-	
-		CFrameQuest = CFrame.new(-5316, 12, 8517)
-		VectorQuest = Vector3.new(-5316, 12, 8517)
-	elseif MyLevel == 330 or MyLevel <= 374 then -- Military Spy
-		LevelFarm = 26
-	
-		Name = "Military Spy"
-		QuestName = "MagmaQuest"
-	
-		LevelQuest = 2
-		NameMon = "Military Spy"
-	
-		CFrameMon = CFrame.new(-5806.056640625, 99.96672058105469, 8777.8447265625)
-		VectorMon = Vector3.new(-5806.056640625, 99.96672058105469, 8777.8447265625)
-	
-		CFrameQuest = CFrame.new(-5316, 12, 8517)
-		VectorQuest = Vector3.new(-5316, 12, 8517)
-	elseif MyLevel == 375 or MyLevel <= 399 then -- Fishman Warrior
-		LevelFarm = 28
-	
-		Name = "Fishman Warrior"
-		QuestName = "FishmanQuest"
-	
-		LevelQuest = 1
-		NameMon = "Fishman Warrior"
-	
-		CFrameMon = CFrame.new(60859, 19, 1501)
-		VectorMon = Vector3.new(60859, 19, 1501)
-	
-		CFrameQuest = CFrame.new(61123, 19, 1569)
-		VectorQuest = Vector3.new(61123, 19, 1569)
-	elseif MyLevel == 400 or MyLevel <= 449 then -- Fishman Commando
-		LevelFarm = 29
-	
-		Name = "Fishman Commando"
-		QuestName = "FishmanQuest"
-	
-		LevelQuest = 2
-		NameMon = "Fishman Commando"
-	
-		CFrameMon = CFrame.new(61891, 19, 1470)
-		VectorMon = Vector3.new(61891, 19, 1470)
-	
-		CFrameQuest = CFrame.new(61123, 19, 1569)
-		VectorQuest = Vector3.new(61123, 19, 1569)
-	elseif MyLevel == 450 or MyLevel <= 474 then -- God's Guards
-		LevelFarm = 31
-	
-		Name = "God's Guard"
-		QuestName = "SkyExp1Quest"
-	
-		LevelQuest = 1
-		NameMon = "God's Guards"
-	
-		CFrameMon = CFrame.new(-4698, 845, -1912)
-		VectorMon = Vector3.new(-4698, 845, -1912)
-	
-		CFrameQuest = CFrame.new(-4722, 845, -1954)
-		VectorQuest = Vector3.new(-4722, 846, -1954)
-	elseif MyLevel == 475 or MyLevel <= 524 then -- Shandas
-		LevelFarm = 33
-	
-		Name = "Shanda"
-		QuestName = "SkyExp1Quest"
-	
-		LevelQuest = 2
-		NameMon = "Shandas"
-	
-		CFrameMon = CFrame.new(-7685, 5567, -502)
-		VectorMon = Vector3.new(-7685, 5567, -502)
-	
-		CFrameQuest = CFrame.new(-7862, 5546, -380)
-		VectorQuest = Vector3.new(-7862, 5546, -380)
-	elseif MyLevel == 525 or MyLevel <= 549 then -- Royal Squad
-		LevelFarm = 34
-	
-		Name = "Royal Squad"
-		QuestName = "SkyExp2Quest"
-	
-		LevelQuest = 1
-		NameMon = "Royal Squad"
-	
-		CFrameMon = CFrame.new(-7670, 5607, -1460)
-		VectorMon = Vector3.new(-7670, 5607, -1460)
-	
-		CFrameQuest = CFrame.new(-7904, 5636, -1412)
-		VectorQuest = Vector3.new(-7904, 5636, -1412)
-	elseif MyLevel == 550 or MyLevel <= 624 then -- Royal Soldier
-		LevelFarm = 35
-	
-		Name = "Royal Soldier"
-		QuestName = "SkyExp2Quest"
-	
-		LevelQuest = 2
-		NameMon = "Royal Soldier"
-	
-		CFrameMon = CFrame.new(-7828, 5607, -1744)
-		VectorMon = Vector3.new(-7828, 5607, -1744)
-	
-		CFrameQuest = CFrame.new(-7904, 5636, -1412)
-		VectorQuest = Vector3.new(-7904, 5636, -1412)
-	elseif MyLevel == 625 or MyLevel <= 649 then -- Galley Pirate
-		LevelFarm = 37
-	
-		Name = "Galley Pirate"
-		QuestName = "FountainQuest"
-	
-		LevelQuest = 1
-		NameMon = "Galley Pirate"
-	
-		CFrameMon = CFrame.new(5589, 45, 3996)
-		VectorMon = Vector3.new(5589, 45, 3996)
-	
-		CFrameQuest = CFrame.new(5256, 39, 4050)
-		VectorQuest = Vector3.new(5256, 39, 4050)
-	elseif MyLevel >= 650 then -- Galley Captain
-		LevelFarm = 38
-	
-		Name = "Galley Captain"
-		QuestName = "FountainQuest"
-	
-		LevelQuest = 2
-		NameMon = "Galley Captain"
-	
-		CFrameMon = CFrame.new(5649, 39, 4936)
-		VectorMon = Vector3.new(5649, 39, 4936)
-	
-		CFrameQuest = CFrame.new(5256, 39, 4050)
-		VectorQuest = Vector3.new(5256, 39, 4050)
-	end
-	end
-	if W2 then
-	if MyLevel == 700 or MyLevel <= 724 then -- Raider [Lv. 700]
-		LevelFarm = 1
-	
-		Name = "Raider"
-		QuestName = "Area1Quest"
-	
-		LevelQuest = 1
-		NameMon = "Raider"
-	
-		CFrameQuest = CFrame.new(-425, 73, 1837)
-		VectorQuest = Vector3.new(-425, 73, 1837)
-	
-		CFrameMon = CFrame.new(-746, 39, 2390)
-		VectorMon = Vector3.new(-746, 39, 2389)
-	elseif MyLevel == 725 or MyLevel <= 774 then -- Mercenary [Lv. 725]
-		LevelFarm = 2
-	
-		Name = "Mercenary"
-		QuestName = "Area1Quest"
-	
-		LevelQuest = 2
-		NameMon = "Mercenary"
-	
-		CFrameQuest = CFrame.new(-425, 73, 1837)
-		VectorQuest = Vector3.new(-425, 73, 1837)
-	
-		CFrameMon = CFrame.new(-856.213134765625, 135.4429473876953, 1407.4842529296875)
-		VectorMon = Vector3.new(-856.213134765625, 135.4429473876953, 1407.4842529296875)
-	elseif MyLevel == 775 or MyLevel <= 799 then -- Swan Pirate [Lv. 775]
-		LevelFarm = 3
-	
-		Name = "Swan Pirate"
-		QuestName = "Area2Quest"
-	
-		LevelQuest = 1
-		NameMon = "Swan Pirate"
-	
-		CFrameQuest = CFrame.new(634, 73, 918)
-		VectorQuest = Vector3.new(634, 73, 918)
-	
-		CFrameMon = CFrame.new(878, 122, 1235)
-		VectorMon = Vector3.new(878, 122, 1235)
-	elseif MyLevel == 800 or MyLevel <= 874 then -- Factory Staff [Lv. 800]
-		LevelFarm = 4
-	
-		Name = "Factory Staff"
-		QuestName = "Area2Quest"
-	
-		LevelQuest = 2
-		NameMon = "Factory Staff"
-	
-		CFrameQuest = CFrame.new(634, 73, 918)
-		VectorQuest = Vector3.new(634, 73, 918)
-	
-		CFrameMon = CFrame.new(295, 73, -56)
-		VectorMon = Vector3.new(295, 73, -56)
-	elseif MyLevel == 875 or MyLevel <= 899 then -- Marine Lieutenant [Lv. 875]
-		LevelFarm = 6
-	
-		Name = "Marine Lieutenant"
-		QuestName = "MarineQuest3"
-	
-		LevelQuest = 1
-		NameMon = "Marine Lieutenant"
-	
-		CFrameMon = CFrame.new(-2806, 73, -3038)
-		VectorMon = Vector3.new(-2806, 73, -3038)
-	
-		CFrameQuest = CFrame.new(-2443, 73, -3219)
-		VectorQuest = Vector3.new(-2443, 73, -3219)
-	elseif MyLevel == 900 or MyLevel <= 949 then -- Marine Captain [Lv. 900]
-		LevelFarm = 7
-	
-		Name = "Marine Captain"
-		QuestName = "MarineQuest3"
-	
-		LevelQuest = 2
-		NameMon = "Marine Captain"
-	
-		CFrameMon = CFrame.new(-1869, 73, -3320)
-		VectorMon = Vector3.new(-1869, 73, -3320)
-	
-		CFrameQuest = CFrame.new(-2443, 73, -3219)
-		VectorQuest = Vector3.new(-2443, 73, -3219)
-	elseif MyLevel == 950 or MyLevel <= 974 then -- Zombie [Lv. 950]
-		LevelFarm = 9
-	
-		Name = "Zombie"
-		QuestName = "ZombieQuest"
-	
-		LevelQuest = 1
-		NameMon = "Zombie"
-	
-		CFrameMon = CFrame.new(-5736, 126, -728)
-		VectorMon = Vector3.new(-5736, 126, -728)
-	
-		CFrameQuest = CFrame.new(-5494, 49, -795)
-		VectorQuest = Vector3.new(-5494, 49, -794)
-	elseif MyLevel == 975 or MyLevel <= 999 then -- Vampire [Lv. 975]
-		LevelFarm = 10
-	
-		Name = "Vampire"
-		QuestName = "ZombieQuest"
-	
-		LevelQuest = 2
-		NameMon = "Vampire"
-	
-		CFrameMon = CFrame.new(-6033, 7, -1317)
-		VectorMon = Vector3.new(-6033, 7, -1317)
-	
-		CFrameQuest = CFrame.new(-5494, 49, -795)
-		VectorQuest = Vector3.new(-5494, 49, -795)
-	elseif MyLevel == 1000 or MyLevel <= 1049 then -- Snow Trooper [Lv. 1000] **
-		LevelFarm = 12
-	
-		Name = "Snow Trooper"
-		QuestName = "SnowMountainQuest"
-	
-		LevelQuest = 1
-		NameMon = "Snow Trooper"
-	
-		CFrameMon = CFrame.new(478, 402, -5362)
-		VectorMon = Vector3.new(478, 402, -5362)
-	
-		CFrameQuest = CFrame.new(605, 402, -5371)
-		VectorQuest = Vector3.new(605, 402, -5371)
-	elseif MyLevel == 1050 or MyLevel <= 1099 then -- Winter Warrior [Lv. 1050]
-		LevelFarm = 13
-	
-		Name = "Winter Warrior"
-		QuestName = "SnowMountainQuest"
-	
-		LevelQuest = 2
-		NameMon = "Winter Warrior"
-	
-		CFrameMon = CFrame.new(1157, 430, -5188)
-		VectorMon = Vector3.new(1157, 430, -5188)
-	
-		CFrameQuest = CFrame.new(605, 402, -5371)
-		VectorQuest = Vector3.new(605, 402, -5371)
-	elseif MyLevel == 1100 or MyLevel <= 1124 then -- Lab Subordinate [Lv. 1100]
-		LevelFarm = 15
-	
-		Name = "Lab Subordinate"
-		QuestName = "IceSideQuest"
-	
-		LevelQuest = 1
-		NameMon = "Lab Subordinate"
-	
-		CFrameMon = CFrame.new(-5782, 42, -4484)
-		VectorMon = Vector3.new(-5782, 42, -4484)
-	
-		CFrameQuest = CFrame.new(-6060, 16, -4905)
-		VectorQuest = Vector3.new(-6060, 16, -4905)
-	elseif MyLevel == 1125 or MyLevel <= 1174 then -- Horned Warrior [Lv. 1125]
-		LevelFarm = 16
-	
-		Name = "Horned Warrior"
-		QuestName = "IceSideQuest"
-	
-		LevelQuest = 2
-		NameMon = "Horned Warrior"
-	
-		CFrameMon = CFrame.new(-6406, 24, -5805)
-		VectorMon = Vector3.new(-6406, 24, -5805)
-	
-		CFrameQuest = CFrame.new(-6060, 16, -4905)
-		VectorQuest = Vector3.new(-6060, 16, -4905)
-	elseif MyLevel == 1175 or MyLevel <= 1199 then -- Magma Ninja [Lv. 1175]
-		LevelFarm = 18
-	
-		Name = "Magma Ninja"
-		QuestName = "FireSideQuest"
-		LevelQuest = 1
-		NameMon = "Magma Ninja"
-	
-		CFrameMon = CFrame.new(-5428, 78, -5959)
-		VectorMon = Vector3.new(-5428, 78, -5959)
-	
-		CFrameQuest = CFrame.new(-5430, 16, -5295)
-		VectorQuest = Vector3.new(-5430, 16, -5296)
-	elseif MyLevel == 1200 or MyLevel <= 1249 then -- Lava Pirate [Lv. 1200]
-		LevelFarm = 19
-	
-		Name = "Lava Pirate"
-		QuestName = "FireSideQuest"
-	
-		LevelQuest = 2
-		NameMon = "Lava Pirate"
-	
-		CFrameMon = CFrame.new(-5270, 42, -4800)
-		VectorMon = Vector3.new(-5270, 42, -4800)
-	
-		CFrameQuest = CFrame.new(-5430, 16, -5295)
-		VectorQuest = Vector3.new(-5430, 16, -5296)
-	elseif MyLevel == 1250 or MyLevel <= 1274 then -- Ship Deckhand [Lv. 1250]
-		LevelFarm = 21
-	
-		Name = "Ship Deckhand"
-		QuestName = "ShipQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Ship Deckhand"
-	
-		CFrameMon = CFrame.new(1198, 126, 33031)
-		VectorMon = Vector3.new(1198, 126, 33031)
-	
-		CFrameQuest = CFrame.new(1038, 125, 32913)
-		VectorQuest = Vector3.new(1038, 125, 32913)
-	elseif MyLevel == 1275 or MyLevel <= 1299 then -- Ship Engineer [Lv. 1275]
-		LevelFarm = 22
-	
-		Name = "Ship Engineer"
-		QuestName = "ShipQuest1"
-	
-		LevelQuest = 2
-		NameMon = "Ship Engineer"
-	
-		CFrameMon = CFrame.new(918, 44, 32787)
-		VectorMon = Vector3.new(918, 44, 32787)
-	
-		CFrameQuest = CFrame.new(1038, 125, 32913)
-		VectorQuest = Vector3.new(1038, 125, 32913)
-	elseif MyLevel == 1300 or MyLevel <= 1324 then -- Ship Steward [Lv. 1300]
-		LevelFarm = 23
-	
-		Name = "Ship Steward"
-		QuestName = "ShipQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Ship Steward"
-	
-		CFrameMon = CFrame.new(915, 130, 33419)
-		VectorMon = Vector3.new(915, 130, 33419)
-	
-		CFrameQuest = CFrame.new(969, 125, 33245)
-		VectorQuest = Vector3.new(969, 125, 33245)
-	elseif MyLevel == 1325 or MyLevel <= 1349 then -- Ship Officer [Lv. 1325]
-		LevelFarm = 24
-	
-		Name = "Ship Officer"
-		QuestName = "ShipQuest2"
-	
-		LevelQuest = 2
-		NameMon = "Ship Officer"
-	
-		CFrameMon = CFrame.new(916, 181, 33335)
-		VectorMon = Vector3.new(916, 181, 33335)
-	
-		CFrameQuest = CFrame.new(969, 125, 33245)
-		VectorQuest = Vector3.new(969, 125, 33245)
-	elseif MyLevel == 1350 or MyLevel <= 1374 then -- Arctic Warrior [Lv. 1350]
-		LevelFarm = 26
-	
-		Name = "Arctic Warrior"
-		QuestName = "FrostQuest"
-	
-		LevelQuest = 1
-		NameMon = "Arctic Warrior"
-	
-		CFrameMon = CFrame.new(6038, 29, -6231)
-		VectorMon = Vector3.new(6038, 29, -6231)
-	
-		VectorQuest = Vector3.new(5669, 28, -6482)
-		CFrameQuest = CFrame.new(5669, 28, -6482)
-	elseif MyLevel == 1375 or MyLevel <= 1424 then -- Snow Lurker [Lv. 1375]
-		LevelFarm = 27
-	
-		Name = "Snow Lurker"
-		QuestName = "FrostQuest"
-	
-		LevelQuest = 2
-		NameMon = "Snow Lurker"
-	
-		CFrameMon = CFrame.new(5560, 42, -6826)
-		VectorMon = Vector3.new(5560, 42, -6826)
-	
-		VectorQuest = Vector3.new(5669, 28, -6482)
-		CFrameQuest = CFrame.new(5669, 28, -6482)
-	elseif MyLevel == 1425 or MyLevel <= 1449 then -- Sea Soldier [Lv. 1425]
-		LevelFarm = 29
-		Name = "Sea Soldier"
-		QuestName = "ForgottenQuest"
-	
-		LevelQuest = 1
-		NameMon = "Sea Soldier"
-	
-		CFrameMon = CFrame.new(-3022, 16, -9722)
-		VectorMon = Vector3.new(-3022, 16, -9722)
-	
-		CFrameQuest = CFrame.new(-3054, 237, -10148)
-		VectorQuest = Vector3.new(-3054, 237, -10148)
-	elseif MyLevel >= 1450 then -- Water Fighter [Lv. 1450]
-		LevelFarm = 30
-		Name = "Water Fighter"
-		QuestName = "ForgottenQuest"
-	
-		LevelQuest = 2
-		NameMon = "Water Fighter"
-	
-		CFrameMon = CFrame.new(-3385, 239, -10542)
-		VectorMon = Vector3.new(-3385, 239, -10542)
-	
-		CFrameQuest = CFrame.new(-3054, 237, -10148)
-		VectorQuest = Vector3.new(-3054, 237, -10148)
-	end
-	end
-	if W3 then
-	if MyLevel == 1500 or MyLevel <= 1524 then
-		LevelFarm = 1
-	
-		Name = "Pirate Millionaire"
-		QuestName = "PiratePortQuest"
-	
-		LevelQuest = 1
-		NameMon = "Pirate"
-	
-		CFrameMon = CFrame.new(-373, 75, 5550)
-		VectorMon = Vector3.new(-373, 75, 5550)
-	
-		CFrameQuest = CFrame.new(-288, 44, 5576)
-		VectorQuest = Vector3.new(-288, 44, 5576)
-	elseif MyLevel == 1525 or MyLevel <= 1574 then
-		LevelFarm = 2
-	
-		Name = "Pistol Billionaire"
-		QuestName = "PiratePortQuest"
-	
-		LevelQuest = 2
-		NameMon = "Pistol"
-	
-		CFrameMon = CFrame.new(-469, 74, 5904)
-		VectorMon = Vector3.new(-469, 74, 5904)
-	
-		CFrameQuest = CFrame.new(-288, 44, 5576)
-		VectorQuest = Vector3.new(-288, 44, 5576)
-	elseif MyLevel == 1575 or MyLevel <= 1599 then
-		LevelFarm = 4
-	
-		Name = "Dragon Crew Warrior"
-		QuestName = "AmazonQuest"
-	
-		LevelQuest = 1
-		NameMon = "Warrior"
-	
-		CFrameMon = CFrame.new(6339, 52, -1213)
-		VectorMon = Vector3.new(6338, 52, -1213)
-	
-		CFrameQuest = CFrame.new(5835, 52, -1105)
-		VectorQuest = Vector3.new(5835, 52, -1105)
-	elseif MyLevel == 1600 or MyLevel <= 1624 then
-		LevelFarm = 5
-	
-		Name = "Dragon Crew Archer"
-		QuestName = "AmazonQuest"
-	
-		LevelQuest = 2
-		NameMon = "Archer"
-	
-		CFrameMon = CFrame.new(6594, 383, 139)
-		VectorMon = Vector3.new(6594, 383, 139)
-	
-		CFrameQuest = CFrame.new(5835, 52, -1105)
-		VectorQuest = Vector3.new(5835, 52, -1105)
-	elseif MyLevel == 1625 or MyLevel <= 1649 then
-		LevelFarm = 6
-	
-		Name = "Female Islander"
-		QuestName = "AmazonQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Female"
-	
-		CFrameMon = CFrame.new(5308, 819, 1047)
-		VectorMon = Vector3.new(5308, 819, 1047)
-	
-		CFrameQuest = CFrame.new(5443, 602, 751)
-		VectorQuest = Vector3.new(5443, 602, 751)
-	elseif MyLevel == 1650 or MyLevel <= 1699 then
-		LevelFarm = 7
-	
-		Name = "Giant Islander"
-		QuestName = "AmazonQuest2"
-	
-		LevelQuest = 2
-		NameMon = "Giant Islanders"
-	
-		CFrameMon = CFrame.new(4951, 602, -68)
-		VectorMon = Vector3.new(4951, 602, -68)
-	
-		CFrameQuest = CFrame.new(5443, 602, 751)
-		VectorQuest = Vector3.new(5443, 602, 751)
-	elseif MyLevel == 1700 or MyLevel <= 1724 then
-		LevelFarm = 9
-	
-		Name = "Marine Commodore"
-		QuestName = "MarineTreeIsland"
-	
-		LevelQuest = 1
-		NameMon = "Marine Commodore"
-	
-		CFrameMon = CFrame.new(2447, 73, -7470)
-		VectorMon = Vector3.new(2447, 73, -7470)
-	
-		CFrameQuest = CFrame.new(2180, 29, -6737)
-		VectorQuest = Vector3.new(2180, 29, -6737)
-	elseif MyLevel == 1725 or MyLevel <= 1774 then
-		LevelFarm = 10
-	
-		Name = "Marine Rear Admiral"
-		QuestName = "MarineTreeIsland"
-	
-		LevelQuest = 2
-		NameMon = "Marine Rear Admiral"
-	
-		CFrameMon = CFrame.new(3671, 161, -6932)
-		VectorMon = Vector3.new(3671, 161, -6932)
-	
-		CFrameQuest = CFrame.new(2180, 29, -6737)
-		VectorQuest = Vector3.new(2180, 29, -6737)
-	elseif MyLevel == 1775 or MyLevel <= 1800 then
-		LevelFarm = 12
-	
-		Name = "Fishman Raider"
-		QuestName = "DeepForestIsland3"
-	
-		LevelQuest = 1
-		NameMon = "Fishman Raider"
-	
-		CFrameMon = CFrame.new(-10560, 332, -8466)
-		VectorMon = Vector3.new(-10560, 332, -8466)
-	
-		CFrameQuest = CFrame.new(-10584, 332, -8758)
-		VectorQuest = Vector3.new(-10584, 332, -8758)
-	elseif MyLevel == 1800 or MyLevel <= 1824 then
-		LevelFarm = 13
-	
-		Name = "Fishman Captain"
-		QuestName = "DeepForestIsland3"
-	
-		LevelQuest = 2
-		NameMon = "Fishman Captain"
-	
-		CFrameMon = CFrame.new(-10993, 332, -8940)
-		VectorMon = Vector3.new(-10993, 332, -8940)
-	
-		CFrameQuest = CFrame.new(-10584, 332, -8758)
-		VectorQuest = Vector3.new(-10584, 332, -8758)
-	elseif MyLevel == 1825 or MyLevel <= 1849 then
-		LevelFarm = 14
-	
-		Name = "Forest Pirate"
-		QuestName = "DeepForestIsland"
-	
-		LevelQuest = 1
-		NameMon = "Forest Pirate"
-	
-		CFrameMon = CFrame.new(-13479, 333, -7905)
-		VectorMon = Vector3.new(-13479, 333, -7905)
-	
-		CFrameQuest = CFrame.new(-13232, 333, -7627)
-		VectorQuest = Vector3.new(-13232, 333, -7627)
-	elseif MyLevel == 1850 or MyLevel <= 1899 then
-		LevelFarm = 15
-	
-		Name = "Mythological Pirate"
-		QuestName = "DeepForestIsland"
-	
-		LevelQuest = 2
-		NameMon = "Mythological Pirate"
-	
-		CFrameMon = CFrame.new(-13545, 470, -6917)
-		VectorMon = Vector3.new(-13545, 470, -6917)
-	
-		CFrameQuest = CFrame.new(-13232, 333, -7627)
-		VectorQuest = Vector3.new(-13232, 333, -7627)
-	elseif MyLevel == 1900 or MyLevel <= 1924 then
-		LevelFarm = 16
-	
-		Name = "Jungle Pirate"
-		QuestName = "DeepForestIsland2"
-	
-		LevelQuest = 1
-		NameMon = "Jungle Pirate"
-	
-		CFrameMon = CFrame.new(-12107, 332, -10549)
-		VectorMon = Vector3.new(-12106, 332, -10549)
-	
-		CFrameQuest = CFrame.new(-12684, 391, -9902)
-		VectorQuest = Vector3.new(-12684, 391, -9902)
-	elseif MyLevel == 1925 or MyLevel <= 1974 then
-		LevelFarm = 17
-	
-		Name = "Musketeer Pirate"
-		QuestName = "DeepForestIsland2"
-	
-		LevelQuest = 2
-		NameMon = "Musketeer Pirate"
-	
-		CFrameMon = CFrame.new(-13286, 392, -9769)
-		VectorMon = Vector3.new(-13286, 392, -9768)
-	
-		CFrameQuest = CFrame.new(-12684, 391, -9902)
-		VectorQuest = Vector3.new(-12684, 391, -9902)
-	elseif MyLevel == 1975 or MyLevel <= 1999 then
-		LevelFarm = 19
-		Name = "Reborn Skeleton"
-		QuestName = "HauntedQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Reborn Skeleton"
-	
-		CFrameMon = CFrame.new(-8760, 142, 6039)
-		VectorMon = Vector3.new(-8760, 142, 6039)
-	
-		CFrameQuest = CFrame.new(-9482, 142, 5567)
-		VectorQuest = Vector3.new(-9482, 142, 5567)
-	elseif MyLevel == 2000 or MyLevel <= 2024 then
-		LevelFarm = 20
-	
-		Name = "Living Zombie"
-		QuestName = "HauntedQuest1"
-	
-		LevelQuest = 2
-		NameMon = "Living Zombie"
-	
-		CFrameMon = CFrame.new(-10144, 140, 5932)
-		VectorMon = Vector3.new(-10144, 140, 5932)
-	
-		CFrameQuest = CFrame.new(-9482, 142, 5567)
-		VectorQuest = Vector3.new(-9482, 142, 5567)
-	elseif MyLevel == 2025 or MyLevel <= 2049 then
-		LevelFarm = 21
-	
-		Name = "Demonic Soul"
-		QuestName = "HauntedQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Demonic Soul"
-	
-		CFrameMon = CFrame.new(-9507, 172, 6158)
-		VectorMon = Vector3.new(-9506, 172, 6158)
-	
-		CFrameQuest = CFrame.new(-9513, 172, 6079)
-		VectorQuest = Vector3.new(-9513, 172, 6079)
-	elseif MyLevel == 2050 or MyLevel <= 2074 then
-		LevelFarm = 22
-	
-		Name = "Posessed Mummy"
-		QuestName = "HauntedQuest2"
-	
-		LevelQuest = 2
-		NameMon = "Posessed Mummy"
-	
-		CFrameMon = CFrame.new(-9577, 6, 6223)
-		VectorMon = Vector3.new(-9577, 6, 6223)
-	
-		CFrameQuest = CFrame.new(-9513, 172, 6079)
-		VectorQuest = Vector3.new(-9513, 172, 6079)
-	elseif MyLevel == 2075 or MyLevel <= 2099 then
-		LevelFarm = 24
-	
-		Name = "Peanut Scout"
-		QuestName = "NutsIslandQuest"
-	
-		LevelQuest = 1
-		NameMon = "Peanut Scout"
-	
-		CFrameMon = CFrame.new(-2124, 123, -10435)
-		VectorMon = Vector3.new(-2124, 123, -10435)
-	
-		CFrameQuest = CFrame.new(-2104, 38, -10192)
-		VectorQuest = Vector3.new(-2104, 38, -10192)
-	elseif MyLevel == 2100 or MyLevel <= 2124 then
-		LevelFarm = 25
-	
-		Name = "Peanut President"
-		QuestName = "NutsIslandQuest"
-	
-		LevelQuest = 2
-		NameMon = "Peanut President"
-	
-		CFrameMon = CFrame.new(-2124, 123, -10435)
-		VectorMon = Vector3.new(-2124, 123, -10435)
-	
-		CFrameQuest = CFrame.new(-2104, 38, -10192)
-		VectorQuest = Vector3.new(-2104, 38, -10192)
-	elseif MyLevel == 2125 or MyLevel <= 2149 then
-		LevelFarm = 26
-	
-		Name = "Ice Cream Chef"
-		QuestName = "IceCreamIslandQuest"
-	
-		LevelQuest = 1
-		NameMon = "Ice Cream Chef"
-	
-		CFrameMon = CFrame.new(-641, 127, -11062)
-		VectorMon = Vector3.new(-641, 127, -11062)
-	
-		CFrameQuest = CFrame.new(-822, 66, -10965)
-		VectorQuest = Vector3.new(-822, 66, -10965)
-	elseif MyLevel == 2150 or MyLevel <= 2199 then
-		LevelFarm = 27
-	
-		Name = "Ice Cream Commander"
-		QuestName = "IceCreamIslandQuest"
-	
-		LevelQuest = 2
-		NameMon = "Ice Cream Commander"
-	
-		CFrameMon = CFrame.new(-641, 127, -11062)
-		VectorMon = Vector3.new(-641, 127, -11062)
-	
-		CFrameQuest = CFrame.new(-822, 66, -10965)
-		VectorQuest = Vector3.new(-822, 66, -10965)
-		---------------------------------------------------------------
-	elseif MyLevel == 2200 or MyLevel <= 2224 then
-		LevelFarm = 29
-	
-		Name = "Cookie Crafter"
-		QuestName = "CakeQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Cookie Crafter"
-	
-		CFrameMon = CFrame.new(-2365, 38, -12099)
-		VectorMon = Vector3.new(-2365, 38, -12099)
-	
-		CFrameQuest = CFrame.new(-2020, 38, -12025)
-		VectorQuest = Vector3.new(-2020, 38, -12025)
-	elseif MyLevel == 2225 or MyLevel <= 2249 then
-		LevelFarm = 30
-	
-		Name = "Cake Guard"
-		QuestName = "CakeQuest1"
-	
-		LevelQuest = 2
-		NameMon = "Cake Guard"
-	
-		CFrameMon = CFrame.new(-1651, 38, -12308)
-		VectorMon = Vector3.new(-1651, 38, -12308)
-	
-		CFrameQuest = CFrame.new(-2020, 38, -12025)
-		VectorQuest = Vector3.new(-2020, 38, -12025)
-	elseif MyLevel == 2250 or MyLevel <= 2274 then
-		LevelFarm = 31
-	
-		Name = "Baking Staff"
-		QuestName = "CakeQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Baking Staff"
-	
-		CFrameMon = CFrame.new(-1870, 38, -12938)
-		VectorMon = Vector3.new(-1870, 38, -12938)
-	
-		CFrameQuest = CFrame.new(-1926, 38, -12850)
-		VectorQuest = Vector3.new(-1926, 38, -12850)
-	elseif MyLevel == 2275 or MyLevel <= 2299 then
-		LevelFarm = 32
-	
-		Name = "Head Baker"
-		QuestName = "CakeQuest2"
-	
-		LevelQuest = 2
-		NameMon = "Head Baker"
-	
-		CFrameMon = CFrame.new(-1926, 88, -12850)
-		VectorMon = CFrame.new(-1870, 38, -12938)
-	
-		CFrameQuest = CFrame.new(-1926, 38, -12850)
-		VectorQuest = Vector3.new(-1926, 38, -12850)
-		---------------------------------------------------------------
-	elseif MyLevel == 2300 or MyLevel <= 2324 then
-		LevelFarm = 34
-	
-		Name = "Cocoa Warrior"
-		QuestName = "ChocQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Cocoa Warrior"
-	
-		CFrameMon = CFrame.new(231, 23, -12194)
-		VectorMon = CFrame.new(231, 23, -12194)
-	
-		CFrameQuest = CFrame.new(231, 23, -12194)
-		VectorQuest = Vector3.new(231, 23, -12194)
-	elseif MyLevel == 2325 or MyLevel <= 2349 then
-		LevelFarm = 35
-	
-		Name = "Chocolate Bar Battler"
-		QuestName = "ChocQuest1"
-	
-		LevelQuest = 2
-		NameMon = "Chocolate Bar Battler"
-	
-		CFrameMon = CFrame.new(231, 23, -12194)
-		VectorMon = CFrame.new(231, 23, -12194)
-	
-		CFrameQuest = CFrame.new(231, 23, -12194)
-		VectorQuest = Vector3.new(231, 23, -12194)
-	elseif MyLevel == 2350 or MyLevel <= 2374 then
-		LevelFarm = 36
-	
-		Name = "Sweet Thief"
-		QuestName = "ChocQuest2"
-	
-		LevelQuest = 1
-		NameMon = "Sweet Thief"
-	
-		CFrameMon = CFrame.new(71, 77, -12632)
-		VectorMon = CFrame.new(71, 77, -12632)
-	
-		CFrameQuest = CFrame.new(151, 23, -12774)
-		VectorQuest = Vector3.new(151, 23, -12774)
-	elseif MyLevel == 2375 or MyLevel <= 2399 then
-		LevelFarm = 37
-	
-		Name = "Candy Rebel"
-		QuestName = "ChocQuest2"
-	
-		LevelQuest = 2
-		NameMon = "Candy Rebel"
-	
-		CFrameMon = CFrame.new(134, 77, -12882)
-		VectorMon = CFrame.new(134, 77, -12882)
-	
-		CFrameQuest = CFrame.new(151, 23, -12774)
-		VectorQuest = Vector3.new(151, 23, -12774)
-	elseif MyLevel == 2400 or MyLevel <= 2424 then
-		LevelFarm = 39
-	
-		Name = "Candy Pirate"
-		QuestName = "CandyQuest1"
-	
-		LevelQuest = 1
-		NameMon = "Candy Pirates"
-	
-		CFrameMon = CFrame.new(-1358.691650390625, 162.7437286376953, -14389.7919921875)
-		VectorMon = CFrame.new(-1358.691650390625, 162.7437286376953, -14389.7919921875)
-	
-		CFrameQuest = CFrame.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
-			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
-			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-	elseif MyLevel == 2425 or MyLevel <= 2425 then
-		LevelFarm = 40
-	
-		Name = "Snow Demon"
-		QuestName = "CandyQuest1"
-	
-		LevelQuest = 2
-		NameMon = "Snow Demons"
-	
-		CFrameMon = CFrame.new(-940.4050903320312, 60.94138717651367, -14554.1630859375)
-		VectorMon = CFrame.new(-940.4050903320312, 60.94138717651367, -14554.1630859375)
-	
-		CFrameQuest = CFrame.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
-			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-		VectorQuest = Vector3.new(-1146.59741, 14.1330338, -14445.6426, 0.142417297, 4.85419136e-08, 0.989806712,
-			4.3708237e-08, 1, -5.53307267e-08, -0.989806712, 5.11427594e-08, 0.142417297)
-		elseif MyLevel == 2450 or MyLevel <= 2450 then
-			LevelFarm = 42
-	
-			Name = "Isle Outlaw"
-			QuestName = "TikiQuest1"
-	
-			LevelQuest = 1
-			NameMon = "Isle Outlaw"
-	
-			CFrameMon = CFrame.new(-16299.3252, 94.0675659, -172.353226, 0.99993372, 1.59262612e-08, -0.0115144337, -1.50289505e-08, 1, 7.80157237e-08, 0.0115144337, -7.78375053e-08, 0.99993372)
-			VectorMon = CFrame.new(-16299.3252, 94.0675659, -172.353226, 0.99993372, 1.59262612e-08, -0.0115144337, -1.50289505e-08, 1, 7.80157237e-08, 0.0115144337, -7.78375053e-08, 0.99993372)
-	
-			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-		elseif MyLevel == 2475 or MyLevel <= 2475 then
-			LevelFarm = 43
-	
-			Name = "Island Boy"
-			QuestName = "TikiQuest1"
-	
-			LevelQuest = 2
-			NameMon = "Island Boy"
-	
-			CFrameMon = CFrame.new(-16853.3887, 192.103561, -152.378189, 0.705479085, -8.49727329e-08, 0.708730757, 5.86954414e-08, 1, 6.14680928e-08, -0.708730757, -1.76518711e-09, 0.705479085)
-			VectorMon = CFrame.new(-16853.3887, 192.103561, -152.378189, 0.705479085, -8.49727329e-08, 0.708730757, 5.86954414e-08, 1, 6.14680928e-08, -0.708730757, -1.76518711e-09, 0.705479085)
-	
-			CFrameQuest = CFrame.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-			VectorQuest = Vector3.new(-16548.8516, 54.0840454, -173.242691, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
-		elseif MyLevel == 2500 or MyLevel <= 2500 then
-			LevelFarm = 44
-	
-			Name = "Sun-kissed Warrior"
-			QuestName = "TikiQuest2"
-	
-			LevelQuest = 1
-			NameMon = "Warrior"
-	
-			CFrameMon = CFrame.new(-16273.3027, 49.6616859, 1049.43701, -0.906199515, -4.19694537e-08, 0.422850341, -3.66385891e-08, 1, 2.07344755e-08, -0.422850341, 3.29693228e-09, -0.906199515)
-			VectorMon = CFrame.new(-16273.3027, 49.6616859, 1049.43701, -0.906199515, -4.19694537e-08, 0.422850341, -3.66385891e-08, 1, 2.07344755e-08, -0.422850341, 3.29693228e-09, -0.906199515)
-	
-			CFrameQuest = CFrame.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
-			VectorQuest = Vector3.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
-		elseif MyLevel == 2525 or MyLevel <= 2525 then
-			LevelFarm = 45
-	
-			Name = "Isle Champion"
-			QuestName = "TikiQuest2"
-	
-			LevelQuest = 2
-			NameMon = "Isle Champion"
-	
-			CFrameMon = CFrame.new(-16780.4238, 82.1132126, 1033.55408, -0.962516546, 1.58372231e-08, 0.271222919, -1.30016424e-08, 1, -1.04532162e-07, -0.271222919, -1.04140284e-07, -0.962516546)
-			VectorMon = CFrame.new(-16780.4238, 82.1132126, 1033.55408, -0.962516546, 1.58372231e-08, 0.271222919, -1.30016424e-08, 1, -1.04532162e-07, -0.271222919, -1.04140284e-07, -0.962516546)
-	
-			CFrameQuest = CFrame.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
-			VectorQuest = Vector3.new(-16539.1426, 55.6605415, 1050.85059, -0.152818754, 1.09818366e-07, 0.988254249, 3.35132171e-08, 1, -1.05941282e-07, -0.988254249, 1.6929766e-08, -0.152818754)
-	    end
-	end
-end  
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/QuestOld"))()
 	
 function Hop()
 	local PlaceID = game.PlaceId
@@ -2058,131 +898,594 @@ end
 
 Main3:Toggle("Auto Farm Level",_G.AutoFarm,function(value)
 	_G.AutoFarm = value
+	_G.DoubleQuest = value
 end)
 
-spawn(function()
-	while wait() do
-		if _G.AutoFarm then
-			pcall(function()
-				local QuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text
-				if not string.find(QuestTitle, NameMon) then
-					StartMagnet = false
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-				end
-				if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-					StartMagnet = false
+randomposenelfastfarm = 0
+function AutoFarmLevel()
+GetQuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
+GetQuest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
+local MyLevel = game.Players.LocalPlayer.Data.Level.Value
+if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
+    if _G.AutoHaki then
+        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+        end
+    end
+    if MyLevel >= 15 and MyLevel <= 70 then
+        if (game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047)).Magnitude <= 3500 then
+            if game:GetService("Workspace").Enemies:FindFirstChild("Royal Squad") then
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name == "Royal Squad" then
+                        if v.Humanoid.Health > 0 then
+                            if v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                                repeat task.wait()
+                                        v.Humanoid.JumpPower = 0
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid:ChangeState(11)
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                        StartMagnet = true
+                                        FastAttack = true
+                                        if _G.AutoHaki then
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                            end
+                                        end
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                            wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                        end
+                                        if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                            game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                            game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                        end
+                                        if not _G.FastAttack then
+                                            Click()
+                                        end
+                                        if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
+                                            _G.FastType = "Slow"
+                                        else
+                                            _G.FastType = "Fast"
+                                        end
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
+                                StartMagnet = false
+                                FastAttack = false
+                            end
+                        end
+                    end
+                end
+            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad") then
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad").HumanoidRootPart.CFrame * MethodFarm)
+            elseif game:GetService("Workspace").Enemies:FindFirstChild("Shanda") then
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name == "Shanda" then
+                        if v.Humanoid.Health > 0 then
+                            if v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                                repeat task.wait()
+                                        v.Humanoid.JumpPower = 0
+                                        v.Humanoid.WalkSpeed = 0
+                                        v.Humanoid:ChangeState(11)
+                                        v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                        StartMagnet = true
+                                        FastAttack = true
+                                        if _G.AutoHaki then
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                            end
+                                        end
+                                        EquipWeapon(_G.SelectWeapon)
+                                        if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                            game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                            game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                        end
+                                        if not _G.FastAttack then
+                                            Click()
+                                        end
+                                        if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
+                                            _G.FastType = "Slow"
+                                        else
+                                            _G.FastType = "Fast"
+                                        end
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
+                                StartMagnet = false
+                                FastAttack = false
+                            end
+                        end
+                    end
+                end
+            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Shanda") then
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Shanda").HumanoidRootPart.CFrame * MethodFarm)
+            end
+        else
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))			
+        end
+    elseif MyLevel >= 70 and MyLevel <= 300 then
+        if GetQuest.Visible == false then
+            if not tostring(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("PlayerHunter")):find("We heard some") then 
+                Questtween = toTarget(CFrameQuest.Position,CFrameQuest)
+                if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                    if Questtween then Questtween:Stop() end wait(.5)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+                elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                    if Questtween then Questtween:Stop() end wait(.5)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+                elseif World1 and (Name == "God's Guard" or Name == "Sky Bandit" or Name == "Dark Master") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000 then
+                    if Questtween then Questtween:Stop() end wait(.5)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
+                elseif World1 and (Name == "Shanda" or Name == "Royal Squad"or Name == "Royal Soldier") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 8000 then
+                    if Questtween then Questtween:Stop() end wait(.5)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+                elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                    if Questtween then Questtween:Stop() end
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+                elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                    if Questtween then Questtween:Stop() end
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+                elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+                    if Questtween then Questtween:Stop() end
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+                    wait(0.9)
+                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                        if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", QuestName, LevelQuest)
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+                        end
+                    else
+                        toTarget(CFrameQuest)
+                    end
+                end
+            end
+        elseif GetQuest.Visible == true then
+            local AllPlayersTableSkipFarm = {}
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki","Buso")
+            for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+                table.insert(AllPlayersTableSkipFarm,v.Name)
+            end
+            if table.find(AllPlayersTableSkipFarm,GetQuestTitle.Text:split(" ")[2]) then
+                for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
+                    if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
+                        if _G.Settings.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                            repeat wait()
+                                if World1 and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875) - v.HumanoidRootPart.Position).magnitude < 5000 then
+                                    if FarmtoTarget then FarmtoTarget:Stop() end
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+                                elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+                                    FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame)
+                                elseif v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+                                    if FarmtoTarget then FarmtoTarget:Stop() end
+                                    if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.PvpDisabled.Visible == true then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
+                                    end
+                                    if _G.AutoHaki then
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                    end
+                                    if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                        game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                        game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                    end
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                    EquipWeapon(_G.SelectWeapon)
+                                    AttackPlayers()
+                                    wait(.1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+                                    wait(.1)
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+                                end
+                            until not _G.Settings.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                        end
+                    end
+                end
+            else
+                if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                            if string.find(GetQuestTitle.Text, QuestName) then
+                                repeat wait()
+                                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
+                                        FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    elseif v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+                                        if FarmtoTarget then FarmtoTarget:Stop() end
+                                        StartMagnet = true
+                                        PosMon = v.HumanoidRootPart.CFrame
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.Head.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
+                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                        if not _G.FastAttack then
+                                            Click()
+                                        end
+
+                                        if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                            game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                            game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                        end
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                        FastAttack = true
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
+                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                                FastAttack = false
+                                StartMagnet = false
+                            else
+                                Com("F_","AbandonQuest");
+                            end
+                        end
+                    end
+                else
+                    StartMagnet = false
+                    FastAttack = false
+                    if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
+                    Modstween = toTarget(CFrameMon.Position,CFrameMon)
+                    if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                        if Modstween then Modstween:Stop() end wait(.5)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+                    elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                        if Modstween then Modstween:Stop() end wait(.5)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+                    elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                        if Modstween then Modstween:Stop() end wait(.5)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+                    elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                        if Modstween then Modstween:Stop() end wait(.5)
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+                    elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+                        if Modstween then 
+                            Modstween:Stop()
+                           spawn(function()
+                                if posrandom <= 1 then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                    posrandom = posrandom + 0.1
+                                elseif posrandom >= 1 and posrandom <= 2 then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                    posrandom = posrandom + 0.1
+                                elseif posrandom >= 2 and posrandom <= 3 then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                    posrandom = posrandom + 0.1
+                                elseif posrandom >= 3 and posrandom <= 4  then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                    posrandom = posrandom + 0.1
+                            elseif posrandom >=4 and posrandom <= 5 then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                posrandom = 0
+                            end
+                        end)
+                    end
+                       -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                    end 
+                end
+            end
+        end
+    else
+        if not string.find(GetQuestTitle.Text, NameMon) then game.ReplicatedStorage:WaitForChild("Remotes").CommF_:InvokeServer("AbandonQuest"); end
+        if GetQuest.Visible == false then
+            StartMagnet = false
+            FastAttack = false
+            Questtween = toTarget(CFrameQuest.Position,CFrameQuest)
+            if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Questtween then Questtween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+            elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Questtween then Questtween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+            elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Questtween then Questtween:Stop() end
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Questtween then Questtween:Stop() end
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+            elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                if Questtween then Questtween:Stop() end
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+                wait(1)
+                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                    Com("F_","StartQuest", QuestName, LevelQuest)
+                    Com("F_","SetSpawnPoint")
+                else
+                    toTarget(CFrameQuest)
+                end
+            end
+        elseif GetQuest.Visible == true then
+            if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if string.find(GetQuestTitle.Text, NameMon) then
+                            repeat task.wait()
+                                FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                                    if FarmtoTarget then FarmtoTarget:Stop() end
+                                    if _G.AutoHaki then
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                    end
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
+                                    StartMagnet = true
+                                    FastAttack = true
+                                    if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
+                                        _G.FastType = "Slow"
+                                    else
+                                        _G.FastType = "Fast"
+                                    end
+                                    if not _G.FastAttack then
+                                        game:GetService'VirtualUser':CaptureController()
+                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                    end
+                                    v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                    v.Humanoid.JumpPower = 0
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid:ChangeState(11)
+                                    v.Humanoid:ChangeState(14)
+                                    v.Humanoid:ChangeState(16)
+                                    PosMon = v.HumanoidRootPart.CFrame
+                                    if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                        game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                        game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                    end
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                end
+                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            StartMagnet = false
+                            FastAttack = false
+                        else
+                            Com("F_","AbandonQuest");
+                        end
+                    end
+                end
+            else
+                StartMagnet = false
+                FastAttack = false
+                if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
+                Modstween = toTarget(CFrameMon.Position,CFrameMon)
+            if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+            elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+            elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+                if Modstween then 
+                    Modstween:Stop()
+                   spawn(function()
+                        if posrandom <= 1 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 1 and posrandom <= 2 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 2 and posrandom <= 3 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 3 and posrandom <= 4  then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                            posrandom = posrandom + 0.1
+                    elseif posrandom >=4 and posrandom <= 5 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        posrandom = 0
+                    end
+                end)
+            end
+               -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                end 
+            end
+        end
+    end
+else
+    if not string.find(GetQuestTitle.Text, NameMon) then game.ReplicatedStorage:WaitForChild("Remotes").CommF_:InvokeServer("AbandonQuest"); end
+    if GetQuest.Visible == false then
+        StartMagnet = false
+        FastAttack = false
+        Questtween = toTarget(CFrameQuest.Position,CFrameQuest)
+        if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+        elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+        elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+            if Questtween then Questtween:Stop() end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+            wait(1)
+            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                Com("F_","StartQuest", QuestName, LevelQuest)
+                Com("F_","SetSpawnPoint")
+            else
+                toTarget(CFrameQuest)
+            end
+        end
+    elseif GetQuest.Visible == true then
+        if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
+            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    if string.find(GetQuestTitle.Text, NameMon) then
+                        repeat wait()
+                            FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                                if FarmtoTarget then FarmtoTarget:Stop() end
+                                if _G.AutoHaki then
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                    end
+                                end
+                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                    wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                end
+                                StartMagnet = true
+                                FastAttack = true
+                                if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
+                                    _G.FastType = "Slow"
+                                else
+                                    _G.FastType = "Fast"
+                                end
+                                if not _G.FastAttack then
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                end
+                                v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                v.Humanoid.JumpPower = 0
+                                v.Humanoid.WalkSpeed = 0
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Humanoid:ChangeState(11)
+                                v.Humanoid:ChangeState(14)
+                                v.Humanoid:ChangeState(16)
+                                PosMon = v.HumanoidRootPart.CFrame
+                                if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
+                                    game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                                    game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                                end
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                            end
+                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                        StartMagnet = false
+                        FastAttack = false
+                    else
+                        Com("F_","AbandonQuest");
+                    end
+                end
+            end
+        else
+            StartMagnet = false
+            FastAttack = false
+            if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
+            Modstween = toTarget(CFrameMon.Position,CFrameMon)
+            if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+            elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+            elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+            elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+                if Modstween then Modstween:Stop() end wait(.5)
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+                if Modstween then 
+                    Modstween:Stop()
+                    spawn(function()
+                        if posrandom <= 1 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 1 and posrandom <= 2 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 2 and posrandom <= 3 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 3 and posrandom <= 4  then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                            posrandom = posrandom + 0.1
+                    elseif posrandom >= 4 and posrandom <= 5 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        posrandom = 0
+                    end
+                end)
+            end
+              --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+            end 
+        end
+    end
+end
+end
+
+function CheckNotifyComplete()
+	for i, v in pairs(game:GetService("Players")["LocalPlayer"].PlayerGui:FindFirstChild("Notifications"):GetChildren()) do
+		if v.Name == "NotificationTemplate" then
+			if string.lower(v.Text):find("quest completed") then
+				pcall(function()
+					v:Destroy()
+				end)
+				return true
+			end
+		end
+	end
+	return false
+end
+
+local NoLoopDuplicate = false
+local SubQuest = false
+local oldmob = Name
+local oldcheckquest = NameMon
+
+task.spawn(function()
+	while task.wait() do
+	pcall(function()
+			if _G.DoubleQuest then
+				if SubQuest == true then
+					if LevelFarm then
+						if tonumber(LevelFarm - 1) ~= 0 then
+							CheckOldQuest(tonumber(LevelFarm - 1))
+						end
+					end
+				else
 					CheckQuest()
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",QuestName,LevelQuest)
-					topos(CFrameMon)
-				elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-					CheckQuest()
-					if game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-								if v.Name == Mon then
-									if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-										repeat task.wait()
-											AutoHaki()
-											EquipWeapon(_G.SelectWeapon)
-											PosMon = v.HumanoidRootPart.CFrame
-									        topos(v.HumanoidRootPart.CFrame * CFrame.new(0,20,1))
-											v.HumanoidRootPart.CanCollide = false
-											v.Humanoid.WalkSpeed = 0
-											v.Head.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-											StartMagnet = true
-											game:GetService'VirtualUser':CaptureController()
-											game:GetService'VirtualUser':Button1Down(Vector2.new(0.9, 0.9))
-										until not _G.AutoFarm or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-									else
-										StartMagnet = false
-										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+					oldmob = Name
+					oldcheckquest = NameMon
+					spawn(function()
+						pcall(function()
+							if NoLoopDuplicate == false then
+								if CheckNotifyComplete() and _G.AutoFarm then
+									NoLoopDuplicate = true
+									while task.wait() do
+										SubQuest = true
+										if CheckNotifyComplete() or _G.AutoFarm == false then
+											break;
+										end
 									end
+									SubQuest = false
+									NoLoopDuplicate = false
 								end
 							end
-						end
-					else
-						StartMagnet = false
-						if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
-							topos(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-						else
-							if (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 15 then
-								if PosMon ~= nil then
-									topos(PosMon * CFrame.new(0,30,0))
-								else
-									if OldPos ~= nil then
-										topos(OldPos.Position)
-									end
-								end
+						end)
+					end)
+					if SubQuest == true then
+						if LevelFarm then
+							if tonumber(LevelFarm - 1) ~= 0 then
+								CheckOldQuest(tonumber(LevelFarm - 1))
 							end
 						end
 					end
 				end
-			end)
-		end
+			else
+				CheckQuest()
+			end
+			AutoFarmLevel()
+		end)
 	end
 end)
---[[
-spawn(function()
-	while task.wait() do
-	if _G.AutoFarm then
-	pcall(function()
-	  CheckQuest()
-	  if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-		if BypassTP then
-		if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude > 2500 then
-		BTP(CFrameQuest)
-		wait(0.2)
-		elseif (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - CFrameQuest.Position).Magnitude < 2500 then
-		wait(0.4)
-		topos(CFrameQuest)
-		end
-        else
-			topos(CFrameQuest)
-		  end
-		
-		if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",QuestName,LevelQuest)
-		end
-		elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-		for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-		if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-		if v.Name == Ms then
-		repeat game:GetService("RunService").Heartbeat:wait()
-		AutoHaki()
-		Click()
-		EquipWeapon(_G.SelectWeapon)
-		topos(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
-		v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-		v.HumanoidRootPart.Transparency = 1
-		v.Humanoid.JumpPower = 0
-		v.Humanoid.WalkSpeed = 0
-		v.HumanoidRootPart.CanCollide = false
-	--v.Humanoid:ChangeState(11)
-	--v.Humanoid:ChangeState(14)
-		FarmPos = v.HumanoidRootPart.CFrame
-		MonFarm = v.Name
-		
-		until not _G.AutoFarm or not v.Parent or v.Humanoid.Health <= 0 or not game:GetService("Workspace").Enemies:FindFirstChild(v.Name) or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
-		end
-			 
-		end
-		end
-		for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].EnemySpawns:GetChildren()) do
-		if string.find(v.Name,NameMon) then
-		if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).Magnitude >= 10 then
-			topos(v.CFrame * CFrame.new(0,30,0))
-	  end
-	  end
-	  end
-	  end
-	  topos()
-	  end)
-	end
-	end
-	end)
-]]
+
 Main3:Seperator("Mirage Island")
 
 local FM = Main3:Label('...')
@@ -9996,6 +9299,7 @@ end)
 
 Settings:Toggle("Auto Haki",true,function(value)
 _G.AUTOHAKI = value
+_G._G.AutoHaki = value
 end)
 spawn(function()
 while wait(.1) do
