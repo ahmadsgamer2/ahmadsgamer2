@@ -3943,11 +3943,10 @@ spawn(function()
            end)
         
            
-           local ToggleYama = Tabs.Main:AddToggle("ToggleYama", {Title = "Auto Get Yama", Default = false })
-           ToggleYama:OnChanged(function(Value)
-            _G.AutoYama = Value
+           Main:Toggle("Auto Get Yama",_G.AutoYama,function(value)
+            _G.AutoYama = value
            end)
-           Options.ToggleYama:SetValue(false)
+
            spawn(function()
             while wait() do
                 if _G.AutoYama then
