@@ -3947,8 +3947,8 @@ spawn(function()
             end
         end)
 
-        Main:Toggle("Auto Tushita",G.Autotushita,function(value)
-            G.Autotushita = value
+        Main:Toggle("Auto Tushita",_G.Autotushita,function(value)
+            _G.Autotushita = value
         end)
 
         local DragonHubTushita = CFrame.new(-10238.875976563, 389.7912902832, -9549.7939453125)
