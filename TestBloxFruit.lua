@@ -4,18 +4,6 @@ local Update =  loadstring(Game:HttpGet"https://raw.githubusercontent.com/ahmads
 local Library = Update:Window("h")
 
 --------------------------------------------------------------------------------------------------------------------------------------------
-repeat wait() until game.Players
-repeat wait() until game.Players.LocalPlayer
-repeat wait() until game.ReplicatedStorage
-repeat wait() until game.ReplicatedStorage:FindFirstChild("Remotes");
-repeat wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui");
-repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
-repeat wait() until game:GetService("Players")
-repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
-
-wait(0.1)
-
-if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
 	repeat wait()
