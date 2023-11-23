@@ -1134,6 +1134,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-1151.48987, 16.1422901, -14445.6904, -0.316594511, -6.85698254e-08, -0.948560953, -2.05343067e-08, 1, -6.54346692e-08, 0.948560953, -1.23821675e-09, -0.316594511)
 			VectorQuest = Vector3.new(-1151.48987, 16.1422901, -14445.6904, -0.316594511, -6.85698254e-08, -0.948560953, -2.05343067e-08, 1, -6.54346692e-08, 0.948560953, -1.23821675e-09, -0.316594511)
 		elseif MyLevel >= 2450 then
+			LevelQuest = 33
 
 			Mon = "Isle Outlaw [Lv. 2450]"
 			NameQuest = "TikiQuest1"
@@ -1147,6 +1148,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 			VectorQuest = Vector3.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 		elseif MyLevel >= 2475 then
+			LevelQuest = 34
 
 			Mon = "Island Boy [Lv. 2475]"
 			NameQuest = "TikiQuest1"
@@ -1160,6 +1162,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 			VectorQuest = Vector3.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 		elseif MyLevel >= 2475 then
+			LevelQuest = 35
 
 			Mon = "Island Boy [Lv. 2475]"
 			NameQuest = "TikiQuest1"
@@ -1173,6 +1176,7 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 			VectorQuest = Vector3.new(-16549.890625, 55.68635559082031, -179.91360473632812)
 		elseif MyLevel >= 2500 then
+			LevelQuest = 36
 
 			Name = "Sun-kissed Warrior [Lv. 2500]"
 			QuestName = "TikiQuest2"
@@ -1186,7 +1190,8 @@ function CheckQuest()
 			CFrameQuest = CFrame.new(-16780.2383, 82.1389999, 1033.18713, -0.906431854, 1.29724e-08, 0.422352165, 1.32806277e-09, 1, -2.7864429e-08, -0.422352165, -2.46962948e-08, -0.906431854)
 			VectorQuest = Vector3.new(-16780.2383, 82.1389999, 1033.18713, -0.906431854, 1.29724e-08, 0.422352165, 1.32806277e-09, 1, -2.7864429e-08, -0.422352165, -2.46962948e-08, -0.906431854)
 		elseif MyLevel >= 2525 then
-
+			LevelQuest = 37
+			
 			Name = "Isle Champion [Lv. 2525]"
 			QuestName = "TikiQuest2"
 			
@@ -1201,6 +1206,7 @@ function CheckQuest()
 		end
 	end
 end
+
 
 function Hop()
 	local PlaceID = game.PlaceId
