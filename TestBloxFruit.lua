@@ -2160,7 +2160,6 @@ local Main = Library:Tab("Auto Item", "rbxassetid://9606626034")
 local Stats = Library:Tab("Stats", "rbxassetid://11447069304")
 local Combat = Library:Tab("Combat", "rbxassetid://11446900930")
 local Teleport = Library:Tab("Teleport", "rbxassetid://6035190846")
-local RaceV4 = Library:Tab("Race V4", "rbxassetid://7044284832")
 local S = Library:Tab("Shop", "rbxassetid://6031265976")
 local Dungeon = Library:Tab("Dungeon", "rbxassetid://7044284832")
 local ESPM = Library:Tab("ESP","rbxassetid://11446920523")
@@ -2355,98 +2354,19 @@ spawn(function()
 	end
 end)
 
-
-Main3:Label("Security")
-
-Main3:Toggle("Bypass Anti-Cheat V2",true,function(value)
-	_G.BypassAntiCheat
-	loadstring(game:HttpGet("https://pastebin.com/raw/MZrwt5Rm", true))()
+spawn(function()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if _G.AutoFarm then
+        if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
+            setfflag("HumanoidParallelRemoveNoPhysics", "False")
+            setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+            game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
+            end
+        end
+    end)
 end)
 
 Main3:Seperator("Mirage Island")
-
-if game.PlaceId == 7449423635 then
-	local Moon = RaceV4:Label("? : [IDK]")
-
-	spawn(function()
-		game:GetService("RunService").RenderStepped:Connect(function()
-		 pcall(function()
- if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-	 Moon:Set("🌑 : Full Moon Now!")
- elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-	 Moon:Set("🌒 : Not Full Moon [75%]")
- elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-	 Moon:Set("🌓 : Not Full Moon [50%]")
- elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-	 Moon:Set("🌗 : Not Full Moon [25%]")
- elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-	 Moon:Set("🌖 : Not Full Moon [15%]")
- else
-	 Moon:Set("🌚 : Not Full Moon [0%]")
- end
-		 end)
-		end)
-	 end)
- end
-
-local Mirragecheck = Main3:Label('...')
-      
-spawn(function()
-        pcall(function()
-            while wait() do
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    Mirragecheck:Set('Mirage Island is Spawning')
-    else
-      Mirragecheck:Set('Mirage Island is Not Spawning')
-    end
-            end
-        end)
-end)
-
-Main3:Toggle("Auto Mirage Island",false,function(value)
-	if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-		function toTargetWait(a)local b=(a.p-game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude;tweenrach=game:GetService('TweenService'):Create(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"),TweenInfo.new(b/250,Enum.EasingStyle.Linear),{CFrame=a})tweenrach:Play()end;toTargetWait(workspace.Map.MysticIsland.PrimaryPart.CFrame*CFrame.new(0,250,0))
-		else
-game.StarterGui:SetCore("SendNotification", {
-Title = "Speed Hub X";
-Text = "🏝️ : Mirage Island is Not Spawning"; 
-Icon = "rbxassetid://12800687277";
-Duration = 3; 
-})
-		if _G.MirageHop then
-		wait(6)
-		Hop()
-		end          
-	end
-  end)
-
-  Main3:Toggle("Auto Mirage Island [HOP]",false,function(value)
-  _G.MirageHop = value
-  end)
-Main3:Toggle("Auto Teleport To Gear",false,function(value)
-	TP(game:GetService("Workspace").Map.MysticIsland:FindFirstChildOfClass("MeshPart").CFrame)
-	if _G.AutoToGearHOP then
-		wait(1)
-		Hop()
-		end          
-end)
-
-Main3:Toggle("Auto Teleport To Gear [HOP]",false,function(value)
-	_G.AutoToGearHOP = v
-	end)
-
-
-	spawn(function()
-		game:GetService("RunService").Heartbeat:Connect(function()
-			if _G.AutoFarm then
-			if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
-				setfflag("HumanoidParallelRemoveNoPhysics", "False")
-				setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-				game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-				end
-			end
-		end)
-	end)
 
 	if W then
 		tableMon = {
@@ -2474,7 +2394,7 @@ Main3:Toggle("Auto Teleport To Gear [HOP]",false,function(value)
 			while wait(.1) do
 			if _G.AutoFarmSelectMonster then
 			pcall(function()
-				CheckQuest(SelectMonster)
+				SelectMonster(SelectMonster)
 			 if game:GetService("Workspace").Enemies:FindFirstChild(SelectMonster) then
 			 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 			 if v.Name == SelectMonster then
@@ -9794,121 +9714,3 @@ end)
 					end
 				end)
 			end
-
-			RaceV4:Seperator("Race V4")
-    
-			RaceV4:Button("Teleport To Top Of GreatTree",function()
-			  TP(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
-				end)
-				
-				RaceV4:Button("Teleport To Timple Of Time",function()
-			  Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(28286.35546875, 14895.3017578125, 102.62469482421875)
-				end)
-				
-				RaceV4:Button("Teleport To Lever Pull",function()
-			  TP(CFrame.new(28575.181640625, 14936.6279296875, 72.31636810302734))
-			end)
-			
-			RaceV4:Button("Teleport To Acient One ",function()
-			  TP(CFrame.new(28981.552734375, 14888.4267578125, -120.245849609375))
-			end)
-			   
-			RaceV4:Button("Unlock Lever", function()
-			venyx:Notify("Unlocked")
-			if game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt") then
-				game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
-			else
-			
-			end
-			wait(0.1)
-			local ProximityPrompt = Instance.new("ProximityPrompt")
-			ProximityPrompt.Parent = game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt
-			ProximityPrompt.MaxActivationDistance = 10
-			ProximityPrompt.ActionText = "Secrets Beholds Inside"
-			ProximityPrompt.ObjectText = "An unknown lever of time"
-			
-			function onProximity()
-			local part = game:GetService("Workspace").Map["Temple of Time"].MainDoor1
-			local TweenService = game:GetService("TweenService")
-			
-			local startPosition = part.Position
-			local endPosition = startPosition + Vector3.new(0, -50, 0)
-			
-			local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-			local tween = TweenService:Create(part, tweenInfo, {Position = endPosition})
-			
-			tween:Play()
-			
-			local partnew = game:GetService("Workspace").Map["Temple of Time"].MainDoor2
-			local TweenService = game:GetService("TweenService")
-			
-			local startPosition = partnew.Position
-			local endPosition = startPosition + Vector3.new(0, -50, 0)
-			
-			local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
-			local tween = TweenService:Create(partnew, tweenInfo, {Position = endPosition})
-			
-			tween:Play()
-			
-			local SoundSFX = Instance.new("Sound")
-			SoundSFX.Parent = workspace
-			SoundSFX.SoundId = "rbxassetid://1904813041"
-			SoundSFX:Play()
-			SoundSFX.Name = "POwfpxzxzfFfFF"
-			game:GetService("Workspace").Map["Temple of Time"].Lever.Prompt:FindFirstChild("ProximityPrompt"):Remove()
-			wait(5)
-			workspace:FindFirstChild("POwfpxzxzfFfFF"):Remove()
-			game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
-			game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
-			game:GetService("Workspace").Map["Temple of Time"].NoGlitching:Remove()
-			end
-			
-			ProximityPrompt.Triggered:Connect(onProximity)
-			end)
-			
-			RaceV4:Button("Clock Acces.", function()
-				game:GetService("Workspace").Map["Temple of Time"].DoNotEnter:Remove()
-				game:GetService("Workspace").Map["Temple of Time"].ClockRoomExit:Remove()
-			end)
-			
-			RaceV4:Toggle("Disabled Inf Stairs", nil, function(value)
-				game.Players.LocalPlayer.Character.InfiniteStairs.Disabled = value
-			end)
-			RaceV4:Line()
-			 
-			RaceV4:Button("Teleport Cyborg Door",function()
-			  TP(CFrame.new(28492.4140625, 14894.4267578125, -422.1100158691406))
-			  end)
-			  
-			  RaceV4:Button("Teleport Fish Door",function()
-			  TP(CFrame.new(28224.056640625, 14889.4267578125, -210.5872039794922))
-			  end)
-			  
-			  RaceV4:Button("Teleport Ghoul Door",function()
-			  TP(CFrame.new(28672.720703125, 14889.1279296875, 454.5961608886719))
-			  end)
-			  
-			  RaceV4:Button("Teleport Human Door",function()
-			  TP(CFrame.new(29237.294921875, 14889.4267578125, -206.94955444335938))
-			  end)
-			  
-			  RaceV4:Button("Teleport Mink Door",function()
-			  TP(CFrame.new(29020.66015625, 14889.4267578125, -379.2682800292969))
-			  end)
-			  
-			  RaceV4:Button("Teleport Sky Door",function()
-			  TP(CFrame.new(28967.408203125, 14918.0751953125, 234.31198120117188))
-			  end)
-			  
-			  RaceV4:Seperator("Auto Trials")
-			  RaceV4:Button("Auto Complete Angel Trial",function(t)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame
-					end)
-			
-					RaceV4:Button("Auto Complete Rabbit Trial",function(t)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0,-5,0)
-					end)
-			
-					RaceV4:Button("Auto Complete Cyborg Trial",function(t)
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,300,0)
-					end)
