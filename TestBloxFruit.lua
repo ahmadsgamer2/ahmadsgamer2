@@ -9912,4 +9912,3 @@ end)
 					RaceV4:Button("Auto Complete Cyborg Trial",function(t)
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,300,0)
 					end)
-
