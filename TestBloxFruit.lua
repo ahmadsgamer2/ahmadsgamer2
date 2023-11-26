@@ -9732,7 +9732,7 @@ end)
 
 --Settings:Line()
 
-
+--[[
 Settings:Toggle("remove attack",true,function(value)
 getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync 
 getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
@@ -9807,4 +9807,4 @@ end)
 
 Settings:Toggle("Skill V",true,function(value)
 	_G.SkillV = value
-end)
+end)]]
