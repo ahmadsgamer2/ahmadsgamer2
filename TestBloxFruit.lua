@@ -2038,17 +2038,11 @@ task.spawn(function()
 	end
 end)
 
-function BTP(P)
-	repeat wait(0.5)
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
-		task.wait()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
-	until (P.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000
-end
-
 Main3:Toggle("Auto Farm Level",_G.AutoFarm,function(value)
 	_G.AutoFarm = value
+	_G.Seet = value
+	_G.M = value
+	StopTween(_G.AutoFarm)
 end)
 
 spawn(function()
@@ -2062,10 +2056,10 @@ spawn(function()
 					if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 						StartMagnet = false
 						CheckQuest()
-						repeat wait() topos(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.Auto_Farm_Level
+						repeat wait() topos(CFrameQuest) until (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoFarm
 						if (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 then
 							wait(1.2)
-							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",NameQuest,LevelQuest)
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest",QuestName,LevelQuest)
 							wait(0.5)
 						end
 					elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -2076,7 +2070,7 @@ spawn(function()
 									if v.Name == Ms then
 										repeat wait()
 											if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, NameMon) then
-												EquipWeapon(_G.Select_Weapon)
+												EquipWeapon(_G.SelectWeapon)
 												AutoHaki()
 												PosMon = v.HumanoidRootPart.CFrame
 												v.HumanoidRootPart.CanCollide = false
@@ -2084,7 +2078,7 @@ spawn(function()
 												v.Head.CanCollide = false
 												v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 												StartMagnet = true
-												topos(v.HumanoidRootPart.CFrame * MethodFarm)
+												topos(v.HumanoidRootPart.CFrame * CFrame.new(0,30,0))
 												game:GetService'VirtualUser':CaptureController()
 												game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 											else
