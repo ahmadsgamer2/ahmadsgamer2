@@ -1243,15 +1243,6 @@ local window = library:new({
   icon = library.Icons['ZekromHubX-icon']
 })
 
-repeat wait() until game.Players
-repeat wait() until game.Players.LocalPlayer
-repeat wait() until game.ReplicatedStorage
-repeat wait() until game.ReplicatedStorage:FindFirstChild("Remotes");
-repeat wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui");
-repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
-repeat wait() until game:GetService("Players")
-repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
-
 local Main = window:addPage({
     icon = "rbxassetid://7040391851", -- or roblox image id
     title = "Main",
@@ -1563,8 +1554,11 @@ spawn(function()
             pcall(function()
                 pcall(function()
                     for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-                        if string.find(v.Name, "Chest") then
+                        if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+                            wait()
+                            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
                             pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
                                 if (n.Name == "HumanoidRootPart") then
