@@ -1547,6 +1547,7 @@ Main_Section:addCheckbox({
     end,
 })
 
+local Mouse = game.Players.LocalPlayer:GetMouse()
 local deletions = {"LeftUpperArm","RightUpperArm","LeftLowerArm","RightLowerArm","LeftHand","RightHand"}
 spawn(function()
     while task.wait() do 
@@ -1558,7 +1559,11 @@ spawn(function()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
                         wait()
                     end
-                  end
+                  end        
+                  game:GetService('RunService').Stepped:Connect(function()
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+                  end)              
                     pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
                                 if (n.Name == "HumanoidRootPart") then
