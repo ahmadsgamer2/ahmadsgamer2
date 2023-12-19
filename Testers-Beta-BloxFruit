@@ -1566,9 +1566,10 @@ spawn(function()
         if AutoKills then 
             pcall(function()
                 pcall(function()
-                for i,v in pairs(Workspace:GetChildren()) do
-                    if (v:IsA("Chest") and v.Name ~= game.Players.Workspace.Chest or string.find(v.Name, "Chest")) then
-                        pcall(function()
+                    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+                        if string.find(v.Name, "Chest") then
+                         print(v.Name)
+                            pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
                                 if (n.Name == "HumanoidRootPart") then
                                     n.CanCollide = false
