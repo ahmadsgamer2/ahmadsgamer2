@@ -1252,10 +1252,6 @@ repeat wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
 repeat wait() until game:GetService("Players")
 repeat wait() until game:GetService("Players").LocalPlayer.Character:FindFirstChild("Energy")
 
-wait(0.1)
-
-if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
-
 local Main = window:addPage({
     icon = "rbxassetid://7040391851", -- or roblox image id
     title = "Main",
@@ -1568,10 +1564,10 @@ spawn(function()
                 pcall(function()
                     for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
                         if string.find(v.Name, "Chest") then
-                         print(v.Name)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
                             pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
-                                if (n.Name == "Chest") then
+                                if (n.Name == "HumanoidRootPart") then
                                     n.CanCollide = false
                                     n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
                                     n.Anchored = true
