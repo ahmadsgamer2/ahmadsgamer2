@@ -1556,20 +1556,13 @@ spawn(function()
                     if string.find(v.Name, "Chest") then
                         print(v.Name)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                        wait(.15)
+                        wait()
                     end
-                  end
-                  game.Players.LocalPlayer.Character.Head:Destroy()
-                  for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-                  if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
-                  firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
-                  wait()
-                  firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
                   end
                     pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
                                 if (n.Name == "HumanoidRootPart") then
-                                    n.CanCollide = false
+                                    n.CanCollide = true
                                     n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
                                     n.Anchored = true
                                     --EquipWeapon(_G.SelectWeapon)
