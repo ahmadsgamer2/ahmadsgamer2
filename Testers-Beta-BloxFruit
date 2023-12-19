@@ -1566,19 +1566,19 @@ spawn(function()
         if AutoKills then 
             pcall(function()
                 pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                for i,v in pairs(Workspace:GetChildren()) do
+                    if (v:IsA("Chest") and v.Name ~= game.Players.Workspace.Chest or string.find(v.Name, "Chest")) then
                         pcall(function()
                             for i,n in pairs(v.Character:GetChildren()) do
                                 if (n.Name == "HumanoidRootPart") then
                                     n.CanCollide = false
                                     n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
                                     n.Anchored = true
-                                    EquipWeapon(_G.SelectWeapon)
-                                    AutoHaki()
-                                    if not FastAttack then
-                                        Click()
-                                    end
+                                    --EquipWeapon(_G.SelectWeapon)
+                                    --AutoHaki()
+                                    --if not FastAttack then
+                                    --    Click()
+                                    --end
                                     for i,m in pairs(n.Parent:GetChildren())do
                                         if(table.find(deletions,m.Name))then
                                             m:Destroy()
