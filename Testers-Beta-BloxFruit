@@ -2213,34 +2213,240 @@ end
 	
 	local Win = library:window()
 	
-	Tab2 = Win:Tab("Main",14477284625)
-	Ghosts = Win:Tab("GhostShip",14577022853)
-	Seakings = Win:Tab("Sea King",14577034833)
-	Tab4 = Win:Tab("Stats",14477563495)
-	Tab5 = Win:Tab("Travel",14477598542)
-	Tab6 = Win:Tab("Shops",14477621526)
-	Tab7 = Win:Tab("Raid/Esp",14477517268)
-	Tab8 = Win:Tab("Misc",14477663692)
+	Tab2 = Win:Tab("Farm Bounty",11446900930)
+
+	local StatusBounty = Tab2:CraftPage(1)
+	StatusBounty:Seperator("Status Bounty")
+
+	local Current = StatusBounty:Label("Current Bounties :")
+
+local Bounty = tostring(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
+local sub = string.sub 
+local len = string.len
+spawn(function()
+	while wait() do
+		pcall(function()
+			if len(Bounty) == 4 then
+				Bounty1 = sub(Bounty,1,1).."."..sub(Bounty,2,3).."K"
+			elseif len(Bounty) == 5 then
+				Bounty1 = sub(Bounty,1,2).."."..sub(Bounty,3,4).."K"
+			elseif len(Bounty) == 6 then
+				Bounty1 = sub(Bounty,1,3).."."..sub(Bounty,4,5).."K"
+			elseif len(Bounty) == 7 then
+				Bounty1 = sub(Bounty,1,1).."."..sub(Bounty,2,3).."M"
+			elseif len(Bounty) == 8 then
+				Bounty1 = sub(Bounty,1,2).."."..sub(Bounty,3,4).."M"
+			elseif len(Bounty) <= 3 then
+				Bounty1 = Bounty
+			end
+			if tonumber(Bounty) == 25000000 then
+				Current:Set("Current Bounties : "..Bounty1.." [ Max ]")
+			elseif tonumber(Bounty) < 25000000 then
+				Current:Set("Current Bounties : "..Bounty1)
+			end
+		end)
+	end
+end)
+
+local Earn = StatusBounty:Label("Earned")
+local OldBounty = game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
+local Bounty = tostring(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
+local Earned = tostring(game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value - OldBounty)
+local sub = string.sub 
+local len = string.len
+spawn(function()
+	while wait() do
+		pcall(function()
+			if len(Earned) == 4 then
+				Earned1 = sub(Earned,1,1).."."..sub(Earned,2,3).."K"
+			elseif len(Earned) == 5 then
+				Earned1 = sub(Earned,1,2).."."..sub(Earned,3,4).."K"
+			elseif len(Earned) == 6 then
+				Earned1 = sub(Earned,1,3).."."..sub(Earned,4,5).."K"
+			elseif len(Earned) == 7 then
+				Earned1 = sub(Earned,1,1).."."..sub(Earned,2,3).."M"
+			elseif len(Earned) == 8 then
+				Earned1 = sub(Earned,1,2).."."..sub(Earned,3,4).."M"
+			elseif len(Earned) <= 3 then
+				Earned1 = Earned
+			end
+			Earn:Set("Earned : "..tonumber(Earned1))
+		end)
+	end
+end)
+
+	local BountyFarm = Tab2:CraftPage(2)
+
+	BountyFarm:Seperator("Farm Bounnty")
+
+	WeaponList = {"Melee","Sword", "Devil Fruit" }
+
+	task.spawn(function()
+        while wait() do
+        pcall(function()
+            if SelectWeapon == "Melee" then
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Melee" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif SelectWeapon == "Sword" then
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Sword" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            elseif SelectWeapon == "Devil Fruit" then
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Blox Fruit" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            else
+                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ToolTip == "Melee" then
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                            _G.SelectWeapon = v.Name
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+function Click()
+    game:GetService("VirtualUser"):CaptureController()
+    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+end
+
+function EquipWeapon(Tool)
+	pcall(function()
+		if game.Players.LocalPlayer.Backpack:FindFirstChild(Tool) then 
+			local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(Tool) 
+			game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid) 
+		end
+	end)
+end
+
+BountyFarm:Dropdown("Select Weapon",WeaponList,function(v)
+    SelectWeapon = v
+end)
+
+
+local deletions = {"LeftUpperArm","RightUpperArm","LeftLowerArm","RightLowerArm","LeftHand","RightHand"}
 	
-	local farmleft = Tab2:CraftPage(1)
-	farmleft:Seperator("Main Farm")
-	local farmright = Tab2:CraftPage(2)
-	farmright:Seperator("Config Farm")
-	local statleft = Tab4:CraftPage(1)
-	statleft:Seperator("Auto Stats")
-	local statright = Tab4:CraftPage(2)
-	statright:Seperator("Player Status")
-	local teleportleft = Tab5:CraftPage(1)
-	local teleportright = Tab5:CraftPage(2)
-	local shopleft = Tab6:CraftPage(1)
-	shopleft:Seperator("Fruit Shop")
-	local shopright = Tab6:CraftPage(2)
-	shopright:Seperator("Others")
-	local combatpl = Tab7:CraftPage(1)
-	combatpl:Seperator("Player Combat")
-	local Raids = Tab7:CraftPage(2)
-	Raids:Seperator("Auto Raid")
-	local leftmisc = Tab8:CraftPage(1)
-	leftmisc:Seperator("Misc")
-	local rightmisc = Tab8:CraftPage(2)
-	rightmisc:Seperator("Esp")
+BountyFarm:Toggle("Auto Farm Bounty",false,function(a)
+     _G.AutoBounty = a
+end)
+
+spawn(function()
+    while task.wait() do 
+        if _G.AutoBounty then 
+            pcall(function()
+                    pcall(function()
+						EquipWeapon(_G.SelectWeapon)
+						AutoHaki()
+						game:GetService("VirtualUser"):CaptureController()
+						game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                    end)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                            pcall(function()
+                                for i,n in pairs(v.Character:GetChildren()) do
+                                    if (n.Name == "HumanoidRootPart") then
+                                        n.CanCollide = false
+                                        n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
+                                        n.Anchored = true
+                                        game.Players.LocalPlayer.Character:FindFirstChild("Punch"):Activate()
+                                        for i,m in pairs(n.Parent:GetChildren())do
+                                            if(table.find(deletions,m.Name))then
+                                                m:Destroy()
+                                            end
+                                        end
+                                    end
+                                end
+                            end)
+                        end
+                    end
+                end)
+        end
+     end
+end)
+
+BountyFarm:Seperator("Aimbot")
+ 
+spawn(function()
+	while wait() do
+		pcall(function()
+			local MaxDistance = math.huge
+			for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+					local Distance = v:DistanceFromCharacter(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position)
+					if Distance < MaxDistance then
+						MaxDistance = Distance
+						PlayerSelectAimbot = v.Name
+					end
+				end
+			end
+		end)
+	end
+end)
+
+
+BountyFarm:Toggle("Aimbot Skill",false,function(value)
+	_G.Aimbot_Skill = value
+end)
+
+spawn(function()
+	pcall(function()
+		while task.wait() do
+			if _G.Aimbot_Skill and PlayerSelectAimbot ~= nil and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and game.Players.LocalPlayer.Character[game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name]:FindFirstChild("MousePos") then
+				local args = {
+					[1] = game:GetService("Players"):FindFirstChild(PlayerSelectAimbot).Character.HumanoidRootPart.Position
+				}
+				
+				game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name).RemoteEvent:FireServer(unpack(args))
+			end
+		end
+	end)
+end)
+
+BountyFarm:Seperator("PvP")
+
+BountyFarm:Toggle("Enabled PvP",true,function(value)
+	_G.EnabledPvP = value
+end)
+
+spawn(function()
+	pcall(function()
+		while wait(.1) do
+			if _G.EnabledPvP then
+				if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
+					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
+				end
+			end
+		end
+	end)
+end)
+
+BountyFarm:Toggle("Safe Mode",false,function(value)
+	_G.Safe_Mode = value
+end)
+
+spawn(function()
+	pcall(function()
+		while wait() do
+			if _G.Safe_Mode then
+				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+			end
+		end
+	end)
+end)
+
