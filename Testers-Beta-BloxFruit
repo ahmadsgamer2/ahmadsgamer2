@@ -2226,7 +2226,7 @@ if game.PlaceId == 2753915549 or 4442272183 or 7449423635 then
 end
 	
 	
-	local Win = library:window(_G.Logo1)
+	local Win = library:window()
 	
 	Tab2 = Win:Tab("Main",14477284625)
 	Ghosts = Win:Tab("GhostShip",14577022853)
