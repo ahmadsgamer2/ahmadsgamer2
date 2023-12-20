@@ -280,21 +280,6 @@ _G.Logo = 14103696428
 	Bottom.Position = UDim2.new(0.0119760484, 7, 0.2416666687, 0)
 	Bottom.Size = UDim2.new(0, 500, 0, 200)
 
-	local Minimize_Ui = Instance.new("ImageButton")
-	Minimize_Ui.Name = "Minimize_Ui"
-	Minimize_Ui.Parent = HeaderTop
-	Minimize_Ui.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	Minimize_Ui.BackgroundTransparency = 1
-	Minimize_Ui.Position = UDim2.new(0, 425, 0, 7)
-	Minimize_Ui.Size = UDim2.new(0, 25, 0, 25)
-	Minimize_Ui.Image = "http://www.roblox.com/asset/?id=15511995461"
-	
-	Minimize_Ui.ImageColor3 = Color3.fromRGB(255, 255, 255)
-	Minimize_Ui.ZIndex = 10
-
-
-	UICorner.Parent = ImageButton
-	UICorner.CornerRadius = UDim.new(0, 100)
 
 	local Menu_Setting = Instance.new("ImageButton")
 	Menu_Setting.Name = "Menu_Setting"
