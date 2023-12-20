@@ -4,7 +4,7 @@ do
 	ui:Destroy()
 	end
 	end
-	
+
 	local library = {}
 	local titlefunc = {}
 	local UIConfig = {
@@ -129,47 +129,8 @@ do
 	  end
 	)
 	end
-	
-	local ThunderScreen = Instance.new("ScreenGui")
-	local ThunderToggleUI = Instance.new("TextButton")
-	local ThunderCornerUI = Instance.new("UICorner")
-	local ThunderImageUI = Instance.new("ImageLabel")
-	local ThunderImageUI = Instance.new("ImageLabel")
-	
-			ThunderScreen.Name = "ThunderScreen"
-			ThunderScreen.Parent = game.CoreGui
-			ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	
-			ThunderToggleUI.Name = "ThunderToggleUI"
-			ThunderToggleUI.Parent = ThunderScreen
-			ThunderToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
-			ThunderToggleUI.BorderSizePixel = 0
-			ThunderToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-			ThunderToggleUI.Size = UDim2.new(0, 50, 0, 50)
-			ThunderToggleUI.Font = Enum.Font.SourceSans
-			ThunderToggleUI.Text = ""
-			ThunderToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
-			ThunderToggleUI.TextSize = 14.000
-			ThunderToggleUI.Draggable = true
-			ThunderToggleUI.MouseButton1Click:Connect(function()
-			game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-			game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
-			end)
-	
-			ThunderCornerUI.Name = "ThunderCornerUI"
-			ThunderCornerUI.Parent = ThunderToggleUI
-	
-			ThunderImageUI.Name = "MODILEMAGE"
-			ThunderImageUI.Parent = ThunderToggleUI
-			ThunderImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
-			ThunderImageUI.BackgroundTransparency = 1.000
-			ThunderImageUI.BorderSizePixel = 0
-			ThunderImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
-			ThunderImageUI.Size = UDim2.new(0, 50, 0, 50)
-			ThunderImageUI.Image = "http://www.roblox.com/asset/?id=14288624550"
-	
 
-	_G.Logo = 14103696428
+_G.Logo = 14103696428
 	_G.Logo1 = 14288624550
 	local UI = Instance.new("ScreenGui")
 	UI.Name = randomString
@@ -257,7 +218,7 @@ do
 	Title.Position = UDim2.new(0.05, 0, 0.04, 0)
 	Title.Size = UDim2.new(0, 483, 0, 31)
 	Title.Font = Enum.Font.GothamBold
-	Title.Text = "Zekrom Hub X"
+	Title.Text = "Zekrom Hub X | "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 	Title.RichText = true;
 	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Title.TextSize = 15.000
@@ -306,9 +267,11 @@ do
 	  TabContainer.CanvasSize = UDim2.new(0, UIListLayout.AbsoluteContentSize.X, 0, 0)
 	  end
 	)
+
 	UIPadding.Parent = TabContainer
 	UIPadding.PaddingLeft = UDim.new(0, 3)
 	UIPadding.PaddingTop = UDim.new(0, 3)
+
 	local Bottom = Instance.new("Frame")
 	Bottom.Name = "Bottom"
 	Bottom.Parent = Main
@@ -316,7 +279,61 @@ do
 	Bottom.BackgroundTransparency = 1.000
 	Bottom.Position = UDim2.new(0.0119760484, 7, 0.2416666687, 0)
 	Bottom.Size = UDim2.new(0, 500, 0, 200)
+
+	local Minimize_Ui = Instance.new("ImageButton")
+	Minimize_Ui.Name = "Minimize_Ui"
+	Minimize_Ui.Parent = HeaderTop
+	Minimize_Ui.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Minimize_Ui.BackgroundTransparency = 1
+	Minimize_Ui.Position = UDim2.new(0, 425, 0, 7)
+	Minimize_Ui.Size = UDim2.new(0, 25, 0, 25)
+	Minimize_Ui.Image = "http://www.roblox.com/asset/?id=15511995461"
 	
+	Minimize_Ui.ImageColor3 = Color3.fromRGB(255, 255, 255)
+	Minimize_Ui.ZIndex = 10
+	
+	Minimize_Ui.MouseButton1Click(function()
+		Hide()
+	end)
+
+	local UserInputService = game:GetService("UserInputService")
+	local VirtualInputManager = game:GetService("VirtualInputManager")
+	local TweenService = game:GetService("TweenService")
+	local tween = game:service"TweenService"
+	local RunService = game:GetService("RunService")
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local Mouse = LocalPlayer:GetMouse()
+	local GuiService = game:GetService("GuiService")
+	
+	local ScreenGui = Instance.new("ScreenGui")
+	local ImageButton = Instance.new("ImageButton")
+	local UICorner = Instance.new("UICorner")
+	
+	ScreenGui.Name = "Zekrom Hub X Minimize_Ui"
+	ScreenGui.Parent = game.CoreGui
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	
+	ImageButton.Parent = ScreenGui
+	ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	ImageButton.BorderSizePixel = 0
+	ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+	ImageButton.Size = UDim2.new(0, 70, 0, 70)
+	ImageButton.Draggable = true
+	ImageButton.Image = "rbxassetid://14300572370"
+	ImageButton.Visible = true
+	ImageButton.MouseButton1Down:connect(function()
+		UI.Visible = false
+		ImageButton.Visible = true
+	end)
+
+	function Hide()
+		UI.Visible = true
+		ImageButton.Visible = false
+	end
+	
+	UICorner.Parent = ImageButton
+	UICorner.CornerRadius = UDim.new(0, 100)
+
 	local Menu_Setting = Instance.new("ImageButton")
 	Menu_Setting.Name = "Menu_Setting"
 	Menu_Setting.Parent = HeaderTop
@@ -466,41 +483,6 @@ do
 	Name.Text = game.Players.LocalPlayer.Name.. " ("..game.Players.LocalPlayer.DisplayName..")"
 	Name.TextXAlignment = Enum.TextXAlignment.Left
 	
-	Lvl.Name = "Lvl"
-	Lvl.Parent = PlayerInfoFrame
-	Lvl.Active = true
-	Lvl.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Lvl.BackgroundTransparency = 1.000
-	Lvl.Position = UDim2.new(0, 85, 0.113057934, 0)
-	Lvl.Size = UDim2.new(0, 200, 0, 27)
-	Lvl.TextTransparency = 0.8
-	Lvl.Font = Enum.Font.GothamBold
-	Lvl.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Lvl.TextSize = 10.000
-	Lvl.TextXAlignment = Enum.TextXAlignment.Left
-	
-	Fruit.Name = "Fruit"
-	Fruit.Parent = PlayerInfoFrame
-	Fruit.Active = true
-	Fruit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Fruit.BackgroundTransparency = 1.000
-	Fruit.Position = UDim2.new(0, 85, 0.199820146, 0)
-	Fruit.Size = UDim2.new(0, 200, 0, 27)
-	Fruit.Font = Enum.Font.GothamBold
-	Fruit.TextTransparency = 0.8
-	Fruit.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Fruit.TextSize = 10.000
-	Fruit.TextXAlignment = Enum.TextXAlignment.Left
-	
-	local id = game.PlaceId
-	
-	if id == 2753915549 or id == 4442272183 or id == 7449423635 then
-	Fruit.Text = "Devil Fruit : "..game:GetService("Players").LocalPlayer.Data.DevilFruit.Value.. " / ".. "Race : " ..game:GetService("Players").LocalPlayer.Data.Race.Value
-	else
-	  Fruit.Text = "Don't Find Your Database"
-	Lvl.Text = "Don't Find Your Database"
-	end
-	
 	local HealthBar = Instance.new("Frame")
 	local HealthBarUICorner = Instance.new("UICorner")
 	local HealthText = Instance.new("TextLabel")
@@ -592,7 +574,9 @@ do
 	LineStamina.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
 	LineStamina.BorderSizePixel = 0
 	LineStamina.Size = UDim2.new(0, 200, 0, 5)
-	
+
+
+if game.PlaceId == 2753915549 or 4442272183 or 7449423635 then
 	local Beli = Instance.new("TextLabel")
 	local Fragment = Instance.new("TextLabel")
 	
@@ -659,7 +643,8 @@ do
 		end)
 	  end
 	  end)
-	
+	end
+
 	local Settingcorner = Instance.new("UICorner")
 	Settingcorner.CornerRadius = UDim.new(0, 60)
 	Settingcorner.Name = "UserImageCorner"
@@ -802,93 +787,6 @@ do
 	  setclipboard("https://discord.gg/A7jhrH94rX")
 	  end)
 	
-	local Butn3 = Instance.new("Frame")
-	local Ui3 = Instance.new("UICorner")
-	local Textlavel3 = Instance.new("TextLabel")
-	local Texbob3 = Instance.new("TextButton")
-	
-	Butn3.Name = "Butn3"
-	Butn3.Parent = SettingFrame
-	Butn3.BackgroundColor3 = _G.Color
-	Butn3.Size = UDim2.new(0, 190, 0, 30)
-	Butn3.Position = UDim2.new(0, 10, 0, 80)
-	Butn3.ZIndex = 16
-	
-	Ui3.CornerRadius = UDim.new(0, 4)
-	Ui3.Parent = Butn3
-	
-	Textlavel3.Parent = Butn3
-	Textlavel3.AnchorPoint = Vector2.new(0.5, 0.5)
-	Textlavel3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Textlavel3.BackgroundTransparency = 1.000
-	Textlavel3.Position = UDim2.new(0.5, 0, 0.5, 0)
-	Textlavel3.Size = UDim2.new(0, 40, 0, 12)
-	Textlavel3.ZIndex = 16
-	Textlavel3.Font = Enum.Font.GothamBold
-	Textlavel3.Text = "GOD MODE (Bugs)"
-	Textlavel3.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Textlavel3.TextSize = 14.000
-	
-	Texbob3.Parent = Butn3
-	Texbob3.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-	Texbob3.BackgroundTransparency = 1.000
-	Texbob3.BorderSizePixel = 0
-	Texbob3.ClipsDescendants = true
-	Texbob3.Size = UDim2.new(1, 0, 1, 0)
-	Texbob3.ZIndex = 16
-	Texbob3.AutoButtonColor = false
-	Texbob3.Font = Enum.Font.Gotham
-	Texbob3.Text = ""
-	Texbob3.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Texbob3.TextSize = 14.000
-	
-	Texbob3.MouseEnter:Connect(function()
-	  TweenService:Create(
-		Butn3,
-		TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-		{
-		  BackgroundTransparency = 0.5
-		}
-	  ):Play()
-	  end)
-	
-	Texbob3.MouseLeave:Connect(function()
-	  TweenService:Create(
-		Butn3,
-		TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-		{
-		  BackgroundTransparency = 0
-		}
-	  ):Play()
-	  end)
-	
-	Texbob3.MouseButton1Click:Connect(function()
-	  CircleClick(Butn3, Mouse.X, Mouse.Y)
-	  Textlavel3.TextSize = 0
-	  TweenService:Create(
-		Textlavel3,
-		TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-		{
-		  TextSize = 12
-		}
-	  ):Play()
-	  local LocalPlayer = game:GetService("Players").LocalPlayer
-	
-	  local function Invincibility()
-	  if LocalPlayer.Character then
-	  for i, v in pairs(LocalPlayer.Character:GetChildren()) do
-	  if v.Name == "hitbox" then
-	  v:Destroy()
-	  end
-	  end
-	  end
-	  end
-	
-	  while wait(0.5) do
-	  Invincibility(LocalPlayer)
-	  end
-	  end)
-	
 	local Buton4 = Instance.new("Frame")
 	local Ui4 = Instance.new("UICorner")
 	local Textlval3 = Instance.new("TextLabel")
@@ -912,7 +810,7 @@ do
 	Textlval3.Size = UDim2.new(0, 40, 0, 12)
 	Textlval3.ZIndex = 16
 	Textlval3.Font = Enum.Font.GothamBold
-	Textlval3.Text = "DESTROY GUI"
+	Textlval3.Text = "Destroy Gui"
 	Textlval3.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Textlval3.TextSize = 14.000
 	
@@ -961,6 +859,7 @@ do
 	  ):Play()
 	  UI:Destroy()
 	  end)
+
 	dragify(ClickFrame, Main)
 	local tabs = {}
 	local S = false
