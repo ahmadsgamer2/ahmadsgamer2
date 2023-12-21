@@ -110,6 +110,12 @@ function thisCode()
         Duration = math.huge,
         Callback = AllowRunServiceBind,
     })
+
+    spawn(function()
+        while AllowRunService == true and wait(5) do
+            game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+        end
+    end)
     
     task.spawn(function()
         while true do
@@ -137,7 +143,6 @@ function thisCode()
             task.wait()
         end
     end)
-
 end
 
 thisCode()
