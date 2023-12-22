@@ -6,7 +6,7 @@ local test = Atlas.new({
     Credit = "Made by me!";
     Color = Color3.fromRGB(164, 53, 90);
     FullName = "Example Script";
-    UseLoader = true;
+    UseLoader = false;
     Bind = "LeftControl";
     CheckKey = function(e) -- this can be nil to disable key checking
         return e == "S"
