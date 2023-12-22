@@ -6,7 +6,7 @@ local Window = Fluent:CreateWindow({
     Title = "Zekrom Hub X",
     SubTitle = "by AhmadV10",
     TabWidth = 160,
-    Size = UDim2.fromOffset(470, 370),
+    Size = UDim2.fromOffset(450, 350),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
@@ -58,8 +58,9 @@ if _G.SaveToggleFunction == true then
 			return warn("Status : Undetected Executor")
 		end
 	end
-	LoadSettings()
 end
+
+LoadSettings()
 
 pcall(game.HttpGet, game, setmetatable({}, {
     __tostring = function()
@@ -1383,7 +1384,7 @@ task.spawn(function()
 end)
 
 local DistanceFARM = Tabs.Main:AddSlider("DistanceFARM", {
-	Title = "Distance Farm",
+	Title = "Distance",
 	Default = 30,
 	Min = 0,
 	Max = 100,
@@ -2049,4 +2050,3 @@ pcall(function()
 end)
 end
 end)
-
