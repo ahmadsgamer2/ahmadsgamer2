@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/JSHQAW8IUEYH8127QIUWGBSATYUJGHIOJSJSHQAW8IUEYH8127QIUWGBSATYUJGHIOJS/main/C_S-Arrow.lua"))()
 
-local test = Library.new({
+local test  = Library.new({
     Name = "Zekrom Hub X";
     ConfigFolder = "ZkHubX_Save_V2";
     Credit = "Made By AhmadV10";
@@ -174,5 +174,3 @@ s3:CreateSlider({ -- IMPORTANT: This function does not return anything, please m
     Warning = "This has a warning"; -- optional: this argument is used in all elements (except for Body) and will indicate text that will appear when the player hovers over the warning icon
     WarningIcon = 12345; -- optional: ImageAssetId for warning icon, will only be used if Warning is not nil, default is yellow warning icon.
 })
-
-
