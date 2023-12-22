@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/JSHQAW8IUEYH8127QIUWGBSATYUJGHIOJSJSHQAW8IUEYH8127QIUWGBSATYUJGHIOJS/main/C_S-Arrow.lua"))()
 
-local UI = Library.new({
+local test = Library.new({
     Name = "Zekrom Hub X";
     ConfigFolder = "ZkHubX_Save_V2";
     Credit = "Made By AhmadV10";
