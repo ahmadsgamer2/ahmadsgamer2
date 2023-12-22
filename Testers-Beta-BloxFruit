@@ -6,7 +6,7 @@ local test  = Library.new({
     Credit = "Made By AhmadV10";
     Color = Color3.fromRGB(255,0,0);
     Bind = "LeftControl"; 
-    UseLoader = false; 
+    UseLoader = true; 
     FullName = "";
     Discord = "https://discord.gg/A7jhrH94rX";
 })
