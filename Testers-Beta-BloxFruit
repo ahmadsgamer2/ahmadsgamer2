@@ -6,7 +6,7 @@ local UI = Library.new({
     Credit = "Made By AhmadV10";
     Color = Color3.fromRGB(255,0,0);
     Bind = "LeftControl"; 
-    UseLoader = true; 
+    UseLoader = false; 
     FullName = "";
     Discord = "https://discord.gg/A7jhrH94rX";
 })
@@ -18,10 +18,12 @@ local MySection = Main_Page:CreateSection("My Section")
 MySection:CreateToggle({ -- IMPORTANT: This function does not return anything, please modify flags directly in order to read or update toggle values. SCROLL TO BOTTOM OF PAGE TO SEE HOW TO MODIFY FLAGS
     Name = "Toggle"; -- required: name of element
     Flag = "MyToggle"; -- required: unique flag name to use
-    Default = true; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
+    Default = false; -- optional: default value for toggle, will be used if config saving is disabled and there is no saved data, will be false if left nil
     Callback = function(newValue) -- optional: function that will be called when toggled, it is reccomended to modify flags directly
         print("Toggle:",newValue)
     end;
 })
+
+
 
 
