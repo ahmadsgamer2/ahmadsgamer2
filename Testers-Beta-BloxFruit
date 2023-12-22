@@ -6,7 +6,7 @@ local Window = Fluent:CreateWindow({
     Title = "Zekrom Hub X",
     SubTitle = "by AhmadV10",
     TabWidth = 160,
-    Size = UDim2.fromOffset(470, 345),
+    Size = UDim2.fromOffset(470, 370),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.End -- Used when theres no MinimizeKeybind
@@ -1333,7 +1333,7 @@ end
 local MethodList = {"Upper","Behind","Below" }
 
 local SelectMethod = Tabs.Main:AddDropdown("SelectMethod", {
-	Title = "Select Farm Method",
+	Title = "Farm Method",
 	Values = MethodList,
 	Multi = false,
 	Default = 1,
@@ -1350,7 +1350,7 @@ FastAttackList = {
 }
 
 local SelectAttack = Tabs.Main:AddDropdown("SelectAttack", {
-	Title = "Select Attack Type",
+	Title = "Attack Type",
 	Values = FastAttackList,
 	Multi = false,
 	Default = 1,
@@ -1439,7 +1439,7 @@ spawn(function()
 	end)
 end)
 
-local AC_Bypass = Tabs.Main:AddToggle("AC_Bypass", {Title = "Auto Farm Level", Default = _G.Settings.SafeMode })
+local AC_Bypass = Tabs.Main:AddToggle("AC_Bypass", {Title = "Bypass Anti-Cheat", Default = _G.Settings.SafeMode })
 AC_Bypass:OnChanged(function(value)
 	_G.SafeMode = value
 	_G.Settings.SafeMode = value
