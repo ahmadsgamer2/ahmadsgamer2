@@ -1473,7 +1473,7 @@ end)
 
 Main.newLabel("Farming")
 
-Main.newToggle("Bypass Anti-Cheat", "", _G.Settings.SafeMode, function(value)
+Main.newToggle("Safe Mode", "", false, function(value)
     _G.SafeMode = value
     _G.Settings.SafeMode = value
     SaveSettings() 
@@ -1483,7 +1483,6 @@ Main.newToggle("Bypass Anti-Cheat", "", _G.Settings.SafeMode, function(value)
                 local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                 if HealthPercent < 20 then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
-                    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เซฟโหมดทำงาน..",Icon = "rbxassetid://14645512457",Duration = 1}) 
                 end
             end
             task.wait()
@@ -4922,16 +4921,6 @@ task.spawn(function()
 
     Item.newLabel("Bones")
 
-    local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-    local count_stack = Item.newLabel('Bone : ')
-    spawn(function()
-        while true do
-            local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-            count_stack:Set('Bone : ' .. boneStatus)
-            wait(1)
-        end
-    end)
-
     Item.newToggle("Auto Farm Bone", "", _G.Settings.AutoFarmBone or false, function(value)
         _G.AutoFarmBone  = value
         _G.Settings.AutoFarmBone = value
@@ -5007,7 +4996,7 @@ task.spawn(function()
         end
     end)
 
-    Item.newToggle("SpawnBoss Soul Reaper", "", _G.SpawnBossHallow, function(value)
+    Item.newToggle("SpawnBoss Soul Reaper", "", false, function(value)
         _G.SpawnBossHallow = value
         toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
         if value == false then
