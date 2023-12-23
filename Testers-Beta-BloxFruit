@@ -51,7 +51,7 @@ UIListLayout.Parent = MainContainer
 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
  
  
-function drag (s)
+function drag(s)
 script.Parent = s;
 script.Parent.Position = UDim2.new (0, script.Parent.Parent.AbsoluteSize.X * script.Parent.Position.X.Scale + script.Parent.Position.X.Offset, 0, script.Parent.Parent. AbsoluteSize.Y * script.Parent.Position.Y.Scale + script.Parent.Position.Y.Offset)
 local i = false
@@ -182,5 +182,5 @@ else
 error("YOUR EXPLOIT IS NOT SUPPORTED!")
 end
 
-wait(30(
+wait(30)
 loadstring(game:HttpGet"https://raw.githubusercontent.com/reicann/a08jx4/main/as8p2fx.script")()
