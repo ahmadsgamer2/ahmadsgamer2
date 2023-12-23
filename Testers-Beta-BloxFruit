@@ -9,45 +9,6 @@ local TitleText = Instance.new("TextLabel")
 local MainContainer = Instance.new("ScrollingFrame")
 local TemplateText = Instance.new("TextLabel")
 local UIListLayout = Instance.new("UIListLayout")
- 
-local function Draggable(Frame) 
-    local dragToggle
-    local dragSpeed = .25
-    local dragInput
-    local dragStart
-    local dragPos
-
-    local function updateInput(input)
-        local Delta = input.Position - dragStart
-        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-        game:GetService("TweenService"):Create(Frame, TweenInfo.new(.25), {Position = Position}):Play()
-    end
-
-    Frame.InputBegan:Connect(function(input)
-        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-            dragToggle = true
-            dragStart = input.Position
-            startPos = Frame.Position
-            input.Changed:Connect(function()
-                if (input.UserInputState == Enum.UserInputState.End) then
-                    dragToggle = false
-                end
-            end)
-        end
-    end)
-
-    Frame.InputChanged:Connect(function(input)
-        if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-            dragInput = input
-        end
-    end)
-
-    game:GetService("UserInputService").InputChanged:Connect(function(input)
-        if (input == dragInput and dragToggle) then
-            updateInput(input)
-        end
-    end)
-end
 
 --Properties:
  
@@ -64,8 +25,6 @@ Backgroud.BorderSizePixel = 2
 Backgroud.Position = UDim2.new(0.0586419739, 0, 0.24924925, 0)
 Backgroud.Size = UDim2.new(0, 406, 0, 222)
  
-Draggable(HttpSpy)
-
 TitleText.Name = "TitleText"
 TitleText.Parent = Backgroud
 TitleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
