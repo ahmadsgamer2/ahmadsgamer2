@@ -1,9 +1,9 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
 
 
-local window = Library:Load("Speed Hub X | Version: 2.0.5", "Default")
+Library:Load("Speed Hub X | Version: 2.0.5", "Default")
 
-local Main = window.newTab("Main", "rbxassetid://7040391851")
+local Main = Library.newTab("Main", "rbxassetid://7040391851")
 
 pcall(game.HttpGet, game, setmetatable({}, {
     __tostring = function()
