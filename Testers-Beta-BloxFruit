@@ -2198,9 +2198,9 @@ spawn(function()
     end)
 
     if World1 then
-        Main.newLabel("Status : World 1")
+        Item.newLabel("Status : World 1")
 
-        Main.newToggle("Auto New World", "", _G.AutoNewWorld, function(value)
+        Item.newToggle("Auto New World", "", false, function(value)
             _G.AutoNewWorld = value
             if value == false then
                 task.wait()
@@ -2267,7 +2267,7 @@ spawn(function()
             end
         end)
 
-    Item.newToggle("Auto Saber", "", _G.AutoSaber, function(value)
+    Item.newToggle("Auto Saber", "", false, function(value)
         _G.AutoSaber  = value
         if value == false then
             task.wait()
@@ -2412,7 +2412,7 @@ spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Saber", "", _G.AutoPole, function(value)
+    Item.newToggle("Auto Saber", "", false, function(value)
         _G.AutoPole = value
         if value == false then
             task.wait()
@@ -2475,7 +2475,7 @@ spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Buy Ablility", "", _G.AutoBuyAbility, function(value)
+    Item.newToggle("Auto Buy Ablility", "", false, function(value)
         _G.AutoBuyAbility = value
         if value == false then
             task.wait()
@@ -2582,9 +2582,9 @@ spawn(function()
         end
     end)
    elseif World2 then
-    Main.newLabel("Status : World 2")
+    Item.newLabel("Status : World 2")
 
-    Item.newToggle("Auto Third World", "", _G.AutoThirdSea, function(value)
+    Item.newToggle("Auto Third World", "", false, function(value)
         _G.AutoThirdSea = value
         if value == false then
             task.wait()
@@ -2885,7 +2885,7 @@ spawn(function()
     end
 end)
 
-Item.newToggle("Auto Evo Race V2", "", _G.Auto_Evo_Race_V2, function(value)
+Item.newToggle("Auto Evo Race V2", "", false, function(value)
     _G.Auto_Evo_Race_V2 = value
 end)
 
@@ -2939,7 +2939,7 @@ spawn(function()
 end
 end)
 
-Item.newToggle("Auto Bartilo Quest", "", _G.Settings.AutoBartiloQuest, function(value)
+Item.newToggle("Auto Bartilo Quest", "", _G.Settings.AutoBartiloQuest or false, function(value)
     _G.AutoBartiloQuest   = value
     _G.Settings.AutoBartiloQuest = value
     SaveSettings() 
@@ -3135,7 +3135,7 @@ task.spawn(
         end
     end)      
 
-    Item.newToggle("Auto Dark Coat", "", _G.AutoDarkCoat, function(value)
+    Item.newToggle("Auto Dark Coat", "", false, function(value)
         _G.AutoDarkCoat = value
         if value == false then
             task.wait()
@@ -3199,7 +3199,7 @@ task.spawn(
     end
 )
 
-Item.newToggle("Auto Ectoplasm", "", _G.AutoEctoplasm, function(value)
+Item.newToggle("Auto Ectoplasm", "", false, function(value)
     _G.AutoEctoplasm = value
     if value == false then
         task.wait()
@@ -3257,7 +3257,7 @@ task.spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Factory", "", _G.AutoFactory, function(value)
+    Item.newToggle("Auto Factory", "", false, function(value)
         _G.AutoFactory = value
         if value == false then
             task.wait()
@@ -3295,7 +3295,7 @@ task.spawn(function()
         end
         end)
 
-        Item.newToggle("Auto True Triple Katana", "", _G.AutoTrueTriplKatana, function(value)
+        Item.newToggle("Auto True Triple Katana", "", false, function(value)
             _G.AutoTrueTriplKatana = value
             if value == false then
                 task.wait()
@@ -3317,7 +3317,7 @@ task.spawn(function()
             end
         end)
 
-        Item.newToggle("Auto Rengoku Swords", "", _G.AutoTrueTriplKatana, function(value)
+        Item.newToggle("Auto Rengoku Swords", "", false, function(value)
             _G.AutoRengoku = value
             if value == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3375,7 +3375,7 @@ task.spawn(function()
             end
         end)
     
-        Item.newToggle("Auto Swan Glasses", "", _G.AutoSwanGlasses, function(value)
+        Item.newToggle("Auto Swan Glasses", "", false, function(value)
             _G.AutoSwanGlasses = value
             if value == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3428,9 +3428,9 @@ task.spawn(function()
             end
         end)
     if World3 then
-        Main.newLabel("Status : World 3")
+        Item.newLabel("Status : World 3")
     
-        Item.newToggle("Auto Rainbow Haki", "", _G.AutoRainbowHaki, function(value)
+        Item.newToggle("Auto Rainbow Haki", "", false, function(value)
             _G.AutoRainbowHaki = value
             if value == false then
                 task.wait()
@@ -3652,7 +3652,7 @@ task.spawn(function()
         end
     end)
 
-        Item.newToggle("Auto Ken-Haki V2", "", _G.AutoRainbowHaki, function(value)
+        Item.newToggle("Auto Ken-Haki V2", "", false, function(value)
             _G.AutoKenHakiV2 = value
             if value == false then
                 task.wait()
@@ -3789,14 +3789,14 @@ task.spawn(function()
             end
         end)
 
-        Main.newLabel("Cursed Dual Katana")
+        Item.newLabel("Cursed Dual Katana")
 
-        Item.newToggle("Auto Cursed Dual Katana", "", _G.Auto_Cursed_Dual_Katana, function(value)
+        Item.newToggle("Auto Cursed Dual Katana", "", false, function(value)
             _G.Auto_Cursed_Dual_Katana = value
         end)
 
         
-        Item.newToggle("Auto Holy Torch", "", _G.AutoHolyTorch, function(value)
+        Item.newToggle("Auto Holy Torch", "", false, function(value)
             _G.AutoHolyTorch = value
             _G.BypassTP = false
             if value == false then
@@ -4350,7 +4350,7 @@ task.spawn(function()
 
             Tushita_Quest1 = nil
             if Tushita_Quest1 == false then
-            Item.newToggle("Tushita Quest : 2", "", Tushita_Quest2, function(value)
+            Item.newToggle("Tushita Quest : 2", "", false, function(value)
                 Tushita_Quest2 = value
             Tushita_Quest2 = value
             if value == false then
@@ -4407,7 +4407,7 @@ task.spawn(function()
         end)
         Item.newLabel("Yama Quest")
 
-        Item.newToggle("Yama Quest : 1", "", YamaQuest1, function(value)
+        Item.newToggle("Yama Quest : 1", "", false, function(value)
             YamaQuest1 = value
             if value == false then
                 wait()
@@ -4428,7 +4428,7 @@ task.spawn(function()
                 end
             end)
         end)
-        Item.newToggle("Yama Quest : 2", "", YamaQuest2, function(value)
+        Item.newToggle("Yama Quest : 2", "", false, function(value)
             YamaQuest2 = value
             if value == false then
                 wait()
@@ -4475,7 +4475,7 @@ task.spawn(function()
             end)
         end)
 
-        Item.newToggle("MobAura", "", MobAura, function(value)
+        Item.newToggle("Mob Aura", "", false, function(value)
             MobAura = value
             if value == false then
                 wait()
@@ -4861,7 +4861,7 @@ task.spawn(function()
     end)
 
     Item.newLabel("Elite Hunter")
-    Item.newToggle("Auto Elite Hunter Hop", "", _G.AutoEliteHunterHop, function(value)
+    Item.newToggle("Auto Elite Hunter Hop", "", false, function(value)
         _G.AutoEliteHunterHop = value
         Elite()
         if value == false then
@@ -4869,7 +4869,7 @@ task.spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Elite Hunter", "", _G.AutoEliteHunter, function(value)
+    Item.newToggle("Auto Elite Hunter", "", false, function(value)
         _G.AutoEliteHunter = value
         Elite()
         if value == false then
@@ -4877,7 +4877,7 @@ task.spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Castle Raid", "", _G.AutoCastleRaid, function(value)
+    Item.newToggle("Auto Castle Raid", "", false, function(value)
         _G.AutoCastleRaid = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -4923,8 +4923,7 @@ task.spawn(function()
     Item.newLabel("Bones")
 
     local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-    local count_number = 0
-    local count_stack = Item.newLabel('Bone : ' .. count_number)
+    local count_stack = Item.newLabel('Bone : ')
     spawn(function()
         while true do
             local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
@@ -4933,7 +4932,7 @@ task.spawn(function()
         end
     end)
 
-    Item.newToggle("Auto Farm Bone", "", _G.Settings.AutoFarmBone, function(value)
+    Item.newToggle("Auto Farm Bone", "", _G.Settings.AutoFarmBone or false, function(value)
         _G.AutoFarmBone  = value
         _G.Settings.AutoFarmBone = value
         SaveSettings() 
@@ -4997,7 +4996,7 @@ task.spawn(function()
         end)
     end)
 
-    Item.newToggle("Auto Random Bone", "", _G.AutoRandomBone, function(value)
+    Item.newToggle("Auto Random Bone", "", false, function(value)
         _G.AutoRandomBone = value
     end)
     spawn(function()
@@ -5035,7 +5034,7 @@ task.spawn(function()
             wait(1)
         end
     end)
-    Item.newToggle("Auto Cake Prince", "", _G.AutoCakePrince, function(value)
+    Item.newToggle("Auto Cake Prince", "", false, function(value)
         _G.AutoCakePrince  = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5152,7 +5151,7 @@ task.spawn(function()
             end
         end)
     end)
-    Item.newToggle("Auto Spawn Cake Prince", "", _G.Spawnka, function(value)
+    Item.newToggle("Auto Spawn Cake Prince", "", false, function(value)
         _G.Spawnka = value
         while _G.Spawnka do wait()
         game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
