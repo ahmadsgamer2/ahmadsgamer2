@@ -2244,14 +2244,12 @@ spawn(function()
             end
           end
         end)
-        
+
         spawn(function()
-        while task.wait() do
-        if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
-                local ohString1 = "SetTeam"
-                local ohString2 = "Pirates"
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
-             end
+            while wait(10) do
+            if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+                game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+            end
         end
         end)
 
