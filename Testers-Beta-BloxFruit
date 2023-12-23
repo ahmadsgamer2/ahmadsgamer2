@@ -3,6 +3,8 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsG
 
 Library:Load("Speed Hub X | Version: 2.0.5", "Default")
 
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Speed hub X",Text = "Loading...",Icon = "rbxassetid://15511158491",Duration = 2})
+
 local Main = Library.newTab("Main", "rbxassetid://7040391851")
 local Item = Library.newTab("Item", "rbxassetid://9606626034")
 
@@ -24,7 +26,7 @@ pcall(game.HttpGet, game, setmetatable({}, {
   
   wait(0.1)
   
-if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
+ if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SaltyHB/Poggers/main/Public"))()
@@ -167,6 +169,7 @@ function SaveSettings()
 end
 LoadSettings()
 end
+
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
 local tween = game:service"TweenService"
@@ -174,7 +177,6 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-repeat wait(0) until game:IsLoaded()
 	
 	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
@@ -2058,10 +2060,58 @@ local SubQuest = false
 local oldmob = Name
 local oldcheckquest = NameMon
 
+spawn(function()
+    while task.wait() do 
+        pcall(function()
+        if _G.Settings.AutoFarm then
+            if _G.DoubleQuest then
+                        if SubQuest == true then
+                            if LevelFarm then
+                                if tonumber(LevelFarm - 1) ~= 0 then
+                                    CheckOldQuest(tonumber(LevelFarm - 1))
+                                end
+                            end
+                        else
+                            CheckQuest()
+                            oldmob = Name
+                            oldcheckquest = NameMon
+                            spawn(function()
+                                pcall(function()
+                                    if NoLoopDuplicate == false then
+                                        if CheckNotifyComplete() and _G.AutoFarm then
+                                            NoLoopDuplicate = true
+                                            while wait() do
+                                                SubQuest = true
+                                                if CheckNotifyComplete() or _G.AutoFarm == false then
+                                                    break;
+                                                end
+                                            end
+                                            SubQuest = false
+                                            NoLoopDuplicate = false
+                                        end
+                                    end
+                                end)
+                            end)
+                            if SubQuest == true then
+                                if LevelFarm then
+                                    if tonumber(LevelFarm - 1) ~= 0 then
+                                        CheckOldQuest(tonumber(LevelFarm - 1))
+                                    end
+                                end
+                            end
+                        end
+                    else
+                        CheckQuest()
+                    end
+                    AutoFarmLevel()
+                end
+                end)
+            end
+        end)
 
 
 task.spawn(function()
-while wait() do
+while task.wait() do
 pcall(function()
     if _G.Settings.AutoFarm then
         if _G.DoubleQuest then
