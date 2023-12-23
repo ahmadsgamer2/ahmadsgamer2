@@ -2373,19 +2373,24 @@ spawn(function()
 
     if World1 then
     local tableBoss = {"The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
-    end
-    
-    if World2 then
-    local tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
-    end
-
-    if World3 then
-    local tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
-    end
-
     Main.newDropdown("Select Boss", "", tableBoss, function(v)
         _G.SelectBoss = v
     end)
+   end
+
+    if World2 then
+    local tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
+    Main.newDropdown("Select Boss", "", tableBoss, function(v)
+        _G.SelectBoss = v
+    end)
+   end
+
+    if World3 then
+    local tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
+    Main.newDropdown("Select Boss", "", tableBoss, function(v)
+        _G.SelectBoss = v
+    end)
+    end
 
     Main.newToggle("Auto Farm On Select Boss", "", false, function(value)
         _G.AutoFarmBoss = value
