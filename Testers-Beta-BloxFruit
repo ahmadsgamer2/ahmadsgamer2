@@ -3,7 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsG
 
 Library:Load("Speed Hub X", "Default")
 
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Speed hub X",Text = "Loading...",Icon = "rbxassetid://15511158491",Duration = 2})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Speed hub X",Text = "Loading...",Icon = "rbxassetid://15511158491",Duration = 4})
 
 local Main = Library.newTab("Main", "rbxassetid://7040391851")
 local Item = Library.newTab("Item", "rbxassetid://9606626034")
@@ -2268,7 +2268,7 @@ spawn(function()
     Main.newDropdown("Select Material", "", AllMaterial, function(v)
         SelectModeMaterial = v
     end)
-    Item.newToggle("Auto Farm Material", "", false, function(x)
+    Main.newToggle("Auto Farm Material", "", false, function(x)
         AutoFarmMaterial = x
         if x == false then
             toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -2373,9 +2373,13 @@ spawn(function()
 
     if World1 then
     local tableBoss = {"The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
-    elseif World2 then
+    end
+    
+    if World2 then
     local tableBoss = {"Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
-    elseif World3 then
+    end
+
+    if World3 then
     local tableBoss = {"Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
     end
 
