@@ -1358,7 +1358,7 @@ Main.newLabel("Main")
 Main.newLabel("Made By AhmadV10")
 
 Main.newButton("Join Discord", "Set Copy", function()
-    setclipboard("setclipboard")
+    setclipboard("https://discord.gg/ZCXV2N25J8")
 end)
 
 Main.newLabel("Config")
@@ -1454,9 +1454,6 @@ task.spawn(function()
 end)
 
 _G.DistanceAutoFarm = 30
-Main.newSlider("Distance Farm", "", 100, false, function(v)
-    _G.DistanceAutoFarm = v
-end)
 
 task.spawn(function()
     while task.wait(0) do
@@ -1479,13 +1476,14 @@ Main.newLabel("Farming")
 Main.newToggle("Bypass Anti-Cheat", "", _G.Settings.SafeMode, function(value)
     _G.SafeMode = value
     _G.Settings.SafeMode = value
-    SaveSettings()
-   spawn(function()
+    SaveSettings() 
+    spawn(function()
         while _G.Settings.SafeMode do task.wait()
             if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                 local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                 if HealthPercent < 20 then
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เซฟโหมดทำงาน..",Icon = "rbxassetid://14645512457",Duration = 1}) 
                 end
             end
             task.wait()
@@ -1502,18 +1500,6 @@ Main.newToggle("Auto Farm [ level ]", "", _G.Settings.AutoFarm, function(value)
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
-end)
-
-spawn(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if _G.Settings.AutoFarm then
-        if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
-            setfflag("HumanoidParallelRemoveNoPhysics", "False")
-            setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-            game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-            end
-        end
-    end)
 end)
 
 posrandom = 0
@@ -2159,3 +2145,55 @@ spawn(function()
         end
     end
 end)
+
+Main.newToggle("Auto Farm Chest", "", _G.Settings.AutoFarmChest, function(value)
+    _G.AutoFarmChest = value
+    _G.Settings.AutoFarmChest = value
+        SaveSettings()
+    if value == false then
+    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+end
+end)
+
+spawn(function()
+        while wait() do
+        if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+        pcall(function()
+        for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+              if string.find(v.Name, "Chest") then
+                  print(v.Name)
+                  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                  wait(.15)
+              end
+          end
+          game.Players.LocalPlayer.Character.Head:Destroy()
+          for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+           if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
+           firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+           wait()
+           firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+           end
+           end
+          end)
+            end
+          end
+        end)
+        
+        spawn(function()
+        while task.wait() do
+        if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+                local ohString1 = "SetTeam"
+                local ohString2 = "Pirates"
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
+             end
+        end
+        end)
+
+        spawn(function()
+            while wait(5) do
+            if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+                game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+            end
+        end
+    end)
+        
