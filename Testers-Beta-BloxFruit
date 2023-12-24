@@ -2213,9 +2213,9 @@ spawn(function()
     end
 end)
 
-Main.newToggle("Auto Farm Chest", "", _G.Settings.AutoFarmChest, function(value)
-    _G.AutoFarmChest = value
-    _G.Settings.AutoFarmChest = value
+Main.newToggle("Auto Farm Chest", "", false, function(value)
+    _G.AutoFarmChest1 = value
+    --_G.Settings.AutoFarmChest = value
     SaveSettings()
     if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -2224,7 +2224,7 @@ end)
 
     spawn(function()
         while wait() do
-        if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
+        if _G.AutoFarmChest or _G.Settings.AutoFarmChest or _G.AutoFarmChest1 then
         pcall(function()
         for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
               if string.find(v.Name, "Chest") then
@@ -2248,7 +2248,7 @@ end)
         
         spawn(function()
         while task.wait() do
-        if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
+        if _G.AutoFarmChest or _G.Settings.AutoFarmChest or _G.AutoFarmChest1 then
                 local ohString1 = "SetTeam"
                 local ohString2 = "Pirates"
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
@@ -2258,7 +2258,7 @@ end)
 
         spawn(function()
             while wait(8) do
-            if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
+            if _G.AutoFarmChest or _G.Settings.AutoFarmChest or _G.AutoFarmChest1 then
                 game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
             end
         end
@@ -5344,15 +5344,6 @@ task.spawn(function()
         end
     end)
     Item.newLabel("Bones")
-    local SetBonesUpdate = Item.newLabel("Bones: 0")
-    local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-    
-spawn(function()
-    while true and wait() do 
-    SetBonesUpdate.SetLabel("Bones: "..boneStatus)
-    end
-end)
-    
 
     Item.newToggle("Auto Farm Bone", "", _G.Settings.AutoFarmBone or false, function(value)
         _G.AutoFarmBone  = value
