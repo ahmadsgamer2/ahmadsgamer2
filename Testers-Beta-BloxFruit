@@ -2216,7 +2216,7 @@ end)
 Main.newToggle("Auto Farm Chest", "", _G.Settings.AutoFarmChest, function(value)
     _G.AutoFarmChest = value
     _G.Settings.AutoFarmChest = value
-        SaveSettings()
+    SaveSettings()
     if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
@@ -2264,46 +2264,6 @@ end)
         end
     end)
 
-    
-Main.newToggle("Auto Farm Chest 1", "", false, function(value)
-    AutoKillsStoppingPoint = value
-end)
-
-    spawn(function()
-        while task.wait() do 
-            if AutoKillsStoppingPoint then 
-                pcall(function()
-                        pcall(function()
-                            for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-                                if table.find(v.Name, "Chest") then
-                                    print(v.Name)
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                                    wait(.25)
-                                end
-                            end
-                        for i,v in pairs(game.Players:GetChildren()) do
-                            if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
-                                pcall(function()
-                                    for i,n in pairs(v.Character:GetChildren()) do
-                                        if (n.Name == "HumanoidRootPart") then
-                                            n.CanCollide = false
-                                            n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
-                                            n.Anchored = true
-                                            for i,m in pairs(n.Parent:GetChildren())do
-                                                if(table.find(m.Name))then
-                                                    m:Destroy()
-                                                end
-                                            end
-                                        end
-                                    end
-                                end)
-                            end
-                        end
-                    end)
-                end)
-            end
-        end
-    end)
 
     Main.newLabel("Farm Materail")
 
@@ -5387,9 +5347,12 @@ task.spawn(function()
     local SetBonesUpdate = Item.newLabel("Bones: 0")
     local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
     
-    while true and wait() do
+spawn(function()
+    while true and wait() do 
     SetBonesUpdate.SetLabel("Bones: "..boneStatus)
     end
+end)
+    
 
     Item.newToggle("Auto Farm Bone", "", _G.Settings.AutoFarmBone or false, function(value)
         _G.AutoFarmBone  = value
