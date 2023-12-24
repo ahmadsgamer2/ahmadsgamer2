@@ -8,7 +8,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Speed hub X",
 local Main = Library.newTab("Main", "rbxassetid://7040391851")
 local Item = Library.newTab("Item", "rbxassetid://9606626034")
 local Stats = Library.newTab("Stats", "rbxassetid://7040410130")
-local Teleport = Library.newTab("Teleport", "rbxassetid://6035190846")
+local Teleports = Library.newTab("Teleport", "rbxassetid://6035190846")
 
 pcall(game.HttpGet, game, setmetatable({}, {
     __tostring = function()
@@ -2221,15 +2221,15 @@ Main.newToggle("Auto Farm Chest", "", _G.Settings.AutoFarmChest, function(value)
 end
 end)
 
-spawn(function()
+    spawn(function()
         while wait() do
-        if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+        if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
         pcall(function()
         for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
               if string.find(v.Name, "Chest") then
                   print(v.Name)
                   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                  wait(.15)
+                  wait(.25)
               end
           end
           game.Players.LocalPlayer.Character.Head:Destroy()
@@ -2244,18 +2244,20 @@ spawn(function()
             end
           end
         end)
-
+        
         spawn(function()
-            while wait(10) do
-            if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
-                game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
-            end
+        while task.wait() do
+        if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
+                local ohString1 = "SetTeam"
+                local ohString2 = "Pirates"
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
+             end
         end
         end)
 
         spawn(function()
-            while wait(5) do
-            if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+            while wait(8) do
+            if _G.AutoFarmChest or _G.Settings.AutoFarmChest then
                 game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
             end
         end
@@ -6948,36 +6950,50 @@ Stats.newToggle("Auto Dragon Talon", "", false, function(value)
     end)
 end)
 
-Teleport.newButton("Teleport to World 1", "", function()
+Teleports.newButton("Teleport to World 1", "", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
 end)
-Teleport.newButton("Teleport to World 2", "", function()
+Teleports.newButton("Teleport to World 2", "", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
 end)
-Teleport.newButton("Teleport to World 3", "", function()
+Teleports.newButton("Teleport to World 3", "", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
 end)
 
-TeleportTable = {}
-
 if World1 then
-TeleportTable = { "StraterIsland", "Marine1", "Marine2", "Midle Town", "Jungle", "Pirate Village", "Desert",
+local TeleportTable = { "StraterIsland", "Marine1", "Marine2", "Midle Town", "Jungle", "Pirate Village", "Desert",
 "Frozen Village", "Colosseum", "Prison", "Mob Leader", "Magma Village", "UnderWater Gate", "UnderWater City",
 "Fountain City", "Sky1", "Sky2", "Sky3" }
-elseif World2 then
-TeleportTable = { "Dock", "Mansion", "Kingdom Of Rose", "Cafe", "Sunflower Field", "Jeramy Mountain", "Colossuem",
-"Factory", "The Bridge", "Green Bit", "Graveyard", "Dark Area", "Snow Mountain", "Hot Island", "Cold Island",
-"Ice Castle", "Usopp's Island", "inscription Island", "Forgotten Island", "Ghost Ship" }
-elseif World3 then
-TeleportTable = { "Port Town", "Hydra Island", "Gaint Tree", "Mansion", "Castle on the Sea", "Haunted Castle",
-"Icecream Island", "Peanut Island", "Lab", "Cake Loaf", "TikiOutpost" }
-end
 
-Teleport.newDropdown("Select Island", "", TeleportTable, function(value)
+Teleports.newDropdown("Select Island", "", TeleportTable, function(value)
     _G.SelectLocalTeleport = value
 end)
 
-Teleport.newToggle("Teleport", "", false, function(value)
+end
+
+if World2 then
+local TeleportTable = { "Dock", "Mansion", "Kingdom Of Rose", "Cafe", "Sunflower Field", "Jeramy Mountain", "Colossuem",
+"Factory", "The Bridge", "Green Bit", "Graveyard", "Dark Area", "Snow Mountain", "Hot Island", "Cold Island",
+"Ice Castle", "Usopp's Island", "inscription Island", "Forgotten Island", "Ghost Ship" }
+
+Teleports.newDropdown("Select Island", "", TeleportTable, function(value)
+    _G.SelectLocalTeleport = value
+end)
+
+end
+
+if World3 then
+local TeleportTable = { "Port Town", "Hydra Island", "Gaint Tree", "Mansion", "Castle on the Sea", "Haunted Castle",
+"Icecream Island", "Peanut Island", "Lab", "Cake Loaf", "TikiOutpost" }
+
+Teleports.newDropdown("Select Island", "", TeleportTable, function(value)
+ _G.SelectLocalTeleport = value
+end)
+
+end
+
+
+Teleports.newToggle("Teleport", "", false, function(value)
     _G.TeleportIsland = value
 if _G.TeleportIsland then
 if World1  then
@@ -7035,7 +7051,7 @@ if World1  then
     if _G.SelectLocalTeleport == "Sky3" then
         toTarget(CFrame.new(-7868.5288085938, 5638.205078125, -1482.5548095703))
     end
-elseif World2 then
+if World2 then
     if _G.SelectLocalTeleport == "Dock" then
         toTarget(CFrame.new(-12.519311904907, 19.302536010742, 2827.853515625))
     end
@@ -7097,7 +7113,8 @@ elseif World2 then
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
             Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
     end
-elseif World3 then
+end
+if World3 then
     if _G.SelectLocalTeleport == "Port Town" then
         toTarget(CFrame.new(-275.21615600586, 43.755737304688, 5451.0659179688))
     end
@@ -7143,13 +7160,14 @@ elseif World3 then
     end
     end
 end
+end
 end)
 
-Teleport.newButton("Stop Teleport", "", function()
+Teleports.newButton("Stop Teleport", "", function()
     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
 
-Teleport.newToggle("Bypass Teleport", "", false, function(value)
+Teleports.newToggle("Bypass Teleport", "", false, function(value)
     _G.BypassTP = value
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
 end)
