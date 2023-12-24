@@ -35,7 +35,7 @@ spawn(function()
         end)
 
         spawn(function()
-            while wait(8) do
+            while wait(5) do
             if _G.AutoFarmChest then
                 game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
             end
