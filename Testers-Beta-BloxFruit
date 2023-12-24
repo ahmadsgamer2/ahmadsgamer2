@@ -2264,6 +2264,47 @@ end)
         end
     end)
 
+    
+Main.newToggle("Auto Farm Chest 1", "", false, function(value)
+    AutoKillsStoppingPoint = value
+end)
+
+    spawn(function()
+        while task.wait() do 
+            if AutoKillsStoppingPoint then 
+                pcall(function()
+                        pcall(function()
+                            for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+                                if table.find(v.Name, "Chest") then
+                                    print(v.Name)
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                                    wait(.25)
+                                end
+                            end
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                                pcall(function()
+                                    for i,n in pairs(v.Character:GetChildren()) do
+                                        if (n.Name == "HumanoidRootPart") then
+                                            n.CanCollide = false
+                                            n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
+                                            n.Anchored = true
+                                            for i,m in pairs(n.Parent:GetChildren())do
+                                                if(table.find(m.Name))then
+                                                    m:Destroy()
+                                                end
+                                            end
+                                        end
+                                    end
+                                end)
+                            end
+                        end
+                    end)
+                end)
+            end
+        end
+    end)
+
     Main.newLabel("Farm Materail")
 
     Main.newDropdown("Select Material", "", AllMaterial, function(v)
@@ -7178,4 +7219,3 @@ Teleports.newToggle("Bypass Teleport", "", false, function(value)
 end)
 
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Speed hub X",Text = "Done!",Icon = "rbxassetid://15511158491",Duration = 1})
-
