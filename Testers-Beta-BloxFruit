@@ -1,14 +1,14 @@
 _G.AutoFarmChest = true
 
 spawn(function()
-        while wait() do
+        while task.wait() do
         if _G.AutoFarmChest then
         pcall(function()
         for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
               if string.find(v.Name, "Chest") then
                   print(v.Name)
                   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                  wait(.25)
+                  wait()
               end
           end
           game.Players.LocalPlayer.Character.Head:Destroy()
@@ -17,7 +17,6 @@ spawn(function()
            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
            wait()
            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
-           firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 2)
            end
            end
           end)
@@ -36,7 +35,7 @@ spawn(function()
         end)
 
         spawn(function()
-            while wait(10) do
+            while wait(3) do
             if _G.AutoFarmChest then
                 game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
             end
