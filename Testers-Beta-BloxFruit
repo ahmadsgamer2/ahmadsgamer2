@@ -17,6 +17,7 @@ spawn(function()
            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
            wait()
            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+           firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 2)
            end
            end
           end)
@@ -35,7 +36,7 @@ spawn(function()
         end)
 
         spawn(function()
-            while wait(5) do
+            while wait(10) do
             if _G.AutoFarmChest then
                 game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
             end
