@@ -4,7 +4,7 @@ getgenv().Setting = {
     },
     ["Webhook"] = {
         ["Enable"] = true,
-        ["Url"] = "https://discord.com/api/webhooks/1173059368447655996/V118UZx4nJ0bCfgKHzFfxtsPav8JT9IA18iPT9iv49CNvinGtqJqhvNOjm7jifHRsGbY"
+        ["Url"] = "https://discord.com/api/webhooks/1188856272116777041/tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2"
     },
     ["Skip"] = {
         ["V4"] = false,
