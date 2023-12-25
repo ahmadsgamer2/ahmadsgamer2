@@ -5434,12 +5434,6 @@ function Com(com, ...)
     end
 --->[ Window ]<---
 
-local window = library:new({
-   title = 'Zekrom Hub X ',
-    version = 'Blox Fruit',
-  icon = library.Icons['ZekromHubX-icon']
-})
-
 local Main = window:addPage({
     icon = "rbxassetid://7040391851", -- or roblox image id
     title = "Main",
