@@ -75,8 +75,6 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseT
     until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 end
 -- Set Fps Minifer
-spawn(function()while wait()do pcall(function()setfpscap(getgenv().Cf["Fps"])end)end end)
-spawn(function()while wait(20)do require(game.ReplicatedStorage:WaitForChild("Notification")).new("<Color=Yellow>Exploit You Are Using Is: <Color=/> "..identifyexecutor()):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Report Bugs Or Suggests Dms<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Discord: trumfut | .tranvanbao <Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Link Server: https://discord.gg/9AKedjp4Zs<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>ID Discord: 1151466936513863742<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Join Server Check Update<Color=/> "):Display()end end)
 function EquipTool(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
@@ -471,15 +469,4 @@ end
 end)
 if getgenv().Cf["Remove Terrain"] then
     loadstring(Game:HttpGet("https://raw.githubusercontent.com/JewhisKids/NewFreeScript/main/Misc/SuperFpsBoost.lua"))()
-end
-if getgenv().Cf["Black Screen"] then
-BlackScreen = game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen
-DefaultSize = BlackScreen.Size
-NewSize = UDim2.new(500, 0, 500, 500)
-BlackScreen.Size = NewSize
-elseif not getgenv().Cf["Black Screen"] then
-BlackScreen.Size = UDim2.new(DefaultSize)
-end 
-if getgenv().Cf["White Screen"] then
-    game:GetService("RunService"):Set3dRenderingEnabled( not getgenv().Cf["White Screen"])
 end
