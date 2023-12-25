@@ -12,9 +12,6 @@ getgenv().Cf = {
     ["Max Health"] = "7000",
     ["Fps Counter"] = true,
     ["Chat When Hunt"] = "Zekrom Hub X",
-    ["White Screen"] = false,
-    ["Black Screen"] = false,
-    ["Remove Terrain"] = true,
     ["Melee"] = {
         ["Time"] = 1,
         ["Enabled"] = false,
@@ -467,6 +464,3 @@ if getgenv().Cf["Buy Item"] then
 end
 end
 end)
-if getgenv().Cf["Remove Terrain"] then
-    loadstring(Game:HttpGet("https://raw.githubusercontent.com/JewhisKids/NewFreeScript/main/Misc/SuperFpsBoost.lua"))()
-end
