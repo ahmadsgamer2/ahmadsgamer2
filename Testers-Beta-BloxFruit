@@ -20,7 +20,7 @@ local Raid = Library:Tab("Dungeon", "rbxassetid://13180179055")
 local DevilFruit = Library:Tab("Fruit Devil", "rbxassetid://130882646")
 local ESP = Library:Tab("ESP", "rbxassetid://15759111217")
 local RaceV4 = Library:Tab("Race V4", "rbxassetid://15759170666")
-local Misc = Library:Tab("Misc", "rbxassetid://15759170666")
+local Misc = Library:Tab("Misc", "rbxassetid://11447063791")
 local Settings = Library:Tab("Settings", "rbxassetid://11447063791")
 
 --->[Place Id Check]<---
@@ -9687,6 +9687,22 @@ end)
 
 Misc:Seperator("Misc")
 
+Misc:Button("Open Devil Shop",function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetFruits")
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitShop.Visible = true
+end)
+
+Misc:Button("Open Inventory",function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")
+	wait(1)
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
+end)
+
+Misc:Button("Open Inventory Fruit",function()
+	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryFruits")
+	game:GetService("Players").LocalPlayer.PlayerGui.Main.FruitInventory.Visible = true
+end)
+
 Misc:Button("Show Awakened Skill", function()
     local args = {
         [1] = "getAwakenedAbilities"
@@ -9764,6 +9780,83 @@ function FPSBOOSTER()
                         end)
                     end
                 end)
+            end)
+
+            Misc:Dropdown("Select Haki State",{"State 0","State 1","State 2","State 3","State 4","State 5"},function(value)
+                _G.SelectStateHaki = value
+            end)
+            
+            Misc:Button("Change Buso Haki State",function()
+                if _G.SelectStateHaki == "State 0" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",0)
+                elseif _G.SelectStateHaki == "State 1" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",1)
+                elseif _G.SelectStateHaki == "State 2" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",2)
+                elseif _G.SelectStateHaki == "State 3" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",3)
+                elseif _G.SelectStateHaki == "State 4" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",4)
+                elseif _G.SelectStateHaki == "State 5" then
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("ChangeBusoStage",5)
+                end
+            end)
+
+            
+Misc:Toggle("Remove Fog",RemoveFog,function(value)
+	RemoveFog = value
+	if not RemoveFog then return end
+	while RemoveFog do wait()
+		game.Lighting.FogEnd = 9e9
+		if not RemoveFog then
+			game.Lighting.FogEnd = 2500
+		end
+	end
+end)
+
+            Misc:Button("Unlock Portal",function()
+                _G.UnlockPortal = true
+            end)
+            
+            spawn(function()
+                while wait() do
+                    pcall(function()
+                        if _G.UnlockPortal == true then
+                            for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Notifications:GetChildren()) do
+                                if v.Name == "NotificationTemplate" then
+                                    if string.find(v.Text,"cannot") then
+                                        v:Destroy()
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                end
+            end)
+            
+            spawn(function()
+                while wait() do
+                    pcall(function()
+                        if _G.UnlockPortal == true then
+                            CastlePostoMansion = CFrame.new(-5084.8447265625, 316.48101806641, -3145.3752441406)
+                            MansiontoCastlePos = CFrame.new(-12464.596679688, 376.30590820312, -7567.2626953125)
+                            Castletophydra = CFrame.new(-5095.33984375, 316.48101806641, -3168.3134765625)
+                            HydratoCastle = CFrame.new(5741.869140625, 611.94750976562, -282.61154174805)
+                            if (CastlePostoMansion.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-12471.169921875, 374.94024658203, -7551.677734375))
+                            end
+                            if (MansiontoCastlePos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                            end
+                            if (Castletophydra.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(5748.7587890625, 610.44982910156, -267.81704711914))
+                            end
+                            if (HydratoCastle.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 8 then
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5072.08984375, 314.5412902832, -3151.1098632812))
+                            end
+                        end
+                    end)
+                end
             end)
 
             Misc:Toggle("Graphic",false,function(v)
@@ -9845,6 +9938,22 @@ function FPSBOOSTER()
                     game:GetService("Lighting")["SunRaysEffect_Graphic"]:Destroy()
                 end
             end)
+
+            Misc:Seperator("Race Boost")
+
+             Misc:Toggle("Auto Active Race",_G.AutoAgility,function(value)
+	        _G.AutoAgility = value
+           end)
+
+spawn(function()
+	pcall(function()
+		while wait() do
+			if _G.AutoAgility then
+				game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("ActivateAbility")
+			end
+		end
+	end)
+end)
 
             if game.workspace:FindFirstChild("WaterWalk") then
                 game.workspace:FindFirstChild("WaterWalk"):Destroy()
@@ -9933,9 +10042,9 @@ platform.Parent = game.workspace
             Settings:Seperator("Ui")
 
 
-            Settings:Toggle("Save Ui Setting",_G.Settings._G.SaveSettingTRUE , function(value)
+            Settings:Toggle("Save Ui Setting",_G.Settings.SaveSettingTRUE, function(value)
                 _G.SaveSettingTRUE = value
-                _G.Settings._G.SaveSettingTRUE = value
+                _G.Settings.SaveSettingTRUE = value
             end)
 
             Settings:Seperator("Farm Settings")
