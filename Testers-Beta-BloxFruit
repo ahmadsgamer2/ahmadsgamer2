@@ -3453,25 +3453,26 @@ while true do
     CheckCandy:Set("Candies: "..StatsCandy)
 end
 
-Main:Toggle("Auto Collect Gift",false,function(value)
+Main:Toggle("Auto Collect Gift",_G.ChristmasBox,function(value)
     _G.ChristmasBox = value 
-    spawn(function()
-        while wait() do
-            if _G.ChristmasBox then
-                local player = game.Players.LocalPlayer
-                local rootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
-                if rootPart then
-                    for _, proximityPrompt in pairs(game.workspace:GetDescendants()) do
-                        if proximityPrompt:IsA("ProximityPrompt") and (proximityPrompt.Parent.Position - rootPart.Position).magnitude < 500 then
-                            player.Character.HumanoidRootPart.CFrame = proximityPrompt.Parent.CFrame
-                            wait(0.1)
-                            fireproximityprompt(proximityPrompt, 20)
-                        end
+end)
+
+spawn(function()
+    while wait() do
+        if _G.ChristmasBox then
+            local player = game.Players.LocalPlayer
+            local rootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+            if rootPart then
+                for _, proximityPrompt in pairs(game.workspace:GetDescendants()) do
+                    if proximityPrompt:IsA("ProximityPrompt") and (proximityPrompt.Parent.Position - rootPart.Position).magnitude < 500 then
+                        player.Character.HumanoidRootPart.CFrame = proximityPrompt.Parent.CFrame
+                        wait(0.1)
+                        fireproximityprompt(proximityPrompt, 20)
                     end
                 end
             end
         end
-    end)
+    end
 end)
 
 Main:Toggle("Teleport To Event Island",false,function(value)
@@ -9555,8 +9556,8 @@ local SelectRaids = {
                 local AcientCframe = CFrame.new(216.211181640625, 126.9352035522461, -12599.0732421875)
 
 
-spawn(function()
-    while wait() do 
+                spawn(function()
+                while wait() do 
         if AutoFarmAcient then
             pcall(function()
                 if game:GetService("Workspace").Enemies:FindFirstChild("Cocoa Warrior") or game:GetService("Workspace").Enemies:FindFirstChild("Chocolate Bar Battler") or game:GetService("Workspace").Enemies:FindFirstChild("Sweet Thief") or game:GetService("Workspace").Enemies:FindFirstChild("Candy Rebel") then
