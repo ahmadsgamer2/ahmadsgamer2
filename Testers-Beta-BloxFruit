@@ -3518,15 +3518,14 @@ Main:Seperator("Event Kitsune")
 
 local KitsuneStatus = Main:Label("Kitsune Status")
 spawn(function()
-    while true and wait() do 
-    pcall(function()
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-        KitsuneStatus:Set("Kitsune Status: 🟢")
-    else
-        KitsuneStatus:Set("Kitsune Status: ❌")
-    end)
-end
-end
+    while true do 
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+            KitsuneStatus:Set("Kitsune Status: 🟢")
+        else
+            KitsuneStatus:Set("Kitsune Status: ❌")
+        end
+        wait()
+    end
 end)
 
 
