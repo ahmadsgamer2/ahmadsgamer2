@@ -3448,10 +3448,14 @@ end
 local CheckCandy = Main:Label("Candies: 0")
 local StatsCandy = (game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Candies","Check"))
 
-while true do
-    wait(1)
+
+spawn(function()
+    while true and wait() do 
+    pcall(function()
     CheckCandy:Set("Candies: "..StatsCandy)
+end)
 end
+end)
 
 Main:Toggle("Auto Collect Gift",_G.ChristmasBox,function(value)
     _G.ChristmasBox = value 
