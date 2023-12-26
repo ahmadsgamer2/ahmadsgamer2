@@ -1,6 +1,6 @@
 --loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless"))()
 _G.Key_System == true
-_G.KeyFree = KeyX_c9d9dac4fd8a4386d1cd9cf1e2d0c1952d80962147108e31e57320e50705eeb8
+_G.KeyFree = "KeyX_c9d9dac4fd8a4386d1cd9cf1e2d0c1952d80962147108e31e57320e50705eeb8"
 
 if _G.Key_System == true then
 -- SETTINGS --
