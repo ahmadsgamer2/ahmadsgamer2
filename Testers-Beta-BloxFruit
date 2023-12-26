@@ -16,7 +16,7 @@ local ItemFarm = Library:Tab("Item", "rbxassetid://11446859498")
 local Stats = Library:Tab("Stats", "rbxassetid://11447069304")
 local Shop = Library:Tab("Shop", "rbxassetid://6031265976")
 local Teleports = Library:Tab("Teleports", "rbxassetid://6035190846")
-local Raid = Library:Tab("Dungeon", "rbxassetid://130882646")
+local Raid = Library:Tab("Dungeon", "rbxassetid://13180179055")
 local DevilFruit = Library:Tab("Fruit Devil", "rbxassetid://130882646")
 local ESP = Library:Tab("ESP", "rbxassetid://15759111217")
 local RaceV4 = Library:Tab("Race V4", "rbxassetid://15759170666")
@@ -7959,10 +7959,12 @@ ItemFarm:Seperator("Observation Hki")
 
 local StatsHKI = ItemFarm:Label("Observation Range Level")
 
-while true do 
-    wait(1)
+spawn(function()
+    while true do 
+        wait()
     StatsHKI:Set("Observation Range Level: "..math.floor(game:GetService("Players").LocalPlayer.VisionRadius.Value))
-end
+   end
+end)
 
 ItemFarm:Toggle("Auto Farm Observation", _G.Settings.AutoObservation, function(value)
     _G.AutoObservation = value
