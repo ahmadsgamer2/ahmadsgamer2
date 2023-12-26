@@ -133,10 +133,10 @@ _G.Settings = {
 
     --[Raids]
     AutoRaids = false,
-    AutoNextPlace = false
+    AutoNextPlace = false,
 
     --[Setting]
-    _G.SaveSettingTRUE = false,
+    _G.SaveSettingTRUE = false
 }
 
 -- [Save Settings]
