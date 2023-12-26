@@ -23,6 +23,7 @@ function Script()
         end
     end    
 print("Succesfully loaded script!")
+game.CoreGui:FindFirstChild("SpeedHubX_KeySystem"):Destroy()
 end
 
 local PandaAuth = loadstring(game:HttpGet(('https://pandadevelopment.net/service_api/PandaBetaLib.lua')))()
@@ -321,7 +322,8 @@ end
 if isfile(KeyFile) then
    Check()
 end
-if _G.Key_System == false then
+
+if _G.Key_System1 == true then
     local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/GameList"))()
     getgenv().Get =
         setmetatable(
