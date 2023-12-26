@@ -9943,8 +9943,13 @@ platform.Parent = game.workspace
             _G.ColorBODY = Color3.fromRGB(0,0,0)
 
             Settings:Textbox("Color Body (RGB)","",function(value)
-                _G.ColorBODY = Color3.fromRGB(value)
+                _G.RGBTEXTBOX = value
             end)
+
+            Settings:Button("Change Color Body on Textbox", function()
+                _G.ColorBODY = Color3.fromRGB(_G.RGBTEXTBOX)
+            end)
+
 
             Misc:Toggle("Rainbow Body", _G.ColorBODYRainbow, function(value)
                 _G.ColorBODYRainbow = value
@@ -9952,18 +9957,15 @@ platform.Parent = game.workspace
 
 
 
+
     spawn(function()
-        while wait(1) do
+        while wait() do
             if _G.ColorBODYRainbow then
                 pcall(function()
                     _G.ColorBODY = Color3.new(math.random(),math.random(),math.random())
-                wait()  --Add a wait if necessary 
+                wait(1) 
                 _G.ColorBODY = Color3.new(math.random(),math.random(),math.random())
             end)
         end
     end
 end)
-
-
-
-
