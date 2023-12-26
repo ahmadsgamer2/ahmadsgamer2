@@ -321,12 +321,10 @@ end
         end
     end)
  end
-
- spawn(function()
-    while true and wait(1.25) do
+ 
+ if _G.Key_System == true then
         Check()
     end
- end)
 
 if isfile(KeyFile) then
    Check()
