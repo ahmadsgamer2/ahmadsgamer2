@@ -136,7 +136,7 @@ _G.Settings = {
     AutoNextPlace = false,
 
     --[Setting]
-    _G.SaveSettingTRUE = false
+    SaveSettingTRUE = false,
 }
 
 -- [Save Settings]
