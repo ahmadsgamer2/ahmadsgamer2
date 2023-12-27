@@ -1,145 +1,176 @@
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextButton = Instance.new("TextButton")
-local available = Instance.new("TextLabel")
-local TextLabel = Instance.new("TextLabel")
-local radius = Instance.new("TextLabel")
+CelestialScreen = Instance.new("ScreenGui")
+DropShadowHolder = Instance.new("Frame")
+DropShadow = Instance.new("ImageLabel")
+UIGradient = Instance.new("UIGradient")
+MainFrame = Instance.new("Frame")
+UICorner = Instance.new("UICorner")
+Bounty = Instance.new("TextLabel")
+Celestial = Instance.new("TextLabel")
+TotalEarn = Instance.new("TextLabel")
+Elapsed = Instance.new("TextLabel")
+ServerEarn = Instance.new("TextLabel")
+Target = Instance.new("TextLabel")
+UIGradient1 = Instance.new("UIGradient")
+Skip = Instance.new("TextButton")
+Hop = Instance.new("TextButton")
 
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-local moving = false
+CelestialScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+CelestialScreen.Name = "CelestialScreen"
+CelestialScreen.Parent = game:GetService("CoreGui")
 
-local colours = {
-	["yes"] = Color3.fromRGB(69, 220, 79);
-	["no"] = Color3.fromRGB(238, 64, 67);
-}
+DropShadowHolder.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadowHolder.BackgroundTransparency = 1
+DropShadowHolder.BorderSizePixel = 0
+DropShadowHolder.Position = UDim2.new(0.5, 0, 0.5, 0)
+DropShadowHolder.Size = UDim2.new(0, 350, 0, 245)
+DropShadowHolder.ZIndex = 0
+DropShadowHolder.Name = "DropShadowHolder"
+DropShadowHolder.Parent = CelestialScreen
 
-local fruit = nil
+DropShadow.Image = "rbxassetid://6015897843"
+DropShadow.ImageTransparency = 0.5
+DropShadow.ScaleType = Enum.ScaleType.Slice
+DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadow.BackgroundTransparency = 1
+DropShadow.BorderSizePixel = 0
+DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+DropShadow.Size = UDim2.new(1, 47, 1, 47)
+DropShadow.ZIndex = 0
+DropShadow.Name = "DropShadow"
+DropShadow.Parent = DropShadowHolder
+UIGradient.Color =  Color3.fromRGB(0,0,0)
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.ResetOnSpawn = false
+UIGradient.Parent = DropShadow
 
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
-Frame.BackgroundTransparency = 0.500
-Frame.BorderColor3 = Color3.fromRGB(16, 26, 33)
-Frame.Position = UDim2.new(0.246025696, 0, 0.709984183, 0)
-Frame.Size = UDim2.new(0.133459494, 0, 0.204912841, 0)
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Color3.fromRGB(45.00000111758709, 45.00000111758709, 45.00000111758709)
+MainFrame.BackgroundTransparency = 0.6000000238418579
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, 0, 0.497461915, 0)
+MainFrame.Size = UDim2.new(0, 350, 0, 245)
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = DropShadow
 
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
-TextButton.BackgroundTransparency = 0.500
-TextButton.BorderColor3 = Color3.fromRGB(16, 26, 33)
-TextButton.Size = UDim2.new(1, 0, 0.149265379, 0)
-TextButton.Font = Enum.Font.GothamBold
-TextButton.Text = "blox fruit finder"
-TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextSize = 14.000
+UICorner.CornerRadius = UDim.new(0, 2)
+UICorner.Parent = MainFrame
 
-available.Name = "available"
-available.Parent = Frame
-available.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-available.BackgroundTransparency = 1.000
-available.Position = UDim2.new(0, 0, 0.827532589, 0)
-available.Size = UDim2.new(1, 0, 0.126063704, 0)
-available.Font = Enum.Font.GothamBold
-available.Text = "fruit"
-available.TextColor3 = Color3.fromRGB(255, 67, 70)
-available.TextScaled = true
-available.TextSize = 14.000
-available.TextWrapped = true
+Bounty.Font = Enum.Font.GothamBold
+Bounty.Text = "Fruit Finder"
+Bounty.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
+Bounty.TextSize = 20
+Bounty.TextXAlignment = Enum.TextXAlignment.Left
+Bounty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Bounty.BackgroundTransparency = 1
+Bounty.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Bounty.BorderSizePixel = 0
+Bounty.Position = UDim2.new(0.517142832, 0, 0.0775510222, 0)
+Bounty.Size = UDim2.new(0, 118, 0, 37)
+Bounty.Name = "Bounty"
+Bounty.Parent = MainFrame
 
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Position = UDim2.new(0, 0, 0.232018262, 0)
-TextLabel.Size = UDim2.new(1, 0, 0.126063704, 0)
-TextLabel.Font = Enum.Font.GothamBold
-TextLabel.Text = "name not available"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14.000
-TextLabel.TextWrapped = true
+Celestial.Font = Enum.Font.GothamBold
+Celestial.Text = "Zekrom Hub X"
+Celestial.TextColor3 = Color3.fromRGB(83.00000265240669, 160.00000566244125, 255)
+Celestial.TextSize = 20
+Celestial.TextXAlignment = Enum.TextXAlignment.Right
+Celestial.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Celestial.BackgroundTransparency = 1
+Celestial.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Celestial.BorderSizePixel = 0
+Celestial.Position = UDim2.new(0.177142859, 0, 0.0775510222, 0)
+Celestial.Size = UDim2.new(0, 105, 0, 37)
+Celestial.Name = "Celestial"
+Celestial.Parent = MainFrame
 
-radius.Name = "radius"
-radius.Parent = Frame
-radius.AnchorPoint = Vector2.new(0.5, 0)
-radius.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
-radius.BackgroundTransparency = 0.500
-radius.BorderColor3 = Color3.fromRGB(16, 26, 33)
-radius.Position = UDim2.new(0.5, 0, 0.432999998, 0)
-radius.Size = UDim2.new(0.51219511, 0, 0.187935293, 0)
-radius.Font = Enum.Font.GothamBold
-radius.Text = "000"
-radius.TextColor3 = Color3.fromRGB(255, 255, 255)
-radius.TextScaled = true
-radius.TextSize = 14.000
-radius.TextWrapped = true
+TotalEarn.Font = Enum.Font.GothamBold
+TotalEarn.Text = "Total Earned: "
+TotalEarn.TextColor3 = Color3.fromRGB(255, 255, 11.000000294297934)
+TotalEarn.TextSize = 18
+TotalEarn.AnchorPoint = Vector2.new(0.5, 0)
+TotalEarn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TotalEarn.BackgroundTransparency = 1
+TotalEarn.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TotalEarn.BorderSizePixel = 0
+TotalEarn.Position = UDim2.new(0.5, 0, 0.387530655, 0)
+TotalEarn.Size = UDim2.new(0, 280, 0, 23)
+TotalEarn.Name = "TotalEarn"
+TotalEarn.Parent = MainFrame
 
-function avail(av)
-	if av == true then
-		available.Text = "Fruit available"
-		available.TextColor3 = colours.yes
-	else
-		available.Text = "Fruit unavailable"
-		available.TextColor3 = colours.no
-	end
+Elapsed.Font = Enum.Font.GothamBold
+Elapsed.Text = "Time Elapsed: "
+Elapsed.TextColor3 = Color3.fromRGB(255, 255, 11.000000294297934)
+Elapsed.TextSize = 18
+Elapsed.AnchorPoint = Vector2.new(0.5, 0)
+Elapsed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Elapsed.BackgroundTransparency = 1
+Elapsed.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Elapsed.BorderSizePixel = 0
+Elapsed.Position = UDim2.new(0.5, 0, 0.269163281, 0)
+Elapsed.Size = UDim2.new(0, 280, 0, 20)
+Elapsed.Name = "Elapsed"
+Elapsed.Parent = MainFrame
+
+for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+    if v:IsA("Tool") and string.find(v.Name,"Fruit") then 
+        NameFruit = v.Name 
+    end
 end
 
-if game.Workspace:FindFirstChild("Fruit ") then
-	print("fruit")
-	fruit = game.Workspace["Fruit "]
-end
+ServerEarn.Font = Enum.Font.GothamBold
+ServerEarn.Text = "Fruit: "..NameFruit
+ServerEarn.TextColor3 = Color3.fromRGB(255, 255, 255)
+ServerEarn.TextSize = 18
+ServerEarn.AnchorPoint = Vector2.new(0.5, 0)
+ServerEarn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ServerEarn.BackgroundTransparency = 1
+ServerEarn.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ServerEarn.BorderSizePixel = 0
+ServerEarn.Position = UDim2.new(0.5, 0, 0.534469426, 0)
+ServerEarn.Size = UDim2.new(0, 280, 0, 19)
+ServerEarn.Name = "ServerEarn"
+ServerEarn.Parent = MainFrame
 
-TextButton.MouseButton1Down:Connect(function()
-	moving = true
-end)
+Target.Font = Enum.Font.GothamBold
+Target.Text = "Target:"
+Target.TextColor3 = Color3.fromRGB(255,255,255)
+Target.TextSize = 18
+Target.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Target.BackgroundTransparency = 1
+Target.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Target.BorderSizePixel = 0
+Target.Position = UDim2.new(0.340000004, 0, 0.673469365, 0)
+Target.Size = UDim2.new(0, 112, 0, 15)
+Target.Name = "Target"
+Target.Parent = MainFrame
+UIGradient1.Color = Color3.fromRGB(0,0,0)
+UIGradient1.Parent = MainFrame
 
-TextButton.MouseButton1Up:Connect(function()
-	moving = false
-end)
+Skip.Font = Enum.Font.GothamBold
+Skip.Text = "Skip Player"
+Skip.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
+Skip.TextSize = 18
+Skip.TextXAlignment = Enum.TextXAlignment.Right
+Skip.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Skip.BackgroundTransparency = 0.9900000095367432
+Skip.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Skip.BorderSizePixel = 0
+Skip.Position = UDim2.new(0.0457142852, 0, 0.759183645, 0)
+Skip.Size = UDim2.new(0, 144, 0, 43)
+Skip.Name = "Skip"
+Skip.Parent = MainFrame
 
-mouse.Button1Up:Connect(function()
-	moving = false
-end)
-
-mouse.Move:Connect(function()
-	if moving == true then
-		Frame.Position = UDim2.fromOffset(mouse.X - Frame.Size.X.Scale*600, mouse.Y - 5)
-	end
-end)
-
-game.Workspace.ChildAdded:Connect(function(child)
-	if child.Name == "Fruit " then
-		print("fruit")
-		fruit = child
-	end
-end)
-
-game.Workspace.ChildRemoved:Connect(function(child)
-	if child.Name == "Fruit " then
-		print("fruit gone")
-		fruit = nil
-	end
-end)
-
-while task.wait(0.1) do
-	if fruit ~= nil then
-		avail(true)
-		local hrp = player.Character.HumanoidRootPart
-		local fruitpos = fruit:WaitForChild("Handle").Position
-		radius.Text = math.round((hrp.Position - fruitpos).magnitude)
-		local strig = nil
-		for i,v in pairs(fruit:GetChildren()) do
-			if string.match(v.Name, "Meshes") then
-				strig = string.split(v.Name, "/")[2]
-				TextLabel.Text = string.split(strig, "_")[1].." fruit"
-			end
-		end
-	else
-		avail(false)
-		radius.Text = "000"
-		TextLabel.Text = "name not available"
-	end
-end
+Hop.Font = Enum.Font.GothamBold
+Hop.Text = "Hop Server"
+Hop.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
+Hop.TextSize = 18
+Hop.TextXAlignment = Enum.TextXAlignment.Left
+Hop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Hop.BackgroundTransparency = 0.9900000095367432
+Hop.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Hop.BorderSizePixel = 0
+Hop.Position = UDim2.new(0.54285717, 0, 0.759183645, 0)
+Hop.Size = UDim2.new(0, 144, 0, 43)
+Hop.Name = "Hop"
+Hop.Parent = MainFrame
