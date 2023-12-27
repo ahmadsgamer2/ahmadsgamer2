@@ -69,6 +69,7 @@ WindowSize = Vector2.new(300, 300)
 local WindowOutline
 local WindowFrame
 local Library
+Library.Theme.Outline = Color3.fromHex("#000005")
 ---Create UI Image
 
    local WindowOutline = AddDrawing("Square", {
