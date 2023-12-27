@@ -121,4 +121,3 @@ Teleport()
     end)
     wait(2)
 until game.JobId ~= currentJobId
-until game.JobId ~= currentJobId
