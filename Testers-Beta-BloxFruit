@@ -1,336 +1,145 @@
--- Gui to Lua
-local function MakeDraggable(topbarobject, object)
-    local Dragging = nil
-    local DragInput = nil
-    local DragStart = nil
-    local StartPosition = nil
- 
-    local function Update(input)
-        local Delta = input.Position - DragStart
-        local pos =
-            UDim2.new(
-                StartPosition.X.Scale,
-                StartPosition.X.Offset + Delta.X,
-                StartPosition.Y.Scale,
-                StartPosition.Y.Offset + Delta.Y
-            )
-        local Tween = TweenService:Create(object, TweenInfo.new(0.2), {Position = pos})
-        Tween:Play()
-    end
- 
-    topbarobject.InputBegan:Connect(
-        function(input)
-            if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                Dragging = true
-                DragStart = input.Position
-                StartPosition = object.Position
- 
-                input.Changed:Connect(
-                    function()
-                        if input.UserInputState == Enum.UserInputState.End then
-                            Dragging = false
-                        end
-                    end
-                )
-            end
-        end
-    )
- 
-    topbarobject.InputChanged:Connect(
-        function(input)
-            if
-                input.UserInputType == Enum.UserInputType.MouseMovement or
-                input.UserInputType == Enum.UserInputType.Touch
-            then
-                DragInput = input
-            end
-        end
-    )
- 
-    UserInputService.InputChanged:Connect(
-        function(input)
-            if input == DragInput and Dragging then
-                 Update(input)
-            end
-        end
-    )
-end
-
 local ScreenGui = Instance.new("ScreenGui")
-local ScreenUi = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local UIStroke = Instance.new("UIStroke")
-local NameHubFrame = Instance.new("Frame")
-local UICorner_2 = Instance.new("UICorner")
-local NameHub = Instance.new("TextLabel")
-local UICorner_3 = Instance.new("UICorner")
 local Frame = Instance.new("Frame")
-local gia = Instance.new("Frame")
-local UICorner_4 = Instance.new("UICorner")
-local TotalEarned = Instance.new("TextLabel")
-local Earned = Instance.new("TextLabel")
-local TargetName = Instance.new("TextLabel")
-local Time = Instance.new("TextLabel")
-local Frame_2 = Instance.new("Frame")
-local Frame_3 = Instance.new("Frame")
-local UICorner_5 = Instance.new("UICorner")
-local Next = Instance.new("TextButton")
-local UICorner_6 = Instance.new("UICorner")
-local Hop = Instance.new("TextButton")
-local UICorner_7 = Instance.new("UICorner")
-local shadowHolder = Instance.new("Frame")
-local umbraShadow = Instance.new("ImageLabel")
-local penumbraShadow = Instance.new("ImageLabel")
-local ambientShadow = Instance.new("ImageLabel")
-local shadowHolder_2 = Instance.new("Frame")
-local umbraShadow_2 = Instance.new("ImageLabel")
-local penumbraShadow_2 = Instance.new("ImageLabel")
-local ambientShadow_2 = Instance.new("ImageLabel")
+local TextButton = Instance.new("TextButton")
+local available = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextLabel")
+local radius = Instance.new("TextLabel")
 
-for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-    if v:IsA("Tool") and string.find(v.Name,"Fruit") then 
-        NameFruit = v.Name 
-    end
-end
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local moving = false
 
--- Properties:
+local colours = {
+	["yes"] = Color3.fromRGB(69, 220, 79);
+	["no"] = Color3.fromRGB(238, 64, 67);
+}
+
+local fruit = nil
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.ResetOnSpawn = false
 
-ScreenUi.Name = "Screen Ui"
-ScreenUi.Parent = ScreenGui
-ScreenUi.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ScreenUi.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ScreenUi.BorderSizePixel = 0
-ScreenUi.Position = UDim2.new(0.272559851, 0, 0.172690764, 0)
-ScreenUi.Size = UDim2.new(0, 310, 0, 309)
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
+Frame.BackgroundTransparency = 0.500
+Frame.BorderColor3 = Color3.fromRGB(16, 26, 33)
+Frame.Position = UDim2.new(0.246025696, 0, 0.709984183, 0)
+Frame.Size = UDim2.new(0.133459494, 0, 0.204912841, 0)
 
-UICorner.Parent = ScreenUi
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
+TextButton.BackgroundTransparency = 0.500
+TextButton.BorderColor3 = Color3.fromRGB(16, 26, 33)
+TextButton.Size = UDim2.new(1, 0, 0.149265379, 0)
+TextButton.Font = Enum.Font.GothamBold
+TextButton.Text = "blox fruit finder"
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextSize = 14.000
 
-UIStroke.Color = Color3.fromRGB(255, 255, 255)
-UIStroke.Parent = ScreenUi
+available.Name = "available"
+available.Parent = Frame
+available.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+available.BackgroundTransparency = 1.000
+available.Position = UDim2.new(0, 0, 0.827532589, 0)
+available.Size = UDim2.new(1, 0, 0.126063704, 0)
+available.Font = Enum.Font.GothamBold
+available.Text = "fruit"
+available.TextColor3 = Color3.fromRGB(255, 67, 70)
+available.TextScaled = true
+available.TextSize = 14.000
+available.TextWrapped = true
 
-NameHubFrame.Name = "Name Hub Frame"
-NameHubFrame.Parent = ScreenUi
-NameHubFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-NameHubFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-NameHubFrame.BorderSizePixel = 0
-NameHubFrame.Size = UDim2.new(0, 310, 0, 40)
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0, 0, 0.232018262, 0)
+TextLabel.Size = UDim2.new(1, 0, 0.126063704, 0)
+TextLabel.Font = Enum.Font.GothamBold
+TextLabel.Text = "name not available"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
 
-UICorner_2.Parent = NameHubFrame
+radius.Name = "radius"
+radius.Parent = Frame
+radius.AnchorPoint = Vector2.new(0.5, 0)
+radius.BackgroundColor3 = Color3.fromRGB(22, 64, 91)
+radius.BackgroundTransparency = 0.500
+radius.BorderColor3 = Color3.fromRGB(16, 26, 33)
+radius.Position = UDim2.new(0.5, 0, 0.432999998, 0)
+radius.Size = UDim2.new(0.51219511, 0, 0.187935293, 0)
+radius.Font = Enum.Font.GothamBold
+radius.Text = "000"
+radius.TextColor3 = Color3.fromRGB(255, 255, 255)
+radius.TextScaled = true
+radius.TextSize = 14.000
+radius.TextWrapped = true
 
-NameHub.Name = "Name Hub"
-NameHub.Parent = NameHubFrame
-NameHub.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-NameHub.BorderColor3 = Color3.fromRGB(0, 0, 0)
-NameHub.BorderSizePixel = 0
-NameHub.Size = UDim2.new(0, 310, 0, 40)
-NameHub.Font = Enum.Font.SourceSansBold
-NameHub.Text = "Zekrom Hub X | Fruit Finder"
-NameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
-NameHub.TextSize = 16.000
+function avail(av)
+	if av == true then
+		available.Text = "Fruit available"
+		available.TextColor3 = colours.yes
+	else
+		available.Text = "Fruit unavailable"
+		available.TextColor3 = colours.no
+	end
+end
 
-UICorner_3.Parent = NameHub
+if game.Workspace:FindFirstChild("Fruit ") then
+	print("fruit")
+	fruit = game.Workspace["Fruit "]
+end
 
-MakeDraggable(ScreenGui)
+TextButton.MouseButton1Down:Connect(function()
+	moving = true
+end)
 
-Frame.Name = "-----"
-Frame.Parent = ScreenUi
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0, 0, 0.123076923, 0)
-Frame.Size = UDim2.new(0, 310, 0, 2)
+TextButton.MouseButton1Up:Connect(function()
+	moving = false
+end)
 
-gia.Name = ""
-gia.Parent = ScreenUi
-gia.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-gia.BorderColor3 = Color3.fromRGB(0, 0, 0)
-gia.BorderSizePixel = 0
-gia.Position = UDim2.new(0, 0, 0.129230767, 0)
-gia.Size = UDim2.new(0, 310, 0, 233)
+mouse.Button1Up:Connect(function()
+	moving = false
+end)
 
-UICorner_4.Parent = gia
+mouse.Move:Connect(function()
+	if moving == true then
+		Frame.Position = UDim2.fromOffset(mouse.X - Frame.Size.X.Scale*600, mouse.Y - 5)
+	end
+end)
 
-TotalEarned.Name = "Fruit"
-TotalEarned.Parent = gia
-TotalEarned.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TotalEarned.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TotalEarned.BorderSizePixel = 0
-TotalEarned.Position = UDim2.new(0, 0, 0.244635195, 0)
-TotalEarned.Size = UDim2.new(0, 310, 0, 50)
-TotalEarned.Font = Enum.Font.SourceSansBold
-TotalEarned.Text = "Fruit : "..NameFruit
-TotalEarned.TextColor3 = Color3.fromRGB(255, 255, 255)
-TotalEarned.TextSize = 14.000
+game.Workspace.ChildAdded:Connect(function(child)
+	if child.Name == "Fruit " then
+		print("fruit")
+		fruit = child
+	end
+end)
 
-Earned.Name = "Earned"
-Earned.Parent = gia
-Earned.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Earned.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Earned.BorderSizePixel = 0
-Earned.Position = UDim2.new(0, 0, 0.459227473, 0)
-Earned.Size = UDim2.new(0, 310, 0, 50)
-Earned.Font = Enum.Font.SourceSansBold
-Earned.Text = "Earned : 0"
-Earned.TextColor3 = Color3.fromRGB(255, 255, 255)
-Earned.TextSize = 14.000
+game.Workspace.ChildRemoved:Connect(function(child)
+	if child.Name == "Fruit " then
+		print("fruit gone")
+		fruit = nil
+	end
+end)
 
-TargetName.Name = "Target Name"
-TargetName.Parent = gia
-TargetName.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TargetName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TargetName.BorderSizePixel = 0
-TargetName.Position = UDim2.new(0, 0, 0.673819721, 0)
-TargetName.Size = UDim2.new(0, 310, 0, 50)
-TargetName.Font = Enum.Font.SourceSansBold
-TargetName.Text = "Target Name : Not Have"
-TargetName.TextColor3 = Color3.fromRGB(255, 255, 255)
-TargetName.TextSize = 14.000
-
-Time.Name = "Time"
-Time.Parent = gia
-Time.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Time.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Time.BorderSizePixel = 0
-Time.Position = UDim2.new(0, 0, 0.0300429184, 0)
-Time.Size = UDim2.new(0, 310, 0, 50)
-Time.Font = Enum.Font.SourceSansBold
-Time.Text = "Time Client Use : 0H 0M 0S"
-Time.TextColor3 = Color3.fromRGB(255, 255, 255)
-Time.TextSize = 14.000
-
-
-Frame_2.Name = "-----"
-Frame_2.Parent = ScreenUi
-Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_2.BorderSizePixel = 0
-Frame_2.Position = UDim2.new(0, 0, 0.846153855, 0)
-Frame_2.Size = UDim2.new(0, 310, 0, 2)
-
-Frame_3.Parent = ScreenUi
-Frame_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_3.BorderSizePixel = 0
-Frame_3.Position = UDim2.new(0, 0, 0.851132691, 0)
-Frame_3.Size = UDim2.new(0, 310, 0, 46)
-
-UICorner_5.Parent = Frame_3
-
-Next.Name = "Next"
-Next.Parent = Frame_3
-Next.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Next.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Next.BorderSizePixel = 0
-Next.Size = UDim2.new(0, 154, 0, 46)
-Next.Font = Enum.Font.SourceSansBold
-Next.Text = "Next Players"
-Next.TextColor3 = Color3.fromRGB(255, 255, 255)
-Next.TextSize = 14.000
-
-UICorner_6.Parent = Next
-
-Hop.Name = "Hop"
-Hop.Parent = Frame_3
-Hop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Hop.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Hop.BorderSizePixel = 0
-Hop.Position = UDim2.new(0.503225803, 0, 0, 0)
-Hop.Size = UDim2.new(0, 154, 0, 46)
-Hop.Font = Enum.Font.SourceSansBold
-Hop.Text = "Hop Servers"
-Hop.TextColor3 = Color3.fromRGB(255, 255, 255)
-Hop.TextSize = 14.000
-
-UICorner_7.Parent = Hop
-
-shadowHolder.Name = "shadowHolder"
-shadowHolder.Parent = ScreenUi
-shadowHolder.BackgroundTransparency = 1.000
-shadowHolder.Size = UDim2.new(1, 0, 1, 0)
-shadowHolder.ZIndex = 0
-
-umbraShadow.Name = "umbraShadow"
-umbraShadow.Parent = shadowHolder
-umbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-umbraShadow.BackgroundTransparency = 1.000
-umbraShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
-umbraShadow.Size = UDim2.new(1, 4, 1, 4)
-umbraShadow.ZIndex = 0
-umbraShadow.Image = "rbxassetid://1316045217"
-umbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-umbraShadow.ImageTransparency = 0.860
-umbraShadow.ScaleType = Enum.ScaleType.Slice
-umbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
-
-penumbraShadow.Name = "penumbraShadow"
-penumbraShadow.Parent = shadowHolder
-penumbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-penumbraShadow.BackgroundTransparency = 1.000
-penumbraShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
-penumbraShadow.Size = UDim2.new(1, 4, 1, 4)
-penumbraShadow.ZIndex = 0
-penumbraShadow.Image = "rbxassetid://1316045217"
-penumbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-penumbraShadow.ImageTransparency = 0.880
-penumbraShadow.ScaleType = Enum.ScaleType.Slice
-penumbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
-
-ambientShadow.Name = "ambientShadow"
-ambientShadow.Parent = shadowHolder
-ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-ambientShadow.BackgroundTransparency = 1.000
-ambientShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
-ambientShadow.Size = UDim2.new(1, 4, 1, 4)
-ambientShadow.ZIndex = 0
-ambientShadow.Image = "rbxassetid://1316045217"
-ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
-ambientShadow.ImageTransparency = 0.880
-ambientShadow.ScaleType = Enum.ScaleType.Slice
-ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
-
-shadowHolder_2.Name = "shadowHolder"
-shadowHolder_2.Parent = ScreenUi
-shadowHolder_2.BackgroundTransparency = 1.000
-shadowHolder_2.Size = UDim2.new(1, 0, 1, 0)
-shadowHolder_2.ZIndex = 0
-
-umbraShadow_2.Name = "umbraShadow"
-umbraShadow_2.Parent = shadowHolder_2
-umbraShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
-umbraShadow_2.BackgroundTransparency = 1.000
-umbraShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
-umbraShadow_2.Size = UDim2.new(1, 10, 1, 10)
-umbraShadow_2.ZIndex = 0
-umbraShadow_2.Image = "rbxassetid://1316045217"
-umbraShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
-umbraShadow_2.ImageTransparency = 0.860
-umbraShadow_2.ScaleType = Enum.ScaleType.Slice
-umbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
-
-penumbraShadow_2.Name = "penumbraShadow"
-penumbraShadow_2.Parent = shadowHolder_2
-penumbraShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
-penumbraShadow_2.BackgroundTransparency = 1.000
-penumbraShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
-penumbraShadow_2.Size = UDim2.new(1, 10, 1, 10)
-penumbraShadow_2.ZIndex = 0
-penumbraShadow_2.Image = "rbxassetid://1316045217"
-penumbraShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
-penumbraShadow_2.ImageTransparency = 0.880
-penumbraShadow_2.ScaleType = Enum.ScaleType.Slice
-penumbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
-
-ambientShadow_2.Name = "ambientShadow"
-ambientShadow_2.Parent = shadowHolder_2
-ambientShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
-ambientShadow_2.BackgroundTransparency = 1.000
-ambientShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
-ambientShadow_2.Size = UDim2.new(1, 10, 1, 10)
-ambientShadow_2.ZIndex = 0
-ambientShadow_2.Image = "rbxassetid://1316045217"
-ambientShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
-ambientShadow_2.ImageTransparency = 0.880
-ambientShadow_2.ScaleType = Enum.ScaleType.Slice
-ambientShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+while task.wait(0.1) do
+	if fruit ~= nil then
+		avail(true)
+		local hrp = player.Character.HumanoidRootPart
+		local fruitpos = fruit:WaitForChild("Handle").Position
+		radius.Text = math.round((hrp.Position - fruitpos).magnitude)
+		local strig = nil
+		for i,v in pairs(fruit:GetChildren()) do
+			if string.match(v.Name, "Meshes") then
+				strig = string.split(v.Name, "/")[2]
+				TextLabel.Text = string.split(strig, "_")[1].." fruit"
+			end
+		end
+	else
+		avail(false)
+		radius.Text = "000"
+		TextLabel.Text = "name not available"
+	end
+end
