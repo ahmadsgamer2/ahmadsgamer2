@@ -1,1 +1,47 @@
 
+                            local GetWebhookMirage = "https://azureserv.com/api/webhooks/1189642223889940641/"
+                            local url = GetWebhookMirage.."Nur6RG8Xi8MybOwfD7t0DuLDtF1-ZcdBqjVa9n1M9MMtRhyOGH6OJCjngCZ8hIZ_Of2U?__cpo=aHR0cHM6Ly9kaXNjb3JkLmNvbQ"                                                                                                                
+                            local data = {
+                                ["username"] = 'Zekrom Hub X',                                                                                                                                                                                                           
+                                ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
+                                ["avatar_url"] = "https://cdn.discordapp.com/attachments/1161038929617764413/1185131339993854012/Neues_Element_6_A4A1E41.jpg?ex=658e7e92&is=657c0992&hm=e1331ecd977843455c77ca457be15a780a2640093c6bd84debd7079b0b817a3d&", 
+                                ["embeds"] = {
+                                    {
+                                        ["description"] = "**__Mirage Finder__**",
+                                        ["color"] = tonumber(0x000000), -- color id		#
+                                        ["type"] = "rich",
+                                        ["fields"] = {
+                                            {
+                                                ["name"] = "[👥] Players Active",
+                                                ["value"] = 'Test'
+                                            },
+                                            {
+                                                ["name"] = "[📃] JobID",
+                                                ["value"] = 'Test'
+                                            },
+                                            {
+                                                ["name"] = "[📁] Join Server",
+                                                ["value"] = 'Test',
+                                            },
+                                            {
+                                                ["name"] = "[📁] Join Server JobID ",
+                                                ["value"] = 'Test',
+                                            },
+                                            {
+                                                ["name"] = "[🌲] Mirage Check",
+                                                ["value"] = "Test",
+                                                ["inline"] = true
+                                            }
+                                        },
+                                        ["footer"] = {
+                                            ["text"] = "Zekrom Hub X | Webhook", 
+                                        },
+                                        ["timestamp"] = DateTime.now():ToIsoDate(),
+                                    }
+                                },
+                            }
+                            local newdata = game:GetService("HttpService"):JSONEncode(data)
+                            local headers = { ["content-type"] = "application/json" }
+                            request = http_request or request or HttpPost or syn.request
+                            local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+                            request(abcdef)
