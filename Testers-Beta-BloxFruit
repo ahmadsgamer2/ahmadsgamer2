@@ -64,7 +64,7 @@ AddFolder("FolderImage/FileURL/Assets")
 
 
 
-imageLogo = AddImage("FolderImage/FileURL/Assets/Image.png", "Url")
+imageLogo = AddImage("FolderImage/FileURL/Assets/Image.png", "https://cdn.discordapp.com/attachments/1187491715335061576/1188928007805612103/Neues_Element_20_FA7A603.png?ex=659c4e7e&is=6589d97e&hm=0aa17ee386df3f385370203ef559ea25f55313d33a5e6fa9ca572859463ae031&")
 
 Library.Theme.DarkContrast = Color3.fromRGB(255,255,255)
 local WindowOutline
