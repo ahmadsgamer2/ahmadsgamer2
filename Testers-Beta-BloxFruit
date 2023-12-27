@@ -248,7 +248,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    while wait(.50) do
+    while task.wait() do
         if AllowRunService == true then
             if highChestOnly == false then
                 local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
@@ -303,6 +303,14 @@ task.spawn(function()
             end
         end)
     end
+end)
+
+spawn(function()
+    while wait(8) do
+    if AllowRunService then
+        game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
+    end
+end
 end)
 
 Discord.Name = "Discord"
