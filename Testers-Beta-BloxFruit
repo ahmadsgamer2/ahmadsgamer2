@@ -1,176 +1,190 @@
-CelestialScreen = Instance.new("ScreenGui")
-DropShadowHolder = Instance.new("Frame")
-DropShadow = Instance.new("ImageLabel")
-UIGradient = Instance.new("UIGradient")
-MainFrame = Instance.new("Frame")
-UICorner = Instance.new("UICorner")
-Bounty = Instance.new("TextLabel")
-Celestial = Instance.new("TextLabel")
-TotalEarn = Instance.new("TextLabel")
-Elapsed = Instance.new("TextLabel")
-ServerEarn = Instance.new("TextLabel")
-Target = Instance.new("TextLabel")
-UIGradient1 = Instance.new("UIGradient")
-Skip = Instance.new("TextButton")
-Hop = Instance.new("TextButton")
-
-CelestialScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-CelestialScreen.Name = "CelestialScreen"
-CelestialScreen.Parent = game:GetService("CoreGui")
-
-DropShadowHolder.AnchorPoint = Vector2.new(0.5, 0.5)
-DropShadowHolder.BackgroundTransparency = 1
-DropShadowHolder.BorderSizePixel = 0
-DropShadowHolder.Position = UDim2.new(0.5, 0, 0.5, 0)
-DropShadowHolder.Size = UDim2.new(0, 350, 0, 245)
-DropShadowHolder.ZIndex = 0
-DropShadowHolder.Name = "DropShadowHolder"
-DropShadowHolder.Parent = CelestialScreen
-
-DropShadow.Image = "rbxassetid://6015897843"
-DropShadow.ImageTransparency = 0.5
-DropShadow.ScaleType = Enum.ScaleType.Slice
-DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-DropShadow.BackgroundTransparency = 1
-DropShadow.BorderSizePixel = 0
-DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-DropShadow.Size = UDim2.new(1, 47, 1, 47)
-DropShadow.ZIndex = 0
-DropShadow.Name = "DropShadow"
-DropShadow.Parent = DropShadowHolder
-UIGradient.BackgroundColor3 =  Color3.fromRGB(0,0,0)
-
-UIGradient.Parent = DropShadow
-
-MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-MainFrame.BackgroundColor3 = Color3.fromRGB(45.00000111758709, 45.00000111758709, 45.00000111758709)
-MainFrame.BackgroundTransparency = 0.6000000238418579
-MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-MainFrame.BorderSizePixel = 0
-MainFrame.Position = UDim2.new(0.5, 0, 0.497461915, 0)
-MainFrame.Size = UDim2.new(0, 350, 0, 245)
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = DropShadow
-
-UICorner.CornerRadius = UDim.new(0, 2)
-UICorner.Parent = MainFrame
-
-Bounty.Font = Enum.Font.GothamBold
-Bounty.Text = "Fruit Finder"
-Bounty.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
-Bounty.TextSize = 20
-Bounty.TextXAlignment = Enum.TextXAlignment.Left
-Bounty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Bounty.BackgroundTransparency = 1
-Bounty.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Bounty.BorderSizePixel = 0
-Bounty.Position = UDim2.new(0.517142832, 0, 0.0775510222, 0)
-Bounty.Size = UDim2.new(0, 118, 0, 37)
-Bounty.Name = "Bounty"
-Bounty.Parent = MainFrame
-
-Celestial.Font = Enum.Font.GothamBold
-Celestial.Text = "Zekrom Hub X"
-Celestial.TextColor3 = Color3.fromRGB(83.00000265240669, 160.00000566244125, 255)
-Celestial.TextSize = 20
-Celestial.TextXAlignment = Enum.TextXAlignment.Right
-Celestial.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Celestial.BackgroundTransparency = 1
-Celestial.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Celestial.BorderSizePixel = 0
-Celestial.Position = UDim2.new(0.177142859, 0, 0.0775510222, 0)
-Celestial.Size = UDim2.new(0, 105, 0, 37)
-Celestial.Name = "Celestial"
-Celestial.Parent = MainFrame
-
-TotalEarn.Font = Enum.Font.GothamBold
-TotalEarn.Text = "Total Earned: "
-TotalEarn.TextColor3 = Color3.fromRGB(255, 255, 11.000000294297934)
-TotalEarn.TextSize = 18
-TotalEarn.AnchorPoint = Vector2.new(0.5, 0)
-TotalEarn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TotalEarn.BackgroundTransparency = 1
-TotalEarn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TotalEarn.BorderSizePixel = 0
-TotalEarn.Position = UDim2.new(0.5, 0, 0.387530655, 0)
-TotalEarn.Size = UDim2.new(0, 280, 0, 23)
-TotalEarn.Name = "TotalEarn"
-TotalEarn.Parent = MainFrame
-
-Elapsed.Font = Enum.Font.GothamBold
-Elapsed.Text = "Time Elapsed: "
-Elapsed.TextColor3 = Color3.fromRGB(255, 255, 11.000000294297934)
-Elapsed.TextSize = 18
-Elapsed.AnchorPoint = Vector2.new(0.5, 0)
-Elapsed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Elapsed.BackgroundTransparency = 1
-Elapsed.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Elapsed.BorderSizePixel = 0
-Elapsed.Position = UDim2.new(0.5, 0, 0.269163281, 0)
-Elapsed.Size = UDim2.new(0, 280, 0, 20)
-Elapsed.Name = "Elapsed"
-Elapsed.Parent = MainFrame
-
-for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-    if v:IsA("Tool") and string.find(v.Name,"Fruit") then 
-        NameFruit = v.Name 
+highChestOnly = true
+godsChalicSniper = false
+repeat task.wait(4) until game:IsLoaded()
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+    table.insert(AllIDs, actualHour)
+    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+function TPReturner()
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
     end
 end
 
-ServerEarn.Font = Enum.Font.GothamBold
-ServerEarn.Text = "Fruit: "..NameFruit
-ServerEarn.TextColor3 = Color3.fromRGB(255, 255, 255)
-ServerEarn.TextSize = 18
-ServerEarn.AnchorPoint = Vector2.new(0.5, 0)
-ServerEarn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ServerEarn.BackgroundTransparency = 1
-ServerEarn.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ServerEarn.BorderSizePixel = 0
-ServerEarn.Position = UDim2.new(0.5, 0, 0.534469426, 0)
-ServerEarn.Size = UDim2.new(0, 280, 0, 19)
-ServerEarn.Name = "ServerEarn"
-ServerEarn.Parent = MainFrame
+function Teleport()
+    while wait() do
+        pcall(function()
+            TPReturner()
+            if foundAnything ~= "" then
+                TPReturner()
+            end
+        end)
+    end
+end
+local veryImportantWaitTime = 0.5
+task.spawn(function()
+    while task.wait(veryImportantWaitTime) do
+        pcall(function()
+            for i,v in pairs(game.CoreGui:GetDescendants()) do
+                pcall(function()
+                    if string.find(v.Name,"ErrorMessage") then
+                        if string.find(v.Text,"Security kick") then
+                            veryImportantWaitTime = 1e9
+                            Teleport()
+                        end
+                    end
+                end)
+            end
+        end)
+    end
+end)
 
-Target.Font = Enum.Font.GothamBold
-Target.Text = "Target:"
-Target.TextColor3 = Color3.fromRGB(255,255,255)
-Target.TextSize = 18
-Target.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Target.BackgroundTransparency = 1
-Target.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Target.BorderSizePixel = 0
-Target.Position = UDim2.new(0.340000004, 0, 0.673469365, 0)
-Target.Size = UDim2.new(0, 112, 0, 15)
-Target.Name = "Target"
-Target.Parent = MainFrame
-UIGradient1.BackgroundColor3 = Color3.fromRGB(0,0,0)
-UIGradient1.Parent = MainFrame
+local AllowRunService = true
+local AllowRunServiceBind = Instance.new("BindableFunction")
+function AllowRunServiceBind.OnInvoke(args)
+    if args == "ON" then
+        AllowRunService = true
+    elseif args == "OFF" then
+        AllowRunService = false
+    end
+    local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("SendNotification", {
+        Title = "Chest Farm",
+        Text = "by thaibao7444 ",
+        Icon = "rbxthumb://type=Asset&id=15485121479&w=150&h=150",
+        Duration = math.huge,
+        Callback = AllowRunServiceBind,
+        Button1 = "ON",
+        Button2 = "OFF",
+    })
+end
 
-Skip.Font = Enum.Font.GothamBold
-Skip.Text = "Skip Player"
-Skip.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
-Skip.TextSize = 18
-Skip.TextXAlignment = Enum.TextXAlignment.Right
-Skip.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Skip.BackgroundTransparency = 0.9900000095367432
-Skip.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Skip.BorderSizePixel = 0
-Skip.Position = UDim2.new(0.0457142852, 0, 0.759183645, 0)
-Skip.Size = UDim2.new(0, 144, 0, 43)
-Skip.Name = "Skip"
-Skip.Parent = MainFrame
 
-Hop.Font = Enum.Font.GothamBold
-Hop.Text = "Hop Server"
-Hop.TextColor3 = Color3.fromRGB(230.00000149011612, 230.00000149011612, 230.00000149011612)
-Hop.TextSize = 18
-Hop.TextXAlignment = Enum.TextXAlignment.Left
-Hop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Hop.BackgroundTransparency = 0.9900000095367432
-Hop.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Hop.BorderSizePixel = 0
-Hop.Position = UDim2.new(0.54285717, 0, 0.759183645, 0)
-Hop.Size = UDim2.new(0, 144, 0, 43)
-Hop.Name = "Hop"
-Hop.Parent = MainFrame
+task.spawn(function()
+    while task.wait() do
+        task.spawn(function()
+            if godsChalicSniper == true then
+                if stuff then
+                    AllowRunService = false
+                end
+            end
+        end)
+    end
+end)
+
+local CoreGui = game:GetService("StarterGui")
+CoreGui:SetCore("SendNotification", {
+    Title = "Chest Farm",
+    Text = "by thaibao7444",
+    Icon = "rbxthumb://type=Asset&id=15485121479&w=150&h=150",
+    Duration = math.huge,
+    Callback = AllowRunServiceBind,
+    Button1 = "ON",
+    Button2 = "OFF",
+})
+task.spawn(function()
+    while true and task.wait(.5) do
+        if AllowRunService == true then
+            local ohString1 = "SetTeam"
+            local ohString2 = "Marines"
+
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
+        end
+    end
+end)
+
+task.spawn(function()
+    while true and task.wait() do
+        if AllowRunService == true then
+            if highChestOnly == false then
+                local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
+                if not game.Players.LocalPlayer.Character then
+        
+                else
+                    local hasCrewTag = game.Players.LocalPlayer.Character:FindFirstChild("CrewBBG",true)
+                    if hasCrewTag then hasCrewTag:Destroy() end
+                    local hasHumanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+                    if hasHumanoid then
+                        local Chest = game.Workspace:FindFirstChild("Chest4") or game.Workspace:FindFirstChild("Chest3") or game.Workspace:FindFirstChild("Chest2") or game.Workspace:FindFirstChild("Chest1") or game.Workspace:FindFirstChild("Chest")
+                        
+                        if Chest then
+                            game.Players.LocalPlayer.Character:PivotTo(Chest:GetPivot())
+                            firesignal(Chest.Touched,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        else
+                            Teleport()
+                            break
+                        end
+                    end 
+                end
+            elseif highChestOnly == true then
+                local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
+                if not game.Players.LocalPlayer.Character then
+        
+                else
+                    local hasCrewTag = game.Players.LocalPlayer.Character:FindFirstChild("CrewBBG",true)
+                    if hasCrewTag then hasCrewTag:Destroy() end
+                    local hasHumanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+                    if hasHumanoid then
+                        local Chest = game.Workspace:FindFirstChild("Chest4") or game.Workspace:FindFirstChild("Chest3") or game.Workspace:FindFirstChild("Chest2")
+                        
+                        if Chest then
+                            game.Players.LocalPlayer.Character:PivotTo(Chest:GetPivot())
+                            firesignal(Chest.Touched,game.Players.LocalPlayer.Character.HumanoidRootPart)
+                        else
+                            Teleport()
+                            break
+                        end
+                    end 
+                end
+            end
+        end
+    end
+end)
