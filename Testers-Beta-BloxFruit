@@ -99,6 +99,8 @@ local ImageButton = Instance.new("ImageButton")
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+_G.Primary = Color3.fromRGB(43, 43, 43)
+
 ImageButton.Parent = ScreenGui
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
 ImageButton.Size = UDim2.new(0, 50, 0, 50)
@@ -124,8 +126,17 @@ ImageButton:TweenSize(UDim2.new(0, 50, 0, 50),"Out","Quad",0.2,true)
     ImageButton.Visible = false
 end)
 
+do
+    if game:GetService("CoreGui"):FindFirstChild("ZekromHub_Chest") then
+        game:GetService("CoreGui").ZekromHub_Chest:Destroy()
+        game:GetService("CoreGui").ScreenGui:Destroy()
+    end
+end
+  
+
 ZekromHub_Chest.Name = "ZekromHub_Chest"
 ZekromHub_Chest.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ZekromHub_Chest.Parent = game.CoreGui
 
 MainChest.Name = "MainChest"
 MainChest.Parent = ZekromHub_Chest
