@@ -1,147 +1,307 @@
-repeat wait() until game.IsLoaded and (game.Players.LocalPlayer or game.Players.PlayerAdded:Wait()) and (game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait())
-
-_G.AutoStoreFruits = true
-
-if Ran then
-    return
-else
-    getgenv().Ran = true
-end
-if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main", 9e9):FindFirstChild("ChooseTeam") then
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
-    wait(3)
-end
-
-local plr = game.Players.LocalPlayer
-local chr = plr.Character
-local t = game.TweenService
-local bv = Instance.new("BodyVelocity")
-bv.MaxForce = Vector3.new(1/0, 1/0, 1/0)
-bv.Velocity = Vector3.new()
-bv.Name = "bV"
-local bav = Instance.new("BodyAngularVelocity")
-bav.AngularVelocity = Vector3.new()
-bav.MaxTorque = Vector3.new(1/0, 1/0, 1/0)
-bav.Name = "bAV"
-for _,v in next, workspace:GetChildren() do
-    if v.Name:find("Fruit") and (v:IsA("Tool") or v:IsA("Model")) then
-        repeat
-            local anc1 = bv:Clone()
-            anc1.Parent = chr.HumanoidRootPart
-            local anc2 = bav:Clone()
-            anc2.Parent = chr.HumanoidRootPart
-            local p = t:Create(chr.HumanoidRootPart, TweenInfo.new((plr:DistanceFromCharacter(v.Handle.Position)-150)/300, Enum.EasingStyle.Linear), {CFrame=v.Handle.CFrame + Vector3.new(0, v.Handle.Size.Y, 0)})
-            p:Play()
-            p.Completed:Wait()
-            chr.HumanoidRootPart.CFrame = v.Handle.CFrame
-            anc1:Destroy()
-            anc2:Destroy()
-            wait(1)
-        until v.Parent ~= workspace
-        wait(1)
-        local fruit = chr:FindFirstChildOfClass("Tool") and chr:FindFirstChildOfClass("Tool").Name:find("Fruit") and chr:FindFirstChildOfClass("Tool") or (function()
-            for _,fr in plr.Backpack:GetChildren() do
-                if fr.Name:find("Fruit") then
-                    return fr
-                end
-            end
-        end)()
-        print(fruit)
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit", fruit:GetAttribute("OriginalName"), fruit)
-    end
-end
-
-for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-    if v:IsA("Tool") and string.find(v.Name,"Fruit") then 
-        NameFruit = v.Name 
-    end
-end
-
-print(NameFruit)
+-- Gui to Lua
 
 spawn(function()
-	pcall(function()
-		while wait(.1) do
-			if _G.AutoStoreFruit then
-				for i,v in pairs(NameFruit) do
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit",v)
-				end
-			end
-		end
-	end)
+    while wait() do
+        pcall(function()
+            game.Player.LocalPlayer.Character.Stun.Value = 0
+        end)
+    end
 end)
 
-print('nope')
-local currentJobId = game.JobId
-repeat
-    task.spawn(pcall, function()
-        Time = 0.1 -- seconds
-repeat wait() until game:IsLoaded()
-wait(Time)
-local PlaceID = game.PlaceId
-local AllIDs = {}
-local foundAnything = ""
-local actualHour = os.date("!*t").hour
-local Deleted = false
-function TPReturner()
-   local Site;
-   if foundAnything == "" then
-       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-   else
-       Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-   end
-   local ID = ""
-   if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-       foundAnything = Site.nextPageCursor
-   end
-   local num = 0;
---//By nuqi
-   for i,v in pairs(Site.data) do
-       local Possible = true
-       ID = tostring(v.id)
-       if tonumber(v.maxPlayers) > tonumber(v.playing) then
-           for _,Existing in pairs(AllIDs) do
-               if num ~= 0 then
-                   if ID == tostring(Existing) then
-                       Possible = false
-                   end
-               else
-                   if tonumber(actualHour) ~= tonumber(Existing) then
-                       local delFile = pcall(function()
-                           delfile("NotSameServers.json")
-                           AllIDs = {}
-                           table.insert(AllIDs, actualHour)
-                       end)
-                   end
-               end
-               num = num + 1
-           end
-           if Possible == true then
-               table.insert(AllIDs, ID)
-               wait()
-               pcall(function()
-                   writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                   wait()
-                   game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-               end)
-               wait(4)
-           end
-       end
-   end
+-- Version: 3.6
+
+
+
+local plrs = game.Players
+local lp = plrs.LocalPlayer
+
+local char = lp.Character
+
+local humanoid = char:WaitForChild("Humanoid")
+local humanoidrootpart = char:WaitForChild("HumanoidRootPart")
+
+local uwu
+
+local hmt = hookmetamethod
+local cs = newcclosure
+
+HttpService = game:GetService("HttpService")
+
+function getDirection(Origin, Position)
+    return (Position - Origin).Unit * 1000
 end
 
-function Teleport()
-   while wait() do
-       pcall(function()
-           TPReturner()
-           if foundAnything ~= "" then
-               TPReturner()
-           end
-       end)
-   end
-end
 
-Teleport()
-    end)
-    wait(2)
-until game.JobId ~= currentJobId
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local ScreenUi = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+local NameHubFrame = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local NameHub = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+local Frame = Instance.new("Frame")
+local gia = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local TotalEarned = Instance.new("TextLabel")
+local Earned = Instance.new("TextLabel")
+local TargetName = Instance.new("TextLabel")
+local Time = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local Frame_3 = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local Next = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local Hop = Instance.new("TextButton")
+local UICorner_7 = Instance.new("UICorner")
+local shadowHolder = Instance.new("Frame")
+local umbraShadow = Instance.new("ImageLabel")
+local penumbraShadow = Instance.new("ImageLabel")
+local ambientShadow = Instance.new("ImageLabel")
+local shadowHolder_2 = Instance.new("Frame")
+local umbraShadow_2 = Instance.new("ImageLabel")
+local penumbraShadow_2 = Instance.new("ImageLabel")
+local ambientShadow_2 = Instance.new("ImageLabel")
+
+-- Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+ScreenUi.Name = "Screen Ui"
+ScreenUi.Parent = ScreenGui
+ScreenUi.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ScreenUi.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ScreenUi.BorderSizePixel = 0
+ScreenUi.Position = UDim2.new(0.272559851, 0, 0.172690764, 0)
+ScreenUi.Size = UDim2.new(0, 310, 0, 309)
+
+UICorner.Parent = ScreenUi
+
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
+UIStroke.Parent = ScreenUi
+
+NameHubFrame.Name = "Name Hub Frame"
+NameHubFrame.Parent = ScreenUi
+NameHubFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+NameHubFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NameHubFrame.BorderSizePixel = 0
+NameHubFrame.Size = UDim2.new(0, 310, 0, 40)
+
+UICorner_2.Parent = NameHubFrame
+
+NameHub.Name = "Name Hub"
+NameHub.Parent = NameHubFrame
+NameHub.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+NameHub.BorderColor3 = Color3.fromRGB(0, 0, 0)
+NameHub.BorderSizePixel = 0
+NameHub.Size = UDim2.new(0, 310, 0, 40)
+NameHub.Font = Enum.Font.SourceSansBold
+NameHub.Text = "Night Hub(Auto Bounty[BETA])"
+NameHub.TextColor3 = Color3.fromRGB(255, 255, 255)
+NameHub.TextSize = 16.000
+
+UICorner_3.Parent = NameHub
+
+Frame.Name = "-----"
+Frame.Parent = ScreenUi
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 0.123076923, 0)
+Frame.Size = UDim2.new(0, 310, 0, 2)
+
+gia.Name = "ở giữa"
+gia.Parent = ScreenUi
+gia.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+gia.BorderColor3 = Color3.fromRGB(0, 0, 0)
+gia.BorderSizePixel = 0
+gia.Position = UDim2.new(0, 0, 0.129230767, 0)
+gia.Size = UDim2.new(0, 310, 0, 233)
+
+UICorner_4.Parent = gia
+
+TotalEarned.Name = "Total Earned"
+TotalEarned.Parent = gia
+TotalEarned.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TotalEarned.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TotalEarned.BorderSizePixel = 0
+TotalEarned.Position = UDim2.new(0, 0, 0.244635195, 0)
+TotalEarned.Size = UDim2.new(0, 310, 0, 50)
+TotalEarned.Font = Enum.Font.SourceSansBold
+TotalEarned.Text = "Total Earned : 0"
+TotalEarned.TextColor3 = Color3.fromRGB(255, 255, 255)
+TotalEarned.TextSize = 14.000
+
+Earned.Name = "Earned"
+Earned.Parent = gia
+Earned.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Earned.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Earned.BorderSizePixel = 0
+Earned.Position = UDim2.new(0, 0, 0.459227473, 0)
+Earned.Size = UDim2.new(0, 310, 0, 50)
+Earned.Font = Enum.Font.SourceSansBold
+Earned.Text = "Earned : 0"
+Earned.TextColor3 = Color3.fromRGB(255, 255, 255)
+Earned.TextSize = 14.000
+
+TargetName.Name = "Target Name"
+TargetName.Parent = gia
+TargetName.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TargetName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TargetName.BorderSizePixel = 0
+TargetName.Position = UDim2.new(0, 0, 0.673819721, 0)
+TargetName.Size = UDim2.new(0, 310, 0, 50)
+TargetName.Font = Enum.Font.SourceSansBold
+TargetName.Text = "Target Name : Not Have"
+TargetName.TextColor3 = Color3.fromRGB(255, 255, 255)
+TargetName.TextSize = 14.000
+
+Time.Name = "Time"
+Time.Parent = gia
+Time.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Time.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Time.BorderSizePixel = 0
+Time.Position = UDim2.new(0, 0, 0.0300429184, 0)
+Time.Size = UDim2.new(0, 310, 0, 50)
+Time.Font = Enum.Font.SourceSansBold
+Time.Text = "Time Client Use : 0H 0M 0S"
+Time.TextColor3 = Color3.fromRGB(255, 255, 255)
+Time.TextSize = 14.000
+
+
+Frame_2.Name = "-----"
+Frame_2.Parent = ScreenUi
+Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0, 0, 0.846153855, 0)
+Frame_2.Size = UDim2.new(0, 310, 0, 2)
+
+Frame_3.Parent = ScreenUi
+Frame_3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame_3.BorderSizePixel = 0
+Frame_3.Position = UDim2.new(0, 0, 0.851132691, 0)
+Frame_3.Size = UDim2.new(0, 310, 0, 46)
+
+UICorner_5.Parent = Frame_3
+
+Next.Name = "Next"
+Next.Parent = Frame_3
+Next.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Next.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Next.BorderSizePixel = 0
+Next.Size = UDim2.new(0, 154, 0, 46)
+Next.Font = Enum.Font.SourceSansBold
+Next.Text = "Next Players"
+Next.TextColor3 = Color3.fromRGB(255, 255, 255)
+Next.TextSize = 14.000
+Next.MouseButton1Down:Connect(find_target)
+
+UICorner_6.Parent = Next
+
+Hop.Name = "Hop"
+Hop.Parent = Frame_3
+Hop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Hop.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Hop.BorderSizePixel = 0
+Hop.Position = UDim2.new(0.503225803, 0, 0, 0)
+Hop.Size = UDim2.new(0, 154, 0, 46)
+Hop.Font = Enum.Font.SourceSansBold
+Hop.Text = "Hop Servers"
+Hop.TextColor3 = Color3.fromRGB(255, 255, 255)
+Hop.TextSize = 14.000
+
+UICorner_7.Parent = Hop
+
+shadowHolder.Name = "shadowHolder"
+shadowHolder.Parent = ScreenUi
+shadowHolder.BackgroundTransparency = 1.000
+shadowHolder.Size = UDim2.new(1, 0, 1, 0)
+shadowHolder.ZIndex = 0
+
+umbraShadow.Name = "umbraShadow"
+umbraShadow.Parent = shadowHolder
+umbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+umbraShadow.BackgroundTransparency = 1.000
+umbraShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
+umbraShadow.Size = UDim2.new(1, 4, 1, 4)
+umbraShadow.ZIndex = 0
+umbraShadow.Image = "rbxassetid://1316045217"
+umbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+umbraShadow.ImageTransparency = 0.860
+umbraShadow.ScaleType = Enum.ScaleType.Slice
+umbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+penumbraShadow.Name = "penumbraShadow"
+penumbraShadow.Parent = shadowHolder
+penumbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+penumbraShadow.BackgroundTransparency = 1.000
+penumbraShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
+penumbraShadow.Size = UDim2.new(1, 4, 1, 4)
+penumbraShadow.ZIndex = 0
+penumbraShadow.Image = "rbxassetid://1316045217"
+penumbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+penumbraShadow.ImageTransparency = 0.880
+penumbraShadow.ScaleType = Enum.ScaleType.Slice
+penumbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+ambientShadow.Name = "ambientShadow"
+ambientShadow.Parent = shadowHolder
+ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+ambientShadow.BackgroundTransparency = 1.000
+ambientShadow.Position = UDim2.new(0.5, 0, 0.5, 2)
+ambientShadow.Size = UDim2.new(1, 4, 1, 4)
+ambientShadow.ZIndex = 0
+ambientShadow.Image = "rbxassetid://1316045217"
+ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+ambientShadow.ImageTransparency = 0.880
+ambientShadow.ScaleType = Enum.ScaleType.Slice
+ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+shadowHolder_2.Name = "shadowHolder"
+shadowHolder_2.Parent = ScreenUi
+shadowHolder_2.BackgroundTransparency = 1.000
+shadowHolder_2.Size = UDim2.new(1, 0, 1, 0)
+shadowHolder_2.ZIndex = 0
+
+umbraShadow_2.Name = "umbraShadow"
+umbraShadow_2.Parent = shadowHolder_2
+umbraShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+umbraShadow_2.BackgroundTransparency = 1.000
+umbraShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
+umbraShadow_2.Size = UDim2.new(1, 10, 1, 10)
+umbraShadow_2.ZIndex = 0
+umbraShadow_2.Image = "rbxassetid://1316045217"
+umbraShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+umbraShadow_2.ImageTransparency = 0.860
+umbraShadow_2.ScaleType = Enum.ScaleType.Slice
+umbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+penumbraShadow_2.Name = "penumbraShadow"
+penumbraShadow_2.Parent = shadowHolder_2
+penumbraShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+penumbraShadow_2.BackgroundTransparency = 1.000
+penumbraShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
+penumbraShadow_2.Size = UDim2.new(1, 10, 1, 10)
+penumbraShadow_2.ZIndex = 0
+penumbraShadow_2.Image = "rbxassetid://1316045217"
+penumbraShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+penumbraShadow_2.ImageTransparency = 0.880
+penumbraShadow_2.ScaleType = Enum.ScaleType.Slice
+penumbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+ambientShadow_2.Name = "ambientShadow"
+ambientShadow_2.Parent = shadowHolder_2
+ambientShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+ambientShadow_2.BackgroundTransparency = 1.000
+ambientShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
+ambientShadow_2.Size = UDim2.new(1, 10, 1, 10)
+ambientShadow_2.ZIndex = 0
+ambientShadow_2.Image = "rbxassetid://1316045217"
+ambientShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+ambientShadow_2.ImageTransparency = 0.880
+ambientShadow_2.ScaleType = Enum.ScaleType.Slice
+ambientShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
