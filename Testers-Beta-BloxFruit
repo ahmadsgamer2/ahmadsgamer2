@@ -132,7 +132,7 @@ NameHub.TextSize = 16.000
 
 UICorner_3.Parent = NameHub
 
-MakeDraggable(ScreenGui, ScreenUi)
+MakeDraggable(ScreenGui)
 
 Frame.Name = "-----"
 Frame.Parent = ScreenUi
