@@ -65,11 +65,21 @@ AddFolder("FolderImage/FileURL/Assets")
 
 
 imageLogo = AddImage("FolderImage/FileURL/Assets/Image.png", "https://cdn.discordapp.com/attachments/1187491715335061576/1187491736658915358/Neues_Element_20_748CE75.png?ex=659714dc&is=65849fdc&hm=1a89208af9dffcf1cf0cde96ef97caa7118732569edf8518770dec8a74e56b05&")
-
+WindowSize = Vector2.new(300, 300)
 local WindowOutline
 local WindowFrame
 local Library
 ---Create UI Image
+
+   local WindowOutline = AddDrawing("Square", {
+    Size = WindowSize,
+    Thickness = 0,
+    Color = Library.Theme.Outline,
+    Visible = true,
+    Filled = true
+    })
+--
+     WindowOutline.Position = Utility.MiddlePos(WindowOutline)
 
         local WindowOutlineBorder = AddDrawing("Square", {
             Size = Vector2.new(WindowOutline.Size.X - 2, WindowOutline.Size.Y - 2),
