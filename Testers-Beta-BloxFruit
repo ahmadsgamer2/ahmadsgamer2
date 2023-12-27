@@ -144,7 +144,7 @@ Target.Position = UDim2.new(0.340000004, 0, 0.673469365, 0)
 Target.Size = UDim2.new(0, 112, 0, 15)
 Target.Name = "Target"
 Target.Parent = MainFrame
-UIGradient1.Color = Color3.fromRGB(0,0,0)
+UIGradient1.BackgroundColor3 = Color3.fromRGB(0,0,0)
 UIGradient1.Parent = MainFrame
 
 Skip.Font = Enum.Font.GothamBold
