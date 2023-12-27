@@ -121,8 +121,7 @@ ImageButton.MouseButton1Down:connect(function()
 ImageButton:TweenSize(UDim2.new(0, 40, 0, 40),"Out","Quad",0.2,true)
 wait(0.1)
 ImageButton:TweenSize(UDim2.new(0, 50, 0, 50),"Out","Quad",0.2,true)
-    game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-    game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+game.CoreGui:FindFirstChild("ScreenGui").Enabled = not game.CoreGui:FindFirstChild("ScreenGui").Enabled
     ImageButton.Visible = false
 end)
 
@@ -164,8 +163,7 @@ Minimze.Position = UDim2.new(0.864864886, 0, 0.0232558139, 0)
 Minimze.Size = UDim2.new(0, 16, 0, 17)
 Minimze.Image = "http://www.roblox.com/asset/?id=15511995461"
 Minimze.MouseButton1Down:connect(function()
-game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
+game.CoreGui:FindFirstChild("ZekromHub_Chest").Enabled = not game.CoreGui:FindFirstChild("ZekromHub_Chest").Enabled
 ImageButton.Visible = true
 end)
 
@@ -195,8 +193,8 @@ ButtonChest.Text = "Farm Chest"
 ButtonChest.TextColor3 = Color3.fromRGB(255, 255, 255)
 ButtonChest.TextSize = 14.000
 
-ButtonChest.MouseButton1Down:connect(function(v)
-    if v == true then
+ButtonChest.MouseButton1Down:connect(function(value)
+    if value then
         ButtonChest.Text = "Farm Chest : ON"
         AllowRunService = true
         highChestOnly = true 
