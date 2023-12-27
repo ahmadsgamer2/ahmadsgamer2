@@ -4734,9 +4734,20 @@ end
 end)
 
 task.spawn(function()
+    while true and task.wait(.5) do
+        if _G.Settings.AutoFarmChest or _G.AutoFarmChest == true then
+            local ohString1 = "SetTeam"
+            local ohString2 = "Marines"
+
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(ohString1, ohString2)
+        end
+    end
+end)
+
+task.spawn(function()
     while true and task.wait() do
         if _G.AutoFarmChest or _G.Settings.AutoFarmChest == true then
-            if highChestOnly == false then
+            if _G.AutoFarmChest or _G.Settings.AutoFarmChest == false then
                 local hasChar = game.Players.LocalPlayer:FindFirstChild("Character")
                 if not game.Players.LocalPlayer.Character then
         
