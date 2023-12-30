@@ -16,7 +16,7 @@ while true do
        ["embeds"] = {
            {
                ["title"] = "New money log",
-               ["description"] = "** Username: **" .. game.Players.LocalPlayer.Name.." \n ** Amount: **" ..game.Players.LocalPlayer.PlayerGui.Main.Right["Fantasy Coins2"].Amount.Text.. "",
+               ["description"] = "** Username: **" .. game.Players.LocalPlayer.Name..",
                ["type"] = "rich",
                ["color"] = tonumber(65311),
                ["image"] = {
