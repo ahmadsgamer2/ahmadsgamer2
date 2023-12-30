@@ -1,10 +1,38 @@
 while true do 
-	wait()
-local httpService = game:GetService("HttpService")
-
-httpService:PostAsync("https://webhook.newstargeted.com/api/webhooks/1188856272116777041/tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2",
-	httpService:JSONEncode({
-		content = "Hello, world!"
-	})
-)
+local WebHook = "https://webhook.newstargeted.com/api/webhooks/1188856272116777041/tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2" -- enter your webhook here
+ 
+ 
+while true do
+    local GetName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
+    local webhookcheck =
+       is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+       secure_load and "Sentinel" or
+       KRNL_LOADED and "Krnl or BloxiX" or
+       "Free executor"
+    
+    local url = WebHook
+    local data = {
+       ["content"] = "",
+       ["embeds"] = {
+           {
+               ["title"] = "New money log",
+               ["description"] = "** Username: **" .. game.Players.LocalPlayer.Name.." \n ** Amount: **" ..game.Players.LocalPlayer.PlayerGui.Main.Right["Fantasy Coins2"].Amount.Text.. "",
+               ["type"] = "rich",
+               ["color"] = tonumber(65311),
+               ["image"] = {
+                   ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                       tostring(game:GetService("Players").LocalPlayer.Name)
+               }
+           }
+       }
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    
+    local headers = {
+       ["content-type"] = "application/json"
+    }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+    request(abcdef)
+end
 end
