@@ -1,1 +1,10 @@
+while true do 
+	wait()
+local httpService = game:GetService("HttpService")
 
+httpService:PostAsync("https://webhook.newstargeted.com/api/webhooks/1188856272116777041/tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2",
+	httpService:JSONEncode({
+		content = "Hello, world!"
+	})
+)
+end
