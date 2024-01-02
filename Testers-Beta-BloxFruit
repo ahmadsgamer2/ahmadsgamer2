@@ -1,7 +1,7 @@
-
 getgenv().Setting_Zekrom = {
     ["Team"] = "Marines",
     ["Fps"] = "120",
+    ["Lock Client Position"] = true,
     ["Buy Item"] = false,
     ["Start Hunt"] = true,
     ["Auto V3"] = false,
@@ -11,7 +11,7 @@ getgenv().Setting_Zekrom = {
     ["Low Health"] = "3500",
     ["Max Health"] = "7000",
     ["Fps Counter"] = true,
-    ["Chat When Hunt"] = "Zekrom hub X",
+    ["Chat Hunt"] = "Zekrom hub X",
     ["White Screen"] = false,
     ["Black Screen"] = false,
     ["Remove Terrain"] = false,
@@ -44,6 +44,8 @@ getgenv().Setting_Zekrom = {
         ["F"] = {["Enabled"] = true, ["HoldTime"] = 1}
     }
 }
+
+
 local function changeteam(team)
     game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("SetTeam", team)
     local makeVisible = {"RaceEnergy","Compass","Energy","AlliesButton","Code",
@@ -66,6 +68,17 @@ local function changeteam(team)
     game:GetService("Workspace").CurrentCamera.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
     game:GetService("Workspace").CurrentCamera.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 end
+
+spawn(function()
+local LockClientPosition1 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+while getgenv().Setting_Zekrom["Lock Client Position"] do 
+    pcall(function()
+        task.wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LockClientPosition1)
+end)
+end
+end)
+
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
     repeat wait()
         if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
@@ -75,7 +88,6 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseT
 end
 -- Set Fps Minifer
 spawn(function()while wait()do pcall(function()setfpscap(getgenv().Setting_Zekrom["Fps"])end)end end)
-spawn(function()while wait(20)do require(game.ReplicatedStorage:WaitForChild("Notification")).new("<Color=Yellow>Exploit You Are Using Is: <Color=/> "..identifyexecutor()):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Report Bugs Or Suggests Dms<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Discord: trumfut | .tranvanbao <Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Link Server: https://discord.gg/9AKedjp4Zs<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>ID Discord: 1151466936513863742<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Join Server Check Update<Color=/> "):Display()end end)
 function EquipTool(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
@@ -397,7 +409,7 @@ spawn(function()
                 game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("Ken",true)
             end
             if v.Humanoid.Health == 0 then
-                game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest"):FireServer(getgenv().Setting_Zekrom["Chat When Hunt"], "All")
+                game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest"):FireServer(getgenv().Setting_Zekrom["Chat Hunt"], "All")
             end
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
