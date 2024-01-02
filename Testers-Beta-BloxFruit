@@ -1,530 +1,806 @@
-getgenv().Setting_Zekrom = {
-    ["Team"] = "Marines",
-    ["Fps"] = "120",
-    ["Lock Client Position"] = true,
-    ["Buy Item"] = false,
-    ["Start Hunt"] = true,
-    ["Auto V3"] = false,
-    ["Auto V4"] = false,
-    ["Auto Buso"] = true,
-    ["Auto Ken"] = true,
-    ["Low Health"] = "3500",
-    ["Max Health"] = "7000",
-    ["Fps Counter"] = true,
-    ["Chat Hunt"] = "Zekrom hub X",
-    ["White Screen"] = false,
-    ["Black Screen"] = false,
-    ["Remove Terrain"] = false,
-    ["Melee"] = {
-        ["Time"] = 1,
-        ["Enabled"] = true,
-        ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["X"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["C"] = {["Enabled"] = true, ["HoldTime"] = 1}
-    },
-    ["Sword"] = {
-        ["Time"] = 1,
-        ["Enabled"] = true,
-        ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["X"] = {["Enabled"] = true, ["HoldTime"] = 1}
-    },
-    ["Gun"] = {
-        ["Time"] = 1,
-        ["Enabled"] = true,
-        ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["X"] = {["Enabled"] = true, ["HoldTime"] = 1}
-    },
-    ["Fruit"] = {
-        ["Time"] = 1,
-        ["Enabled"] = true,
-        ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["X"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["C"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["V"] = {["Enabled"] = true, ["HoldTime"] = 1},
-        ["F"] = {["Enabled"] = true, ["HoldTime"] = 1}
-    }
+--  services
+
+local Players   = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local RunService    = game:GetService("RunService")
+local VirtualUser   = game:GetService("VirtualUser")
+local HttpService   = game:GetService("HttpService")
+local UserInputService  = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+--  variables
+
+local Player    = Players.LocalPlayer
+local Things    = Workspace:WaitForChild("__THINGS")
+local Active    = Things:WaitForChild("__INSTANCE_CONTAINER"):WaitForChild("Active")
+local Debris    = Workspace:WaitForChild("__DEBRIS")
+local Network   = ReplicatedStorage:WaitForChild("Network")
+local Library   = loadstring(game:HttpGet("https://raw.githubusercontent.com/ObscureScapter/UILibrary/main/ScapLib.lua"))()
+local Settings  = {}
+local Cooldowns = {
+	Fishing = tick(),
+	OpenEggs    = tick(),
+	OrbCollect  = tick(),
+	PlaceFlag   = tick(),
+	Vending = tick(),
+	Daily = tick(),
+	Dig = tick(),
+	Fruits  = tick(),
+	TNT   = tick(),
+	Farm    = tick(),
+	Rewards = tick(),
+	Ranks = tick(),
+	Daycare = tick(),
+	Merchants   = tick(),
+	Stairs  = tick(),
+	Enchants	= tick(),
+	Wheel = tick(),
+	Key = tick(),
 }
+local GameModules   = {}
+local GameStates    = {
+	Fishing = false,
+	Digging = false,
+}
+local MerchantCooldowns = {}
+local EggHatching   = getsenv(Player.PlayerScripts.Scripts.Game:WaitForChild("Egg Opening Frontend"))
+local CollectBags   = getsenv(Player.PlayerScripts.Scripts.Game:WaitForChild("Lootbags Frontend")).Claim
+local LibraryModule   = require(ReplicatedStorage:WaitForChild("Library"))
+local ClientCmds    = require(ReplicatedStorage.Library:WaitForChild("Client"))
+local Enchants	= require(ReplicatedStorage.Library:WaitForChild("Directory").Enchants)
+local EnchantCmds	= ClientCmds.EnchantCmds
+local OldHooks  = {}
+local VendingMachines   = require(ReplicatedStorage.Library.Directory.VendingMachines)
+local DailyMerchants    = require(ReplicatedStorage.Library.Directory.Merchants)
+local DailyRewards  = {}
+local FlagIDs   = {}
+local FruitIDs  = {}
+local SettingsOrder  = {
+	{"Automatics", {
+		{"AutoTap", false},
+		{"Fast Pets", false},
+		{"Autofarm Nearest", false},
+		{"Auto Collect Drops", false},
+		{"Divider"},
+		{"Selected Flag",  "Coins Flag"},
+		{"Auto Place Flag", false},
+		{"Divider"},
+		{"Auto Drop TNT", false},
+		{"TNT Delay", 15},
+		{"Divider"},
+		{"Auto Claim Dailies", false},
+		{"Auto Buy Merchants", false},
+		{"Auto Buy Vending Machines", false},
+		{"Divider"},
+		{"Auto Open Crystal Chest", false},
+		{"Auto Spin Wheel", false},
+		{"Divider"},
+		{"Auto Daycare", false},
+		{"Redeem Rewards", false},
+		{"Redeem Rank Ups", false},
+	}},
+	{"Minigames", {
+		{"Auto Fish", false},
+		{"Divider"},
+		{"Auto Dig", false},
+		{"Digging Range", 16},
+		{"Divider"},
+		{"Auto Stairs", false},
+	}},
+	{"Eggs", {
+		{"Auto Open Eggs", false},
+		{"Egg Amount", 1},
+		{"Selected Egg", "Cracked Egg"},
+		{"Divider"},
+		{"Remove Egg Animation", false},
+	}},
+	{"Fruits", {
+		
+	}},
+	{"Enchants", {
 
+	}},
+	{"Settings", {
+		{"Toggle UI", Enum.KeyCode.H},
+	}},
+}
+local FarmTarget    = nil
+local IsWalking = false
+local FruitOrder	= {}
+local FruitTally	= 1
+local EnchantLabels	= {}
 
-local function changeteam(team)
-    game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("SetTeam", team)
-    local makeVisible = {"RaceEnergy","Compass","Energy","AlliesButton","Code",
-    "CrewButton","HomeButton","Mute","Settings","MenuButton","Beli","Fragments",
-    "Level",
-    "HP"}
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-        game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam"):Destroy()
-    end
-    for i,v in pairs(makeVisible) do
-        if v == "RaceEnergy" then
-            if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Awakening") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Awakening") then
-                game:GetService("Players").LocalPlayer.PlayerGui.Main[v].Visible = true
-            end
-        else
-            game:GetService("Players").LocalPlayer.PlayerGui.Main[v].Visible = true
-        end
-    end
-    game:GetService("Workspace").CurrentCamera.CameraType = Enum.CameraType.Custom
-    game:GetService("Workspace").CurrentCamera.CameraSubject = game:GetService("Players").LocalPlayer.Character.Humanoid
-    game:GetService("Workspace").CurrentCamera.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
+--  functions
+
+local function GetNameFromJSON(json: string)
+	json	= tostring(json)
+	local MyId	= json:find("id")
+	local SubId	= json:sub(MyId)
+	local Colon	= SubId:find(":")+3
+	local NextSub = SubId:sub(Colon)
+	local Quote	= NextSub:find('"')-1
+	local MyID	= NextSub:sub(0, Quote)
+
+	return MyID
 end
 
-spawn(function()
-local LockClientPosition1 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-while getgenv().Setting_Zekrom["Lock Client Position"] do 
-    pcall(function()
-        task.wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LockClientPosition1)
-end)
-end
-end)
+local function GetIdFromJSON(json: string)
+	json	= tostring(json)
+	local MyId	= json:find("uid")
+	local SubId	= json:sub(MyId)
+	local Colon	= SubId:find(":")+3
+	local NextSub = SubId:sub(Colon)
+	local Quote	= NextSub:find('"')-1
+	local MyID	= NextSub:sub(0, Quote)
 
-if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-    repeat wait()
-        if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-            changeteam(getgenv().Setting_Zekrom["Team"])
-        end
-    until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+	return MyID
 end
--- Set Fps Minifer
-spawn(function()while wait()do pcall(function()setfpscap(getgenv().Setting_Zekrom["Fps"])end)end end)
-function EquipTool(ToolSe)
-    if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-        local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-        wait(0.4)
-        game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
-    end
+
+--  // Grab Fruit/Flag IDs
+local RealFlagNames = {}
+local RealFruitNames = {}
+
+for _,v in ReplicatedStorage.__DIRECTORY.ZoneFlags:GetChildren() do
+	local SubbedName = v.Name:gsub("ZoneFlag | ", "")
+
+	table.insert(RealFlagNames, SubbedName)
 end
-function EquipAllWeapon()
-    pcall(function()
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v:IsA("Tool") and (not (v.Name == "Summon Sea Beast" or v.Name == "Water Body" or v.Name == "Awakening")) then
-                local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(v.Name)
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid)
-                wait()
-            end
-        end
-    end)
+
+for _,v in ReplicatedStorage.__DIRECTORY.Fruits:GetChildren() do
+	local SubbedName = v.Name:gsub("Fruit | ", "")
+
+	table.insert(RealFruitNames, SubbedName)
 end
-function Melee()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            if v.ToolTip == "Melee" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                EquipTool(v)
-                task.wait()
-                EquipAllWeapon()
-                end
-            end
-        end
-    end
-function Sword()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            if v.ToolTip == "Sword" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                EquipTool(v)
-                task.wait()
-                EquipAllWeapon()
-                end
-            end
-        end
-    end
-function Gun()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            if v.ToolTip == "Gun" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                EquipTool(v)
-                task.wait()
-                EquipAllWeapon()
-                end
-            end
-        end
-    end
-function Fruit()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            if v.ToolTip == "Blox Fruit" then -- "Blox Fruit" , "Sword" , "Wear" , "Agility"
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                EquipTool(v)
-                task.wait()
-                EquipAllWeapon()
-                end
-            end
-        end
-    end
-function Click()
-    local Module = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
-    local CombatFramework = debug.getupvalues(Module)[2]
-    local CamShake = require(game.ReplicatedStorage.Util.CameraShaker)
-    CamShake:Stop()
-    CombatFramework.activeController.attacking = false
-    CombatFramework.activeController.timeToNextAttack = 0
-    CombatFramework.activeController.hitboxMagnitude = 180
-    game:GetService'VirtualUser':CaptureController()
-    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+
+for _,v in LibraryModule.Items.All.Globals.All() do
+	local RealName  = GetNameFromJSON(v)
+	local RealID    = GetIdFromJSON(v)
+
+	if table.find(RealFlagNames, RealName) then
+		FlagIDs[RealName] = RealID
+	elseif table.find(RealFruitNames, RealName) and not FruitIDs[RealName] then
+		FruitIDs[RealName] = RealID
+
+		table.insert(SettingsOrder[4][2], {"Auto Eat "..RealName, false})
+		table.insert(FruitOrder, RealName)
+	end
 end
-function Use(hold, use)
-    if not game.Players.LocalPlayer.Character:FindFirstChild"HumanoidRootPart" then return end
-    game:GetService("VirtualInputManager"):SendKeyEvent(
-        true,
-        use,
-        false,
-        game.Players.LocalPlayer.Character.HumanoidRootPart
-    )
-    task.wait(hold)
-    game:GetService("VirtualInputManager"):SendKeyEvent(
-        false,
-        use,
-        false,
-        game.Players.LocalPlayer.Character.HumanoidRootPart
-    )
+
+--	// Grab All Possible Enchants
+for i,_ in Enchants do
+	table.insert(SettingsOrder[5][2], {i})
 end
-function Tween(Pos)
-    Distance = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-    if Distance < 25 then
-        Speed = 5000
-    elseif Distance < 50 then
-        Speed = 2000
-    elseif Distance < 150 then
-        Speed = 800
-    elseif Distance < 250 then
-        Speed = 600
-    elseif Distance < 500 then
-        Speed = 300
-    elseif Distance < 750 then
-        Speed = 250
-    elseif Distance >= 1000 then
-        Speed = 200
-    end
-    game:GetService("TweenService"):Create(
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
-        TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
-        {CFrame = Pos}
-    ):Play()
-end
-spawn(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if getgenv().Setting_Zekrom["Start Hunt"] then
-            if not game:GetService("Workspace"):FindFirstChild("LOL") then
-                local LOL = Instance.new("Part")
-                LOL.Name = "LOL"
-                LOL.Parent = game.Workspace
-                LOL.Anchored = true
-                LOL.Transparency = 1
-                LOL.Size = Vector3.new(30,1,30)
-            elseif game:GetService("Workspace"):FindFirstChild("LOL") then
-                game.Workspace["LOL"].CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            end
-        else
-            if game:GetService("Workspace"):FindFirstChild("LOL") then
-                game:GetService("Workspace"):FindFirstChild("LOL"):Destroy()
-            end
-        end
-    end)
-end)
-function HOP()
-local PlaceID = game.PlaceId
-    local AllIDs = {}
-    local foundAnything = ""
-    local actualHour = os.date("!*t").hour
-    local Deleted = false
-    function TPReturner()
-        local Site;
-        if foundAnything == "" then
-            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-        else
-            Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-        end
-        local ID = ""
-        if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-            foundAnything = Site.nextPageCursor
-        end
-        local num = 0;
-        for i,v in pairs(Site.data) do
-            local Possible = true
-            ID = tostring(v.id)
-            if tonumber(v.maxPlayers) > tonumber(v.playing) then
-                for _,Existing in pairs(AllIDs) do
-                    if num ~= 0 then
-                        if ID == tostring(Existing) then
-                            Possible = false
-                        end
-                    else
-                        if tonumber(actualHour) ~= tonumber(Existing) then
-                            local delFile = pcall(function()
-                                -- delfile("NotSameServers.json")
-                                AllIDs = {}
-                                table.insert(AllIDs, actualHour)
-                            end)
-                        end
-                    end
-                    num = num + 1
-                end
-                if Possible == true then
-                    table.insert(AllIDs, ID)
-                    wait()
-                    pcall(function()
-                        -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                        wait()
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-                    end)
-                    wait(.1)
-                end
-            end
-        end
-    end
-    function Teleport() 
-        while wait() do
-            pcall(function()
-                TPReturner()
-                if foundAnything ~= "" then
-                    TPReturner()
-                end
-            end)
-        end
-    end
-    Teleport()
-end
-spawn(function()
-    pcall(function()
-        while task.wait()do 
-            for a,b in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren())do 
-                if b:IsA("Tool")then 
-                    if b:FindFirstChild("RemoteFunctionShoot")then 
-                        CurrentEquipGun=b.Name 
-                    end 
-                end 
-            end 
-        end 
-end)end)
-spawn(function()
-    while wait() do
-        pcall(function()
-        if getgenv().Setting_Zekrom["Start Hunt"] then
-            for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
-                if v.Name == game.Players.LocalPlayer.Name then
-                if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= math.huge then
-                plyselecthunthelpold = v.Humanoid.Health
-                repeat task.wait()
-                NameTarget = v.Name
-                local MyHealth = game.Players.LocalPlayer.Character.Humanoid.Health
-                if tostring(game.Players.LocalPlayer.Team) == "Pirates" then
-                    if MyHealth <= getgenv().Setting_Zekrom["Low Health"] then
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,1000,10))
-                    elseif MyHealth >= getgenv().Setting_Zekrom["Max Health"] then
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(15,10,10))
-                    task.wait()
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,15,15))
-                end
-                elseif tostring(game.Players.LocalPlayer.Team) == "Marines" then
-                if game.Players[NameTarget].Team ~= game.Players.LocalPlayer.Team then
-                    if MyHealth <= getgenv().Setting_Zekrom["Low Health"] then
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,1000,10))
-                    elseif MyHealth >= getgenv().Setting_Zekrom["Max Health"] then
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(15,10,10))
-                    task.wait()
-                Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,15,15))
-                end
-            end
-        end
-                if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
-                    spawn(function()
-                        while wait() do
-                            if getgenv().Setting_Zekrom["Melee"]["Enabled"] then
-                                Melee()
-                                if getgenv().Setting_Zekrom["Melee"]["Z"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Melee"]["Z"]["HoldTime"],Z)
-                                end
-                                if getgenv().Setting_Zekrom["Melee"]["X"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Melee"]["Z"]["HoldTime"],X)
-                                end
-                                if getgenv().Setting_Zekrom["Melee"]["C"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Melee"]["C"]["HoldTime"],C)
-                                end
-                            end
-                            task.wait(getgenv().Setting_Zekrom["Melee"]["Time"])
-                            if getgenv().Setting_Zekrom["Sword"]["Enabled"] then
-                                Sword()
-                                if getgenv().Setting_Zekrom["Sword"]["Z"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Sword"]["Z"]["HoldTime"],Z)
-                                end
-                                if getgenv().Setting_Zekrom["Sword"]["X"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Sword"]["Z"]["HoldTime"],X)
-                                end
-                            end
-                            task.wait(getgenv().Setting_Zekrom["Sword"]["Time"])
-                            if getgenv().Setting_Zekrom["Gun"]["Enabled"] then
-                                Gun()
-                                game:GetService("Players").LocalPlayer.Character[CurrentEquipGun].RemoteFunctionShoot:InvokeServer(v.HumanoidRootPart.Position,v.HumanoidRootPart)
-                                if getgenv().Setting_Zekrom["Gun"]["Z"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Gun"]["Z"]["HoldTime"],Z)
-                                end
-                                if getgenv().Setting_Zekrom["Gun"]["X"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Gun"]["Z"]["HoldTime"],X)
-                                end
-                            end
-                            task.wait(getgenv().Setting_Zekrom["Gun"]["Time"])
-                            if getgenv().Setting_Zekrom["Fruit"]["Enabled"] then
-                                while wait() do
-                                Fruit()
-                                if getgenv().Setting_Zekrom["Fruit"]["Z"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Fruit"]["Z"]["HoldTime"],Z)
-                                end
-                                if getgenv().Setting_Zekrom["Fruit"]["X"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Fruit"]["Z"]["HoldTime"],X)
-                                end
-                                if getgenv().Setting_Zekrom["Fruit"]["C"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Fruit"]["C"]["HoldTime"],C)
-                                end
-                                if getgenv().Setting_Zekrom["Fruit"]["V"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Fruit"]["V"]["HoldTime"],V)
-                                end
-                                if getgenv().Setting_Zekrom["Fruit"]["F"]["Enabled"] then
-                                    Use(getgenv().Setting_Zekrom["Fruit"]["F"]["HoldTime"],F)
-                                end
-                            end
-                            task.wait(getgenv().Setting_Zekrom["Fruit"]["Time"])
-                        end
-                        if getgenv().Setting_Zekrom["Auto V3"] then
-                            while wait() do
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,T,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,T,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                            end
-                        end
-                        if getgenv().Setting_Zekrom["Auto V4"] then
-                            while wait() do
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,Y,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,Y,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
-                            end
-                        end
-                    end
-                end)
-            end
-            if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") and getgenv().Setting_Zekrom["Auto Buso"] then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-            end
-            if getgenv().Setting_Zekrom["Auto Ken"] then 
-                game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("Ken",true)
-            end
-            if v.Humanoid.Health == 0 then
-                game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest"):FireServer(getgenv().Setting_Zekrom["Chat Hunt"], "All")
-            end
-            if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
-            end
-            if v.PlayerGui.Main.PvpDisabled.Visible == true and game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
-                task.wait(99)
-                HOP()
-            end
-            Click()
-            v.HumanoidRootPart.CanCollide = false
-            TargetSelectHunt = v.Humanoid
-            until getgenv().Setting_Zekrom["Start Hunt"] == false or v.Humanoid.Health == 0 or not v:FindFirstChild("HumanoidRootPart") or not v:FindFirstChild("Humanoid") or not v.Parent or NextplySelect == true
-            TargetPlayerAim = v.Humanoid.Head
-            NextplySelect = false
-            StartCheckTarget = false
-                            end
-                        end
-                    end
-               end
-           end)
-        end
-    end)
-spawn(function()
-    pcall(function()
-        while wait() do
-            if getgenv().Main["StartHunt"] then
-                if TargetSelectHunt ~= nil then
-                    if StartCheckTarget then
-                        wait(7)
-                        if TargetSelectHunt.Health == TargetSelectHunt.MaxHealth or TargetSelectHunt.Health >= plyselecthunthelpold then
-                            NextplySelect = true
-                            TargetSelectHunt = nil
-                        end
-                    end
-                end
-            end
-        end
-    end)
-end)
-spawn(function()
-    pcall(function()
-        game:GetService("RunService").RenderStepped:connect(function()
-            if getgenv().Main["StartHunt"] and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and game.Players.LocalPlayer.Character[game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name]:FindFirstChild("MousePos") then
-                local args = {
-                    [1] = game:GetService("Players"):FindFirstChild(TargetPlayerAim).Character.HumanoidRootPart.Position
-                }
-                game:GetService("Players").LocalPlayer.Character[game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool").Name].RemoteEvent:FireServer(unpack(args))
-            end
-        end)
-    end)
-end)
-spawn(function()
-    if getgenv().Setting_Zekrom["Fps Counter"] then
-    game:GetService("RunService").RenderStepped:Connect(function(frame)
-game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Version.TextSize = 17
-game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Version.TextColor3 = Color3.fromRGB(255, 255, 255)
-game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Version.Font = Enum.Font.GothamBold
-game:GetService("Players").LocalPlayer.PlayerGui.Main.Version.Text = "Your ".."| FPS : "..math.round(1/frame)
-        end)
-    end
+
+--  // Anti-AFK
+Player.Idled:Connect(function()
+	VirtualUser:CaptureController()
+	VirtualUser:ClickButton2(Vector2.new())
 end)
 
-local deletions = {"LeftUpperArm","RightUpperArm","LeftLowerArm","RightLowerArm","LeftHand","RightHand"}
-function PositionPlayer()
-    AutoKills = true
-    spawn(function()
-        while task.wait() do 
-            if AutoKills then 
-                pcall(function()
-                    for i,v in pairs(game.Players:GetChildren()) do
-                        if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
-                            pcall(function()
-                                for i,n in pairs(v.Character:GetChildren()) do
-                                    if (n.Name == "HumanoidRootPart") then
-                                        n.CanCollide = false
-                                        n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
-                                        n.Anchored = true
-                                        for i,m in pairs(n.Parent:GetChildren())do
-                                            if(table.find(deletions,m.Name))then
-                                                m:Destroy()
-                                            end
-                                        end
-                                    end
-                                end
-                            end)
-                        end
-                    end    
-                end)
-            end
-        end
-    end)
+--  // Hook Egg Animation
+OldHooks.PlayEggAnimation   = EggHatching.PlayEggAnimation
+EggHatching.PlayEggAnimation    = function(...)
+	if not Settings.Eggs["Remove Egg Animation"] then
+		return OldHooks.PlayEggAnimation(...)
+	end
 end
 
-PositionPlayer()
-
-
-spawn(function()
-while wait() do
-if getgenv().Setting_Zekrom["Buy Item"] then
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
+--  // Spoof PetSpeed
+OldHooks.CalculateSpeedMultiplier   = ClientCmds.PlayerPet.CalculateSpeedMultiplier
+ClientCmds.PlayerPet.CalculateSpeedMultiplier  = function(...)
+	if Settings.Automatics["Fast Pets"] then
+		return 999
+	else
+		return OldHooks.CalculateSpeedMultiplier(...)
+	end
 end
+
+--  // Fetch Daily Rewards
+for _,v in ReplicatedStorage.__DIRECTORY.TimedRewards:GetChildren() do
+	local MyModule  = require(v)
+
+	DailyRewards[MyModule.MachineName]  = MyModule
 end
+
+--  // Build The UI w/ Our New Library 😏
+local function BuildUI()
+	for i,v in SettingsOrder do
+		i   = v[1]
+		v   = v[2]
+		local NewPage   = Library:CreatePage(i)
+
+		Settings[i] = {}
+		for q,c in v do
+			q   = c[1]
+			c   = c[2]
+
+			Settings[i][q]  = c
+			if q == "Divider" then
+				NewPage.AddDivider()
+                
+			elseif type(c) == "boolean" then
+				NewPage.CreateToggle(q, c, function(NewState: boolean)
+					Settings[i][q]  = NewState
+				end)
+
+			elseif type(c) == "number" then
+				NewPage.CreateSlider(q, c, 1, q == "Egg Amount" and 99 or q == "Digging Range" and 16 or q == "TNT Delay" and 30 or 20, function(NewState: number)
+					Settings[i][q]  = NewState
+				end)
+			elseif i == "Enchants" then
+				EnchantLabels[q] = NewPage.CreateLabel(q.." Buff: "..EnchantCmds.GetPower(q).."%")
+
+			elseif type(c) == "string" and c == "Click" then
+				NewPage.CreateButton(q, function()
+					
+				end)
+
+			elseif type(c) == "string" then
+				local MyTable   = {}
+
+				if q == "Selected Egg" then
+					for _,v in ReplicatedStorage.__DIRECTORY.Eggs["Zone Eggs"]:GetChildren() do
+						local MyName    = v.Name:find("|")+2
+						table.insert(MyTable, v.Name:sub(MyName))
+					end
+				elseif q == "Selected Flag" then
+					for _,v in ReplicatedStorage.__DIRECTORY.MiscItems.Flags:GetChildren() do
+						table.insert(MyTable, v.Name)
+					end
+				end
+
+				NewPage.CreateDropdown(q, c, MyTable, function(NewState: string)
+					Settings[i][q]  = NewState
+				end)
+
+			elseif typeof(c) == "EnumItem" then
+				NewPage.CreateKeybind(q, c, function(NewState: EnumItem)
+					Settings[i][q]  = NewState
+				end) 
+			end
+		end
+	end
+end
+
+--  // Handle Keybind Inputs
+UserInputService.InputBegan:Connect(function(Input: InputObject)
+	if Input.KeyCode == Settings.Settings["Toggle UI"] then
+		Library:ToggleUI()
+	end
 end)
-if getgenv().Setting_Zekrom["Remove Terrain"] then
-    loadstring(Game:HttpGet("https://raw.githubusercontent.com/JewhisKids/NewFreeScript/main/Misc/SuperFpsBoost.lua"))()
+
+--  // Handle Game Specific Events
+local function SpoofFishing()
+	for i,v in GameModules.Fishing do
+		OldHooks[i] = v
+	end
+
+	GameModules.Fishing.IsFishInBar    = function(...)
+		return Settings.Minigames["Auto Fish"] and math.random(1, 3) ~= 1 or OldHooks.IsFishInBar(...)
+	end
+
+	GameModules.Fishing.StartGame  = function(...) 
+		GameStates.Fishing  = true
+
+		return OldHooks.StartGame(...) 
+	end
+
+	GameModules.Fishing.StopGame   = function(...)
+		GameStates.Fishing  = false
+
+		return OldHooks.StopGame(...)
+	end
 end
-if getgenv().Setting_Zekrom["Black Screen"] then
-BlackScreen = game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen
-DefaultSize = BlackScreen.Size
-NewSize = UDim2.new(500, 0, 500, 500)
-BlackScreen.Size = NewSize
-elseif not getgenv().Setting_Zekrom["Black Screen"] then
-BlackScreen.Size = UDim2.new(DefaultSize)
-end 
-if getgenv().Setting_Zekrom["White Screen"] then
-    game:GetService("RunService"):Set3dRenderingEnabled( not getgenv().Setting_Zekrom["White Screen"])
+
+Things.__INSTANCE_CONTAINER.Active.ChildAdded:Connect(function(Child: Instance)
+	task.wait(0.25) -- Roblox doesn't automatically update names???
+
+	local HasClientModule   = Child:FindFirstChild("ClientModule")
+
+	if HasClientModule and not GameModules[Child.Name] then
+		local HasGameModule = HasClientModule:FindFirstChildOfClass("ModuleScript")
+
+		if HasGameModule then
+			GameModules[Child.Name] = require(HasGameModule)
+
+			if Child.Name == "Fishing" then
+				SpoofFishing()
+			end
+		end
+	end
+end)
+
+--  // AutoFisher
+local function waitForGameState(state: boolean)
+	repeat RunService.RenderStepped:Wait() until GameStates.Fishing == state
+end
+
+local function getRod()
+	return Player.Character and Player.Character:FindFirstChild("Rod", true)
+end
+
+local function getBubbles(anchor: BasePart)
+	local myBobber  = nil
+	local myBubbles = false
+	local closestBobber = math.huge
+
+	for _,v in Active.Fishing.Bobbers:GetChildren() do
+		local distance  = (v.Bobber.CFrame.Position-anchor.CFrame.Position).Magnitude
+
+		if distance <= closestBobber then
+			myBobber    = v.Bobber
+			closestBobber   = distance
+		end
+	end
+
+	if myBobber then
+		for _,v in Debris:GetChildren() do
+			if v.Name == "host" and v:FindFirstChild("Attachment") and (v.Attachment:FindFirstChild("Bubbles") or v.Attachment:FindFirstChild("Rare Bubbles")) and (v.CFrame.Position-myBobber.CFrame.Position).Magnitude <= 1 then
+				myBubbles   = true
+
+				break
+			end
+		end
+	end
+
+	return myBubbles
+end
+
+local function DoFish()
+	if Active:FindFirstChild("Fishing") and not GameStates.Fishing then
+		Network.Instancing_FireCustomFromClient:FireServer("Fishing", "RequestCast", Vector3.new(1158+math.random(-10, 10), 75, -3454+math.random(-10, 10)))
+
+		local myAnchor  = getRod():WaitForChild("FishingLine").Attachment0
+		repeat RunService.RenderStepped:Wait() until not Active:FindFirstChild("Fishing") or myAnchor and getBubbles(myAnchor) or GameStates.Fishing
+
+		if Active:FindFirstChild("Fishing") then
+			Network.Instancing_FireCustomFromClient:FireServer("Fishing", "RequestReel")
+			waitForGameState(true)
+			waitForGameState(false)
+		end
+
+		repeat RunService.RenderStepped:Wait() until not Active:FindFirstChild("Fishing") or getRod() and getRod().Parent.Bobber.Transparency <= 0
+	end
+
+	Cooldowns.Fishing = tick()
+end
+
+--  // Collect Item Drops
+local function CollectDrops()
+	Cooldowns.OrbCollect    = tick()
+
+	local OrbChildren   = Things.Orbs:GetChildren()
+	local BagChildren   = Things.Lootbags:GetChildren()
+
+	local MyOrbDrops = {}
+
+	for i,v in OrbChildren do
+		MyOrbDrops[i]  = tonumber(v.Name)
+
+		v:Destroy()
+	end
+
+	if #BagChildren > 0 and CollectBags then
+		for _,v in BagChildren do
+			CollectBags(v.Name)
+		end
+	elseif not CollectBags then
+		CollectBags = getsenv(Player.PlayerScripts.Scripts.Game:WaitForChild("Lootbags Frontend")).Claim
+	end
+
+	if #OrbChildren > 0 then
+		Network["Orbs: Collect"]:FireServer(MyOrbDrops)
+	end
+end
+
+--  // Collect Daily Rewards
+local function CollectDailies()
+	Cooldowns.Daily = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in DailyRewards do
+		local RealReward   = Workspace.Map:FindFirstChild(i, true)
+
+		if RealReward and RealReward.Billboard.BillboardGui.Timer.Text:lower():find("claim") then
+			Player.Character.HumanoidRootPart.CFrame    = RealReward.Pad.CFrame
+			task.wait(0.5)
+
+			Network.DailyRewards_Redeem:InvokeServer(i)
+			task.wait(0.5)
+		end
+	end
+
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+
+	task.wait(1)
+end
+
+--  // Purchase Merchant Items
+local function PurchaseMerchants()
+	Cooldowns.Merchants   = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in DailyMerchants do
+		local RealMerchant   = Workspace.Map:FindFirstChild(i, true)
+		if RealMerchant and (not MerchantCooldowns[i] or tick()-MerchantCooldowns[i] >= v.RefreshRate) then
+			MerchantCooldowns[i]    = tick()
+			local MerchantOffers    = v.GetOffers(1, 1)
+
+			Player.Character.HumanoidRootPart.CFrame    = RealMerchant.Pad.CFrame
+			task.wait(0.5)
+
+			for Purchase = 1, 6 do
+				for q = 1, MerchantOffers[Purchase].Stock do
+					Network.Merchant_RequestPurchase:InvokeServer(i, Purchase)
+
+					task.wait(0.25)
+				end
+
+				task.wait(0.25)
+			end
+			task.wait(0.5)
+		end
+	end
+
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+	task.wait(1)
+	Player.PlayerGui._MACHINES.Merchant.Enabled  = false
+end
+
+
+--  // Purchase Vending Items
+local function PurchaseVenders()
+	Cooldowns.Vending   = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in VendingMachines do
+		local RealMachine   = Workspace.Map:FindFirstChild(i, true)
+
+		if RealMachine and v.Stock and not RealMachine.VendingMachine.Screen.SurfaceGui.SoldOut.Visible then
+			Player.Character.HumanoidRootPart.CFrame    = RealMachine.Pad.CFrame
+			task.wait(0.5)
+
+			for Purchase = 1, v.Stock do
+				Network.VendingMachines_Purchase:InvokeServer(i, 1)
+
+				task.wait(0.25)
+			end
+			task.wait(0.5)
+		end
+	end
+
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+	task.wait(1)
+	Player.PlayerGui._MISC.BuyMultiple.Enabled  = false
+end
+
+--  // Mining Aura
+local function MineBlocks()
+	Cooldowns.Dig   = tick()
+	GameStates.Digging  = true
+
+	local MyCoords  = Player.Character.HumanoidRootPart.CFrame.Position
+	for _,v in Active.Digsite.Important.ActiveChests:GetChildren() do
+		if (MyCoords-v.PrimaryPart.CFrame.Position).Magnitude <= Settings.Minigames["Digging Range"] then
+			Network.Instancing_FireCustomFromClient:FireServer("Digsite", "DigChest", v:GetAttribute("Coord"))
+		end
+	end
+
+	for _,v in Active.Digsite.Important.ActiveBlocks:GetChildren() do
+		if (MyCoords-v.CFrame.Position).Magnitude <= Settings.Minigames["Digging Range"] then
+			Network.Instancing_FireCustomFromClient:FireServer("Digsite", "DigBlock", v:GetAttribute("Coord"))
+		end
+	end
+
+	GameStates.Digging  = false
+end
+
+--  // Get Closest Stairs For Stairway To Haven
+local function GetClosestStairLevel()
+	local myStep    = nil
+	local currentLevel  = Player.Character.HumanoidRootPart.CFrame.Y
+	local closestStair  = math.huge
+
+	for _,c in Active.StairwayToHeaven.Stairs:GetDescendants() do
+		if c:IsA("Part") and c.Size == Vector3.new(11, 1, 11) then
+			local stepDiff  = c.CFrame.Y-currentLevel
+
+			if stepDiff < closestStair and c.CFrame.Y > currentLevel then
+				closestStair    = stepDiff
+				myStep  = c
+			end
+		end
+	end
+
+	return myStep
+end
+
+--  // Handle Automatic Daycaring
+local function DoDaycare()
+	Cooldowns.Daycare   = tick()
+
+	local Daycare = ClientCmds.DaycareCmds
+	local MaxSlots =  Daycare.GetMaxSlots()
+	local UsedSlots = Daycare.GetUsedSlots()
+	local NewSlots  = MaxSlots-UsedSlots
+	local SortedPets    = ClientCmds.PetCmds.GetSortedPets()
+	local EquippedPets  = ClientCmds.PetCmds.GetEquipped()
+	local ToEnroll  = {}
+	local WasAdded  = 0
+
+	for _,v in SortedPets do
+		local FoundMatch	= false
+		local MyPet	= GetNameFromJSON(v)
+		local SortedID	= GetIdFromJSON(v)
+		local IsValid   = ReplicatedStorage.__DIRECTORY.Pets.Uncategorized:FindFirstChild(MyPet)
+
+		if IsValid then
+			local PetModule  = require(IsValid)
+
+			if not PetModule.exclusiveLevel then
+				for _,c in EquippedPets do
+					local RealPet	= ClientCmds.PlayerPet.GetByItemUID(c.uid)
+
+					for _,a in RealPet do
+						local EquippedID = GetIdFromJSON(a.item)
+
+						if EquippedID == SortedID then
+							FoundMatch  = true
+
+							break
+						end
+					end	
+
+					if FoundMatch then
+						break
+					end
+				end
+			else
+				FoundMatch  = true
+			end
+		else
+			FoundMatch  = true
+		end
+
+		if not FoundMatch then
+			if ToEnroll[SortedID] then
+				ToEnroll[SortedID] += 1
+			else
+				ToEnroll[SortedID]  = 1
+			end
+
+			WasAdded += 1
+		end
+
+		if WasAdded >= NewSlots then
+			break
+		end
+	end
+
+	if WasAdded > 0 then
+		Daycare.Enroll(ToEnroll)
+	else
+		Daycare.Claim()
+	end
+end
+
+--  // Do Custom AutoFarm
+local function DoFarm()
+	Cooldowns.Farm  = tick()
+
+	local MyPets = ClientCmds.PlayerPet.GetAll()
+	local CurrentClass  = "Normal"
+	local ClosestTarget = 120
+
+	if not FarmTarget or not FarmTarget.Parent then
+		for _,v in Things.Breakables:GetChildren() do
+			local ToDetect  = v:FindFirstChild("Hitbox", true)
+
+			if ToDetect then
+				local Distance = (Player.Character.HumanoidRootPart.CFrame.Position-ToDetect.CFrame.Position).Magnitude 
+
+				if CurrentClass == "Normal" and Distance <= ClosestTarget or v:GetAttribute("BreakableClass") ~= "Normal" and Distance <= 120 then
+					FarmTarget    = v
+					CurrentClass    = v:GetAttribute("BreakableClass")
+					ClosestTarget   = Distance
+				end
+			end
+		end
+	end
+
+	if FarmTarget then
+		task.spawn(function()
+			for i = 1, 10 do
+				Network.Breakables_PlayerDealDamage:FireServer(tostring(FarmTarget.Name))
+
+				task.wait(0.01)
+			end
+		end)
+
+		for _,v in MyPets do
+			ClientCmds.PlayerPet.SetTarget(v, FarmTarget)
+		end
+	end
+end
+
+-- // Do Custom AutoTap
+local function DoTap()
+	local MyPets = ClientCmds.PlayerPet.GetAll()
+	local CurrentClass  = "Normal"
+	local ClosestTarget = 120
+
+	if not FarmTarget or not FarmTarget.Parent then
+		for _,v in Things.Breakables:GetChildren() do
+			local ToDetect  = v:FindFirstChild("Hitbox", true)
+
+			if ToDetect then
+				local Distance = (Player.Character.HumanoidRootPart.CFrame.Position-ToDetect.CFrame.Position).Magnitude 
+
+				if CurrentClass == "Normal" and Distance <= ClosestTarget or v:GetAttribute("BreakableClass") ~= "Normal" and Distance <= 120 then
+					FarmTarget    = v
+					CurrentClass    = v:GetAttribute("BreakableClass")
+					ClosestTarget   = Distance
+				end
+			end
+		end
+	end
+
+	if FarmTarget then
+		task.spawn(function()
+			Network.Breakables_PlayerDealDamage:FireServer(tostring(FarmTarget.Name))
+		end)
+	end
+end
+
+--  // Setup
+BuildUI()
+
+--  // Main Loop
+while task.wait(0.01) do
+	if tick()-Cooldowns.Dig >= 0.05 and not GameStates.Digging and Settings.Minigames["Auto Dig"] and Active:FindFirstChild("Digsite") then
+		task.spawn(function()
+			pcall(MineBlocks)
+		end)
+	end
+
+	if tick()-Cooldowns.Fishing >= 1.5 and GameModules.Fishing and not GameStates.Fishing and Settings.Minigames["Auto Fish"] then
+		task.spawn(function()
+			pcall(DoFish)
+		end)
+	end
+
+	if tick()-Cooldowns.OrbCollect >= 3 and Settings.Automatics["Auto Collect Drops"] then
+		task.spawn(function()
+			pcall(CollectDrops)
+		end)
+	end
+
+	if tick()-Cooldowns.PlaceFlag >= 3 and Settings.Automatics["Auto Place Flag"] then
+		Cooldowns.PlaceFlag = tick()
+
+		local MyFlag    = Settings.Automatics["Selected Flag"]
+
+		if FlagIDs[MyFlag] then
+			task.spawn(function()
+				Network["Flags: Consume"]:InvokeServer(MyFlag, FlagIDs[MyFlag])
+			end)
+		end
+	end
+
+	if tick()-Cooldowns.OpenEggs >= 0.5 and Settings.Eggs["Auto Open Eggs"] then
+		Cooldowns.OpenEggs  = tick()
+
+		task.spawn(function()
+			Network.Eggs_RequestPurchase:InvokeServer(Settings.Eggs["Selected Egg"], Settings.Eggs["Egg Amount"])
+		end)
+	end
+
+	if tick()-Cooldowns.Merchants >= 10 and Settings.Automatics["Auto Buy Merchants"] then
+		pcall(PurchaseMerchants)
+	end
+
+	if tick()-Cooldowns.Vending >= 10 and Settings.Automatics["Auto Buy Vending Machines"] then
+		pcall(PurchaseVenders)
+	end
+
+	if tick()-Cooldowns.Daily >= 10 and Settings.Automatics["Auto Claim Dailies"] then
+		pcall(CollectDailies)
+	end
+
+	if tick()-Cooldowns.Fruits >= 2 then
+		Cooldowns.Fruits    = tick()
+		local MyFruit = FruitOrder[FruitTally]
+
+		if MyFruit and Settings.Fruits["Auto Eat "..MyFruit] then
+			Network["Fruits: Consume"]:FireServer(FruitIDs[MyFruit], 1)
+		end
+
+		FruitTally	+= 1
+		if FruitTally > #FruitOrder then
+			FruitTally	= 1
+		end
+	end
+
+	if tick()-Cooldowns.TNT >= Settings.Automatics["TNT Delay"] and Settings.Automatics["Auto Drop TNT"] then
+		Cooldowns.TNT   = tick()
+
+		task.spawn(function()
+			Network.TNT_Consume:InvokeServer()
+		end)
+	end
+
+	if not IsWalking and tick()-Cooldowns.Stairs >= 0.1 and Settings.Minigames["Auto Stairs"] and Active:FindFirstChild("StairwayToHeaven") then
+		IsWalking   = true
+		local myStep    = GetClosestStairLevel()
+
+		task.spawn(function()
+			if myStep then
+				Player.Character.Humanoid:MoveTo(myStep.CFrame.Position)
+				Player.Character.Humanoid.MoveToFinished:Wait()
+			end
+
+			IsWalking   = false
+		end)
+	end
+
+	if tick()-Cooldowns.Rewards >= 1 and Settings.Automatics["Redeem Rewards"] then
+		Cooldowns.Rewards   = tick()
+
+		for _,v in Player.PlayerGui._MISC.FreeGifts.Frame.ItemsFrame.Gifts:GetChildren() do
+			if v:FindFirstChild("Timer") and v.Timer.Text:lower():find("redeem") then
+				local NewName   = v.Name:gsub("Gift", "")
+
+				task.spawn(function()
+					Network:FindFirstChild("Redeem Free Gift"):InvokeServer(tonumber(NewName))
+				end)
+			end
+		end
+	end
+
+	if tick()-Cooldowns.Ranks >= 1 and Settings.Automatics["Redeem Rank Ups"] then
+		Cooldowns.Ranks   = tick()
+
+		for _,v in Player.PlayerGui.Rank.Frame.Rewards.Items.Unlocks:GetChildren() do
+			if v.Name == "ClaimSlot" then
+				task.spawn(function()
+					Network.Ranks_ClaimReward:FireServer(tonumber(v.Title.Text))
+				end)
+			end
+		end
+	end
+
+	if tick()-Cooldowns.Daycare >= 5 and Settings.Automatics["Auto Daycare"] then
+		task.spawn(DoDaycare)
+	end
+
+	if tick()-Cooldowns.Enchants >= 1 then
+		Cooldowns.Enchants = tick()
+
+		for i,v in EnchantLabels do
+			v.Update(i.." Buff: "..EnchantCmds.GetPower(i).."%")
+		end
+	end
+
+	if tick()-Cooldowns.Wheel >= 1 and Settings.Automatics["Auto Spin Wheel"] then
+		Cooldowns.Wheel = tick()
+
+		Network["Spinny Wheel: Request Spin"]:InvokeServer("StarterWheel")
+	end
+
+	if tick()-Cooldowns.Key >= 1 and Settings.Automatics["Auto Open Crystal Chest"] then
+		Cooldowns.Key = tick()
+
+		Network.CrystalKey_Combine:InvokeServer()
+		Network.CrystalKey_Unlock:InvokeServer()
+	end
+
+	if Settings.Automatics["AutoTap"] then
+		DoTap()
+	end
+
+	if tick()-Cooldowns.Farm >= 0.02 and Settings.Automatics["Autofarm Nearest"] then
+		task.spawn(DoFarm)
+	elseif not Settings.Automatics["Autofarm Nearest"] then
+		FarmTarget  = nil
+	end
 end
