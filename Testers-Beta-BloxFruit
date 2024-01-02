@@ -1,11 +1,11 @@
 
-getgenv().Cf = {
+getgenv().Setting_Zekrom = {
     ["Team"] = "Marines",
     ["Fps"] = "120",
     ["Buy Item"] = false,
     ["Start Hunt"] = true,
-    ["Auto V3"] = true,
-    ["Auto V4"] = true,
+    ["Auto V3"] = false,
+    ["Auto V4"] = false,
     ["Auto Buso"] = true,
     ["Auto Ken"] = true,
     ["Low Health"] = "3500",
@@ -17,26 +17,26 @@ getgenv().Cf = {
     ["Remove Terrain"] = false,
     ["Melee"] = {
         ["Time"] = 1,
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["X"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["C"] = {["Enabled"] = true, ["HoldTime"] = 1}
     },
     ["Sword"] = {
         ["Time"] = 1,
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["X"] = {["Enabled"] = true, ["HoldTime"] = 1}
     },
     ["Gun"] = {
         ["Time"] = 1,
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["X"] = {["Enabled"] = true, ["HoldTime"] = 1}
     },
     ["Fruit"] = {
         ["Time"] = 1,
-        ["Enabled"] = false,
+        ["Enabled"] = true,
         ["Z"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["X"] = {["Enabled"] = true, ["HoldTime"] = 1},
         ["C"] = {["Enabled"] = true, ["HoldTime"] = 1},
@@ -69,12 +69,12 @@ end
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
     repeat wait()
         if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-            changeteam(getgenv().Cf["Team"])
+            changeteam(getgenv().Setting_Zekrom["Team"])
         end
     until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 end
 -- Set Fps Minifer
-spawn(function()while wait()do pcall(function()setfpscap(getgenv().Cf["Fps"])end)end end)
+spawn(function()while wait()do pcall(function()setfpscap(getgenv().Setting_Zekrom["Fps"])end)end end)
 spawn(function()while wait(20)do require(game.ReplicatedStorage:WaitForChild("Notification")).new("<Color=Yellow>Exploit You Are Using Is: <Color=/> "..identifyexecutor()):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Report Bugs Or Suggests Dms<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Discord: trumfut | .tranvanbao <Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Link Server: https://discord.gg/9AKedjp4Zs<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>ID Discord: 1151466936513863742<Color=/> "):Display()require(game.ReplicatedStorage:WaitForChild("Notification")).new(" <Color=Yellow>Join Server Check Update<Color=/> "):Display()end end)
 function EquipTool(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
@@ -194,7 +194,7 @@ function Tween(Pos)
 end
 spawn(function()
     game:GetService("RunService").Heartbeat:Connect(function()
-        if getgenv().Cf["Start Hunt"] then
+        if getgenv().Setting_Zekrom["Start Hunt"] then
             if not game:GetService("Workspace"):FindFirstChild("LOL") then
                 local LOL = Instance.new("Part")
                 LOL.Name = "LOL"
@@ -275,7 +275,6 @@ local PlaceID = game.PlaceId
     end
     Teleport()
 end
--- Check Gun Minifer [ im busy ]
 spawn(function()
     pcall(function()
         while task.wait()do 
@@ -291,7 +290,7 @@ end)end)
 spawn(function()
     while wait() do
         pcall(function()
-        if getgenv().Cf["Start Hunt"] then
+        if getgenv().Setting_Zekrom["Start Hunt"] then
             for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
                 if v.Name == game.Players.LocalPlayer.Name then
                 if v:WaitForChild("Humanoid").Health > 0 and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude <= math.huge then
@@ -300,18 +299,18 @@ spawn(function()
                 NameTarget = v.Name
                 local MyHealth = game.Players.LocalPlayer.Character.Humanoid.Health
                 if tostring(game.Players.LocalPlayer.Team) == "Pirates" then
-                    if MyHealth <= getgenv().Cf["Low Health"] then
+                    if MyHealth <= getgenv().Setting_Zekrom["Low Health"] then
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,1000,10))
-                    elseif MyHealth >= getgenv().Cf["Max Health"] then
+                    elseif MyHealth >= getgenv().Setting_Zekrom["Max Health"] then
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(15,10,10))
                     task.wait()
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,15,15))
                 end
                 elseif tostring(game.Players.LocalPlayer.Team) == "Marines" then
                 if game.Players[NameTarget].Team ~= game.Players.LocalPlayer.Team then
-                    if MyHealth <= getgenv().Cf["Low Health"] then
+                    if MyHealth <= getgenv().Setting_Zekrom["Low Health"] then
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,1000,10))
-                    elseif MyHealth >= getgenv().Cf["Max Health"] then
+                    elseif MyHealth >= getgenv().Setting_Zekrom["Max Health"] then
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(15,10,10))
                     task.wait()
                 Tween(v.HumanoidRootPart.CFrame * CFrame.new(10,15,15))
@@ -321,68 +320,68 @@ spawn(function()
                 if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                     spawn(function()
                         while wait() do
-                            if getgenv().Cf["Melee"]["Enabled"] then
+                            if getgenv().Setting_Zekrom["Melee"]["Enabled"] then
                                 Melee()
-                                if getgenv().Cf["Melee"]["Z"]["Enabled"] then
-                                    Use(getgenv().Cf["Melee"]["Z"]["HoldTime"],Z)
+                                if getgenv().Setting_Zekrom["Melee"]["Z"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Melee"]["Z"]["HoldTime"],Z)
                                 end
-                                if getgenv().Cf["Melee"]["X"]["Enabled"] then
-                                    Use(getgenv().Cf["Melee"]["Z"]["HoldTime"],X)
+                                if getgenv().Setting_Zekrom["Melee"]["X"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Melee"]["Z"]["HoldTime"],X)
                                 end
-                                if getgenv().Cf["Melee"]["C"]["Enabled"] then
-                                    Use(getgenv().Cf["Melee"]["C"]["HoldTime"],C)
+                                if getgenv().Setting_Zekrom["Melee"]["C"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Melee"]["C"]["HoldTime"],C)
                                 end
                             end
-                            task.wait(getgenv().Cf["Melee"]["Time"])
-                            if getgenv().Cf["Sword"]["Enabled"] then
+                            task.wait(getgenv().Setting_Zekrom["Melee"]["Time"])
+                            if getgenv().Setting_Zekrom["Sword"]["Enabled"] then
                                 Sword()
-                                if getgenv().Cf["Sword"]["Z"]["Enabled"] then
-                                    Use(getgenv().Cf["Sword"]["Z"]["HoldTime"],Z)
+                                if getgenv().Setting_Zekrom["Sword"]["Z"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Sword"]["Z"]["HoldTime"],Z)
                                 end
-                                if getgenv().Cf["Sword"]["X"]["Enabled"] then
-                                    Use(getgenv().Cf["Sword"]["Z"]["HoldTime"],X)
+                                if getgenv().Setting_Zekrom["Sword"]["X"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Sword"]["Z"]["HoldTime"],X)
                                 end
                             end
-                            task.wait(getgenv().Cf["Sword"]["Time"])
-                            if getgenv().Cf["Gun"]["Enabled"] then
+                            task.wait(getgenv().Setting_Zekrom["Sword"]["Time"])
+                            if getgenv().Setting_Zekrom["Gun"]["Enabled"] then
                                 Gun()
                                 game:GetService("Players").LocalPlayer.Character[CurrentEquipGun].RemoteFunctionShoot:InvokeServer(v.HumanoidRootPart.Position,v.HumanoidRootPart)
-                                if getgenv().Cf["Gun"]["Z"]["Enabled"] then
-                                    Use(getgenv().Cf["Gun"]["Z"]["HoldTime"],Z)
+                                if getgenv().Setting_Zekrom["Gun"]["Z"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Gun"]["Z"]["HoldTime"],Z)
                                 end
-                                if getgenv().Cf["Gun"]["X"]["Enabled"] then
-                                    Use(getgenv().Cf["Gun"]["Z"]["HoldTime"],X)
+                                if getgenv().Setting_Zekrom["Gun"]["X"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Gun"]["Z"]["HoldTime"],X)
                                 end
                             end
-                            task.wait(getgenv().Cf["Gun"]["Time"])
-                            if getgenv().Cf["Fruit"]["Enabled"] then
+                            task.wait(getgenv().Setting_Zekrom["Gun"]["Time"])
+                            if getgenv().Setting_Zekrom["Fruit"]["Enabled"] then
                                 while wait() do
                                 Fruit()
-                                if getgenv().Cf["Fruit"]["Z"]["Enabled"] then
-                                    Use(getgenv().Cf["Fruit"]["Z"]["HoldTime"],Z)
+                                if getgenv().Setting_Zekrom["Fruit"]["Z"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Fruit"]["Z"]["HoldTime"],Z)
                                 end
-                                if getgenv().Cf["Fruit"]["X"]["Enabled"] then
-                                    Use(getgenv().Cf["Fruit"]["Z"]["HoldTime"],X)
+                                if getgenv().Setting_Zekrom["Fruit"]["X"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Fruit"]["Z"]["HoldTime"],X)
                                 end
-                                if getgenv().Cf["Fruit"]["C"]["Enabled"] then
-                                    Use(getgenv().Cf["Fruit"]["C"]["HoldTime"],C)
+                                if getgenv().Setting_Zekrom["Fruit"]["C"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Fruit"]["C"]["HoldTime"],C)
                                 end
-                                if getgenv().Cf["Fruit"]["V"]["Enabled"] then
-                                    Use(getgenv().Cf["Fruit"]["V"]["HoldTime"],V)
+                                if getgenv().Setting_Zekrom["Fruit"]["V"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Fruit"]["V"]["HoldTime"],V)
                                 end
-                                if getgenv().Cf["Fruit"]["F"]["Enabled"] then
-                                    Use(getgenv().Cf["Fruit"]["F"]["HoldTime"],F)
+                                if getgenv().Setting_Zekrom["Fruit"]["F"]["Enabled"] then
+                                    Use(getgenv().Setting_Zekrom["Fruit"]["F"]["HoldTime"],F)
                                 end
                             end
-                            task.wait(getgenv().Cf["Fruit"]["Time"])
+                            task.wait(getgenv().Setting_Zekrom["Fruit"]["Time"])
                         end
-                        if getgenv().Cf["Auto V3"] then
+                        if getgenv().Setting_Zekrom["Auto V3"] then
                             while wait() do
                                 game:GetService("VirtualInputManager"):SendKeyEvent(true,T,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
                                 game:GetService("VirtualInputManager"):SendKeyEvent(false,T,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
                             end
                         end
-                        if getgenv().Cf["Auto V4"] then
+                        if getgenv().Setting_Zekrom["Auto V4"] then
                             while wait() do
                             game:GetService("VirtualInputManager"):SendKeyEvent(true,Y,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
                             game:GetService("VirtualInputManager"):SendKeyEvent(false,Y,false,game.Players.LocalPlayer.Character.HumanoidRootPart)
@@ -391,14 +390,14 @@ spawn(function()
                     end
                 end)
             end
-            if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") and getgenv().Cf["Auto Buso"] then
+            if not game:GetService("Players").LocalPlayer.Character:FindFirstChild("HasBuso") and getgenv().Setting_Zekrom["Auto Buso"] then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
             end
-            if getgenv().Cf["Auto Ken"] then 
+            if getgenv().Setting_Zekrom["Auto Ken"] then 
                 game:GetService("ReplicatedStorage").Remotes.CommE:FireServer("Ken",true)
             end
             if v.Humanoid.Health == 0 then
-                game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest"):FireServer(getgenv().Cf["Chat When Hunt"], "All")
+                game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest"):FireServer(getgenv().Setting_Zekrom["Chat When Hunt"], "All")
             end
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
@@ -410,7 +409,7 @@ spawn(function()
             Click()
             v.HumanoidRootPart.CanCollide = false
             TargetSelectHunt = v.Humanoid
-            until getgenv().Cf["Start Hunt"] == false or v.Humanoid.Health == 0 or not v:FindFirstChild("HumanoidRootPart") or not v:FindFirstChild("Humanoid") or not v.Parent or NextplySelect == true
+            until getgenv().Setting_Zekrom["Start Hunt"] == false or v.Humanoid.Health == 0 or not v:FindFirstChild("HumanoidRootPart") or not v:FindFirstChild("Humanoid") or not v.Parent or NextplySelect == true
             TargetPlayerAim = v.Humanoid.Head
             NextplySelect = false
             StartCheckTarget = false
@@ -451,7 +450,7 @@ spawn(function()
     end)
 end)
 spawn(function()
-    if getgenv().Cf["Fps Counter"] then
+    if getgenv().Setting_Zekrom["Fps Counter"] then
     game:GetService("RunService").RenderStepped:Connect(function(frame)
 game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Version.TextSize = 17
 game:GetService("Players")["LocalPlayer"].PlayerGui.Main.Version.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -497,23 +496,23 @@ PositionPlayer()
 
 spawn(function()
 while wait() do
-if getgenv().Cf["Buy Item"] then
+if getgenv().Setting_Zekrom["Buy Item"] then
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Cousin","Buy")
 end
 end
 end)
-if getgenv().Cf["Remove Terrain"] then
+if getgenv().Setting_Zekrom["Remove Terrain"] then
     loadstring(Game:HttpGet("https://raw.githubusercontent.com/JewhisKids/NewFreeScript/main/Misc/SuperFpsBoost.lua"))()
 end
-if getgenv().Cf["Black Screen"] then
+if getgenv().Setting_Zekrom["Black Screen"] then
 BlackScreen = game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen
 DefaultSize = BlackScreen.Size
 NewSize = UDim2.new(500, 0, 500, 500)
 BlackScreen.Size = NewSize
-elseif not getgenv().Cf["Black Screen"] then
+elseif not getgenv().Setting_Zekrom["Black Screen"] then
 BlackScreen.Size = UDim2.new(DefaultSize)
 end 
-if getgenv().Cf["White Screen"] then
-    game:GetService("RunService"):Set3dRenderingEnabled( not getgenv().Cf["White Screen"])
+if getgenv().Setting_Zekrom["White Screen"] then
+    game:GetService("RunService"):Set3dRenderingEnabled( not getgenv().Setting_Zekrom["White Screen"])
 end
