@@ -97,7 +97,6 @@ local SettingsOrder  = {
 	{"Eggs", {
 		{"Auto Open Eggs", false},
 		{"Egg Amount", 1},
-		{"Selected Egg", "Cracked Egg"},
 		{"Divider"},
 		{"Remove Egg Animation", false},
 	}},
