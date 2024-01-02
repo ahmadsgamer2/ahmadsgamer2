@@ -2,46 +2,6 @@ local Update = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot213
 
 local Library = Update:Window("Pet Sim 99")
 
-local Main = Library:Tab("Main", "rbxassetid://7040391851")
-local Farm = Library:Tab("Farm", "rbxassetid://15623956340")
-local Minigames_Farm = Library:Tab("Minigames", "rbxassetid://15655884984")
-
-Main:Seperator("Home")
-
-Client = Main:Label("Client")
-
-function UpdateClient()
-local Fps = workspace:GetRealPhysicsFPS()
-Client:Set("Fps : "..Fps)
-end
-
-spawn(function()
- while true do wait(.1)
- UpdateClient()
- end
-end)
-
-Client1 = Main:Label("Client")
-
-function UpdateClient1()
-local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Client1:Set("Ping : "..Ping)
-end
-
-spawn(function()
- while true do wait(.1)
- UpdateClient1()
- end
-end)
- 
- 
- Main:Label("Join Discord : Zekrom Hub X")
-
-
- Main:Button("Copy Discord Link",function()
- setclipboard("https://discord.gg/A7jhrH94rX")
- end)
-
 local Players   = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local RunService    = game:GetService("RunService")
@@ -178,6 +138,47 @@ for _,v in LibraryModule.Items.All.Globals.All() do
 		table.insert(FruitOrder, RealName)
 	end
 end
+
+
+local Main = Library:Tab("Main", "rbxassetid://7040391851")
+local Farm = Library:Tab("Farm", "rbxassetid://15623956340")
+local Minigames_Farm = Library:Tab("Minigames", "rbxassetid://15655884984")
+
+Main:Seperator("Home")
+
+Client = Main:Label("Client")
+
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Set("Fps : "..Fps)
+end
+
+spawn(function()
+ while true do wait(.1)
+ UpdateClient()
+ end
+end)
+
+Client1 = Main:Label("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Set("Ping : "..Ping)
+end
+
+spawn(function()
+ while true do wait(.1)
+ UpdateClient1()
+ end
+end)
+ 
+ 
+ Main:Label("Join Discord : Zekrom Hub X")
+
+
+ Main:Button("Copy Discord Link",function()
+ setclipboard("https://discord.gg/A7jhrH94rX")
+ end)
 
 Farm:Toggle("Auto Farm",false,function(value)
 	Settings.Automatics["AutoTap"] = value
