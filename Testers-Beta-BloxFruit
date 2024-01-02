@@ -229,8 +229,27 @@ Minigames_Farm:Toggle("Auto Stairs",false,function(value)
 	Settings.Minigames["Auto Stairs"] = value
 end)
 
-loadstring(game:HttpGet("https://pastebin.com/raw/iBvSuiZF"))()
-loadstring(game:HttpGet("https://pastebin.com/raw/QcgSRe3e"))()
+local SelectEggs = {}
+for _,v in ReplicatedStorage.__DIRECTORY.Eggs["Zone Eggs"]:GetChildren() do
+  local MyNameEggs = v.Name:find("|")+2
+  table.insert(SelectEggs, v.Name:sub(MyNameEggs))
+end
+
+Eggs_Buy:Dropdown("Select List Eggs", SelectEggs, function(value)
+	Settings.Eggs["Selected Egg"] = value
+end)
+
+Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
+	Settings.Eggs["Auto Open Eggs"] = value
+end)
+
+Eggs_Buy:Slider("Egg Amount",0,100,1,function(v)
+    Settings.Eggs["Egg Amount"] = v
+end)
+
+Eggs_Buy:Toggle("Remove Egg Animation",false,function(value)
+	Settings.Eggs["Remove Egg Animation"] = value
+end)
 
 spawn(function()
 	while task.wait(0.01) do
