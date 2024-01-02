@@ -153,23 +153,23 @@ end)
  end)
 
 Farm:Toggle("Auto Farm",false,function(value)
-	Settings.Automatics["AutoTap"] = value
+	_G.AutoFarmTap = value
 end)
 
 Farm:Toggle("Auto Fast Pets",false,function(value)
-	Settings.Automatics["Fast Pets"] = value
+	_G.FastPet = value
 end)
 
 Farm:Toggle("Auto Farm Nearest",false,function(value)
-	Settings.Automatics["Autofarm Nearest"] = value
+	_G.AutoFarmNearest = value
 end)
 
 Farm:Toggle("Auto Collect Orbs",true,function(value)
-	Settings.Automatics["CollectOrbs"] = value
+	_G.CollectOrbs = value
 end)
 
 Farm:Toggle("Auto Collect Lootbags",true,function(value)
-	Settings.Automatics["CollectKootbags"] = value
+	_G.CollectKootbags = value
 end)
 
 
@@ -243,7 +243,7 @@ Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
 end)
 
 Eggs_Buy:Slider("Egg Amount",0,100,1,function(v)
-    Settings.Eggs["Egg Amount"] = v
+    _G.EggAmount = v
 end)
 
 Eggs_Buy:Toggle("Remove Egg Animation",false,function(value)
@@ -284,7 +284,7 @@ if tick()-Cooldowns.OpenEggs >= 0.5 and Settings.Eggs["Auto Open Eggs"] then
 	Cooldowns.OpenEggs  = tick()
 
 	task.spawn(function()
-		Network.Eggs_RequestPurchase:InvokeServer(_G.SelectEggsList, Settings.Eggs["Egg Amount"])
+		Network.Eggs_RequestPurchase:InvokeServer(_G.SelectEggsList, _G.EggAmount)
 	end)
 end
 
@@ -293,14 +293,14 @@ local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart"
 local Orbs = Things.Orbs
 local Lootbags = Things.Lootbags
 
-if Settings.Automatics["CollectOrbs"] then
+if _G.CollectOrbs then
 for _, orb in ipairs(Orbs:GetChildren()) do
 	if orb:IsA("Part") then
 		orb.CFrame = HumanoidRootPart.CFrame
 	end
 end
 
-if Settings.Automatics["CollectKootbags"] then
+if _G.CollectKootbags then
 	for _, lootbag in ipairs(Lootbags:GetDescendants()) do
 		if lootbag:IsA("MeshPart") then
 			lootbag.CFrame = HumanoidRootPart.CFrame
@@ -591,7 +591,7 @@ if tick()-Cooldowns.Vending >= 10 and Settings.Automatics["Auto Buy Vending Mach
 	pcall(PurchaseVenders)
 end
 
-if Settings.Automatics["AutoTap"] then
+if _G.AutoFarmTap then
 	DoTap()
 end
 
@@ -603,9 +603,9 @@ EggHatching.PlayEggAnimation    = function(...)
 end
 
 
-if tick()-Cooldowns.Farm >= 0.02 and Settings.Automatics["Autofarm Nearest"] then
+if tick()-Cooldowns.Farm >= 0.02 and _G.AutoFarmNearest then
 	task.spawn(DoFarm)
-elseif not Settings.Automatics["Autofarm Nearest"] then
+elseif not _G.AutoFarmNearest then
 	FarmTarget  = nil
 end
 
@@ -618,7 +618,7 @@ end
 
 OldHooks.CalculateSpeedMultiplier   = ClientCmds.PlayerPet.CalculateSpeedMultiplier
 ClientCmds.PlayerPet.CalculateSpeedMultiplier  = function(...)
-if Settings.Automatics["Fast Pets"] then
+if _G.FastPet then
 	return 999
 else
 	return OldHooks.CalculateSpeedMultiplier(...)
