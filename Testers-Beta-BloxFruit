@@ -235,7 +235,7 @@ for _,v in ReplicatedStorage.__DIRECTORY.Eggs["Zone Eggs"]:GetChildren() do
 end
 
 Eggs_Buy:Dropdown("Select List Eggs", SelectEggs, function(value)
-	Settings.Eggs["Selected Egg"] = value
+	_G.SelectEggsList = value
 end)
 
 Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
@@ -284,7 +284,7 @@ if tick()-Cooldowns.OpenEggs >= 0.5 and Settings.Eggs["Auto Open Eggs"] then
 	Cooldowns.OpenEggs  = tick()
 
 	task.spawn(function()
-		Network.Eggs_RequestPurchase:InvokeServer(Settings.Eggs["Selected Egg"], Settings.Eggs["Egg Amount"])
+		Network.Eggs_RequestPurchase:InvokeServer(_G.SelectEggsList, Settings.Eggs["Egg Amount"])
 	end)
 end
 
