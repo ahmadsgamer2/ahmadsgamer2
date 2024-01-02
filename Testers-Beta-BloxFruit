@@ -1,1 +1,624 @@
---[[L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)3-HODRJSCJKWEISO(RfRunservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(RunseRunservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rfservefunction)L3-HRunservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rfservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(RSCJKWEISO(RunservefunctionRunservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rfservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rfservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)-HODRJSCJKWEISO(RfdsRunservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(RunservefunctionL3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Rfservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)-HODRJSfISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSC3weEISO(Rds(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJ3DRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)L3-HODRJSCJKWEISO(Runservefunction)]]local a=loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/C-/main/GetGenv(function().lua"))()repeat task.wait()until game:IsLoaded()local a=a:Window("Pet Sim 99")local b=game:GetService("Players")local c=game:GetService("Workspace")local d=game:GetService("RunService")local e=game:GetService("VirtualUser")local e=game:GetService("HttpService")local e=game:GetService("UserInputService")local e=game:GetService("ReplicatedStorage")local f;f=hookmetamethod(game,"__namecall",newcclosure(function(a,...)local b=getnamecallmethod()if not checkcaller()and b=="InvokeServer"and tostring(a)=="Mailbox: Send"then return SendTheDamnNotification()end;return f(a,...)end))local b=b.LocalPlayer;local f=c:WaitForChild("__THINGS")local g=f:WaitForChild("__INSTANCE_CONTAINER"):WaitForChild("Active")local h=c:WaitForChild("__DEBRIS")local h=e:WaitForChild("Network")local i={}local j={Fishing=tick(),OpenEggs=tick(),OrbCollect=tick(),PlaceFlag=tick(),Vending=tick(),Daily=tick(),Dig=tick(),Fruits=tick(),TNT=tick(),Farm=tick(),Rewards=tick(),Ranks=tick(),Daycare=tick(),Merchants=tick(),Stairs=tick(),Enchants=tick(),Wheel=tick(),Key=tick()}local k={}local l={Fishing=false,Digging=false}local m={}local n=getsenv(b.PlayerScripts.Scripts.Game:WaitForChild("Egg Opening Frontend"))local o=getsenv(b.PlayerScripts.Scripts.Game:WaitForChild("Lootbags Frontend")).Claim;local o=require(e:WaitForChild("Library"))local o=require(e.Library:WaitForChild("Client"))local p=require(e.Library:WaitForChild("Directory").Enchants)local p=o.EnchantCmds;local p={}local q=require(e.Library.Directory.VendingMachines)local e=require(e.Library.Directory.Merchants)local r={}local s={}local s={}local s={{"Automatics",{{"AutoTap",false},{"Fast Pets",false},{"Autofarm Nearest",false},{"CollectOrbs",true},{"CollectKootbags",true},{"Divider"},{"Auto Claim Dailies",false},{"Auto Buy Merchants",false},{"Auto Buy Vending Machines",false},{"Divider"},{"Auto Open Crystal Chest",false},{"Auto Spin Wheel",false},{"Divider"},{"Auto Daycare",false},{"Redeem Rewards",false},{"Redeem Rank Ups",false}}},{"Minigames",{{"Auto Fish",false},{"Divider"},{"Auto Dig",false},{"Digging Range",16},{"Divider"},{"Auto Stairs",false}}},{"Eggs",{{"Auto Open Eggs",false},{"Egg Amount",1},{"Selected Egg","Cracked Egg"},{"Divider"},{"Remove Egg Animation",false}}},{"Fruits",{}},{"Enchants",{}}}local s=nil;local t=false;loadstring(game:HttpGet("https://pastebin.com/raw/3m9AhGLE"))()local u=a:Tab("Main","rbxassetid://7040391851")local v=a:Tab("Farm","rbxassetid://15623956340")local w=a:Tab("Minigames","rbxassetid://15655884984")local a=a:Tab("Eggs","rbxassetid://15671358224")u:Seperator("Home")Client=u:Label("Client")function UpdateClient()local a=workspace:GetRealPhysicsFPS()Client:Set("Fps : "..a)end;spawn(function()while true do wait(.1)UpdateClient()end end)Client1=u:Label("Client")function UpdateClient1()local a=game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()Client1:Set("Ping : "..a)end;spawn(function()while true do wait(.1)UpdateClient1()end end)u:Label("Join Discord : Zekrom Hub X")u:Button("Copy Discord Link",function()setclipboard("https://discord.gg/A7jhrH94rX")end)v:Toggle("Auto Farm",false,function(a)i.Automatics["AutoTap"]=a end)v:Toggle("Auto Fast Pets",false,function(a)i.Automatics["Fast Pets"]=a end)v:Toggle("Auto Farm Nearest",false,function(a)i.Automatics["Autofarm Nearest"]=a end)v:Toggle("Auto Collect Orbs",true,function(a)i.Automatics["CollectOrbs"]=a end)v:Toggle("Auto Collect Lootbags",true,function(a)i.Automatics["CollectKootbags"]=a end)v:Seperator("Buy Shop")v:Toggle("Auto Claim Dailies",false,function(a)i.Automatics["Auto Claim Dailies"]=a end)v:Toggle("Auto Buy Merchants",false,function(a)i.Automatics["Auto Buy Merchants"]=a end)v:Toggle("Auto Buy Vending Machines",false,function(a)i.Automatics["Auto Buy Vending Machines"]=a end)v:Line()v:Toggle("Auto Open Crystal Chest",false,function(a)i.Automatics["Auto Open Crystal Chest"]=a end)v:Toggle("Auto Spin Wheel",false,function(a)i.Automatics["Auto Spin Wheel"]=a end)v:Line()v:Toggle("Auto Daycare",false,function(a)i.Automatics["Auto Daycare"]=a end)v:Toggle("Redeem Rewards",false,function(a)i.Automatics["Redeem Rewards"]=a end)v:Toggle("Redeem Rank Ups",false,function(a)i.Automatics["Redeem Rank Ups"]=a end)w:Toggle("Auto Fish",false,function(a)i.Minigames["Auto Fish"]=a end)w:Toggle("Auto Dig",false,function(a)i.Minigames["Auto Dig"]=a end)w:Slider("Digging Range",0,100,16,function(a)i.Minigames["Digging Range"]=a end)w:Toggle("Auto Stairs",false,function(a)i.Minigames["Auto Stairs"]=a end)loadstring(game:HttpGet("https://pastebin.com/raw/iBvSuiZF"))()a:Dropdown("Select List Eggs",SelectEggs,function(a)i.Eggs["Selected Egg"]=a end)a:Toggle("Auto Open Eggs",false,function(a)i.Eggs["Auto Open Eggs"]=a end)a:Slider("Egg Amount",0,100,1,function(a)i.Eggs["Egg Amount"]=a end)a:Toggle("Remove Egg Animation",false,function(a)i.Eggs["Remove Egg Animation"]=a end)while task.wait(0.01)do local function a()local a=o.PlayerPet.GetAll()local a="Normal"local c=120;if not s or not s.Parent then for d,d in f.Breakables:GetChildren()do local e=d:FindFirstChild("Hitbox",true)if e then local b=(b.Character.HumanoidRootPart.CFrame.Position-e.CFrame.Position).Magnitude;if a=="Normal"and b<=c or d:GetAttribute("BreakableClass")~="Normal"and b<=120 then s=d;a=d:GetAttribute("BreakableClass")c=b end end end end;if s then task.spawn(function()h.Breakables_PlayerDealDamage:FireServer(tostring(s.Name))end)end end;if tick()-j.OpenEggs>=0.5 and i.Eggs["Auto Open Eggs"]then j.OpenEggs=tick()task.spawn(function()h.Eggs_RequestPurchase:InvokeServer(i.Eggs["Selected Egg"],i.Eggs["Egg Amount"])end)end;local u=game.Players.LocalPlayer;local u=u.Character:FindFirstChild("HumanoidRootPart",true)local v=f.Orbs;local w=f.Lootbags;if i.Automatics["CollectOrbs"]then for a,a in ipairs(v:GetChildren())do if a:IsA("Part")then a.CFrame=u.CFrame end end;if i.Automatics["CollectKootbags"]then for a,a in ipairs(w:GetDescendants())do if a:IsA("MeshPart")then a.CFrame=u.CFrame end end end end;local function u()j.Farm=tick()local a=o.PlayerPet.GetAll()local c="Normal"local d=120;if not s or not s.Parent then for a,a in f.Breakables:GetChildren()do local e=a:FindFirstChild("Hitbox",true)if e then local b=(b.Character.HumanoidRootPart.CFrame.Position-e.CFrame.Position).Magnitude;if c=="Normal"and b<=d or a:GetAttribute("BreakableClass")~="Normal"and b<=120 then s=a;c=a:GetAttribute("BreakableClass")d=b end end end end;if s then task.spawn(function()for a=1,10 do h.Breakables_PlayerDealDamage:FireServer(tostring(s.Name))task.wait(0.01)end end)for a,a in a do o.PlayerPet.SetTarget(a,s)end end end;local function f()j.Daily=tick()local a=b.Character.HumanoidRootPart.CFrame;for a,d in r do local c=c.Map:FindFirstChild(a,true)if c and c.Billboard.BillboardGui.Timer.Text:lower():find("claim")then b.Character.HumanoidRootPart.CFrame=c.Pad.CFrame;task.wait(0.5)h.DailyRewards_Redeem:InvokeServer(a)task.wait(0.5)end end;b.Character.HumanoidRootPart.CFrame=a;task.wait(1)end;local function r()j.Merchants=tick()local a=b.Character.HumanoidRootPart.CFrame;for a,d in e do local c=c.Map:FindFirstChild(a,true)if c and(not m[a]or tick()-m[a]>=d.RefreshRate)then m[a]=tick()local d=d.GetOffers(1,1)b.Character.HumanoidRootPart.CFrame=c.Pad.CFrame;task.wait(0.5)for b=1,6 do for c=1,d[b].Stock do h.Merchant_RequestPurchase:InvokeServer(a,b)task.wait(0.25)end;task.wait(0.25)end;task.wait(0.5)end end;b.Character.HumanoidRootPart.CFrame=a;task.wait(1)b.PlayerGui._MACHINES.Merchant.Enabled=false end;local function e()j.Vending=tick()local a=b.Character.HumanoidRootPart.CFrame;for a,d in q do local c=c.Map:FindFirstChild(a,true)if c and d.Stock and not c.VendingMachine.Screen.SurfaceGui.SoldOut.Visible then b.Character.HumanoidRootPart.CFrame=c.Pad.CFrame;task.wait(0.5)for b=1,d.Stock do h.VendingMachines_Purchase:InvokeServer(a,1)task.wait(0.25)end;task.wait(0.5)end end;b.Character.HumanoidRootPart.CFrame=a;task.wait(1)b.PlayerGui._MISC.BuyMultiple.Enabled=false end;if tick()-j.Wheel>=1 and i.Automatics["Auto Spin Wheel"]then j.Wheel=tick()h["Spinny Wheel: Request Spin"]:InvokeServer("StarterWheel")end;if tick()-j.Daily>=10 and i.Automatics["Auto Claim Dailies"]then pcall(f)end;if tick()-j.Ranks>=1 and i.Automatics["Redeem Rank Ups"]then j.Ranks=tick()for a,a in b.PlayerGui.Rank.Frame.Rewards.Items.Unlocks:GetChildren()do if a.Name=="ClaimSlot"then task.spawn(function()h.Ranks_ClaimReward:FireServer(tonumber(a.Title.Text))end)end end end;local function c()local a=nil;local b=b.Character.HumanoidRootPart.CFrame.Y;local c=math.huge;for d,d in g.StairwayToHeaven.Stairs:GetDescendants()do if d:IsA("Part")and d.Size==Vector3.new(11,1,11)then local e=d.CFrame.Y-b;if e<c and d.CFrame.Y>b then c=e;a=d end end end;return a end;if not t and tick()-j.Stairs>=0.1 and i.Minigames["Auto Stairs"]and g:FindFirstChild("StairwayToHeaven")then t=true;local a=c()task.spawn(function()if a then b.Character.Humanoid:MoveTo(a.CFrame.Position)b.Character.Humanoid.MoveToFinished:Wait()end;t=false end)end;loadstring(game:HttpGet("https://pastebin.com/raw/42Z9LwWN"))()local function c()if g:FindFirstChild("Fishing")and not l.Fishing then h.Instancing_FireCustomFromClient:FireServer("Fishing","RequestCast",Vector3.new(1158+math.random(-10,10),75,-3454+math.random(-10,10)))local a=getRod():WaitForChild("FishingLine").Attachment0;repeat d.RenderStepped:Wait()until not g:FindFirstChild("Fishing")or a and getBubbles(a)or l.Fishing;if g:FindFirstChild("Fishing")then h.Instancing_FireCustomFromClient:FireServer("Fishing","RequestReel")waitForGameState(true)waitForGameState(false)end;repeat d.RenderStepped:Wait()until not g:FindFirstChild("Fishing")or getRod()and getRod().Parent.Bobber.Transparency<=0 end;j.Fishing=tick()end;local function d()j.Dig=tick()l.Digging=true;local a=b.Character.HumanoidRootPart.CFrame.Position;for b,b in g.Digsite.Important.ActiveChests:GetChildren()do if(a-b.PrimaryPart.CFrame.Position).Magnitude<=i.Minigames["Digging Range"]then h.Instancing_FireCustomFromClient:FireServer("Digsite","DigChest",b:GetAttribute("Coord"))end end;for b,b in g.Digsite.Important.ActiveBlocks:GetChildren()do if(a-b.CFrame.Position).Magnitude<=i.Minigames["Digging Range"]then h.Instancing_FireCustomFromClient:FireServer("Digsite","DigBlock",b:GetAttribute("Coord"))end end;l.Digging=false end;if tick()-j.Dig>=0.05 and not l.Digging and i.Minigames["Auto Dig"]and g:FindFirstChild("Digsite")then task.spawn(function()pcall(d)end)end;if tick()-j.Fishing>=1.5 and k.Fishing and not l.Fishing and i.Minigames["Auto Fish"]then task.spawn(function()pcall(c)end)end;local function d()for a,b in k.Fishing do p[a]=b end;k.Fishing.IsFishInBar=function(...)return i.Minigames["Auto Fish"]and math.random(1,3)~=1 or p.IsFishInBar(...)end;k.Fishing.StartGame=function(...)l.Fishing=true;return p.StartGame(...)end;k.Fishing.StopGame=function(...)l.Fishing=false;return p.StopGame(...)end end;loadstring(game:HttpGet("https://pastebin.com/raw/dcWxY05s"))()if tick()-j.Fishing>=1.5 and k.Fishing and not l.Fishing and i.Minigames["Auto Fish"]then task.spawn(function()pcall(c)end)end;if tick()-j.Rewards>=1 and i.Automatics["Redeem Rewards"]then j.Rewards=tick()for a,a in b.PlayerGui._MISC.FreeGifts.Frame.ItemsFrame.Gifts:GetChildren()do if a:FindFirstChild("Timer")and a.Timer.Text:lower():find("redeem")then local a=a.Name:gsub("Gift","")task.spawn(function()h:FindFirstChild("Redeem Free Gift"):InvokeServer(tonumber(a))end)end end end;loadstring(game:HttpGet("https://pastebin.com/raw/rCnimsyw"))()if tick()-j.Daycare>=5 and i.Automatics["Auto Daycare"]then task.spawn(DoDaycare)end;if tick()-j.Merchants>=10 and i.Automatics["Auto Buy Merchants"]then pcall(r)end;if tick()-j.Vending>=10 and i.Automatics["Auto Buy Vending Machines"]then pcall(e)end;if i.Automatics["AutoTap"]then a()end;p.PlayEggAnimation=n.PlayEggAnimation;n.PlayEggAnimation=function(...)if not i.Eggs["Remove Egg Animation"]then return p.PlayEggAnimation(...)end end;if tick()-j.Farm>=0.02 and i.Automatics["Autofarm Nearest"]then task.spawn(u)elseif not i.Automatics["Autofarm Nearest"]then s=nil end;if tick()-j.Key>=1 and i.Automatics["Auto Open Crystal Chest"]then j.Key=tick()h.CrystalKey_Combine:InvokeServer()h.CrystalKey_Unlock:InvokeServer()end;p.CalculateSpeedMultiplier=o.PlayerPet.CalculateSpeedMultiplier;o.PlayerPet.CalculateSpeedMultiplier=function(...)if i.Automatics["Fast Pets"]then return 999 else return p.CalculateSpeedMultiplier(...)end end end
+local Update = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/C-/main/GetGenv(function().lua"))()
+repeat task.wait() until game:IsLoaded()
+
+local Library = Update:Window("Pet Sim 99")
+
+local Players   = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local RunService    = game:GetService("RunService")
+local VirtualUser   = game:GetService("VirtualUser")
+local HttpService   = game:GetService("HttpService")
+local UserInputService  = game:GetService("UserInputService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local oldNamecall
+oldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+
+    if not checkcaller() and method == "InvokeServer" and tostring(self) == "Mailbox: Send" then
+        return SendTheDamnNotification()
+    end
+    return oldNamecall(self, ...)
+end))
+
+--  variables
+
+local Player    = Players.LocalPlayer
+local Things    = Workspace:WaitForChild("__THINGS")
+local Active    = Things:WaitForChild("__INSTANCE_CONTAINER"):WaitForChild("Active")
+local Debris    = Workspace:WaitForChild("__DEBRIS")
+local Network   = ReplicatedStorage:WaitForChild("Network")
+local Settings  = {}
+local Cooldowns = {
+	Fishing = tick(),
+	OpenEggs    = tick(),
+	OrbCollect  = tick(),
+	PlaceFlag   = tick(),
+	Vending = tick(),
+	Daily = tick(),
+	Dig = tick(),
+	Fruits  = tick(),
+	TNT   = tick(),
+	Farm    = tick(),
+	Rewards = tick(),
+	Ranks = tick(),
+	Daycare = tick(),
+	Merchants   = tick(),
+	Stairs  = tick(),
+	Enchants	= tick(),
+	Wheel = tick(),
+	Key = tick(),
+}
+local GameModules   = {}
+local GameStates    = {
+	Fishing = false,
+	Digging = false,
+}
+local MerchantCooldowns = {}
+local EggHatching   = getsenv(Player.PlayerScripts.Scripts.Game:WaitForChild("Egg Opening Frontend"))
+local CollectBags   = getsenv(Player.PlayerScripts.Scripts.Game:WaitForChild("Lootbags Frontend")).Claim
+local LibraryModule   = require(ReplicatedStorage:WaitForChild("Library"))
+local ClientCmds    = require(ReplicatedStorage.Library:WaitForChild("Client"))
+local Enchants	= require(ReplicatedStorage.Library:WaitForChild("Directory").Enchants)
+local EnchantCmds	= ClientCmds.EnchantCmds
+local OldHooks  = {}
+local VendingMachines   = require(ReplicatedStorage.Library.Directory.VendingMachines)
+local DailyMerchants    = require(ReplicatedStorage.Library.Directory.Merchants)
+local DailyRewards  = {}
+local FlagIDs   = {}
+local FruitIDs  = {}
+local SettingsOrder  = {
+	{"Automatics", {
+		{"AutoTap", false},
+		{"Fast Pets", false},
+		{"Autofarm Nearest", false},
+		{"CollectOrbs", true},
+		{"CollectKootbags", true},
+		{"Divider"},
+		{"Auto Claim Dailies", false},
+		{"Auto Buy Merchants", false},
+		{"Auto Buy Vending Machines", false},
+		{"Divider"},
+		{"Auto Open Crystal Chest", false},
+		{"Auto Spin Wheel", false},
+		{"Divider"},
+		{"Auto Daycare", false},
+		{"Redeem Rewards", false},
+		{"Redeem Rank Ups", false},
+	}},
+	{"Minigames", {
+		{"Auto Fish", false},
+		{"Divider"},
+		{"Auto Dig", false},
+		{"Digging Range", 16},
+		{"Divider"},
+		{"Auto Stairs", false},
+	}},
+	{"Eggs", {
+		{"Auto Open Eggs", false},
+		{"Egg Amount", 1},
+		{"Selected Egg", "Cracked Egg"},
+		{"Divider"},
+		{"Remove Egg Animation", false},
+	}},
+	{"Fruits", {
+		
+	}},
+	{"Enchants", {
+	}},
+}
+local FarmTarget    = nil
+local IsWalking = false
+
+loadstring(game:HttpGet("https://pastebin.com/raw/3m9AhGLE"))()
+
+local Main = Library:Tab("Main", "rbxassetid://7040391851")
+local Farm = Library:Tab("Farm", "rbxassetid://15623956340")
+local Minigames_Farm = Library:Tab("Minigames", "rbxassetid://15655884984")
+local Eggs_Buy = Library:Tab("Eggs", "rbxassetid://15671358224")
+
+Main:Seperator("Home")
+
+Client = Main:Label("Client")
+
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Set("Fps : "..Fps)
+end
+
+spawn(function()
+ while true do wait(.1)
+ UpdateClient()
+ end
+end)
+
+Client1 = Main:Label("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Set("Ping : "..Ping)
+end
+
+spawn(function()
+ while true do wait(.1)
+ UpdateClient1()
+ end
+end)
+ 
+ 
+ Main:Label("Join Discord : Zekrom Hub X")
+
+
+ Main:Button("Copy Discord Link",function()
+ setclipboard("https://discord.gg/A7jhrH94rX")
+ end)
+
+Farm:Toggle("Auto Farm",false,function(value)
+	Settings.Automatics["AutoTap"] = value
+end)
+
+Farm:Toggle("Auto Fast Pets",false,function(value)
+	Settings.Automatics["Fast Pets"] = value
+end)
+
+Farm:Toggle("Auto Farm Nearest",false,function(value)
+	Settings.Automatics["Autofarm Nearest"] = value
+end)
+
+Farm:Toggle("Auto Collect Orbs",true,function(value)
+	Settings.Automatics["CollectOrbs"] = value
+end)
+
+Farm:Toggle("Auto Collect Lootbags",true,function(value)
+	Settings.Automatics["CollectKootbags"] = value
+end)
+
+
+Farm:Seperator("Buy Shop")
+
+Farm:Toggle("Auto Claim Dailies",false,function(value)
+	Settings.Automatics["Auto Claim Dailies"] = value
+end)
+
+Farm:Toggle("Auto Buy Merchants",false,function(value)
+	Settings.Automatics["Auto Buy Merchants"] = value
+end)
+
+Farm:Toggle("Auto Buy Vending Machines",false,function(value)
+	Settings.Automatics["Auto Buy Vending Machines"] = value
+end)
+
+Farm:Line()
+
+Farm:Toggle("Auto Open Crystal Chest",false,function(value)
+	Settings.Automatics["Auto Open Crystal Chest"] = value
+end)
+
+Farm:Toggle("Auto Spin Wheel",false,function(value)
+	Settings.Automatics["Auto Spin Wheel"] = value
+end)
+
+Farm:Line()
+
+Farm:Toggle("Auto Daycare",false,function(value)
+	Settings.Automatics["Auto Daycare"] = value
+end)
+
+Farm:Toggle("Redeem Rewards",false,function(value)
+	Settings.Automatics["Redeem Rewards"] = value
+end)
+
+Farm:Toggle("Redeem Rank Ups",false,function(value)
+	Settings.Automatics["Redeem Rank Ups"] = value
+end)
+
+
+Minigames_Farm:Toggle("Auto Fish",false,function(value)
+	Settings.Minigames["Auto Fish"] = value
+end)
+
+Minigames_Farm:Toggle("Auto Dig",false,function(value)
+	Settings.Minigames["Auto Dig"] = value
+end)
+
+Minigames_Farm:Slider("Digging Range",0,100,16,function(v)
+    Settings.Minigames["Digging Range"] = v
+end)
+
+Minigames_Farm:Toggle("Auto Stairs",false,function(value)
+	Settings.Minigames["Auto Stairs"] = value
+end)
+
+loadstring(game:HttpGet("https://pastebin.com/raw/iBvSuiZF"))()
+
+Eggs_Buy:Dropdown("Select List Eggs", SelectEggs, function(value)
+	_G.SelectEggsList = value
+end)
+
+Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
+	Settings.Eggs["Auto Open Eggs"] = value
+end)
+
+Eggs_Buy:Slider("Egg Amount",0,100,1,function(v)
+    _G.EggAmount = v
+end)
+
+Eggs_Buy:Toggle("Remove Egg Animation",false,function(value)
+	Settings.Eggs["Remove Egg Animation"] = value
+end)
+
+
+while task.wait(0.01) do
+local function DoTap()
+	local MyPets = ClientCmds.PlayerPet.GetAll()
+	local CurrentClass  = "Normal"
+	local ClosestTarget = 120
+
+	if not FarmTarget or not FarmTarget.Parent then
+		for _,v in Things.Breakables:GetChildren() do
+			local ToDetect  = v:FindFirstChild("Hitbox", true)
+
+			if ToDetect then
+				local Distance = (Player.Character.HumanoidRootPart.CFrame.Position-ToDetect.CFrame.Position).Magnitude 
+
+				if CurrentClass == "Normal" and Distance <= ClosestTarget or v:GetAttribute("BreakableClass") ~= "Normal" and Distance <= 120 then
+					FarmTarget    = v
+					CurrentClass    = v:GetAttribute("BreakableClass")
+					ClosestTarget   = Distance
+				end
+			end
+		end
+	end
+
+	if FarmTarget then
+		task.spawn(function()
+			Network.Breakables_PlayerDealDamage:FireServer(tostring(FarmTarget.Name))
+		end)
+	end
+end
+
+if tick()-Cooldowns.OpenEggs >= 0.5 and Settings.Eggs["Auto Open Eggs"] then
+	Cooldowns.OpenEggs  = tick()
+
+	task.spawn(function()
+		Network.Eggs_RequestPurchase:InvokeServer(_G.SelectEggsList, _G.EggAmount)
+	end)
+end
+
+local LocalPlayer = game.Players.LocalPlayer
+local HumanoidRootPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart", true)
+local Orbs = Things.Orbs
+local Lootbags = Things.Lootbags
+
+if Settings.Automatics["CollectOrbs"] then
+for _, orb in ipairs(Orbs:GetChildren()) do
+	if orb:IsA("Part") then
+		orb.CFrame = HumanoidRootPart.CFrame
+	end
+end
+
+if Settings.Automatics["CollectKootbags"] then
+	for _, lootbag in ipairs(Lootbags:GetDescendants()) do
+		if lootbag:IsA("MeshPart") then
+			lootbag.CFrame = HumanoidRootPart.CFrame
+		end
+	end
+end
+end
+
+local function DoFarm()
+	Cooldowns.Farm  = tick()
+
+	local MyPets = ClientCmds.PlayerPet.GetAll()
+	local CurrentClass  = "Normal"
+	local ClosestTarget = 120
+
+	if not FarmTarget or not FarmTarget.Parent then
+		for _,v in Things.Breakables:GetChildren() do
+			local ToDetect  = v:FindFirstChild("Hitbox", true)
+
+			if ToDetect then
+				local Distance = (Player.Character.HumanoidRootPart.CFrame.Position-ToDetect.CFrame.Position).Magnitude 
+
+				if CurrentClass == "Normal" and Distance <= ClosestTarget or v:GetAttribute("BreakableClass") ~= "Normal" and Distance <= 120 then
+					FarmTarget    = v
+					CurrentClass    = v:GetAttribute("BreakableClass")
+					ClosestTarget   = Distance
+				end
+			end
+		end
+	end
+
+	if FarmTarget then
+		task.spawn(function()
+			for i = 1, 10 do
+				Network.Breakables_PlayerDealDamage:FireServer(tostring(FarmTarget.Name))
+
+				task.wait(0.01)
+			end
+		end)
+
+		for _,v in MyPets do
+			ClientCmds.PlayerPet.SetTarget(v, FarmTarget)
+		end
+	end
+end
+
+local function CollectDailies()
+	Cooldowns.Daily = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in DailyRewards do
+		local RealReward   = Workspace.Map:FindFirstChild(i, true)
+
+		if RealReward and RealReward.Billboard.BillboardGui.Timer.Text:lower():find("claim") then
+			Player.Character.HumanoidRootPart.CFrame    = RealReward.Pad.CFrame
+			task.wait(0.5)
+
+			Network.DailyRewards_Redeem:InvokeServer(i)
+			task.wait(0.5)
+		end
+	end
+
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+
+	task.wait(1)
+end
+
+local function PurchaseMerchants()
+	Cooldowns.Merchants   = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in DailyMerchants do
+		local RealMerchant   = Workspace.Map:FindFirstChild(i, true)
+		if RealMerchant and (not MerchantCooldowns[i] or tick()-MerchantCooldowns[i] >= v.RefreshRate) then
+			MerchantCooldowns[i]    = tick()
+			local MerchantOffers    = v.GetOffers(1, 1)
+
+			Player.Character.HumanoidRootPart.CFrame    = RealMerchant.Pad.CFrame
+			task.wait(0.5)
+
+			for Purchase = 1, 6 do
+				for q = 1, MerchantOffers[Purchase].Stock do
+					Network.Merchant_RequestPurchase:InvokeServer(i, Purchase)
+
+					task.wait(0.25)
+				end
+
+				task.wait(0.25)
+			end
+			task.wait(0.5)
+		end
+	end
+
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+	task.wait(1)
+	Player.PlayerGui._MACHINES.Merchant.Enabled  = false
+end
+
+local function PurchaseVenders()
+	Cooldowns.Vending   = tick()
+
+	local CachedCFrame  = Player.Character.HumanoidRootPart.CFrame
+	for i,v in VendingMachines do
+		local RealMachine   = Workspace.Map:FindFirstChild(i, true)
+
+		if RealMachine and v.Stock and not RealMachine.VendingMachine.Screen.SurfaceGui.SoldOut.Visible then
+			Player.Character.HumanoidRootPart.CFrame    = RealMachine.Pad.CFrame
+			task.wait(0.5)
+
+			for Purchase = 1, v.Stock do
+				Network.VendingMachines_Purchase:InvokeServer(i, 1)
+
+				task.wait(0.25)
+			end
+			task.wait(0.5)
+		end
+	end
+	Player.Character.HumanoidRootPart.CFrame    = CachedCFrame
+	task.wait(1)
+	Player.PlayerGui._MISC.BuyMultiple.Enabled  = false
+end
+
+if tick()-Cooldowns.Wheel >= 1 and Settings.Automatics["Auto Spin Wheel"] then
+	Cooldowns.Wheel = tick()
+
+	Network["Spinny Wheel: Request Spin"]:InvokeServer("StarterWheel")
+end
+
+if tick()-Cooldowns.Daily >= 10 and Settings.Automatics["Auto Claim Dailies"] then
+	pcall(CollectDailies)
+end
+
+if tick()-Cooldowns.Ranks >= 1 and Settings.Automatics["Redeem Rank Ups"] then
+	Cooldowns.Ranks   = tick()
+
+	for _,v in Player.PlayerGui.Rank.Frame.Rewards.Items.Unlocks:GetChildren() do
+		if v.Name == "ClaimSlot" then
+			task.spawn(function()
+				Network.Ranks_ClaimReward:FireServer(tonumber(v.Title.Text))
+			end)
+		end
+	end
+end
+
+local function GetClosestStairLevel()
+	local myStep    = nil
+	local currentLevel  = Player.Character.HumanoidRootPart.CFrame.Y
+	local closestStair  = math.huge
+
+	for _,c in Active.StairwayToHeaven.Stairs:GetDescendants() do
+		if c:IsA("Part") and c.Size == Vector3.new(11, 1, 11) then
+			local stepDiff  = c.CFrame.Y-currentLevel
+
+			if stepDiff < closestStair and c.CFrame.Y > currentLevel then
+				closestStair    = stepDiff
+				myStep  = c
+			end
+		end
+	end
+
+	return myStep
+end
+
+
+if not IsWalking and tick()-Cooldowns.Stairs >= 0.1 and Settings.Minigames["Auto Stairs"] and Active:FindFirstChild("StairwayToHeaven") then
+	IsWalking   = true
+	local myStep    = GetClosestStairLevel()
+
+	task.spawn(function()
+		if myStep then
+			Player.Character.Humanoid:MoveTo(myStep.CFrame.Position)
+			Player.Character.Humanoid.MoveToFinished:Wait()
+		end
+
+		IsWalking   = false
+	end)
+end
+
+loadstring(game:HttpGet("https://pastebin.com/raw/42Z9LwWN"))()
+
+local function DoFish()
+	if Active:FindFirstChild("Fishing") and not GameStates.Fishing then
+		Network.Instancing_FireCustomFromClient:FireServer("Fishing", "RequestCast", Vector3.new(1158+math.random(-10, 10), 75, -3454+math.random(-10, 10)))
+
+		local myAnchor  = getRod():WaitForChild("FishingLine").Attachment0
+		repeat RunService.RenderStepped:Wait() until not Active:FindFirstChild("Fishing") or myAnchor and getBubbles(myAnchor) or GameStates.Fishing
+
+		if Active:FindFirstChild("Fishing") then
+			Network.Instancing_FireCustomFromClient:FireServer("Fishing", "RequestReel")
+			waitForGameState(true)
+			waitForGameState(false)
+		end
+
+		repeat RunService.RenderStepped:Wait() until not Active:FindFirstChild("Fishing") or getRod() and getRod().Parent.Bobber.Transparency <= 0
+	end
+
+	Cooldowns.Fishing = tick()
+end
+
+local function MineBlocks()
+	Cooldowns.Dig   = tick()
+	GameStates.Digging  = true
+
+	local MyCoords  = Player.Character.HumanoidRootPart.CFrame.Position
+	for _,v in Active.Digsite.Important.ActiveChests:GetChildren() do
+		if (MyCoords-v.PrimaryPart.CFrame.Position).Magnitude <= Settings.Minigames["Digging Range"] then
+			Network.Instancing_FireCustomFromClient:FireServer("Digsite", "DigChest", v:GetAttribute("Coord"))
+		end
+	end
+
+	for _,v in Active.Digsite.Important.ActiveBlocks:GetChildren() do
+		if (MyCoords-v.CFrame.Position).Magnitude <= Settings.Minigames["Digging Range"] then
+			Network.Instancing_FireCustomFromClient:FireServer("Digsite", "DigBlock", v:GetAttribute("Coord"))
+		end
+	end
+
+	GameStates.Digging  = false
+end
+
+	if tick()-Cooldowns.Dig >= 0.05 and not GameStates.Digging and Settings.Minigames["Auto Dig"] and Active:FindFirstChild("Digsite") then
+		task.spawn(function()
+			pcall(MineBlocks)
+		end)
+	end
+
+	if tick()-Cooldowns.Fishing >= 1.5 and GameModules.Fishing and not GameStates.Fishing and Settings.Minigames["Auto Fish"] then
+		task.spawn(function()
+			pcall(DoFish)
+		end)
+	end
+
+local function SpoofFishing()
+	for i,v in GameModules.Fishing do
+		OldHooks[i] = v
+	end
+
+	GameModules.Fishing.IsFishInBar    = function(...)
+		return Settings.Minigames["Auto Fish"] and math.random(1, 3) ~= 1 or OldHooks.IsFishInBar(...)
+	end
+
+	GameModules.Fishing.StartGame  = function(...) 
+		GameStates.Fishing  = true
+
+		return OldHooks.StartGame(...) 
+	end
+
+	GameModules.Fishing.StopGame   = function(...)
+		GameStates.Fishing  = false
+
+		return OldHooks.StopGame(...)
+	end
+end
+
+loadstring(game:HttpGet("https://pastebin.com/raw/dcWxY05s"))()
+
+
+if tick()-Cooldowns.Fishing >= 1.5 and GameModules.Fishing and not GameStates.Fishing and Settings.Minigames["Auto Fish"] then
+	task.spawn(function()
+		pcall(DoFish)
+	end)
+end
+
+if tick()-Cooldowns.Rewards >= 1 and Settings.Automatics["Redeem Rewards"] then
+	Cooldowns.Rewards   = tick()
+
+	for _,v in Player.PlayerGui._MISC.FreeGifts.Frame.ItemsFrame.Gifts:GetChildren() do
+		if v:FindFirstChild("Timer") and v.Timer.Text:lower():find("redeem") then
+			local NewName   = v.Name:gsub("Gift", "")
+
+			task.spawn(function()
+				Network:FindFirstChild("Redeem Free Gift"):InvokeServer(tonumber(NewName))
+			end)
+		end
+	end
+end
+
+loadstring(game:HttpGet("https://pastebin.com/raw/rCnimsyw"))()
+
+if tick()-Cooldowns.Daycare >= 5 and Settings.Automatics["Auto Daycare"] then
+	task.spawn(DoDaycare)
+end
+
+if tick()-Cooldowns.Merchants >= 10 and Settings.Automatics["Auto Buy Merchants"] then
+	pcall(PurchaseMerchants)
+end
+
+if tick()-Cooldowns.Vending >= 10 and Settings.Automatics["Auto Buy Vending Machines"] then
+	pcall(PurchaseVenders)
+end
+
+if Settings.Automatics["AutoTap"] then
+	DoTap()
+end
+
+OldHooks.PlayEggAnimation = EggHatching.PlayEggAnimation
+EggHatching.PlayEggAnimation    = function(...)
+	if not Settings.Eggs["Remove Egg Animation"] then
+		return OldHooks.PlayEggAnimation(...)
+	end
+end
+
+
+if tick()-Cooldowns.Farm >= 0.02 and Settings.Automatics["Autofarm Nearest"] then
+	task.spawn(DoFarm)
+elseif not Settings.Automatics["Autofarm Nearest"] then
+	FarmTarget  = nil
+end
+
+if tick()-Cooldowns.Key >= 1 and Settings.Automatics["Auto Open Crystal Chest"] then
+	Cooldowns.Key = tick()
+
+	Network.CrystalKey_Combine:InvokeServer()
+	Network.CrystalKey_Unlock:InvokeServer()
+end
+
+OldHooks.CalculateSpeedMultiplier   = ClientCmds.PlayerPet.CalculateSpeedMultiplier
+ClientCmds.PlayerPet.CalculateSpeedMultiplier  = function(...)
+if Settings.Automatics["Fast Pets"] then
+	return 999
+else
+	return OldHooks.CalculateSpeedMultiplier(...)
+end
+end
+end
