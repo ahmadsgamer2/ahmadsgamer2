@@ -69,37 +69,37 @@ local FlagIDs   = {}
 local FruitIDs  = {}
 local SettingsOrder  = {
 	{"Automatics", {
-		{"AutoTap", false},
-		{"Fast Pets", false},
-		{"Autofarm Nearest", false},
-		{"CollectOrbs", true},
-		{"CollectKootbags", true},
+		{"AutoTap"},
+		{"Fast Pets"},
+		{"Autofarm Nearest"},
+		{"CollectOrbs"},
+		{"CollectKootbags"},
 		{"Divider"},
-		{"Auto Claim Dailies", false},
-		{"Auto Buy Merchants", false},
-		{"Auto Buy Vending Machines", false},
+		{"Auto Claim Dailies"},
+		{"Auto Buy Merchants"},
+		{"Auto Buy Vending Machines"},
 		{"Divider"},
-		{"Auto Open Crystal Chest", false},
-		{"Auto Spin Wheel", false},
+		{"Auto Open Crystal Chest"},
+		{"Auto Spin Wheel"},
 		{"Divider"},
-		{"Auto Daycare", false},
-		{"Redeem Rewards", false},
-		{"Redeem Rank Ups", false},
+		{"Auto Daycare"},
+		{"Redeem Rewards"},
+		{"Redeem Rank Ups"},
 	}},
 	{"Minigames", {
-		{"Auto Fish", false},
+		{"Auto Fish"},
 		{"Divider"},
-		{"Auto Dig", false},
-		{"Digging Range", 16},
+		{"Auto Dig"},
+		{"Digging Range"},
 		{"Divider"},
-		{"Auto Stairs", false},
+		{"Auto Stairs"},
 	}},
 	{"Eggs", {
-		{"Auto Open Eggs", false},
-		{"Egg Amount", 1},
-		{"Selected Egg", "Cracked Egg"},
+		{"Auto Open Eggs"},
+		{"Egg Amount"},
+		{"Select Eggs List"},
 		{"Divider"},
-		{"Remove Egg Animation", false},
+		{"Remove Egg Animation"},
 	}},
 	{"Fruits", {
 		
@@ -229,10 +229,14 @@ Minigames_Farm:Toggle("Auto Stairs",false,function(value)
 	Settings.Minigames["Auto Stairs"] = value
 end)
 
-loadstring(game:HttpGet("https://pastebin.com/raw/iBvSuiZF"))()
+local SelectEggs = {}
+for _,v in ReplicatedStorage.__DIRECTORY.Eggs["Zone Eggs"]:GetChildren() do
+  local MyNameEggs = v.Name:find("|")+2
+  table.insert(SelectEggs, v.Name:sub(MyNameEggs))
+end
 
 Eggs_Buy:Dropdown("Select List Eggs", SelectEggs, function(value)
-	_G.SelectEggsList = value
+	Settings.Eggs["Select Eggs List"] = value
 end)
 
 Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
@@ -240,7 +244,7 @@ Eggs_Buy:Toggle("Auto Open Eggs",false,function(value)
 end)
 
 Eggs_Buy:Slider("Egg Amount",0,100,1,function(v)
-    _G.EggAmount = v
+    Settings.Eggs["Egg Amount"] = tonumber(v)
 end)
 
 Eggs_Buy:Toggle("Remove Egg Animation",false,function(value)
@@ -281,7 +285,7 @@ if tick()-Cooldowns.OpenEggs >= 0.5 and Settings.Eggs["Auto Open Eggs"] then
 	Cooldowns.OpenEggs  = tick()
 
 	task.spawn(function()
-		Network.Eggs_RequestPurchase:InvokeServer(_G.SelectEggsList, _G.EggAmount)
+		Network.Eggs_RequestPurchase:InvokeServer(Settings.Eggs["Select Eggs List"], Settings.Eggs["Egg Amount"])
 	end)
 end
 
