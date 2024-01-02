@@ -109,37 +109,6 @@ local EnchantLabels	= {}
 
 loadstring(game:HttpGet("https://pastebin.com/raw/3m9AhGLE"))()
 
-
-local RealFlagNames = {}
-local RealFruitNames = {}
-
-for _,v in ReplicatedStorage.__DIRECTORY.ZoneFlags:GetChildren() do
-	local SubbedName = v.Name:gsub("ZoneFlag | ", "")
-
-	table.insert(RealFlagNames, SubbedName)
-end
-
-for _,v in ReplicatedStorage.__DIRECTORY.Fruits:GetChildren() do
-	local SubbedName = v.Name:gsub("Fruit | ", "")
-
-	table.insert(RealFruitNames, SubbedName)
-end
-
-for _,v in LibraryModule.Items.All.Globals.All() do
-	local RealName  = GetNameFromJSON(v)
-	local RealID    = GetIdFromJSON(v)
-
-	if table.find(RealFlagNames, RealName) then
-		FlagIDs[RealName] = RealID
-	elseif table.find(RealFruitNames, RealName) and not FruitIDs[RealName] then
-		FruitIDs[RealName] = RealID
-
-		table.insert(SettingsOrder[4][2], {"Auto Eat "..RealName, false})
-		table.insert(FruitOrder, RealName)
-	end
-end
-
-
 local Main = Library:Tab("Main", "rbxassetid://7040391851")
 local Farm = Library:Tab("Farm", "rbxassetid://15623956340")
 local Minigames_Farm = Library:Tab("Minigames", "rbxassetid://15655884984")
