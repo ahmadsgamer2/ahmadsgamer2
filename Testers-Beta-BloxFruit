@@ -14,11 +14,11 @@
                                         ["fields"] = {
                                             {
                                                 ["name"] = "[👥] Players Active",
-                                                ["value"] = '```' .. JoinServer .. '/12```'
+                                                ["value"] = 'Test'
                                             },
                                             {
                                                 ["name"] = "[📃] JobID",
-                                                ["value"] = '```' .. JoinServer .. '```'
+                                                ["value"] = 'Test'
                                             },
                                             {
                                                 ["name"] = "[📁] Join Server",
@@ -26,7 +26,7 @@
                                             },
                                             {
                                                 ["name"] = "[🌲] Mirage Check",
-                                                ["value"] = JoinServer,
+                                                ["value"] = "Test",
                                                 ["inline"] = true
                                             }
                                         },
