@@ -196,7 +196,6 @@ do
 			end)	
 		end
 	fake_module_scripts[script] = module_script
-end
 
 
 repeat wait(1) until game:IsLoaded()
