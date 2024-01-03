@@ -10,15 +10,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsga
 
 local Update = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/C-/main/GetGenv(function().lua"))()
 
-    spawn(function()
-        while true do 
-            wait(3.600)
-            pcall(function()
-                game:GetService("Players").LocalPlayer.Character.Humanoid.Health = 0
-            end)
-        end
-    end)
-
 --local code = "ZekromHubX_"
 --local ServerJobID = "ZekromHubX_"..game.JobId
 --local newCode = string.gsub(code, "ZekromHubX_", "")
@@ -4708,7 +4699,7 @@ function CheckNotifyComplete()
     local SubQuest = false
     local oldmob = Name
     local oldcheckquest = NameMon
-    
+
     task.spawn(function()
     while wait() do
     pcall(function()
