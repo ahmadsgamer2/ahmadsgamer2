@@ -1,1 +1,2 @@
-loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt"))()
+_G.HOHO_SERVER_ID = {2753915549, "HOHO-HUB_w23f3LSncedRXlNVZz9PP2NzJ4t73lJEXLsA9zSLKzSfilKgS"}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI"))()
