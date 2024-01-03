@@ -1,4 +1,4 @@
-                            JoinServer = "```" _G.ZekromHubX_Join = '{' ..game.PlaceId.. ',' ..game.JobId.. '} loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe", true))()```'
+                            JoinServer = '```' _G.ZekromHubX_Join = '{' ..game.PlaceId.. ',' ..game.JobId.. '} loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe", true))() ```'
 
                             local GetWebhookMirage = "https://discord.com/api/webhooks/1063872267525836800/"
                             local url = GetWebhookMirage.."10KU4X_nlnkAZI6F5B6s_cbl8TqZ2hXnveKDp8S6w0AMGaJTYIUFdAuk8d9lfU9jmNJM"                                                                                                                
