@@ -94,7 +94,7 @@ ImageButton.MouseButton1Down:connect(function()
 end)
 
 local guiResizer = Instance.new("Folder")
-local resizer = Instance.new("Frame")
+local resizer_1 = Instance.new("Frame")
 local dragger = Instance.new("ImageButton")
 local UICorner = Instance.new("UICorner")
 
@@ -111,7 +111,7 @@ resizer.Size = UDim2.new(0, 30, 0, 30)
 resizer.SizeConstraint = Enum.SizeConstraint.RelativeXX
 
 dragger.Name = "dragger"
-dragger.Parent = resizer
+dragger.Parent = resizer_1
 dragger.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
 dragger.BackgroundTransparency = 1.000
 dragger.BorderSizePixel = 0
@@ -140,7 +140,7 @@ do
 		
 		function module.makeResizable(obj:GuiObject, minSize)
 			
-			local resizer = script.Parent.resizer:Clone()
+			local resizer = resizer_1:Clone()
 			local dragger = resizer.dragger
 			
 			resizer.Size = UDim2.fromOffset(DRAGGER_SIZE, DRAGGER_SIZE)
@@ -196,7 +196,8 @@ do
 			end)	
 		end
 	fake_module_scripts[script] = module_script
-
+    return module
+end
 
 repeat wait(1) until game:IsLoaded()
 
