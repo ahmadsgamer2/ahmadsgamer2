@@ -98,7 +98,7 @@ function AntiBan()
         end
      end
     end
-    AntiBan()
+    --AntiBan()
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Anti AFK
 game:GetService("Players").LocalPlayer.Idled:connect(function()
