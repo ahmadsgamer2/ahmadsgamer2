@@ -3,11 +3,6 @@ if _G.Chest_Farm then
 elseif _G.FruitFinder then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/FruitFinder.lua"))()
 else
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SaltyHB/Poggers/main/Public"))()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Hook"))()
-
 local Update = loadstring(game:HttpGet("https://raw.githubusercontent.com/bot21333/C-/main/GetGenv(function().lua"))()
 
 local Library = Update:Window("Blox Fruit")
@@ -3984,3 +3979,7 @@ while wait() do
     end
   end)
 end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SaltyHB/Poggers/main/Public"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Hook"))()
