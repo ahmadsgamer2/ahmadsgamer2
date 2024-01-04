@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe", true))()
+game:GetService("TeleportService"):TeleportToPlaceInstance(4442272183,'5305301b-02e2-42b4-a4ab-87d4909507a9')
