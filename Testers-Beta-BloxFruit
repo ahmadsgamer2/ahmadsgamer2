@@ -6,6 +6,7 @@ if getgenv().JoinZekrom == true then
 end
 
 local JobID = game.JobId
-Script = string.gsub(script, "ZekromHubX_", ""..JobID)
+local ZekromHubXJobID = "ZekromHubX_"..JobID
+script = string.gsub(script, "ZekromHubX_", "")
 
-print(Script)
+print(script)
