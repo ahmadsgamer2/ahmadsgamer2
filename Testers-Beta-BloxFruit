@@ -3142,7 +3142,7 @@ spawn(function()
         end)
 
         if Third_Sea then
-        Item:Seperator("Farming Bones")
+            ItemFarm:Seperator("Farming Bones")
             Main:Toggle("Auto Farm Bone",false,function(value)
                 _G.AutoBone = value
             end)
@@ -3205,9 +3205,9 @@ spawn(function()
     end
 end)
 
-Item:Seperator("Farming Cake Prince")
+ItemFarm:Seperator("Farming Cake Prince")
 
-Main:Toggle("Auto Farm Cake Prince",false,function(value)
+ItemFarm:Toggle("Auto Farm Cake Prince",false,function(value)
     _G.CakePrince = value
 end)
 
@@ -3269,15 +3269,15 @@ spawn(function()
     end
 end)
 
-Main:Toggle("Auto Spawn Cake Prince",true,function(value)
+ItemFarm:Toggle("Auto Spawn Cake Prince",true,function(value)
     _G.GetSpawnCake = value
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner",Value)
 end)
 end
 
 if Second_Sea then
-    Item:Seperator("Farming Ectoplasm")
-    Main:Toggle("Auto Farm Ectoplasm",false,function(value)
+    ItemFarm:Seperator("Farming Ectoplasm")
+    ItemFarm:Toggle("Auto Farm Ectoplasm",false,function(value)
         _G.Ectoplasm = value
     end)
 
