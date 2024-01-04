@@ -1,4 +1,1 @@
-JoinServer = 'getgenv().JoinZekrom = {G = '..game.PlaceId..', J = '..game.JobId..'}' ..
-'\''..loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'))().. '\''
-
-print(JoinServer)
+loadstring(game:HttpGet('https://pastebin.com/raw/Afxfn26Z'))()
