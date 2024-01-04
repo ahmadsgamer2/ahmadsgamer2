@@ -1,1 +1,13 @@
-game:GetService("TeleportService"):TeleportToPlaceInstance(4442272183,'5305301b-02e2-42b4-a4ab-87d4909507a9')
+local GameIDJob = game.JobId
+
+if game.PlaceId == 2753915549 then
+    GameID = 2753915549
+elseif game.PlaceId == 4442272183 then
+    GameID = 4442272183
+elseif game.PlaceId == 7449423635 then
+    GameID = 7449423635
+end
+if _G.ZekromHubX_Join == {GameID, ""..GameIDJob..""} then
+   game:GetService("TeleportService"):TeleportToPlaceInstance(GameID, ""..GameIDJob.."")
+end
+print(GameID, ""..GameIDJob.."")
