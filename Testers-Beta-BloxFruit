@@ -2838,7 +2838,7 @@ spawn(function()
     end)
 
     Main:Toggle("Auto Farm Boss",false,function(value)
-        _G.AutoBoss
+        _G.AutoBoss = value
     end)
 
     spawn(function()
@@ -3144,7 +3144,7 @@ spawn(function()
         if Third_Sea then
         Item:Seperator("Farming Bones")
             Main:Toggle("Auto Farm Bone",false,function(value)
-                _G.AutoBone
+                _G.AutoBone = value
             end)
 
 local BoneCFrame = CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
@@ -3208,7 +3208,7 @@ end)
 Item:Seperator("Farming Cake Prince")
 
 Main:Toggle("Auto Farm Cake Prince",false,function(value)
-    _G.CakePrince
+    _G.CakePrince = value
 end)
 
 spawn(function()
