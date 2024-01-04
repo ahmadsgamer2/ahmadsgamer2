@@ -2062,7 +2062,7 @@ end
  
  AutoFarm:AddToggle('AutoFarmLevel', {
 	 Text = 'Auto Farm [Level]',
-	 Default = _G.SaveSetting.AutoFarm,
+	 Default = true,
  })
  AutoFarm:AddToggle('NewWorld', {
 	 Text = 'Auto New World',
