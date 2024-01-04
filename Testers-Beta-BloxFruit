@@ -13292,28 +13292,6 @@ Settings:Toggle("Bring Mobs",true,function(value)
 end)
 
 task.spawn(function()
-    while true do wait()
-        if setscriptable then
-            setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
-        end
-        if sethiddenproperty then
-            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-        end
-    end
-end)
-
-function InMyNetWork(object)
-    if isnetworkowner then
-        return isnetworkowner(object)
-    else
-        if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 450 then 
-            return true
-        end
-        return false
-    end
-end
-
-task.spawn(function()
     while task.wait() do
         pcall(function()
             if _G.BringMob then
@@ -13328,7 +13306,7 @@ task.spawn(function()
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
                             if v.Humanoid:FindFirstChild("Animator") then
-                                v.Humanoid.Animator:Destroy()
+                            v.Humanoid.Animator:Destroy()
                             end
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
