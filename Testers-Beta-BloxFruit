@@ -1,13 +1,48 @@
-local GameIDJob = game.JobId
 
-if game.PlaceId == 2753915549 then
-    GameID = 2753915549
-elseif game.PlaceId == 4442272183 then
-    GameID = 4442272183
-elseif game.PlaceId == 7449423635 then
-    GameID = 7449423635
-end
-if _G.ZekromHubX_Join == {GameID, ""..GameIDJob..""} then
-   game:GetService("TeleportService"):TeleportToPlaceInstance(GameID, ""..GameIDJob.."")
-end
-print(GameID, ""..GameIDJob.."")
+
+local GetHttp = "loadstring(game:HttpGet("..https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe..", true))()"
+
+JoinServer = '``` _G.ZekromHubX_Join == {'..GameID',' ..tostring(game.JobId)..'}'..GetHttp..''
+
+local GetWebhookMirage = "https://discord.com/api/webhooks/1188856272116777041/"
+local url = GetWebhookMirage.."tHf8kiKVSaBZDw7fJMVrbQ8eHuE3BgfrXAR97DrVwmyxf-JLFhDzbtgbt_S150KvDNh2"                                                                                                                
+local data = {
+    ["username"] = 'Zekrom Hub X',                                                                                                                                                                                                           
+    ['content'] = '<@&1189896488793411685>',--'<@&1189896488793411685>',                                                                                                                                                                                            
+    ["avatar_url"] = "https://cdn.discordapp.com/attachments/1161038929617764413/1185131339993854012/Neues_Element_6_A4A1E41.jpg?ex=658e7e92&is=657c0992&hm=e1331ecd977843455c77ca457be15a780a2640093c6bd84debd7079b0b817a3d&", 
+    ["embeds"] = {
+        {
+            ["description"] = "**__Mirage Finder__**",
+            ["color"] = tonumber(0x000000), -- color id		#
+            ["type"] = "rich",
+            ["fields"] = {
+                {
+                    ["name"] = "[👥] Players Active",
+                    ["value"] = '```test```'
+                },
+                {
+                    ["name"] = "[📃] JobID",
+                    ["value"] = '```'..JoinServer..'```'
+                },
+                {
+                    ["name"] = "[📁] Join Server",
+                    ["value"] = '```test```',
+                },
+                {
+                    ["name"] = "[🌲] Mirage Check",
+                    ["value"] = '```test```',
+                    ["inline"] = true
+                }
+            },
+            ["footer"] = {
+                ["text"] = "Zekrom Hub X | Webhook", 
+            },
+            ["timestamp"] = DateTime.now():ToIsoDate(),
+        }
+    },
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+local headers = { ["content-type"] = "application/json" }
+request = http_request or request or HttpPost or syn.request
+local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+request(abcdef)
