@@ -7,7 +7,7 @@ local repo = 'https://raw.githubusercontent.com/Piwwy0909/GolBalGUI/main/'
  FastTween = true
  
 _G.SaveSetting = {
-	AutoFarm = false,
+	AutoFarm = true,
 	AutoFarmSky = false,
 	Superhuman = false,
 	AutoCakePrince = false,
