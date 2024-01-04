@@ -1,12 +1,4 @@
-if getgenv().JoinZekrom == true then
-    local JobID = game.JobId
-    script = string.gsub(script, "ZekromHubX_", ""..JobID)
+JoinServer = 'getgenv().JoinZekrom = {G = '..game.PlaceId..', J = '..game.JobId..'}' ..
+'\''..loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'))().. '\''
 
-    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,)
-end
-
-local JobID = game.JobId
-local ZekromHubXJobID = "ZekromHubX_"..JobID
-script = string.gsub(script, "ZekromHubX_", "")
-
-print(script)
+print(JoinServer)
