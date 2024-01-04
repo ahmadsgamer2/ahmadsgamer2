@@ -83,22 +83,7 @@ local id = game.PlaceId
 if id == 2753915549 then World1 = true; elseif id == 4442272183 then World2 = true; elseif id == 7449423635 then World3 = true; else print("Not Found Game") end;
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Flag Player
-function AntiBan()
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "General" or v.Name == "Shiftlock"  or v.Name == "FallDamage" or v.Name == "4444" or v.Name == "CamBob" or v.Name == "JumpCD" or v.Name == "Looking" or v.Name == "Run" then
-                v:Destroy()
-            end
-        end
-     end
-     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerScripts:GetDescendants()) do
-        if v:IsA("LocalScript") then
-            if v.Name == "RobloxMotor6DBugFix" or v.Name == "Clans"  or v.Name == "Codes" or v.Name == "CustomForceField" or v.Name == "MenuBloodSp"  or v.Name == "PlayerList" then
-                v:Destroy()
-            end
-        end
-     end
-    end
+
     --AntiBan()
 --------------------------------------------------------------------------------------------------------------------------------------------
 repeat wait() until game.Players
@@ -3143,9 +3128,35 @@ spawn(function()
 
         if Third_Sea then
             ItemFarm:Seperator("Farming Bones")
-            Main:Toggle("Auto Farm Bone",false,function(value)
+
+            ItemFarm:Seperator("Bones")
+
+            local count_number = 0
+            local count_stack = ItemFarm:Label('Bone : ' .. count_number, true)
+            spawn(function()
+                while true do
+                    local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
+                    count_stack:Set('Bone : ' .. boneStatus)
+                    wait(1)
+                end
+            end)
+
+            ItemFarm:Toggle("Auto Farm Bone",false,function(value)
                 _G.AutoBone = value
             end)
+
+            ItemFarm:Toggle("Auto Random Bone",false,function(value)
+                _G.AutoRandomBone = value
+            end)
+
+            spawn(function()
+                while wait(.1) do
+                    if _G.AutoRandomBone then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Buy", 1, 1)
+                    end
+                end
+            end)
+
 
 local BoneCFrame = CFrame.new(-9515.75, 174.8521728515625, 6079.40625)
 local BoneCFrame2 = CFrame.new(-9359.453125, 141.32679748535156, 5446.81982421875)
@@ -3275,8 +3286,192 @@ ItemFarm:Toggle("Auto Spawn Cake Prince",true,function(value)
 end)
 end
 
+ItemFarm:Seperator("Farming Elite Hunter")
+
+ItemFarm:Toggle("Auto Elite Hunter",false,function(value)
+    _G.AutoElite = value
+end)
+
+spawn(function()
+    while task.wait() do
+        if _G.AutoElite then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+                    if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Diablo") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Deandre") or string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Urban") then
+                        if game:GetService("Workspace").Enemies:FindFirstChild("Diablo") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre") or game:GetService("Workspace").Enemies:FindFirstChild("Urban") then
+                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                    if v.Name == "Diablo" or v.Name == "Deandre" or v.Name == "Urban" then
+                                     repeat wait(_G.Fast_Delay)
+                                         AttackNoCD()
+                                            EquipTool(SelectWeapon)
+                                            AutoHaki()
+                                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                                            MonsterPosition = v.HumanoidRootPart.CFrame
+                                            v.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
+                                            v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
+                                        until _G.AutoElite == false or v.Humanoid.Health <= 0 or not v.Parent
+                                    end
+                                end
+                            end
+                        else
+                          
+                            if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo") then
+                             toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Diablo").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Deandre") then
+                             toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Deandre").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                            elseif game:GetService("ReplicatedStorage"):FindFirstChild("Urban") then
+                             toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Urban").HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                            end
+
+                        end
+                  
+                    end
+                else
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
+                end
+            end)
+        end
+    end
+end)
+end
+
+if Third_Sea then
+ItemFarm:Seperator("Sea Beast")
+
+ItemFarm:Toggle("Auto Sea Beast",false,function(value)
+    _G.AutoSeaBeast = value
+end)
+
+ItemFarm:Toggle("Auto Press W",false,function(value)
+    _G.AutoW = value
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoW then
+                game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
+            end
+        end)
+    end
+end)
+
+
+Skillz = true
+Skillx = true
+Skillc = true
+Skillv = true
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if AutoSkill then
+                if Skillz then
+                    game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+                    wait(.1)
+                    game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
+                end
+                if Skillx then
+                    game:service('VirtualInputManager'):SendKeyEvent(true, "X", false, game)
+                    wait(.1)
+                    game:service('VirtualInputManager'):SendKeyEvent(false, "X", false, game)
+                end
+                if Skillc then
+                    game:service('VirtualInputManager'):SendKeyEvent(true, "C", false, game)
+                    wait(.1)
+                    game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
+                end
+                if Skillv then
+                    game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
+                    wait(.1)
+                    game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
+                end
+            end
+        end)
+    end
+end)
+task.spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.AutoSeaBeast then
+                if not game:GetService("Workspace").SeaBeasts:FindFirstChild("SeaBeast1") then
+                    if not game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") then 
+                        if not game:GetService("Workspace").Boats:FindFirstChild("PirateBasic") then
+                            if not game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") then
+                                buyb = TweenBoat(CFrame.new(-4513.90087890625, 16.76398277282715, -2658.820556640625))
+                                if (CFrame.new(-4513.90087890625, 16.76398277282715, -2658.820556640625).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then
+                                    if buyb then buyb:Stop() end
+                                    local args = {
+                                        [1] = "BuyBoat",
+                                        [2] = "PirateGrandBrigade"
+                                    }
+        
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                end
+                            elseif game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") then
+                                if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == false then
+                                    TweenBoat(game:GetService("Workspace").Boats.PirateGrandBrigade.VehicleSeat.CFrame * CFrame.new(0,1,0))
+                                elseif game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                                    repeat wait()
+                                        if (game:GetService("Workspace").Boats.PirateGrandBrigade.VehicleSeat.CFrame.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then
+                                            TweenShip(CFrame.new(35.04552459716797, 17.750778198242188, 4819.267578125))
+                                        end
+                                    until game:GetService("Workspace").SeaBeasts:FindFirstChild("SeaBeast1") or _G.AutoSeaBeast == false
+                                end
+                            end
+                        elseif game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") then
+                            for is,vs in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+                                if vs.Name == "PirateGrandBrigade" then
+                                    if vs:FindFirstChild("VehicleSeat") then
+                                        repeat wait()
+                                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                                            TweenBoat(vs.VehicleSeat.CFrame * CFrame.new(0,1,0))
+                                        until not game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") or _G.AutoSeaBeast == false
+                                    end
+                                end
+                            end
+                        end
+                    elseif game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") then
+                        for iss,v in pairs(game:GetService("Workspace").Boats:GetChildren()) do
+                            if v.Name == "PirateGrandBrigade" then
+                                if v:FindFirstChild("VehicleSeat") then
+                                    repeat wait()
+                                        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                                        TweenBoat(v.VehicleSeat.CFrame * CFrame.new(0,1,0))
+                                    until not game:GetService("Workspace").Boats:FindFirstChild("PirateGrandBrigade") or _G.AutoSeaBeast == false
+                                end
+                            end
+                        end
+                    end
+                elseif game:GetService("Workspace").SeaBeasts:FindFirstChild("SeaBeast1") then  
+                    for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") then
+                            repeat wait()
+                                game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                                TweenBoat(v.HumanoidRootPart.CFrame * CFrame.new(0,500,0))
+                                EquipAllWeapon()  
+                                AutoSkill = true
+                                AimBotSkillPosition = v.HumanoidRootPart
+                                Skillaimbot = true
+                            until not v:FindFirstChild("HumanoidRootPart") or _G.AutoSeaBeast == false
+                            AutoSkill = false
+                            Skillaimbot = false
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+end
+
 if Second_Sea then
     ItemFarm:Seperator("Farming Ectoplasm")
+
     ItemFarm:Toggle("Auto Farm Ectoplasm",false,function(value)
         _G.Ectoplasm = value
     end)
@@ -3788,6 +3983,4 @@ while wait() do
         end
     end
   end)
-end
-
 end
