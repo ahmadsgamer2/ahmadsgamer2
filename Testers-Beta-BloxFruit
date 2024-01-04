@@ -1,6 +1,6 @@
 
-
-local GetHttp = "loadstring(game:HttpGet("..https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe..", true))()"
+local UrlZekrom = "https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe"
+local GetHttp = "loadstring(game:HttpGet("..UrlZekrom..", true))()"
 
 JoinServer = '``` _G.ZekromHubX_Join == {'..GameID',' ..tostring(game.JobId)..'}'..GetHttp..''
 
