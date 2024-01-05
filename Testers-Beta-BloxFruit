@@ -1,5 +1,37 @@
-loadstring(game:HttpGet(('https://pastefy.app/58d8d52G/raw'),true))()
+local Plr = game.Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local Hum = Char:WaitForChild("Humanoid")
+local PainButton = script.Parent.PainInfliction
+local ReplicatedS = game:GetService("ReplicatedStorage")
+local PainEvent = ReplicatedS:WaitForChild("paininfliction")
+local Debounce = true 
+local connect 
+local mouse = Plr:GetMouse()
 
+
+
+
+local function RunHandler(input)
+		if input and Char.Magic.Value >= 35 then
+		connect = mouse.Button1Down:Connect(function()
+			if mouse.Target.Parent:FindFirstChild("HumanoidRootPart") then
+				connect:Disconnect()
+				if (Plr.Character.HumanoidRootPart.Position - mouse.Hit.Position).Magnitude < 70 then
+				PainEvent:FireServer(mouse.Target)
+				wait(0.1)
+				script.Parent.PainButton.Disabled = true
+				wait(15)
+					script.Parent.PainButton.Disabled = false
+				else
+					
+				end
+			end
+		end)
+
+PainButton.MouseButton1Down:Connect(function()
+			RunHandler(true)
+		end
+end)
 local demoUI = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
