@@ -102,10 +102,10 @@ do -- demoUI.handler
 		
 		local mouse = game.Players.LocalPlayer:GetMouse()
 		
-		local DRAGGER_SIZE = 35
+		local DRAGGER_SIZE = 40
 		local DRAGGER_TRANSPARENCY = 1
 		
-		local dragging = true
+		local dragging = false
 		
 		function module.makeResizable(obj:GuiObject, minSize)
 			
