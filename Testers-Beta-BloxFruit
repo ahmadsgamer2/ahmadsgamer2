@@ -108,10 +108,7 @@ UICorner.Parent = dragger
 
 local fake_module_scripts = {}
 
-do -- guiResizer.handler
-	local script = Instance.new('ModuleScript', guiResizer)
-	script.Name = "handler"
-	local function module_script()
+do
 		local module = {}
 
 		local mouse = game.Players.LocalPlayer:GetMouse()
@@ -222,17 +219,13 @@ end
 
 local function KYKKCLU_fake_script() -- demoUI.demo 
 	local script = Instance.new('LocalScript', demoUI)
-
-	resizer = require(script.Parent.Parent.guiResizer.handler)
 	
 	frameToResize = script.Parent.Frame
-	
-	-- you can add a minimum size (optional)
-	
+		
 	minimumSize = Vector2.new(240, 160)
 	
-	resizer.makeResizable(frameToResize, minimumSize)
-	resizer.makeDraggable(frameToResize)
+	makeResizable(frameToResize, minimumSize)
+	makeDraggable(frameToResize)
 	
 end
 coroutine.wrap(KYKKCLU_fake_script)()
