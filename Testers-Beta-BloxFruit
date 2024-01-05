@@ -3,18 +3,19 @@
 		--'} loadstring(game:HttpGet('..UrlGetHttp..'))()```'
 
 		
-_G.JoinZekrom.Game = 2753915549 
+_G.JoinZekrom.Game = 2753915549
 _G.JoinZekrom.JobID = '0afc62f6-bef2-428d-9d63-de6b6c6eca16'
 
 if _G.JoinZekrom.Game == 2753915549 and _G.JoinZekrom.JobID then
-	if _G.JoinZekrom.Game == 2753915549 and _G.JoinZekrom.JobID then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(2753915549, _G.JoinZekrom.JobID)
-	elseif _G.JoinZekrom.Game == 4442272183 then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(4442272183, _G.JoinZekrom.JobID)
-	elseif _G.JoinZekrom.Game == 7449423635 then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, _G.JoinZekrom.JobID)
-	end
+    if _G.JoinZekrom.Game == 2753915549 then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
+        game:GetService("TeleportService"):TeleportToPlaceInstance(_G.JoinZekrom.Game, _G.JoinZekrom.JobID)
+    elseif _G.JoinZekrom.Game == 4442272183 then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+        game:GetService("TeleportService"):TeleportToPlaceInstance(_G.JoinZekrom.Game, _G.JoinZekrom.JobID)
+    elseif _G.JoinZekrom.Game == 7449423635 then
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+        game:GetService("TeleportService"):TeleportToPlaceInstance(_G.JoinZekrom.Game, _G.JoinZekrom.JobID)
+    end
 end
+
