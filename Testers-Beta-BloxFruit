@@ -80,7 +80,7 @@ resizer.SizeConstraint = Enum.SizeConstraint.RelativeXX
 
 dragger.Name = "dragger"
 dragger.Parent = resizer
-dragger.BackgroundColor3 = Color3.new(1, 0.333333, 0)
+dragger.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 dragger.BackgroundTransparency = 1
 dragger.BorderSizePixel = 0
 dragger.Size = UDim2.new(2, 0, 2, 0)
@@ -102,8 +102,8 @@ do -- demoUI.handler
 		
 		local mouse = game.Players.LocalPlayer:GetMouse()
 		
-		local DRAGGER_SIZE = 30
-		local DRAGGER_TRANSPARENCY = .5
+		local DRAGGER_SIZE = 35
+		local DRAGGER_TRANSPARENCY = 1
 		
 		local dragging = false
 		
