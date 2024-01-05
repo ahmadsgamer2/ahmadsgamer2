@@ -98,72 +98,72 @@ do -- demoUI.handler
 	local script = Instance.new('ModuleScript', demoUI)
 	script.Name = "handler"
 	local function module_script()
-		local module = {}
-		
-		local mouse = game.Players.LocalPlayer:GetMouse()
-		
-		local DRAGGER_SIZE = 40
-		local DRAGGER_TRANSPARENCY = 1
-		
-		local dragging = false
-		
-		function module.makeResizable(obj:GuiObject, minSize)
-			
-			local resizer = script.Parent.resizer:Clone()
-			local dragger = resizer.dragger
-			
-			resizer.Size = UDim2.fromOffset(DRAGGER_SIZE, DRAGGER_SIZE)
-			resizer.Position = UDim2.new(1, -DRAGGER_SIZE, 1, -DRAGGER_SIZE)
-			
-			local duic = dragger.UICorner
-			minSize = minSize or Vector2.new(160, 90)
-			
-			local startDrag, startSize
-			local gui = obj:FindFirstAncestorWhichIsA("ScreenGui")
-			resizer.Parent = obj
-		
-			local function finishResize(tr)
-				dragger.Position = UDim2.new(0,0,0,0)
-				dragger.Size = UDim2.new(2,0,2,0)
-				dragger.Parent = resizer
-				dragger.BackgroundTransparency = tr
-				duic.Parent = dragger
-				startDrag = nil
-			end
-			dragger.MouseButton1Down:Connect(function()
-				if not startDrag then
-					startSize = obj.AbsoluteSize			
-					startDrag = Vector2.new(mouse.X, mouse.Y)
-					dragger.BackgroundTransparency = 1
-					dragger.Size = UDim2.fromOffset(gui.AbsoluteSize.X, gui.AbsoluteSize.Y)
-					dragger.Position = UDim2.new(0,0,0,0)
-					duic.Parent = nil
-					dragger.Parent = gui
-				end
-			end)	
-			dragger.MouseMoved:Connect(function()
-				if startDrag then		
-					local m = Vector2.new(mouse.X, mouse.Y)
-					local mouseMoved = Vector2.new(m.X - startDrag.X, m.Y - startDrag.Y)
-					
-					local s = startSize + mouseMoved
-					local sx = math.max(minSize.X, s.X) 
-					local sy = math.max(minSize.Y, s.Y)
-					
-					obj.Size = UDim2.fromOffset(sx, sy)
-					
-				end
-			end)
-			dragger.MouseEnter:Connect(function()
-				finishResize(DRAGGER_TRANSPARENCY)				
-			end)
-			dragger.MouseLeave:Connect(function()
-				finishResize(1)
-			end)		
-			dragger.MouseButton1Up:Connect(function()
-				finishResize(DRAGGER_TRANSPARENCY)
-			end)	
+local module = {}
+
+local mouse = game.Players.LocalPlayer:GetMouse()
+
+local DRAGGER_SIZE = 30
+local DRAGGER_TRANSPARENCY = .5
+
+local dragging = true
+
+function module.makeResizable(obj:GuiObject, minSize)
+	
+	local resizer = script.Parent.resizer:Clone()
+	local dragger = resizer.dragger
+	
+	resizer.Size = UDim2.fromOffset(DRAGGER_SIZE, DRAGGER_SIZE)
+	resizer.Position = UDim2.new(1, -DRAGGER_SIZE, 1, -DRAGGER_SIZE)
+	
+	local duic = dragger.UICorner
+	minSize = minSize or Vector2.new(160, 90)
+	
+	local startDrag, startSize
+	local gui = obj:FindFirstAncestorWhichIsA("ScreenGui")
+	resizer.Parent = obj
+
+	local function finishResize(tr)
+		dragger.Position = UDim2.new(0,0,0,0)
+		dragger.Size = UDim2.new(2,0,2,0)
+		dragger.Parent = resizer
+		dragger.BackgroundTransparency = tr
+		duic.Parent = dragger
+		startDrag = nil
+	end
+	dragger.MouseButton1Down:Connect(function()
+		if not startDrag then
+			startSize = obj.AbsoluteSize			
+			startDrag = Vector2.new(mouse.X, mouse.Y)
+			dragger.BackgroundTransparency = 1
+			dragger.Size = UDim2.fromOffset(gui.AbsoluteSize.X, gui.AbsoluteSize.Y)
+			dragger.Position = UDim2.new(0,0,0,0)
+			duic.Parent = nil
+			dragger.Parent = gui
 		end
+	end)	
+	dragger.MouseMoved:Connect(function()
+		if startDrag then		
+			local m = Vector2.new(mouse.X, mouse.Y)
+			local mouseMoved = Vector2.new(m.X - startDrag.X, m.Y - startDrag.Y)
+			
+			local s = startSize + mouseMoved
+			local sx = math.max(minSize.X, s.X) 
+			local sy = math.max(minSize.Y, s.Y)
+			
+			obj.Size = UDim2.fromOffset(sx, sy)
+			
+		end
+	end)
+	dragger.MouseEnter:Connect(function()
+		finishResize(DRAGGER_TRANSPARENCY)				
+	end)
+	dragger.MouseLeave:Connect(function()
+		finishResize(1)
+	end)		
+	dragger.MouseButton1Up:Connect(function()
+		finishResize(DRAGGER_TRANSPARENCY)
+	end
+end)
 		
 		function module.makeDraggable(obj)
 			local UIS = game:GetService("UserInputService")
