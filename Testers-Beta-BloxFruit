@@ -9,7 +9,7 @@ local resizer = Instance.new("Frame")
 local dragger = Instance.new("ImageButton")
 local UICorner_2 = Instance.new("UICorner")
 
--- Properties
+--Properties:
 
 demoUI.Name = "demoUI"
 demoUI.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -17,8 +17,8 @@ demoUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = demoUI
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-Frame.BackgroundColor3 = Color3.new(0.133333, 0.133333, 0.133333)
-Frame.BackgroundTransparency = 0.10000000149011612
+Frame.BackgroundColor3 = Color3.fromRGB(34, 34, 34)
+Frame.BackgroundTransparency = 0.100
 Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
 Frame.Size = UDim2.new(0, 400, 0, 300)
 
@@ -26,53 +26,53 @@ UICorner.Parent = Frame
 
 shadowHolder.Name = "shadowHolder"
 shadowHolder.Parent = Frame
-shadowHolder.BackgroundTransparency = 1
+shadowHolder.BackgroundTransparency = 1.000
 shadowHolder.Size = UDim2.new(1, 0, 1, 0)
 shadowHolder.ZIndex = 0
 
 umbraShadow.Name = "umbraShadow"
 umbraShadow.Parent = shadowHolder
 umbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-umbraShadow.BackgroundTransparency = 1
+umbraShadow.BackgroundTransparency = 1.000
 umbraShadow.Position = UDim2.new(0.5, 0, 0.5, 6)
 umbraShadow.Size = UDim2.new(1, 10, 1, 10)
 umbraShadow.ZIndex = 0
 umbraShadow.Image = "rbxassetid://1316045217"
-umbraShadow.ImageColor3 = Color3.new(0, 0, 0)
-umbraShadow.ImageTransparency = 0.8600000143051147
+umbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+umbraShadow.ImageTransparency = 0.860
 umbraShadow.ScaleType = Enum.ScaleType.Slice
 umbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
 
 penumbraShadow.Name = "penumbraShadow"
 penumbraShadow.Parent = shadowHolder
 penumbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-penumbraShadow.BackgroundTransparency = 1
+penumbraShadow.BackgroundTransparency = 1.000
 penumbraShadow.Position = UDim2.new(0.5, 0, 0.5, 6)
 penumbraShadow.Size = UDim2.new(1, 10, 1, 10)
 penumbraShadow.ZIndex = 0
 penumbraShadow.Image = "rbxassetid://1316045217"
-penumbraShadow.ImageColor3 = Color3.new(0, 0, 0)
-penumbraShadow.ImageTransparency = 0.8799999952316284
+penumbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+penumbraShadow.ImageTransparency = 0.880
 penumbraShadow.ScaleType = Enum.ScaleType.Slice
 penumbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
 
 ambientShadow.Name = "ambientShadow"
 ambientShadow.Parent = shadowHolder
 ambientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
-ambientShadow.BackgroundTransparency = 1
+ambientShadow.BackgroundTransparency = 1.000
 ambientShadow.Position = UDim2.new(0.5, 0, 0.5, 6)
 ambientShadow.Size = UDim2.new(1, 10, 1, 10)
 ambientShadow.ZIndex = 0
 ambientShadow.Image = "rbxassetid://1316045217"
-ambientShadow.ImageColor3 = Color3.new(0, 0, 0)
-ambientShadow.ImageTransparency = 0.8799999952316284
+ambientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+ambientShadow.ImageTransparency = 0.880
 ambientShadow.ScaleType = Enum.ScaleType.Slice
 ambientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
 
 resizer.Name = "resizer"
 resizer.Parent = demoUI
-resizer.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-resizer.BackgroundTransparency = 1
+resizer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+resizer.BackgroundTransparency = 1.000
 resizer.ClipsDescendants = true
 resizer.Position = UDim2.new(1, -30, 1, -30)
 resizer.Size = UDim2.new(0, 30, 0, 30)
@@ -80,17 +80,17 @@ resizer.SizeConstraint = Enum.SizeConstraint.RelativeXX
 
 dragger.Name = "dragger"
 dragger.Parent = resizer
-dragger.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-dragger.BackgroundTransparency = 1
+dragger.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
+dragger.BackgroundTransparency = 1.000
 dragger.BorderSizePixel = 0
 dragger.Size = UDim2.new(2, 0, 2, 0)
 dragger.ZIndex = 2
-dragger.ImageTransparency = 1
+dragger.ImageTransparency = 1.000
 
-UICorner_2.Parent = dragger
 UICorner_2.CornerRadius = UDim.new(0.5, 0)
+UICorner_2.Parent = dragger
 
--- Module Scripts
+-- Module Scripts:
 
 local fake_module_scripts = {}
 
@@ -98,72 +98,72 @@ do -- demoUI.handler
 	local script = Instance.new('ModuleScript', demoUI)
 	script.Name = "handler"
 	local function module_script()
-local module = {}
-
-local mouse = game.Players.LocalPlayer:GetMouse()
-
-local DRAGGER_SIZE = 30
-local DRAGGER_TRANSPARENCY = .5
-
-local dragging = false
-
-function module.makeResizable(obj:GuiObject, minSize)
-	
-	local resizer = script.Parent.resizer:Clone()
-	local dragger = resizer.dragger
-	
-	resizer.Size = UDim2.fromOffset(DRAGGER_SIZE, DRAGGER_SIZE)
-	resizer.Position = UDim2.new(1, -DRAGGER_SIZE, 1, -DRAGGER_SIZE)
-	
-	local duic = dragger.UICorner
-	minSize = minSize or Vector2.new(160, 90)
-	
-	local startDrag, startSize
-	local gui = obj:FindFirstAncestorWhichIsA("ScreenGui")
-	resizer.Parent = obj
-
-	local function finishResize(tr)
-		dragger.Position = UDim2.new(0,0,0,0)
-		dragger.Size = UDim2.new(2,0,2,0)
-		dragger.Parent = resizer
-		dragger.BackgroundTransparency = tr
-		duic.Parent = dragger
-		startDrag = nil
-	end
-	dragger.MouseButton1Down:Connect(function()
-		if not startDrag then
-			startSize = obj.AbsoluteSize			
-			startDrag = Vector2.new(mouse.X, mouse.Y)
-			dragger.BackgroundTransparency = 1
-			dragger.Size = UDim2.fromOffset(gui.AbsoluteSize.X, gui.AbsoluteSize.Y)
-			dragger.Position = UDim2.new(0,0,0,0)
-			duic.Parent = nil
-			dragger.Parent = gui
+		local module = {}
+		
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		
+		local DRAGGER_SIZE = 30
+		local DRAGGER_TRANSPARENCY = .5
+		
+		local dragging = false
+		
+		function module.makeResizable(obj:GuiObject, minSize)
+			
+			local resizer = script.Parent.resizer:Clone()
+			local dragger = resizer.dragger
+			
+			resizer.Size = UDim2.fromOffset(DRAGGER_SIZE, DRAGGER_SIZE)
+			resizer.Position = UDim2.new(1, -DRAGGER_SIZE, 1, -DRAGGER_SIZE)
+			
+			local duic = dragger.UICorner
+			minSize = minSize or Vector2.new(160, 90)
+			
+			local startDrag, startSize
+			local gui = obj:FindFirstAncestorWhichIsA("ScreenGui")
+			resizer.Parent = obj
+		
+			local function finishResize(tr)
+				dragger.Position = UDim2.new(0,0,0,0)
+				dragger.Size = UDim2.new(2,0,2,0)
+				dragger.Parent = resizer
+				dragger.BackgroundTransparency = tr
+				duic.Parent = dragger
+				startDrag = nil
+			end
+			dragger.MouseButton1Down:Connect(function()
+				if not startDrag then
+					startSize = obj.AbsoluteSize			
+					startDrag = Vector2.new(mouse.X, mouse.Y)
+					dragger.BackgroundTransparency = 1
+					dragger.Size = UDim2.fromOffset(gui.AbsoluteSize.X, gui.AbsoluteSize.Y)
+					dragger.Position = UDim2.new(0,0,0,0)
+					duic.Parent = nil
+					dragger.Parent = gui
+				end
+			end)	
+			dragger.MouseMoved:Connect(function()
+				if startDrag then		
+					local m = Vector2.new(mouse.X, mouse.Y)
+					local mouseMoved = Vector2.new(m.X - startDrag.X, m.Y - startDrag.Y)
+					
+					local s = startSize + mouseMoved
+					local sx = math.max(minSize.X, s.X) 
+					local sy = math.max(minSize.Y, s.Y)
+					
+					obj.Size = UDim2.fromOffset(sx, sy)
+					
+				end
+			end)
+			dragger.MouseEnter:Connect(function()
+				finishResize(DRAGGER_TRANSPARENCY)				
+			end)
+			dragger.MouseLeave:Connect(function()
+				finishResize(1)
+			end)		
+			dragger.MouseButton1Up:Connect(function()
+				finishResize(DRAGGER_TRANSPARENCY)
+			end)	
 		end
-	end)	
-	dragger.MouseMoved:Connect(function()
-		if startDrag then		
-			local m = Vector2.new(mouse.X, mouse.Y)
-			local mouseMoved = Vector2.new(m.X - startDrag.X, m.Y - startDrag.Y)
-			
-			local s = startSize + mouseMoved
-			local sx = math.max(minSize.X, s.X) 
-			local sy = math.max(minSize.Y, s.Y)
-			
-			obj.Size = UDim2.fromOffset(sx, sy)
-			
-		end
-	end)
-	dragger.MouseEnter:Connect(function()
-		finishResize(DRAGGER_TRANSPARENCY)				
-	end)
-	dragger.MouseLeave:Connect(function()
-		finishResize(1)
-	end)		
-	dragger.MouseButton1Up:Connect(function()
-		finishResize(DRAGGER_TRANSPARENCY)
-	end
-end)
 		
 		function module.makeDraggable(obj)
 			local UIS = game:GetService("UserInputService")
@@ -207,9 +207,9 @@ end)
 end
 
 
--- Scripts
+-- Scripts:
 
-local function WQTY_fake_script() -- demoUI.demo 
+local function XVYAG_fake_script() -- demoUI.demo 
 	local script = Instance.new('LocalScript', demoUI)
 	local req = require
 	local require = function(obj)
@@ -229,4 +229,4 @@ local function WQTY_fake_script() -- demoUI.demo
 	resizer.makeDraggable(frameToResize)
 	
 end
-coroutine.wrap(WQTY_fake_script)()
+coroutine.wrap(XVYAG_fake_script)()
