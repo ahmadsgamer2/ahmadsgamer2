@@ -2,9 +2,9 @@
        -- JoinServer = '```getgenv().JoinZekrom = {G = '..game.PlaceId..',' J = "'"..game.JobId.."'"..
 		--'} loadstring(game:HttpGet('..UrlGetHttp..'))()```'
 
-		_G.JoinZekrom = {Game = 7449423635, JobID = '86e29108-179f-433d-b39e-b7889a525141'}
+		_G.JoinZekrom = {Game = 7449423635, JobID = '0afc62f6-bef2-428d-9d63-de6b6c6eca16'}
 
-		if _G.JoinZekrom.Game == Game and _G.JoinZekrom.JobID == JobID then
+		if _G.JoinZekrom == {_G.JoinZekrom.Game == Game and _G.JoinZekrom.JobID == JobID} then
 			if _G.JoinZekrom.Game == 2753915549 then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
 				game:GetService("TeleportService"):TeleportToPlaceInstance(2753915549, _G.JoinZekrom.JobID)
@@ -16,5 +16,7 @@
 				game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, _G.JoinZekrom.JobID)
 			end
 		end
+		
+
 		
 
