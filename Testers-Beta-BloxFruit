@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://pastebin.com/raw/BsSDA79k", true))()
+loadstring(game:HttpGet(('https://pastefy.ga/V75mqzaz/raw'),true))()
 
 local demoUI = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
