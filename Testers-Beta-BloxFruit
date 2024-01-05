@@ -1,2 +1,2 @@
-getgenv().JoinZekrom = {G = 4442272183, J = 35919139-f251-427c-8f31-60d591781c65}
+_G.JoinZekrom = {G = 4442272183, J = 35919139-f251-427c-8f31-60d591781c65}
 loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'))()
