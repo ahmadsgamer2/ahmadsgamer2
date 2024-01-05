@@ -30,7 +30,7 @@ if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SaltyHB/Poggers/main/Public"))()
 
-loadstring(game:HttpGet(Anti_HOOKLOL2))()
+--loadstring(game:HttpGet(Anti_HOOKLOL2))()
 
 local id = game.PlaceId
 if id == 2753915549 then
