@@ -4,7 +4,7 @@
 
 		
 getgenv().JoinZekrom = {G = 7449423635, J = '0afc62f6-bef2-428d-9d63-de6b6c6eca16'}
-loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'))()
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'))()
 
 if getgenv().JoinZekrom == {G, J} then
 	if G == 2753915549 then
