@@ -1,19 +1,14 @@
-		--local UrlGetHttp = "'https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe'"
-       -- JoinServer = '```getgenv().JoinZekrom = {G = '..game.PlaceId..',' J = "'"..game.JobId.."'"..
-		--'} loadstring(game:HttpGet('..UrlGetHttp..'))()```'
-
-		
 _G.JoinZekrom = {Game = 7449423635, JobID = '0afc62f6-bef2-428d-9d63-de6b6c6eca16'}
 
 if _G.JoinZekrom == {Game, JobID} then
-	if Game == 2753915549 then
+	if Game == 2753915549 and JobID_1 == JobID then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(2753915549, JobID)
+		game:GetService("TeleportService"):TeleportToPlaceInstance(2753915549, JobID_1)
 	elseif Game == 4442272183 then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(4442272183, JobID)
+		game:GetService("TeleportService"):TeleportToPlaceInstance(4442272183, JobID_1)
 	elseif Game == 7449423635 then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
-		game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, JobID)
+		game:GetService("TeleportService"):TeleportToPlaceInstance(7449423635, JobID_1)
 	end
 end
