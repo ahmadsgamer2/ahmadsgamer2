@@ -3983,21 +3983,17 @@ for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
         table.insert(Waspon ,v.Name)
     end
 end
-
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
     if v:IsA("Tool") then
         table.insert(Waspon ,v.Name)
     end
 end
-
 if type(_G.Setting_table.Weapon) == 'string' then
 else
 	_G.Setting_table.Weapon = ""
 end
-
-local Select_W = General_Tab:Dropdown("Select Weapon",Waspon,function(vu)
+local Select_W = General_Tab:Dropdown("Select Weapon","Melee",Waspon,function(vu)
 	_G.Setting_table.Weapon = vu
-	Update_Setting(getgenv()['MyName'])
 end)
 
 General_Tab:Button("Refresh Weapon",function(vu)
