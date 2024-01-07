@@ -1341,7 +1341,7 @@ end)
 
             Main:Seperator("Mastery Farm")
 
-            Main:Dropdown("Select Farm Mastery Mode",{"Level","Nearest Mob"}, function(value)
+            Main:Dropdown("Select Mastery Mode",{"Level","Nearest Mob"}, function(value)
                 TypeMastery = value
             end)
 
@@ -1356,6 +1356,17 @@ end)
                 AutoFarmMasGun = value
                 if value == false then
                     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                end
+            end)
+
+            spawn(function()
+                while wait() do
+                    if AutoFarmMasDevilFruit and AutoFarmMasGun then
+                        pcall(function()
+                            FastAttack = false
+                            _G.FastAttack = false
+                        end)
+                    end
                 end
             end)
 
@@ -1388,9 +1399,11 @@ end)
                   else
                     UseSkillGun = false
                     AutoHaki()
+                    FastAttack = false
+                    _G.FastAttack = false
                   EquipTool(SelectWeapon)
                      Click()
-                  Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                   v.HumanoidRootPart.Transparency = 1
                   v.Humanoid.JumpPower = 0
@@ -1434,11 +1447,13 @@ end)
                   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * Pos
                   game:GetService("Players").LocalPlayer.Character[CurrentEquipGun].Cooldown.Value = 0
                   UseSkillGun = true
+                  FastAttack = false
+                  _G.FastAttack = false
                   else
                     UseSkillGun = false
                     AutoHaki()
                   EquipTool(SelectWeapon)
-                  Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                   v.HumanoidRootPart.Transparency = 1
                   v.Humanoid.JumpPower = 0
@@ -1472,9 +1487,10 @@ end)
                   else
                     UseSkillGun = false
                     AutoHaki()
-                       
+                    FastAttack = false
+                    _G.FastAttack = false
                   EquipTool(SelectWeapon)
-                  Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                   v.HumanoidRootPart.Transparency = 1
                   v.Humanoid.JumpPower = 0
@@ -1521,14 +1537,16 @@ end)
                   repeat game:GetService("RunService").Heartbeat:wait()
                   if v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then
                   EquipTool(CurrentEquipGun)
-                  Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                   game:GetService("Players").LocalPlayer.Character[CurrentEquipGun].Cooldown.Value = 0
                   UseSkillGun = true
                   else
                     UseSkillGun = false
                     AutoHaki()
+                    FastAttack = false
+                    _G.FastAttack = false
                   EquipTool(SelectWeapon)
-                  Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(v.HumanoidRootPart.CFrame * MethodFarm)
                   v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
                   v.HumanoidRootPart.Transparency = 1
                   v.Humanoid.JumpPower = 0
@@ -1545,7 +1563,7 @@ end)
                   end
                   else
                     UseSkillGun = false
-                  Tween(game:GetService("ReplicatedStorage"):FindFirstChild(SelectBoss).HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+                  Tween(game:GetService("ReplicatedStorage"):FindFirstChild(SelectBoss).HumanoidRootPart.CFrame * MethodFarm)
                   end
                   end)
                 end
@@ -1627,7 +1645,7 @@ end)
           if v.Name == MonFarm and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health <= v.Humanoid.MaxHealth * KillPercent / 100 then
           repeat game:GetService("RunService").Heartbeat:wait()
           EquipTool(game.Players.LocalPlayer.Data.DevilFruit.Value)
-          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          Tween(v.HumanoidRootPart.CFrame * MethodFarm)
           PositionSkillMasteryDevilFruit = v.HumanoidRootPart.Position
           if game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
           game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).MousePos.Value = PositionSkillMasteryDevilFruit
@@ -1700,7 +1718,7 @@ end)
         AutoHaki()
           EquipTool(SelectWeapon)
              Click()
-          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          Tween(v.HumanoidRootPart.CFrame * MethodFarm)
           v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
           v.HumanoidRootPart.Transparency = 1
           v.Humanoid.JumpPower = 0
@@ -1746,7 +1764,7 @@ end)
             _G.UseSkill = false
             AutoHaki()
           EquipTool(SelectWeapon)
-          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          Tween(v.HumanoidRootPart.CFrame * MethodFarm)
           v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
           v.HumanoidRootPart.Transparency = 1
           v.Humanoid.JumpPower = 0
@@ -1779,7 +1797,7 @@ end)
             AutoHaki()
                
           EquipTool(SelectWeapon)
-          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          Tween(v.HumanoidRootPart.CFrame * MethodFarm)
           v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
           v.HumanoidRootPart.Transparency = 1
           v.Humanoid.JumpPower = 0
@@ -1829,7 +1847,7 @@ end)
             _G.UseSkill = false
             AutoHaki()
           EquipTool(SelectWeapon)
-          Tween(v.HumanoidRootPart.CFrame * CFrame.new(posX,posY,posZ))
+          Tween(v.HumanoidRootPart.CFrame * MethodFarm)
           v.HumanoidRootPart.Size = Vector3.new(1, 1, 1)
           v.HumanoidRootPart.Transparency = 1
           v.Humanoid.JumpPower = 0
