@@ -349,7 +349,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
               ButtonStroke.Name = "UIStroke"
               ButtonStroke.Parent = Button
               ButtonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-              ButtonStroke.Color = Color3.fromRGB(225,0,0)
+              ButtonStroke.Color = Color3.fromRGB(255,255,255)
               ButtonStroke.LineJoinMode = Enum.LineJoinMode.Round
               ButtonStroke.Thickness = 0.7
               ButtonStroke.Transparency = 0.10
@@ -405,7 +405,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
               DropdownStroke.Name = "UIStroke"
               DropdownStroke.Parent = Textboxx
               DropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-              DropdownStroke.Color = Color3.fromRGB(225,0,0)
+              DropdownStroke.Color = Color3.fromRGB(255,255,255)
               DropdownStroke.LineJoinMode = Enum.LineJoinMode.Round
               DropdownStroke.Thickness = 0.7
               DropdownStroke.Transparency = 0.10
@@ -571,7 +571,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
         end
         
         function Check()
-            if  PandaAuth:ValidateKey(ServiceID, value) then 
+            if  PandaAuth:ValidateKey(ServiceID, Value) then 
                 Status:Set("                                                             Checking Key..")
                 wait(0.5)
                 Status:Set("                                                             Valid Key")
