@@ -3534,10 +3534,6 @@ if Third_Sea then
         end)
     end 
 
-    Event_Farm:Slider("Set Speed Boat",0,2000,600,function(v)
-        _G.SpeedBoatText = v
-    end)
-
     Event_Farm:Toggle("Speed Boat",false,function(value)
         _G.increaseboatspeed = value
         local vehicleSeats = {}
@@ -3548,7 +3544,7 @@ if Third_Sea then
         end
         if _G.increaseboatspeed then
             for _, v in pairs(vehicleSeats) do
-                v.MaxSpeed = _G.SpeedBoatText
+                v.MaxSpeed = 700
             end
         else
             for _, v in pairs(vehicleSeats) do
