@@ -507,16 +507,6 @@ end)
             _G.FastAttack = value
             FastAttack = value
         end)
-        
-        spawn(function()
-            while task.wait(_G.Fast_Delay) do
-                if _G.FastAttack then 
-                    pcall(function()
-                        AttackFunction()
-                    end)
-                end
-            end
-        end)
 
 		Main:Slider("Distance Farm",0,100,30,function(v)
 			_G.DistanceAutoFarm = v
@@ -583,9 +573,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             Click()
                                         end
                                         if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
-                                            _G.FastType = "Slow"
+                                            _G.FastAttack_Mode = "Slow"
                                         else
-                                            _G.FastType = "Fast"
+                                            _G.FastAttack_Mode = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
@@ -626,9 +616,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             Click()
                                         end
                                         if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
-                                            _G.FastType = "Slow"
+                                            _G.FastAttack_Mode = "Slow"
                                         else
-                                            _G.FastType = "Fast"
+                                            _G.FastAttack_Mode = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
@@ -855,9 +845,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     StartMagnet = true
                                     FastAttack = true
                                     if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
-                                        _G.FastType = "Slow"
+                                        _G.FastAttack_Mode = "Slow"
                                     else
-                                        _G.FastType = "Fast"
+                                        _G.FastAttack_Mode = "Fast"
                                     end
                                     if not _G.FastAttack then
                                         game:GetService'VirtualUser':CaptureController()
@@ -977,9 +967,9 @@ else
                                 StartMagnet = true
                                 FastAttack = true
                                 if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
-                                    _G.FastType = "Slow"
+                                    _G.FastAttack_Mode = "Slow"
                                 else
-                                    _G.FastType = "Fast"
+                                    _G.FastAttack_Mode = "Fast"
                                 end
                                 if not _G.FastAttack then
                                     game:GetService'VirtualUser':CaptureController()
