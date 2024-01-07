@@ -360,7 +360,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
                   TweenService:Create(
                       Button,
                       TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                      {TextColor3 = Color3.fromRGB(255, 0, 0)}
+                      {TextColor3 = Color3.fromRGB(255, 255, 255)}
                   ):Play()
               end)
               
