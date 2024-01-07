@@ -1,198 +1,3 @@
-if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
-
-	setfpscap(999)
-	_G.Color = Color3.fromRGB(0, 86, 255)
-	_G.Settings = {
-		Auto_Farm_Level = false,
-		Auto_Farm_Fast = true,
-		Auto_New_World = false,
-		Auto_Third_World = false,
-		Auto_Farm_Chest = false,
-		Auto_Farm_Chest_Hop = false,
-		Auto_Elite_Hunter = false,
-		Auto_Elite_Hunter_Hop = false,
-		Auto_Spawn_Cake_Prince = false,
-		Auto_Cake_Prince = false,
-		Auto_Farm_Boss = false,
-		Select_Boss = "",
-		Auto_Quest_Boss = true,
-		Auto_Farm_All_Boss = false,
-		SelectWeapon = "Melee",
-		Auto_Set_Spawn = true,
-		Method = "Upper",
-		Brimob = true,
-		Select_Stats = {},
-		Bypass = false,
-		Rejoin = true,
-		FastAttack = true,
-		Auto_Saber = false,
-		Auto_Saber_Hop = false,
-		Auto_Pole_V1_Hop = false,
-		Auto_Factory_Farm = false,
-		Auto_Farm_Ectoplasm = false,
-		Auto_Swan_Glasses = false,
-		Auto_Swan_Glasses_Hop = false,
-		Auto_Farm_Bone = false,
-		Auto_Trade_Bone = false,
-		Auto_Rainbow_Haki = false,
-		Auto_Rainbow_Haki_Hop = false,
-		Auto_Canvander = false,
-		Auto_Twin_Hook_Hop = false,
-		Auto_Twin_Hook = false,
-		Auto_Serpent_Bow = false,
-		Auto_Serpent_Bow_Hop = false,
-		Auto_Evo_Race_V2 = false,
-		Auto_Rengoku = false,
-		Auto_Buy_Legendary_Sword = false,
-		Auto_Buy_Enchancement = false,
-		Auto_Yama = false,
-		Auto_Holy_Torch = false,
-		Auto_Musketeer_Hat = false,
-		Auto_Superhuman = false,
-		Auto_Fully_Superhuman = false,
-		Auto_Death_Step = false,
-		Auto_Fully_Death_Step = false,
-		Auto_SharkMan_Karate = false,
-		Auto_Fully_SharkMan_Karate = false,
-		Auto_Electric_Claw = false,
-		Auto_Dragon_Talon = false,
-		Auto_God_Human = false,
-		Select_Player = "",
-		Spectate_Player = false,
-		Teleport_to_Player = false,
-		Auto_Kill_Player = false,
-		EnabledPvP = false,
-		Auto_Stats = false,
-		Point = 1,
-		No_clip = false,
-		Infinit_Energy = false,
-		Dodge_No_CoolDown = false,
-		Infinit_Ability = false,
-		Infinit_SkyJump = false,
-		Infinit_Inf_Soru = false,
-		Infinit_Range_Observation_Haki = false,
-		Select_Island = "",
-		Start_Tween_Island = false,
-		Select_Dungeon = false,
-		Auto_Buy_Chips_Dungeon = false,
-		Auto_Start_Dungeon = false,
-		Auto_Next_Island = false,
-		Kill_Aura = false,
-		Auto_Awake = false,
-		Auto_Buy_Law_Chip = false,
-		Auto_Start_Law_Dungeon = false,
-		Auto_Kill_Law = false,
-		Select_Devil_Fruit = "",
-		Auto_Buy_Devil_Fruit = false,
-		Auto_Random_Fruit = false,
-		Auto_Bring_Fruit = false,
-		Auto_Store_Fruit = false,
-		LockMoon = false,
-		Auto_Mirage_Island = false,
-		SkillZ = true,
-		SkillX = true,
-		SkillC = true,
-		SkillV = true,
-		AutoMasterySkill = false,
-		HealthMs = 85,
-		Distance = 30,
-		DistanceY = 5,
-		ESP_Mirage_Island = false,
-		Auto_Awakening_One_Quest = false,
-		SuperFastAttack = false,
-		ESP_Chest = false,
-		Auto_Dack_Coat = false,
-		Auto_Sea_King = false,
-		Select_Mode = "Chest",
-		Remove_UI_DamageCounter = false,
-		Notifications_Remove = false,
-		Auto_CFrame = false,
-		Auto_Gear = false,
-	}
-	
-	if game.PlaceId == 2753915549 then
-		W1 = true
-	elseif game.PlaceId == 4442272183 then
-		W2 = true
-	elseif game.PlaceId == 7449423635 then
-		W3 = true
-	end
-
-	if game:IsLoaded() then
-		pcall(function()
-			repeat wait()
-				game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-				game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
-			until not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") or not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn")
-		end)
-	end
-
-	repeat wait(0) until game:IsLoaded()
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
-		repeat wait()
-			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-				if _G.Team == "Pirate" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				elseif _G.Team == "Marine" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				else
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				end
-			end
-		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-	end
-	
-	local EnemySpawns = Instance.new("Folder",workspace)
-	EnemySpawns.Name = "EnemySpawns"
-	
-	for i, v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-		if v:IsA("Part") then
-			local EnemySpawnsX2 = v:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
-	for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-		if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-			
-			local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-	
-			
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
-	for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
-		if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-			local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-	
-			
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
-
 	local UserInputService = game:GetService("UserInputService")
 	local VirtualInputManager = game:GetService("VirtualInputManager")
 	local TweenService = game:GetService("TweenService")
@@ -202,7 +7,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	local Mouse = LocalPlayer:GetMouse()
 	local GuiService = game:GetService("GuiService")
 	
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/perpid"))()
 	local function tablefound(ta, object)
 		for i,v in pairs(ta) do
 			if v == object then
@@ -566,7 +370,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	end
 	
 	
-	function library:Evil()
+	function library:Window()
 		local Main = Instance.new("Frame")
 		local UICorner = Instance.new("UICorner")
 		local Top = Instance.new("Frame")
@@ -585,11 +389,11 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Main.Parent = UI
 		Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-		Main.Size = UDim2.new(0, 585, 0, 0)
+		Main.Size = UDim2.new(0, 400, 0, 0)
 		Main.ClipsDescendants = true
 		Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	
-		Main:TweenSize(UDim2.new(0,585,0,435),"Out","Quad",0.5,false)
+		Main:TweenSize(UDim2.new(0,400,0,435),"Out","Quad",0.5,false)
 		
 	
 		local UICorner_59 = Instance.new("UICorner")
@@ -605,7 +409,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo.Position = UDim2.new(0, 10, 0, 10)
 		Logo.Size = UDim2.new(0, 30, 0, 30)
 		Logo.ImageTransparency = 0
-		Logo.Image = "rbxassetid://14645512457"
+		Logo.Image = "rbxassetid://15903614492"
 	
 		Logo_Background.Name = "Logo"
 		Logo_Background.Parent = Main
@@ -616,13 +420,14 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo_Background.Position = UDim2.new(0, 135, 0, 75)
 		Logo_Background.Size = UDim2.new(0, 305, 0, 335)
 		Logo_Background.ImageTransparency = 0.7
-		Logo_Background.Image = "rbxassetid://14645512457"
+		Logo_Background.Image = "rbxassetid://15903614492"
 		RunService.RenderStepped:Connect(function()
 			Logo_Background.Rotation = Logo_Background.Rotation + 1
 			if Logo_Background.Rotation >= 360 then
 				Logo_Background.Rotation = 0 
 			end
 		end)
+
 		Title.Name = "Title"
 		Title.Parent = Main
 		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -630,7 +435,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Title.Position = UDim2.new(0, 45, 0, 10)
 		Title.Size = UDim2.new(0, 483, 0, 31)
 		Title.Font = Enum.Font.FredokaOne
-		Title.Text = "Vector"
+		Title.Text = "Zekrom "
 		Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Title.TextSize = 17.000
 		Title.TextWrapped = true
@@ -644,7 +449,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Title2.Position = UDim2.new(0, 95, 0, 10)
 		Title2.Size = UDim2.new(0, 483, 0, 31)
 		Title2.Font = Enum.Font.FredokaOne
-		Title2.Text = "Hub | By Ryuenz#6264"
+		Title2.Text = "Hub X"
 		Title2.TextColor3 = _G.Color
 		Title2.TextSize = 17.000
 		Title2.TextWrapped = true
@@ -2645,9 +2450,202 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		end
 		return tabs
 	end
+
+	if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
+
+		setfpscap(999)
+		_G.Color = Color3.fromRGB(255, 0, 0)
+		_G.Settings = {
+			Auto_Farm_Level = false,
+			Auto_Farm_Fast = true,
+			Auto_New_World = false,
+			Auto_Third_World = false,
+			Auto_Farm_Chest = false,
+			Auto_Farm_Chest_Hop = false,
+			Auto_Elite_Hunter = false,
+			Auto_Elite_Hunter_Hop = false,
+			Auto_Spawn_Cake_Prince = false,
+			Auto_Cake_Prince = false,
+			Auto_Farm_Boss = false,
+			Select_Boss = "",
+			Auto_Quest_Boss = true,
+			Auto_Farm_All_Boss = false,
+			SelectWeapon = "Melee",
+			Auto_Set_Spawn = true,
+			Method = "Upper",
+			Brimob = true,
+			Select_Stats = {},
+			Bypass = false,
+			Rejoin = true,
+			FastAttack = true,
+			Auto_Saber = false,
+			Auto_Saber_Hop = false,
+			Auto_Pole_V1_Hop = false,
+			Auto_Factory_Farm = false,
+			Auto_Farm_Ectoplasm = false,
+			Auto_Swan_Glasses = false,
+			Auto_Swan_Glasses_Hop = false,
+			Auto_Farm_Bone = false,
+			Auto_Trade_Bone = false,
+			Auto_Rainbow_Haki = false,
+			Auto_Rainbow_Haki_Hop = false,
+			Auto_Canvander = false,
+			Auto_Twin_Hook_Hop = false,
+			Auto_Twin_Hook = false,
+			Auto_Serpent_Bow = false,
+			Auto_Serpent_Bow_Hop = false,
+			Auto_Evo_Race_V2 = false,
+			Auto_Rengoku = false,
+			Auto_Buy_Legendary_Sword = false,
+			Auto_Buy_Enchancement = false,
+			Auto_Yama = false,
+			Auto_Holy_Torch = false,
+			Auto_Musketeer_Hat = false,
+			Auto_Superhuman = false,
+			Auto_Fully_Superhuman = false,
+			Auto_Death_Step = false,
+			Auto_Fully_Death_Step = false,
+			Auto_SharkMan_Karate = false,
+			Auto_Fully_SharkMan_Karate = false,
+			Auto_Electric_Claw = false,
+			Auto_Dragon_Talon = false,
+			Auto_God_Human = false,
+			Select_Player = "",
+			Spectate_Player = false,
+			Teleport_to_Player = false,
+			Auto_Kill_Player = false,
+			EnabledPvP = false,
+			Auto_Stats = false,
+			Point = 1,
+			No_clip = false,
+			Infinit_Energy = false,
+			Dodge_No_CoolDown = false,
+			Infinit_Ability = false,
+			Infinit_SkyJump = false,
+			Infinit_Inf_Soru = false,
+			Infinit_Range_Observation_Haki = false,
+			Select_Island = "",
+			Start_Tween_Island = false,
+			Select_Dungeon = false,
+			Auto_Buy_Chips_Dungeon = false,
+			Auto_Start_Dungeon = false,
+			Auto_Next_Island = false,
+			Kill_Aura = false,
+			Auto_Awake = false,
+			Auto_Buy_Law_Chip = false,
+			Auto_Start_Law_Dungeon = false,
+			Auto_Kill_Law = false,
+			Select_Devil_Fruit = "",
+			Auto_Buy_Devil_Fruit = false,
+			Auto_Random_Fruit = false,
+			Auto_Bring_Fruit = false,
+			Auto_Store_Fruit = false,
+			LockMoon = false,
+			Auto_Mirage_Island = false,
+			SkillZ = true,
+			SkillX = true,
+			SkillC = true,
+			SkillV = true,
+			AutoMasterySkill = false,
+			HealthMs = 85,
+			Distance = 30,
+			DistanceY = 5,
+			ESP_Mirage_Island = false,
+			Auto_Awakening_One_Quest = false,
+			SuperFastAttack = false,
+			ESP_Chest = false,
+			Auto_Dack_Coat = false,
+			Auto_Sea_King = false,
+			Select_Mode = "Chest",
+			Remove_UI_DamageCounter = false,
+			Notifications_Remove = false,
+			Auto_CFrame = false,
+			Auto_Gear = false,
+		}
+		
+		if game.PlaceId == 2753915549 then
+			W1 = true
+		elseif game.PlaceId == 4442272183 then
+			W2 = true
+		elseif game.PlaceId == 7449423635 then
+			W3 = true
+		end
 	
+		if game:IsLoaded() then
+			pcall(function()
+				repeat wait()
+					game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+					game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+				until not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") or not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn")
+			end)
+		end
 	
-	------------ // SaveSetting \\ ------------
+		repeat wait(0) until game:IsLoaded()
+		if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
+			repeat wait()
+				if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+					if _G.Team == "Pirate" then
+						for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
+							v.Function()
+						end
+					elseif _G.Team == "Marine" then
+						for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
+							v.Function()
+						end
+					else
+						for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
+							v.Function()
+						end
+					end
+				end
+			until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+		end
+		
+		local EnemySpawns = Instance.new("Folder",workspace)
+		EnemySpawns.Name = "EnemySpawns"
+		
+		for i, v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
+			if v:IsA("Part") then
+				local EnemySpawnsX2 = v:Clone()
+				local result = string.gsub(v.Name, "Lv. ", "")
+				local result2 = string.gsub(result, "[%[%]]", "")
+				local result3 = string.gsub(result2, "%d+", "")
+				local result4 = string.gsub(result3, "%s+", "")
+				EnemySpawnsX2.Name = result4
+				EnemySpawnsX2.Parent = workspace.EnemySpawns
+				EnemySpawnsX2.Anchored = true
+			end
+		end
+		for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+			if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
+				
+				local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
+				local result = string.gsub(v.Name, "Lv. ", "")
+				local result2 = string.gsub(result, "[%[%]]", "")
+				local result3 = string.gsub(result2, "%d+", "")
+				local result4 = string.gsub(result3, "%s+", "")
+		
+				
+				EnemySpawnsX2.Name = result4
+				EnemySpawnsX2.Parent = workspace.EnemySpawns
+				EnemySpawnsX2.Anchored = true
+			end
+		end
+		for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+			if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
+				local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
+				local result = string.gsub(v.Name, "Lv. ", "")
+				local result2 = string.gsub(result, "[%[%]]", "")
+				local result3 = string.gsub(result2, "%d+", "")
+				local result4 = string.gsub(result3, "%s+", "")
+		
+				
+				EnemySpawnsX2.Name = result4
+				EnemySpawnsX2.Parent = workspace.EnemySpawns
+				EnemySpawnsX2.Anchored = true
+			end
+		end
+			------------ // SaveSetting \\ ------------
 	
 	function LoadSettings()
 		if readfile and writefile and isfile and isfolder then
