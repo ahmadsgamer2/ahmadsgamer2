@@ -442,11 +442,11 @@ end)
         
         spawn(function()
             while wait(_G.Fast_Delay) do
-                pcall(function()
-                    if _G.FastAttack then
-                        AttackNoCD()
-                    end
-                end)
+                if _G.FastAttack then 
+                    pcall(function()
+                        AttackFunction()
+                    end)
+                end
             end
         end)
 
@@ -463,22 +463,36 @@ end)
         Main:Toggle("Auto Farm level (Smooth / Fast)",false,function(value)
             _G.AutoFarm = value
             _G.DoubleQuest = value
-            _G.BringMob = value
             getgenv().noclip = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
 
-        spawn(function()
-            while wait(_G.Fast_Delay) do
-                if _G.AutoFarm then 
-                    pcall(function()
-                        AttackFunction()
-                    end)
-                end
+        task.spawn(function()
+            while task.wait() do
+            if _G.AutoFarm then
+            pcall(function()
+              for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+              if not string.find(v.Name,"Boss") and v.Name == MonFarm and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
+              if InMyNetWork(v.HumanoidRootPart) then
+                if InMyNetWork(v.HumanoidRootPart) then
+              v.HumanoidRootPart.CFrame = FarmPos
+              v.HumanoidRootPart.CanCollide = false
+              v.HumanoidRootPart.Size = Vector3.new(1,1,1)
+              if v.Humanoid:FindFirstChild("Animator") then
+                v.Humanoid.Animator:Destroy()
             end
-        end)
+              end
+            end
+              end
+              end
+              end)
+            end
+    
+        end
+    end)
+
 
 posrandom = 0
 randomposenelfastfarm = 0
