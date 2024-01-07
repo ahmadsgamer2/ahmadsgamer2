@@ -469,11 +469,21 @@ end)
             end
         end)
 
+        spawn(function()
+            while task.wait(_) do
+                if _G.DoubleQuest then 
+                    pcall(function()
+                        AttackFunction()
+                    end)
+                end
+            end
+        end)
+
+
         task.spawn(function()
             while task.wait() do
-            if _G.AutoFarm then
+            if _G.DoubleQuest then
             pcall(function()
-                _G.BringMob = false
               for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
               if not string.find(v.Name,"Boss") and v.Name == MonFarm and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 350 then
               if InMyNetWork(v.HumanoidRootPart) then
