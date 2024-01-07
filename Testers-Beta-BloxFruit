@@ -389,11 +389,11 @@
 		Main.Parent = UI
 		Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-		Main.Size = UDim2.new(0, 400, 0, 0)
+		Main.Size = UDim2.new(0, 500, 0, 0)
 		Main.ClipsDescendants = true
 		Main.AnchorPoint = Vector2.new(0.5, 0.5)
 	
-		Main:TweenSize(UDim2.new(0,400,0,435),"Out","Quad",0.5,false)
+		Main:TweenSize(UDim2.new(0,500,0,345),"Out","Quad",0.5,false)
 		
 	
 		local UICorner_59 = Instance.new("UICorner")
@@ -2454,7 +2454,7 @@
 	if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
 		setfpscap(999)
-		_G.Color = Color3.fromRGB(255, 0, 0)
+		_G.Color = Color3.fromRGB(0, 86, 255)
 		_G.Settings = {
 			Auto_Farm_Level = false,
 			Auto_Farm_Fast = true,
@@ -3636,7 +3636,7 @@
 	
 	--------------------------------------------
 	
-	local PepsisWorld = library:Window()
+	local PepsisWorld = library:Evil()
 	local InfoTab = PepsisWorld:CreateTab({
 		Name = "Information" 
 	})
