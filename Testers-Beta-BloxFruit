@@ -1,3 +1,6 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless'))()
+
+if _G.Key_System == true then
 local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Speed_Hub_X_GameList"))()
 
 function CheckingGame1()
@@ -124,7 +127,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
       DropdownStroke.Name = "UIStroke"
       DropdownStroke.Parent = Main
       DropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-      DropdownStroke.Color = Color3.fromRGB(225,0,0)
+      DropdownStroke.Color = Color3.fromRGB(225,255,255)
       DropdownStroke.LineJoinMode = Enum.LineJoinMode.Round
       DropdownStroke.Thickness = 0.7
       DropdownStroke.Transparency = 0.10
@@ -555,7 +558,7 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
          
         loadSettings()
          --------------------------------------------------------------------
-         local Void = library:AddWindow("Speed Hub X",Enum.KeyCode.RightControl)
+         local Void = library:AddWindow("Zekrom Hub X",Enum.KeyCode.RightControl)
          --------------------------------------------------------------------
          local Main = Void:AddTab("Main","6026568198")
          --------------------------------------------------------------------
@@ -564,11 +567,11 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
         if isfolder(foldername) then
         Status:Set("                                                               Waiting..")
         else
-        Status:Set("                                                               Speed Hub X ")
+        Status:Set("                                                               Zekrom Hub X")
         end
         
         function Check()
-            if  PandaAuth:ValidateKey(ServiceID, Value) then 
+            if  PandaAuth:ValidateKey(ServiceID, value) then 
                 Status:Set("                                                             Checking Key..")
                 wait(0.5)
                 Status:Set("                                                             Valid Key")
@@ -621,3 +624,26 @@ local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicel
         if isfolder(foldername) then
         Check()
         end
+     elseif _G.Key_System == false then
+        local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Speed_Hub_X_GameList"))()
+
+        function CheckingGame1()
+        
+            getgenv().Get =
+                setmetatable(
+                {},
+                {
+                    __index = function(A, B)
+                        return game:GetService(B)
+                    end
+                }
+            )
+            
+            for i, v in pairs(Games) do
+                if i == game.PlaceId then
+                    loadstring(game:HttpGet(v))()
+                end
+            end
+        end
+        CheckingGame1()
+    end
