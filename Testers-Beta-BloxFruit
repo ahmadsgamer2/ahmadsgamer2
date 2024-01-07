@@ -3534,6 +3534,10 @@ if Third_Sea then
         end)
     end 
 
+    Event_Farm:Slider("Set Speed Boat",0,2000,600,function(v)
+        _G.SpeedBoatText = v
+    end)
+
     Event_Farm:Toggle("Speed Boat",false,function(value)
         _G.increaseboatspeed = value
         local vehicleSeats = {}
@@ -3544,7 +3548,7 @@ if Third_Sea then
         end
         if _G.increaseboatspeed then
             for _, v in pairs(vehicleSeats) do
-                v.MaxSpeed = 350
+                v.MaxSpeed = _G.SpeedBoatText
             end
         else
             for _, v in pairs(vehicleSeats) do
@@ -3552,6 +3556,40 @@ if Third_Sea then
             end
         end
     end)
+
+    Event_Farm:Toggle("Noclip Rock",false,function(value)
+        _G.Nocliprock = value
+        spawn(function()
+                while wait() do
+                    if _G.Nocliprock then
+                        if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                            for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == true then
+                                    v.CanCollide = false
+                                end
+                            end
+                            for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == true then
+                                    v.CanCollide = false
+                                end
+                            end
+                        elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+                            for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == false then
+                                    v.CanCollide = true
+                                end
+                            end
+                            for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == false then
+                                    v.CanCollide = true
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+    end)
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 --Stats
