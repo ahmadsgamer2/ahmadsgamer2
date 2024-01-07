@@ -508,6 +508,16 @@ end)
             FastAttack = value
         end)
 
+        task.spawn(function()
+            pcall(function()
+            while task.wait(_G.Fast_Delay) do
+                if _G.FastAttack and FastAttack then
+                    AttackFunction()
+                   end
+                end
+            end)
+        end)
+
 		Main:Slider("Distance Farm",0,100,30,function(v)
 			_G.DistanceAutoFarm = v
 		end)
@@ -1350,11 +1360,10 @@ end)
             end)
 
             spawn(function()
-                while wait() do
+                while wait(0.10) do
                     if AutoFarmMasDevilFruit and AutoFarmMasGun then
                         pcall(function()
-                            FastAttack = false
-                            _G.FastAttack = false
+                            AttackNoCD()
                         end)
                     end
                 end
