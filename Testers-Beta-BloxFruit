@@ -444,7 +444,6 @@ end)
             while wait(_G.Fast_Delay) do
                 pcall(function()
                     if _G.FastAttack then
-                            AttackNoCD()
                             AttackFunction()
                     end
                 end)
