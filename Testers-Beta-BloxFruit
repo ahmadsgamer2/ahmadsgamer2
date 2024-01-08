@@ -2197,17 +2197,6 @@ local function BXMAWT_fake_script() -- VegaXAndroidUI.Loading
 	script.Parent.IntroFrame:Destroy()
 	getgenv().arceus = nil
 	
-	if ValidateKey(readfile("vegax_key.txt")) then
-		script.Parent.KeySystem.Visible = false;
-		script.Parent.VegaXMenuToggleFrame.Visible = true;
-	
-		_G.MenuOpen = true;
-	
-		script.Parent.SidebarFrame:TweenPosition(UDim2.new(0,0,0.5,0), "Out", "Quint", 1, true)
-	else
-		script.Parent.KeySystem:TweenPosition(UDim2.new(0, 0, 0.5, -20), "Out", "Quad", 1, true)
-	end
-	
 	-- Key System Stuff --
 	script.Parent.KeySystem.CloseB.MouseButton1Click:connect(function()
 		script.Parent.KeySystem:TweenPosition(UDim2.new(0,0,2,-20), "Out", "Quint", 1, true)
