@@ -509,12 +509,10 @@ end)
         end)
 
         spawn(function()
-            while wait(0.4) do
+            while wait(_G.Fast_Delay) do
                 pcall(function()
                     if FastAttack or _G.FastAttack then
-                        repeat wait(_G.Fast_Delay)
-                            AttackNoCD()
-                        until not FastAttack or _G.FastAttack
+                        AttackNoCD()
                     end
                 end)
             end
