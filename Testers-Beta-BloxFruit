@@ -53,8 +53,8 @@ local UICorner_4 = Instance.new("UICorner")
 local Line = Instance.new("Frame")
 local StopButton = Instance.new("TextButton")
 local UICorner_5 = Instance.new("UICorner")
-local DiscordButton = Instance.new("ImageButton")
-local YoutubeButton = Instance.new("ImageButton")
+local JoinDiscord = Instance.new("TextButton")
+local UICornerDi = Instance.new("UICorner")
 local Notif = loadstring(Game:HttpGet"https://pastebin.com/raw/zGMbb66t")()
 AllowRunService = true
 ChestFarm = true 
@@ -503,30 +503,22 @@ end)
 
 UICorner_5.Parent = StopButton
 
-DiscordButton.Name = "DiscordButton"
-DiscordButton.Parent = FrameChest
-DiscordButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-DiscordButton.BackgroundTransparency = 1.000
-DiscordButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-DiscordButton.BorderSizePixel = 0
-DiscordButton.Position = UDim2.new(0.777777672, 0, 0.824620962, 0)
-DiscordButton.Size = UDim2.new(0, 43, 0, 37)
-DiscordButton.Image = "rbxassetid://15929330154"
-DiscordButton.MouseButton1Down:connect(function()
+JoinDiscord.Name = "Join Discord"
+JoinDiscord.Parent = FrameChest
+JoinDiscord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+JoinDiscord.BackgroundTransparency = 0.900
+JoinDiscord.BorderColor3 = Color3.fromRGB(0, 0, 0)
+JoinDiscord.BorderSizePixel = 0
+JoinDiscord.Position = UDim2.new(0.50205797, 0, 0.853491426, 0)
+JoinDiscord.Size = UDim2.new(0, 103, 0, 25)
+JoinDiscord.Font = Enum.Font.SourceSansBold
+JoinDiscord.Text = "Join Discord"
+JoinDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
+JoinDiscord.TextSize = 19.000
+JoinDiscord.MouseButton1Down:connect(function()
 setclipboard("https://discord.gg/NdY3TXK6Ex")
 Notif.New("Copyed Join Discord Link", 3)
 end)
 
-YoutubeButton.Name = "YoutubeButton"
-YoutubeButton.Parent = FrameChest
-YoutubeButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-YoutubeButton.BackgroundTransparency = 1.000
-YoutubeButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-YoutubeButton.BorderSizePixel = 0
-YoutubeButton.Position = UDim2.new(0.534979284, 0, 0.824620962, 0)
-YoutubeButton.Size = UDim2.new(0, 43, 0, 37)
-YoutubeButton.Image = "rbxassetid://15929372881"
-YoutubeButton.MouseButton1Down:connect(function()
-    setclipboard("https://www.youtube.com/@ZekromHuh_v1089")
-    Notif.New("Copyed Join Youtube Link", 3)
-end)
+UICornerDi.Name = "UICornerDi"
+UICornerDi.Parent = JoinDiscord
