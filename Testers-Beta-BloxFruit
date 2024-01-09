@@ -313,15 +313,12 @@ TextEarned.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextEarned.TextSize = 21.000
 TextEarned.TextXAlignment = Enum.TextXAlignment.Left
 
-local BeliEarned = game:GetService("Players")["LocalPlayer"].Data.Beli.Value
-local Earned = tostring(game:GetService("Players")["LocalPlayer"].Data.Beli.Value - BeliEarned)
+local BeliOld = game:GetService("Players")["LocalPlayer"].Data.Beli.Value
+local Earned = tostring(game:GetService("Players")["LocalPlayer"].Data.Beli.Value - BeliOld)
 local sub = string.sub
 local len = string.len
 
 function UpdateEarned()
-    spawn(function()
-    while wait() do
-    pcall(function()
     if len(Earned) == 4 then
     Earned1 = sub(Earned,1,1).."."..sub(Earned,2,3).."K"
     elseif len(Earned) == 5 then
@@ -336,10 +333,8 @@ function UpdateEarned()
     Earned1 = Earned
     end
     TextEarned.Text = "Earned: "..tonumber(Earned1)
-    end)
-    end
-    end)
 end
+
 
 spawn(function()
     while true do wait(.1)
