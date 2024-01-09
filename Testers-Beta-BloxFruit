@@ -1,1 +1,8 @@
-loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt"))()
+    for i, v in pairs(game:GetObjects("rbxassetid://15131096922")[1]:GetChildren()) do
+        v.Handle.Touched:Connect(function(otherPart)
+            if otherPart.Parent == game.Players.LocalPlayer.Character then
+                v.Parent = game.Players.LocalPlayer.Backpack
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+            end
+        end)
+    end
