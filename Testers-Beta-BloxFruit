@@ -7,7 +7,8 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
 
-_G.Color3.fromRGB(255, 255, 255)
+_G.Color = Color3.fromRGB(255, 255, 255)
+
 local function tablefound(ta, object)
     for i,v in pairs(ta) do
         if v == object then
