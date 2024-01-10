@@ -395,7 +395,7 @@ function library:Window()
     Main.ClipsDescendants = true
     Main.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    Main:TweenSize(UDim2.new(0,585,0,300),"Out","Quad",0.5,false)
+    Main:TweenSize(UDim2.new(0,585,0,310),"Out","Quad",0.5,false)
     
 
     local UICorner_59 = Instance.new("UICorner")
@@ -570,18 +570,18 @@ function library:Window()
 
         Tab.Name = "Tab"
         Tab.Parent = TabContainer
-        Tab.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        Tab.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
         Tab.Size = UDim2.new(0, 80, 0, 20)
-        Tab.BackgroundTransparency = 1.00
+        Tab.BackgroundTransparency = 0
         Tab.Text = ""
         UICorner_3.CornerRadius = UDim.new(0, 3)
         UICorner_3.Parent = Tab
 
         Tab2.Name = "Tab"
         Tab2.Parent = Tab
-        Tab2.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+        Tab2.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
         Tab2.Size = UDim2.new(0, 80, 0, 25)
-        Tab2.BackgroundTransparency = 1.00
+        Tab2.BackgroundTransparency = 0
 
         local UICorner_33 = Instance.new("UICorner")
         UICorner_33.CornerRadius = UDim.new(0, 3)
