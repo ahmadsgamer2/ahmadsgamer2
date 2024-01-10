@@ -3800,7 +3800,7 @@
 	
 	--------------------------------------------
 	
-	local PepsisWorld = library:Evil()
+	local PepsisWorld = library:Window()
 	local InfoTab = PepsisWorld:CreateTab({
 		Name = "Information" 
 	})
