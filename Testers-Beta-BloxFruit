@@ -391,11 +391,11 @@ function library:Window()
     Main.Parent = UI
     Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Main.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Main.Size = UDim2.new(0, 340, 0, 0)
+    Main.Size = UDim2.new(0, 300, 0, 0)
     Main.ClipsDescendants = true
     Main.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    Main:TweenSize(UDim2.new(0,585,0,380),"Out","Quad",0.5,false)
+    Main:TweenSize(UDim2.new(0,585,0,300),"Out","Quad",0.5,false)
     
 
     local UICorner_59 = Instance.new("UICorner")
