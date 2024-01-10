@@ -1,15 +1,158 @@
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/Mercury-Ui-Lib/main/Source.lua"))()
 
-local library = loadstring(game:HttpGet('https://raw.githubusercontent.com/shezan78/Atlas-Lib/main/Atlas%20UI%20Lib.lua'))()
-local window = library.new('Shezans Test GUI GUI', 'shezan')
+local GUI = Mercury:Create{
+    Name = "Mercury",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/shezan78/Mercury-Ui-Lib"
+}
 
-local tab = window.new_tab('rbxassetid://4483345998')
-local section = tab.new_section('Test')
-local sector = section.new_sector('Test', 'Left')
-local button = sector.element('Button', 'Camlock - C', nil, function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/Quick-DH-script/main/Smooth%20lock%2C%20dont%20use%2C%20use%20the%20GUI%20attached%20to%20the%20loadstring%20in%20readme.lua", true))()
-end)
+local Tab = GUI:Tab{
+	Name = "Da hood",
+	Icon = "rbxassetid://8569322835"
+}
 
-local sector1 = section.new_sector('Test2', 'Right')
-local button = sector.element('Button', 'Streamable', nil, function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/Quick-DH-script/main/Silentaim%20Dont%20use.lua", true))()
-end)
+Tab:Button{
+	Name = "Silent Aim",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/STREAMABLE_1.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Blatant Silent Aim",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/blatant%20silentaim.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Camlock",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/SmoothLock.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Pink dot lock = Q",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/Pink%20Dot%20lock%201.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Kals private blue",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/KalPrivate.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Hat gui",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/Hat%20Gui.lua", true))()
+	    end,
+}
+
+
+GUI:Notification{
+	Title = "Ice Spice",
+	Text = "You thought I was Feelin' You?",
+	Duration = 30,
+	Callback = function() end
+}
+
+GUI:Notification{
+	Title = "Saving local data",
+	Text = "saved in 0.000927192ms",
+	Duration = 30,
+	Callback = function() end
+}
+
+GUI:Notification{
+	Title = "Checking whitelist...",
+	Text = "Whistelistd",
+	Duration = 30,
+	Callback = function() end
+}
+
+
+local Tab = GUI:Tab{
+	Name = "Regular scripts",
+	Icon = "rbxassetid://437401177"
+}
+
+Tab:Button{
+	Name = "Infinite Yeild",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/InfYeild.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Sword Reach",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/SwordReach.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "RemoteSpy",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/SimpleSpySource.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Anti AFK",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/RobloxAntiAfk.lua", true))()
+	    end,
+}
+
+local Tab = GUI:Tab{
+	Name = "Universal scripts",
+	Icon = "rbxassetid://6346857246"
+}
+
+Tab:Button{
+	Name = "Universal FPS game lock",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/Fpsgame%20aimbot.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Universal Silent aim",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/UniversalSilentAim.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Universal Aimbot",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/UniversalAimbot.lua", true))()
+	    end,
+}
+
+Tab:Button{
+	Name = "Universal AimbotFov",
+	Description = nil,
+	Callback = function() 
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/shezan78/ALotOfRobloxScripts/main/Roblox%20Scripts/UniversalAimlockFov.lua", true))()
+	    end,
+}
