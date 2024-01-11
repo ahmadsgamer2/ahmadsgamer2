@@ -441,8 +441,7 @@ function library:Window()
     Miminze.Size = UDim2.new(0, 28, 0, 34)
     Miminze.Image = "rbxassetid://11293980042"
     Miminze.MouseButton1Down:connect(function()
-        game.CoreGui:FindFirstChild(randomString).Enabled = not game.CoreGui:FindFirstChild(randomString).Enabled
-        Miminze.Visible = false
+        Main.Visible = false
     end)
 
     Title.Name = "Title"
@@ -2470,7 +2469,7 @@ end
 
 local PepsisWorld = library:Window()
 local InfoTab = PepsisWorld:CreateTab({
-    Name = "Geanrel" 
+    Name = "Information" 
 })
 local InfoSection = InfoTab:CreateSection({
     Name = "Profile",
