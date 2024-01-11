@@ -269,7 +269,6 @@ end)
 
     Main:Toggle("Auto Farm Level",false,function(value)
         _G.AutoFarm = value
-        _G.Settings.AutoFarm = value
         _G.DoubleQuest = value
         getgenv().noclip = value
         if value == false then
@@ -277,7 +276,7 @@ end)
         end
     end)
 
-    posrandom = 0
+posrandom = 0
 randomposenelfastfarm = 0
 function AutoFarmLevel()
 GetQuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
@@ -328,7 +327,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -371,7 +370,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -429,7 +428,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             if table.find(AllPlayersTableSkipFarm,GetQuestTitle.Text:split(" ")[2]) then
                 for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
                     if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
-                        if _G.Settings.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             repeat wait()
                                 if World1 and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875) - v.HumanoidRootPart.Position).magnitude < 5000 then
                                     if FarmtoTarget then FarmtoTarget:Stop() end
@@ -461,14 +460,14 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
                                     game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
                                 end
-                            until not _G.Settings.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not _G.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         end
                     end
                 end
             else
                 if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             if string.find(GetQuestTitle.Text, QuestName) then
                                 repeat wait()
                                     if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
@@ -496,7 +495,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         FastAttack = true
                                         EquipWeapon(_G.SelectWeapon)
                                     end
-                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                                 FastAttack = false
                                 StartMagnet = false
                             else
@@ -578,7 +577,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
         elseif GetQuest.Visible == true then
             if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                         if string.find(GetQuestTitle.Text, NameMon) then
                             repeat task.wait()
                                 FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -617,7 +616,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     end
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 end
-                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                             StartMagnet = false
                             FastAttack = false
                         else
@@ -699,7 +698,7 @@ else
     elseif GetQuest.Visible == true then
         if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                     if string.find(GetQuestTitle.Text, NameMon) then
                         repeat wait()
                             FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -739,7 +738,7 @@ else
                                 end
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                             end
-                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         StartMagnet = false
                         FastAttack = false
                     else
@@ -817,7 +816,7 @@ local oldcheckquest = NameMon
 task.spawn(function()
 while task.wait() do
 pcall(function()
-    if _G.Settings.AutoFarm then
+    if _G.AutoFarm then
         if _G.DoubleQuest then
             if SubQuest == true then
                 if LevelFarm then
@@ -865,7 +864,6 @@ end)
 
 Main:Toggle("Auto Farm Nearest Mobs",false,function(value)
     _G.NeareastFarm = value
-    _G.Settings.NeareastFarm = value
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
@@ -873,7 +871,7 @@ end)
 
 spawn(function()
     while wait(.1) do
-        if _G.Settings.NeareastFarm then
+        if _G.NeareastFarm then
             pcall(function()
                 for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     if v.Name and v:FindFirstChild("Humanoid") then
@@ -997,7 +995,6 @@ end)
 
 Main:Toggle("Auto Farm Chest (Tween)",false,function(value)
     _G.AutoFarmChest = value
-    _G.Settings.AutoFarmChest = value
      if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
@@ -1006,7 +1003,7 @@ end)
 _G.MagnitudeAdd = 0
 spawn(function()
 	while wait() do 
-		if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+		if _G.AutoFarmChest then
 			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do 
 				if v.Name:find("Chest") then
 					if game:GetService("Workspace"):FindFirstChild(v.Name) then
@@ -1015,7 +1012,7 @@ spawn(function()
 								if game:GetService("Workspace"):FindFirstChild(v.Name) then
 									toTargetP(v.CFrame)
 								end
-							until _G.Settings.AutoFarmChest or _G.AutoFarmChest == false or not v.Parent
+							until _G.AutoFarmChest == false or not v.Parent
 							toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 							_G.MagnitudeAdd = _G.MagnitudeAdd+1500
 							break
@@ -1107,5 +1104,7 @@ if World2 then
     end)
     loadstring(game:HttpGet("https://pastebin.com/raw/xDLxza68"))()
 end
+Main:Seperator("Mastery Farm")
+
 
 end
