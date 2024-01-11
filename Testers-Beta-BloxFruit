@@ -25,12 +25,8 @@ wait(0.1)
 
 if not game:IsLoaded() then repeat game.Loaded:Wait() until game:IsLoaded() end
 
-local Anti_HooksLOL = "https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2"
-local Anti_HOOKLOL2 = Anti_HooksLOL.."/Hook"
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SaltyHB/Poggers/main/Public"))()
 
-loadstring(game:HttpGet(Anti_HOOKLOL2))()
 
 local id = game.PlaceId
 if id == 2753915549 then
