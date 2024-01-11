@@ -30,6 +30,83 @@ World3 = true
 ThreeWorld = true
 end
 
+_G.Settings = {
+    AutoFarm = false,
+    DoubleQuest = false,
+    NeareastFarm = false,
+    Mirage = false ,
+    MirageHop = false,
+    Auto_Gear = false,
+    TeleportGear = false,
+    AutoNewWorld = false,
+    TweenToFruitSpawn = false,
+    AutoSaber = false,
+    AutoPole = false,
+    TeleportIsland = false,
+
+--[World 2]
+    AutoThirdSea = false,
+    AutoBartiloQuest = false,
+    Auto_Evo_Race_V2 = false,
+    AutoDarkCoat = false,
+    AutoSwanGlasses = false,
+    AutoTrueTriplKatana = false,
+    AutoRengoku = false,
+    AutoEctoplasm = false,
+    AutoFactory = false,
+
+    --[World 3]
+    AutoRainbowHaki = false,
+    AutoBuyEnchanmentHakiHop = false,
+    AutoBuyLegendarySwordHop = false,
+    AutoEliteHunter = false,
+    AutoMusketeerHat = false,
+    AutoBuddySword = false,
+    AutoFarmBone = false,
+    SpawnBossHallow = false,
+    AutoKenHakiV2 = false,
+    AutoObservation = false,
+    AutoObservation_Hop = false,
+    AutoGodHuman = false,
+    AutoCavander = false,
+    AutoCursedDualKatana = false,
+    AutoYamaSword = false,
+    AutoTushitaSword = false,
+    AutoSerpentBow = false,
+    AutoDarkDagger = false,
+    AutoCakePrince = false,
+    AutoDoughV2 = false,
+    AutoHolyTorch = false,
+    AutoBuddySwords = false,
+    AutoFarmBossHallow = false,
+    MobAura = false,
+    YamaQuest2 = false,
+    YamaQuest1 = false,
+    Auto_Cursed_Dual_Katana = false,
+    Tushita_Quest2 = false,
+    Tushita_Quest1 = false,
+    TeleporttoSeaBeast = false,
+    AutoEvent = false,
+    TPTOBOAT = false,
+    AutoFarmMaterial = false,
+    Teleporttop = false,
+    AutoFarmChest = false,
+
+    --[Boss]
+    AutoAllBoss = false,
+    AutoBossSelect = false,
+    AutoFarmBoss = false,
+
+    --[Mastery]
+    AutoFarmFruitMastery = false,
+    AutoFarmGunMastery = false,
+    FarmMasterySwordList = false,
+
+    --[Raids]
+    AutoRaids = false,
+    AutoNextPlace = false
+}
+
 loadstring(game:HttpGet("https://pastebin.com/raw/gk5ZGF2f"))()
 
 local Library = Update:Window("Blox Fruit")
