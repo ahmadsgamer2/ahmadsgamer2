@@ -18,71 +18,6 @@ local function tablefound(ta, object)
     return false
 end
 
-
-AddFolder = function(GetFolder)
-    local Folder = isfolder(GetFolder)
-    --
-    if Folder then
-        return
-    else
-        makefolder(GetFolder)
-        return true
-    end
-end
---
-AddImage = function(Image, Url, UI)
-    local ImageFile = nil
-    --
-    if isfile(Image) then
-        ImageFile = readfile(Image)
-    else
-        ImageFile = game:HttpGet(Url)
-        writefile(Image, ImageFile)
-    end
-    --
-    return ImageFile
-end
-
-AddDrawing = function(Instance, Properties, Location)
-    local InstanceType = Instance
-    local Instance = Drawing.new(Instance)
-    --
-    for Index, Value in pairs(Properties) do
-        Instance[Index] = Value
-        if InstanceType == "Text" then
-            if Index == "Font" then
-                Instance.Font = Library.Theme.Font
-            end
-            if Index == "Size" then
-                Instance.Size = Library.Theme.TextSize
-            end
-        end
-    end
-    --
-    if Properties.ZIndex ~= nil then
-        Instance.ZIndex = Properties.ZIndex + 20
-    else
-        Instance.ZIndex = 20
-    end
-    --
-    Location = Location or Library.Drawings
-    if InstanceType == "Image" then
-        Location[#Location + 1] = {Instance, true}
-    else
-        Location[#Location + 1] = {Instance}
-    end
-    --
-    return Instance
-end
-
-AddFolder("ZekromHubX_Settings")
-AddFolder("ZekromHubX_Settings/Caches")
-AddFolder("ZekromHubX_Settings/Assets")
-AddFolder("ZekromHubX_Settings/Assets/UI")
-AddFolder("ZekromHubX_Settings/Configs")
-AddFolder("ZekromHubX_Settings/Scripts")
-BackgrundLogo = AddImage("ZekromHubX_Settings/Assets/UI/Logo2.png", "https://i.pinimg.com/originals/26/ed/fe/26edfe7476f61c0afa0ad92574065225.gif")
-
 local ActualTypes = {
     RoundFrame = "ImageLabel",
     Shadow = "ImageLabel",
@@ -425,16 +360,17 @@ function dragify(Frame, object)
     )
 end
 
-local UI = Instance.new("ScreenGui")
-UI.Name = randomString
-UI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
-UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local ZekromHubXUI = Instance.new("ScreenGui")
+ZekromHubXUI.Name = randomString
+ZekromHubXUI.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
+ZekromHubXUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 library = {}
 
 function library:Destroy()
     library:Destroy()
 end
+
 
 function library:Window()
     local Main = Instance.new("Frame")
@@ -449,17 +385,18 @@ function library:Window()
     local Logo_Background = Instance.new("ImageLabel")
     local Title = Instance.new("TextLabel")
     local Welcome = Instance.new("TextLabel")
+    local Miminze = Instance.new("ImageButton")
 
 
     Main.Name = "Main"
-    Main.Parent = UI
+    Main.Parent = ZekromHubXUI
     Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Main.Position = UDim2.new(0.5, 0, 0.5, 0)
     Main.Size = UDim2.new(0, 300, 0, 0)
     Main.ClipsDescendants = true
     Main.AnchorPoint = Vector2.new(0.5, 0.5)
 
-    Main:TweenSize(UDim2.new(0,580,0,300),"Out","Quad",0.5,false)
+    Main:TweenSize(UDim2.new(0,585,0,310),"Out","Quad",0.5,false)
     
 
     local UICorner_59 = Instance.new("UICorner")
@@ -477,20 +414,6 @@ function library:Window()
     Logo.ImageTransparency = 0
     Logo.Image = "rbxassetid://15903614492"
 
-    AddDrawing("Image", {
-        Name = "Logo",
-        Parent = Main,
-        Active = true,
-        BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-        Size = UDim2.new(0, 580, 0, 299),
-        Transparency = 0.7, 
-        Visible = true,
-        Position = UDim2.new(0, 135, 0, 75),
-        Data = BackgrundLogo,
-        BackgroundTransparency = 1.000
-    })
-
-    --[[
     Logo_Background.Name = "Logo"
     Logo_Background.Parent = Main
     Logo_Background.Active = true
@@ -498,7 +421,7 @@ function library:Window()
     Logo_Background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Logo_Background.BackgroundTransparency = 1.000
     Logo_Background.Position = UDim2.new(0, 135, 0, 75)
-    Logo_Background.Size = UDim2.new(0, 580, 0, 299)
+    Logo_Background.Size = UDim2.new(0, 305, 0, 335)
     Logo_Background.ImageTransparency = 0.7
     Logo_Background.Image = "rbxassetid://"
     RunService.RenderStepped:Connect(function()
@@ -507,7 +430,21 @@ function library:Window()
             Logo_Background.Rotation = 0 
         end
     end)
---]]
+
+    Miminze.Name = "Miminze"
+    Miminze.Parent = Main
+    Miminze.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Miminze.BackgroundTransparency = 1.000
+    Miminze.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Miminze.BorderSizePixel = 0
+    Miminze.Position = UDim2.new(0.922413766, 0, 0, 0)
+    Miminze.Size = UDim2.new(0, 28, 0, 34)
+    Miminze.Image = "rbxassetid://11293980042"
+    Miminze.MouseButton1Down:connect(function()
+        game.CoreGui:FindFirstChild("ZekromHubXUI").Enabled = not game.CoreGui:FindFirstChild("ZekromHubXUI").Enabled
+        Miminze.Visible = false
+    end)
+
     Title.Name = "Title"
     Title.Parent = Main
     Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
