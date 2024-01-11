@@ -30,7 +30,7 @@ World3 = true
 ThreeWorld = true
 end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/TeLdzN5Z"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/gk5ZGF2f"))()
 
 local Library = Update:Window("Blox Fruit")
 local Main = Library:Tab("Main", "rbxassetid://7040391851")
