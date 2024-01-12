@@ -1,124 +1,68 @@
-local CoreGui = game:GetService("CoreGui")
-local PropInstances = Instance.new("ScreenGui") 
-local PropUi = Instance.new("Frame")
-local BoxUi = Instance.new("TextBox")
-local buttonUi = Instance.new("TextButton")  
+-- Cloneref support (adds support for JJsploit/Temple/Electron and other sploits that don't have cloneref or really shit versions of it.)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/CloneRef.lua", true))()
 
-local function CopyPropertiesToClipboard(objectName, objectType, properties)
-    local clipboardContent = "--- [" .. objectName .. " - " .. objectType .. "]\n" .. properties 
-    setclipboard(clipboardContent)
-end 
- 
-local function GetProperties(guiObject)
-    local properties = {
-        Name = '"' .. guiObject.Name .. '"',
-        Parent = guiObject.Parent
-    }
+-- Dex Bypasses
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Babyhamsta/RBLX_Scripts/main/Universal/Bypasses.lua", true))()
 
-    if guiObject:IsA("TextButton") or guiObject:IsA("TextLabel") or guiObject:IsA("ImageButton") then
-        properties.Text = '"' .. guiObject.Text .. '"'
-        properties.TextScaled = guiObject.TextScaled
-        properties.TextSize = guiObject.TextSize
-        properties.TextWrapped = guiObject.TextWrapped
-        properties.Font = guiObject.Font
-        properties.Visible = guiObject.Visible
-        properties.ZIndex = guiObject.ZIndex
-        properties.Position = guiObject.Position
-        properties.BackgroundColor3 = guiObject.BackgroundColor3
-        properties.TextColor3 = guiObject.TextColor3
-        properties.Size = guiObject.Size
-        properties.BorderColor3 = guiObject.BorderColor3
-        properties.BorderSizePixel = guiObject.BorderSizePixel
-        properties.BackgroundTransparency = guiObject.BackgroundTransparency
-    elseif guiObject:IsA("TextBox") then
-        properties.Visible = guiObject.Visible
-        properties.ZIndex = guiObject.ZIndex
-        properties.Text = '"' .. guiObject.Text .. '"'
-        properties.PlaceholderText = '"' .. guiObject.PlaceholderText .. '"'
-        properties.PlaceholderColor3 = guiObject.PlaceholderColor3
-        properties.TextColor3 = guiObject.TextColor3
-        properties.TextScaled = guiObject.TextScaled
-        properties.TextSize = guiObject.TextSize
-        properties.TextWrapped = guiObject.TextWrapped
-        properties.Position = guiObject.Position
-        properties.BackgroundColor3 = guiObject.BackgroundColor3
-        properties.BorderColor3 = guiObject.BorderColor3
-        properties.BorderSizePixel = guiObject.BorderSizePixel
-        properties.Size = guiObject.Size
-        properties.BackgroundTransparency = guiObject.BackgroundTransparency
-    elseif guiObject:IsA("UICorner") then
-        properties.CornerRadius = guiObject.CornerRadius
-    elseif guiObject:IsA("Frame") then
-        properties.BackgroundColor3 = guiObject.BackgroundColor3
-        properties.Size = guiObject.Size
-        properties.Position = guiObject.Position
-        properties.Visible = guiObject.Visible
-        properties.ZIndex = guiObject.ZIndex
-        properties.BorderSizePixel = guiObject.BorderSizePixel
-        properties.BorderColor3 = guiObject.BorderColor3
-        properties.BackgroundTransparency = guiObject.BackgroundTransparency
+-- Dex with CloneRef Support (made as global)
+getgenv().Bypassed_Dex = game:GetObjects("rbxassetid://9352453730")[1]
+
+local charset = {}
+for i = 48,  57 do table.insert(charset, string.char(i)) end
+for i = 65,  90 do table.insert(charset, string.char(i)) end
+for i = 97, 122 do table.insert(charset, string.char(i)) end
+function RandomCharacters(length)
+    if length > 0 then
+        return RandomCharacters(length - 1) .. charset[math.random(1, #charset)]
     else
-        print("Object type not supported or recognized.")
-        return
+        return ""
     end
-
-    local propertiesString = ""
-    for key, value in pairs(properties) do
-        propertiesString = propertiesString .. guiObject.Name .. "." .. key .. " = " .. tostring(value) .. "\n"
-    end
-
-    CopyPropertiesToClipboard(guiObject.Name, guiObject.ClassName, propertiesString)
 end
-  
 
-PropInstances.Name= "PropertiesSaverInstance"
-PropInstances.Parent = game.CoreGui
+Bypassed_Dex.Name = RandomCharacters(math.random(5, 20))
+if gethui then
+    Bypassed_Dex.Parent = gethui();
+elseif syn and syn.protect_gui then
+    syn.protect_gui(Bypassed_Dex);
+    Bypassed_Dex.Parent = cloneref(game:GetService("CoreGui"))
+else
+    Bypassed_Dex.Parent = cloneref(game:GetService("CoreGui"))
+end
 
---- [PropUi - Frame]
-PropUi.Visible = true
-PropUi.Parent = PropInstances 
-PropUi.BackgroundTransparency = 0
-PropUi.Name = "PropUi"
-PropUi.Position = UDim2.new(0,100,0,0)
-PropUi.Size = UDim2.new(0,300,0,150)
-PropUi.ZIndex = 1
-PropUi.BorderSizePixel = 0
-PropUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  
-PropUi.Draggable = true 
+local function Load(Obj, Url)
+    local function GiveOwnGlobals(Func, Script)
+        local Fenv = {}
+        local RealFenv = {script = Script}
+        local FenvMt = {}
+        function FenvMt:__index(b)
+            if RealFenv[b] == nil then
+                return getfenv()[b]
+            else
+                return RealFenv[b]
+            end
+        end
+        function FenvMt:__newindex(b, c)
+            if RealFenv[b] == nil then
+                getfenv()[b] = c
+            else
+                RealFenv[b] = c
+            end
+        end
+        setmetatable(Fenv, FenvMt)
+        setfenv(Func, Fenv)
+        return Func
+    end
+    
+    local function LoadScripts(Script)
+        if Script.ClassName == "Script" or Script.ClassName == "LocalScript" then
+            task.spawn(GiveOwnGlobals(loadstring(Script.Source, "=" .. Script:GetFullName()), Script))
+        end
+        for _,v in ipairs(Script:GetChildren()) do
+            LoadScripts(v)
+        end
+    end
+    
+    LoadScripts(Obj)
+end
 
---- [BoxUi - TextBox]
-BoxUi.Visible = true
-BoxUi.TextWrapped = true
-BoxUi.Parent = PropUi
-BoxUi.PlaceholderColor3 = Color3.new(0.698039, 0.698039, 0.698039)
-BoxUi.PlaceholderText = "Enter instance path" 
-BoxUi.TextSize = 17 
-BoxUi.Text = "" 
-BoxUi.Size = UDim2.new(0,250,0,50)
-BoxUi.TextColor3 = Color3.new(0.105882, 0.164706, 0.207843)  
-BoxUi.BackgroundTransparency = 0
-BoxUi.Name = "BoxUi"
-BoxUi.Position = UDim2.new(0,25,0,60) 
-BoxUi.ZIndex = 1
-BoxUi.TextScaled = false
-BoxUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)   
-
---- [buttonUi - TextButton]
-buttonUi.Visible = true
-buttonUi.TextWrapped = false
-buttonUi.BackgroundTransparency = 0
-buttonUi.TextColor3 = Color3.new(0.105882, 0.164706, 0.207843)
-buttonUi.Parent = PropUi
-buttonUi.Text = "Get Properties" 
-buttonUi.Size = UDim2.new(0,110,0,30)
-buttonUi.Font = Enum.Font.Legacy
-buttonUi.Name = "buttonUi"
-buttonUi.Position = UDim2.new(0,90,0,117)
-buttonUi.TextScaled = false
-buttonUi.ZIndex = 1
-buttonUi.TextSize = 8
-buttonUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)   
-buttonUi.MouseButton1Click:Connect(function()
-    print("Path:", BoxUi.Text)
-    --GetProperties(BoxUi.Text)
-end)
+Load(Bypassed_Dex)
