@@ -120,5 +120,5 @@ buttonUi.TextSize = 8
 buttonUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)   
 buttonUi.MouseButton1Click:Connect(function()
     print("Path:", BoxUi.Text)
-    GetProperties(BoxUi.Text)
+    --GetProperties(BoxUi.Text)
 end)
