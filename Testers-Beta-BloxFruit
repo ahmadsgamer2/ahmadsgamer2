@@ -1,1 +1,156 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe"))()
+local CoreGui = game:GetService("CoreGui")
+local PropInstances = Instance.new("ScreenGui") 
+local PropUi = Instance.new("Frame")
+local BoxUi = Instance.new("TextBox")
+local buttonUi = Instance.new("TextButton")  
+
+local function CopyPropertiesToClipboard(objectName, objectType, properties)
+    local clipboardContent = "--- [" .. objectName .. " - " .. objectType .. "]\n" .. properties 
+    setclipboard(clipboardContent)
+end 
+ 
+local function GetProperties(guiObject)
+local properties = {
+    Name = '"' .. guiObject.Name .. '"',   
+    Parent = guiObject.Parent
+} 
+
+    if guiObject:IsA("TextButton") then 
+            properties.Text = '"' .. guiObject.Text .. '"' 
+            properties.TextScaled = guiObject.TextScaled 
+            properties.TextSize = guiObject.TextSize 
+            properties.TextWrapped = guiObject.TextWrapped 
+            properties.Font = guiObject.Font 
+            properties.Visible = guiObject.Visible  
+            properties.ZIndex = guiObject.ZIndex 
+            properties.Position = "UDim2.new(" .. tostring(guiObject.Position.X.Scale) .. "," .. tostring(guiObject.Position.X.Offset) .. "," .. tostring(guiObject.Position.Y.Scale) .. "," .. tostring(guiObject.Position.Y.Offset) .. ")"   
+            properties.BackgroundColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"    
+            properties.TextColor3 = "Color3.new(" .. tostring(guiObject.TextColor3) .. ")" 
+            properties.Size = "UDim2.new(" .. tostring(guiObject.Size.X.Scale) .. "," .. tostring(guiObject.Size.X.Offset) .. "," .. tostring(guiObject.Size.Y.Scale) .. "," .. tostring(guiObject.Size.Y.Offset) .. ")"   
+            properties.BorderColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"      
+            properties.BorderSizePixel = guiObject.BorderSizePixel  
+            properties.BackgroundTransparency = guiObject.BackgroundTransparency 
+        
+    elseif guiObject:IsA("TextLabel") then 
+            properties.Text = '"' .. guiObject.Text .. '"' 
+            properties.TextScaled = guiObject.TextScaled 
+            properties.TextSize = guiObject.TextSize 
+            properties.Font = guiObject.Font 
+            properties.TextWrapped = guiObject.TextWrapped 
+            properties.Visible = guiObject.Visible 
+            properties.ZIndex = guiObject.ZIndex 
+            properties.Position = "UDim2.new(" .. tostring(guiObject.Position.X.Scale) .. "," .. tostring(guiObject.Position.X.Offset) .. "," .. tostring(guiObject.Position.Y.Scale) .. "," .. tostring(guiObject.Position.Y.Offset) .. ")"   
+            properties.BackgroundColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"   
+            properties.TextColor3 = "Color3.new(" .. tostring(guiObject.TextColor3) .. ")"   
+            properties.Size = "UDim2.new(" .. tostring(guiObject.Size.X.Scale) .. "," .. tostring(guiObject.Size.X.Offset) .. "," .. tostring(guiObject.Size.Y.Scale) .. "," .. tostring(guiObject.Size.Y.Offset) .. ")"  
+            properties.BorderColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"     
+            properties.BorderSizePixel = guiObject.BorderSizePixel 
+            properties.BackgroundTransparency = guiObject.BackgroundTransparency 
+        
+    elseif guiObject:IsA("ImageButton") then
+            properties.Image = guiObject.Image 
+            properties.ImageColor3 = guiObject.ImageColor3 
+            properties.ImageTransparency = guiObject.ImageTransparency 
+            properties.Visible = guiObject.Visible   
+            properties.ZIndex = guiObject.ZIndex   
+            properties.Position = "UDim2.new(" .. tostring(guiObject.Position.X.Scale) .. "," .. tostring(guiObject.Position.X.Offset) .. "," .. tostring(guiObject.Position.Y.Scale) .. "," .. tostring(guiObject.Position.Y.Offset) .. ")"    
+            properties.BackgroundColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"  
+            properties.Size = "UDim2.new(" .. tostring(guiObject.Size.X.Scale) .. "," .. tostring(guiObject.Size.X.Offset) .. "," .. tostring(guiObject.Size.Y.Scale) .. "," .. tostring(guiObject.Size.Y.Offset) .. ")"  
+            properties.BorderColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"   
+            properties.BorderSizePixel = guiObject.BorderSizePixel 
+            properties.BackgroundTransparency = guiObject.BackgroundTransparency 
+            
+                elseif guiObject:IsA("TextBox") then 
+            properties.Visible = guiObject.Visible  
+            properties.ZIndex = guiObject.ZIndex   
+            properties.Text = '"' .. guiObject.Text .. '"'  
+            properties.PlaceholderText = '"' .. guiObject.Text .. '"' 
+            properties.PlaceholderColor3 = "Color3.new(" .. tostring(guiObject.PlaceholderColor3) .. ")"     
+            properties.TextColor3 = "Color3.new(" .. tostring(guiObject.TextColor3) .. ")"   
+            properties.TextScaled = guiObject.TextScaled 
+            properties.TextSize = guiObject.TextSize   
+            properties.TextWrapped = guiObject.TextWrapped
+            properties.Position = "UDim2.new(" .. tostring(guiObject.Position.X.Scale) .. "," .. tostring(guiObject.Position.X.Offset) .. "," .. tostring(guiObject.Position.Y.Scale) .. "," .. tostring(guiObject.Position.Y.Offset) .. ")"    
+            properties.BackgroundColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"  
+            properties.BorderColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"   
+            properties.BorderSizePixel = guiObject.BorderSizePixel 
+            properties.Size = "UDim2.new(" .. tostring(guiObject.Size.X.Scale) .. "," .. tostring(guiObject.Size.X.Offset) .. "," .. tostring(guiObject.Size.Y.Scale) .. "," .. tostring(guiObject.Size.Y.Offset) .. ")"   
+            properties.BackgroundTransparency = guiObject.BackgroundTransparency  
+        
+    elseif guiObject:IsA("UICorner") then
+           properties.CornerRadius = guiObject.CornerRadius 
+        
+    elseif guiObject:IsA("Frame") then
+        properties.BackgroundColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")" 
+        properties.Size = "UDim2.new(" .. tostring(guiObject.Size.X.Scale) .. "," .. tostring(guiObject.Size.X.Offset) .. "," .. tostring(guiObject.Size.Y.Scale) .. "," .. tostring(guiObject.Size.Y.Offset) .. ")" 
+        properties.Position = "UDim2.new(" .. tostring(guiObject.Position.X.Scale) .. "," .. tostring(guiObject.Position.X.Offset) .. "," .. tostring(guiObject.Position.Y.Scale) .. "," .. tostring(guiObject.Position.Y.Offset) .. ")" 
+        properties.Visible = guiObject.Visible
+        properties.ZIndex = guiObject.ZIndex
+        properties.BorderSizePixel = guiObject.BorderSizePixel 
+        properties.BorderColor3 = "Color3.new(" .. tostring(guiObject.BackgroundColor3) .. ")"   
+        properties.BackgroundTransparency = guiObject.BackgroundTransparency 
+        
+    else
+        print("Object type not supported or recognized.")
+        return
+    end
+
+    local propertiesString = ""
+    for key, value in pairs(properties) do
+        propertiesString = propertiesString .. guiObject.Name .. "." .. key .. " = " .. tostring(value) .. "\n"
+    end
+
+    CopyPropertiesToClipboard(guiObject.Name, guiObject.ClassName, propertiesString) 
+end  
+
+PropInstances.Name= "PropertiesSaverInstance"
+PropInstances.Parent = game.CoreGui
+
+--- [PropUi - Frame]
+PropUi.Visible = true
+PropUi.Parent = PropInstances 
+PropUi.BackgroundTransparency = 0
+PropUi.Name = "PropUi"
+PropUi.Position = UDim2.new(0,100,0,0)
+PropUi.Size = UDim2.new(0,300,0,150)
+PropUi.ZIndex = 1
+PropUi.BorderSizePixel = 0
+PropUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  
+PropUi.Draggable = true 
+
+--- [BoxUi - TextBox]
+BoxUi.Visible = true
+BoxUi.TextWrapped = true
+BoxUi.Parent = PropUi
+BoxUi.PlaceholderColor3 = Color3.new(0.698039, 0.698039, 0.698039)
+BoxUi.PlaceholderText = "Enter instance path" 
+BoxUi.TextSize = 17 
+BoxUi.Text = "" 
+BoxUi.Size = UDim2.new(0,250,0,50)
+BoxUi.TextColor3 = Color3.new(0.105882, 0.164706, 0.207843)  
+BoxUi.BackgroundTransparency = 0
+BoxUi.Name = "BoxUi"
+BoxUi.Position = UDim2.new(0,25,0,60) 
+BoxUi.ZIndex = 1
+BoxUi.TextScaled = false
+BoxUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)   
+
+--- [buttonUi - TextButton]
+buttonUi.Visible = true
+buttonUi.TextWrapped = false
+buttonUi.BackgroundTransparency = 0
+buttonUi.TextColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+buttonUi.Parent = PropUi
+buttonUi.Text = "Get Properties" 
+buttonUi.Size = UDim2.new(0,110,0,30)
+buttonUi.Font = Enum.Font.Legacy
+buttonUi.Name = "buttonUi"
+buttonUi.Position = UDim2.new(0,90,0,117)
+buttonUi.TextScaled = false
+buttonUi.ZIndex = 1
+buttonUi.TextSize = 8
+buttonUi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)   
+buttonUi.MouseButton1Click:Connect(function()
+print("Path:", BoxUi.Text) 
+GetProperties(BoxUi.Text)  
+end) 
