@@ -2627,7 +2627,7 @@ InfoSection:AddToggle{
 
 local Library = library:Window()
 local Information_Tab = Library:CreateTab({
-    Name = LabelInformation_Translate
+    Name = "Information" or LabelInformation_Translate
 })
 local Information_Section = Information_Tab:CreateSection({
     Name = "Main",
