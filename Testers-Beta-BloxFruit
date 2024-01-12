@@ -2475,3 +2475,45 @@ local InfoSection = InfoTab:CreateSection({
     Name = "Profile",
     Side = "Left"
 })
+local InfoSection1 = InfoTab:CreateSection({
+    Name = "Profile",
+    Side = "Right"
+})
+
+InfoSection1:AddLabel({
+    Name = "Test Label"
+})
+
+InfoSection1:AddButton({
+	Name = "Test Button",
+	Callback = function(v)
+		
+	end
+})
+
+InfoSection1:AddToggle{
+    Name = "Test",
+    Flag = "TestBu",
+    Value = false,
+    Callback  = function(value)
+    end
+}
+
+InfoSection:AddLabel({
+    Name = "Test Label"
+})
+
+InfoSection:AddButton({
+	Name = "Test Button",
+	Callback = function(v)
+		
+	end
+})
+
+InfoSection:AddToggle{
+    Name = "Test",
+    Flag = "TestBu",
+    Value = false,
+    Callback  = function(value)
+    end
+}
