@@ -445,9 +445,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
         ThunderToggleUI.Draggable = true
         ThunderToggleUI.Visible = false
         ThunderToggleUI.MouseButton1Click:Connect(function()
-        game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-        game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
-        wait(1)
+
         ThunderToggleUI.Visible = false
         end)
 
@@ -2659,6 +2657,9 @@ Information_Section:AddDropdown({
     end
 })
 
+
+spawn(function()
+    while true do wait(1) 
     if Select_Translate == "English" then -----[ English ]
             LabelInformation_Translate = "Information"
             LabelFps_Translate = "Fps : "
@@ -2720,6 +2721,8 @@ Information_Section:AddDropdown({
             LabelPing_Translate = "Ping : "
             LabelDiscord_Translato = "Join Discord - Zekrom Hub X"
         end
+    end
+end)
 
 local Client  = Information_Section:AddLabel({Name = "..."})
 
