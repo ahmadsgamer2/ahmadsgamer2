@@ -429,7 +429,7 @@ local ThunderImageUI = Instance.new("ImageLabel")
 local ThunderImageUI = Instance.new("ImageLabel")
 
         ThunderScreen.Name = "ThunderScreen"
-        ThunderScreen.Parent = game.coregui
+        ThunderScreen.Parent = game.CoreGui:WaitForChild("RobloxGui"):WaitForChild("Modules")
         ThunderScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
         ThunderToggleUI.Name = "ThunderToggleUI"
