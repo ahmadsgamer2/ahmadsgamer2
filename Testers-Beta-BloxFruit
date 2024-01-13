@@ -1,4 +1,4 @@
-if game.PlaceId ~= 2753915549 and 4442272183 and 7449423635 then return end
+if game.PlaceId ~= 2753915549 or 4442272183 or 7449423635 then return end
 repeat wait() until game:IsLoaded()
  
 function Teleport()
