@@ -211,7 +211,7 @@ MainSection:AddDropdown({
     end
 })
 
-FastAttack = {"Slow","Fast","Extreme",}
+FastAttackList = {"Slow","Fast","Extreme",}
 
 MainSection:AddDropdown({
     Name = "Select Attack Type",
@@ -335,6 +335,8 @@ MainSection:AddToggle{
     Flag = "Enable_Farm",
     Value = false,
     Callback  = function(value)
+        _G.AutoFarmBone  = value
+        _G.Settings.AutoFarmBone = value
         _G.AutoFarm = value
         _G.Settings.AutoFarm = value
         SaveSettings()
@@ -367,7 +369,62 @@ local NoLoopDuplicate = false
 local SubQuest = false
 local oldmob = Name
 local oldcheckquest = NameMon
+local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.Settings.AutoFarmBone then
+                if _G.ChooseFarm == "Bone" then
+                if GetQuestBone.Visible == false and _G.AccetpQuestBone then
+                    CFrameQuestBone = CFrame.new(-9513, 172, 6079)
+                    if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", "HauntedQuest2", 2)
+                else
+                    toTarget(CFrameQuestBone)
+                end
+        elseif GetQuestBone.Visible == true or not _G.AccetpQuestBone then
+                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                repeat
+                                    task.wait()
+                                    StartMagnet = true
+                                    FastAttack = true
+                                    if _G.AutoHaki then
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                    end
+                                    EquipWeapon(_G.SelectWeapon)
+                                    PosMon = v.HumanoidRootPart.CFrame
+                                    if not _G.FastAttack then
+                                        game:GetService 'VirtualUser':CaptureController()
+                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                    end
+                                    v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                    v.HumanoidRootPart.Transparency = 1
+                                    v.Humanoid.JumpPower = 0
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid:ChangeState(11)
+                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
+                                StartMagnet = false
+                                FastAttack = false
+                            end
+                        end
+                    end
+                else
+                    two(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+                    end
+                end
+            end
+        end
+    end)
+end
+end)
 
 task.spawn(function()
 while task.wait() do
