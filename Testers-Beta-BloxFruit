@@ -1,11 +1,1730 @@
-local MirageIsland = game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island')
+local TweenService = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+local runService = (game:GetService("RunService"))
+local player = game.Players.LocalPlayer
+local userId = player.UserId
+local profilePictureUrl = string.format("https://www.roblox.com/headshot-thumbnail/image?userId=%d&width=420&height=420", userId)
 
-while true do
-    for _, server in ipairs(game:GetService("TeleportService"):GetLocalPlayerTeleportOptions(MirageIsland.PlaceId)) do
-        if server.CurrentPlayers < server.MaxPlayers then
-            game:GetService("TeleportService"):TeleportToPlaceInstance(MirageIsland.PlaceId, server.PlaceId)
-            break
-        end
-    end
-    wait(1)
+if game.CoreGui:FindFirstChild("PikachuY") then
+	game.CoreGui:FindFirstChild("PikachuY"):Destroy()
 end
+	
+local PikachuY = Instance.new("ScreenGui")
+local Main_1 = Instance.new("Frame")
+local UICorner_1 = Instance.new("UICorner")
+local Title_1 = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local PikachuYLogo_1 = Instance.new("ImageLabel")
+local Title_2 = Instance.new("TextLabel")
+local UIPadding_1 = Instance.new("UIPadding")
+local Version_1 = Instance.new("TextLabel")
+local UIPadding_2 = Instance.new("UIPadding")
+local Etc_1 = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local Close_1 = Instance.new("ImageButton")
+local Minimize_1 = Instance.new("ImageButton")
+local Maximize_1 = Instance.new("ImageButton")
+local CurrentTab_1 = Instance.new("Frame")
+local UICorner_4 = Instance.new("UICorner")
+local CurrentImage_1 = Instance.new("ImageLabel")
+local CurrentTitle_1 = Instance.new("TextLabel")
+local UIPadding_3 = Instance.new("UIPadding")
+local CurrentDesc_1 = Instance.new("TextLabel")
+local UIPadding_4 = Instance.new("UIPadding")
+local TabsHolder_1 = Instance.new("Frame")
+local UICorner_5 = Instance.new("UICorner")
+local Tabs_1 = Instance.new("Frame")
+local UICorner_6 = Instance.new("UICorner")
+local Main_2 = Instance.new("ImageButton")
+local Home_1 = Instance.new("ImageButton")
+local Execute_1 = Instance.new("ImageButton")
+local CurrentBarHolder_1 = Instance.new("Frame")
+local CurrentBar_1 = Instance.new("Frame")
+local UICorner_7 = Instance.new("UICorner")
+local ItemsHolder_1 = Instance.new("Frame")
+local MainTab_1 = Instance.new("Frame")
+local LogoHolder_1 = Instance.new("Frame")
+local UICorner_8 = Instance.new("UICorner")
+local TeamPikaLogo_1 = Instance.new("ImageLabel")
+local TextLabel_1 = Instance.new("TextLabel")
+local CreditsHolder_1 = Instance.new("Frame")
+local UICorner_9 = Instance.new("UICorner")
+local AboutUs_1 = Instance.new("TextLabel")
+local UIPadding_5 = Instance.new("UIPadding")
+local FirstCredits_1 = Instance.new("Frame")
+local UICorner_10 = Instance.new("UICorner")
+local FirstImage_1 = Instance.new("ImageLabel")
+local UICorner_11 = Instance.new("UICorner")
+local FirstName_1 = Instance.new("TextLabel")
+local UIPadding_6 = Instance.new("UIPadding")
+local FirstDesc_1 = Instance.new("TextLabel")
+local UIPadding_7 = Instance.new("UIPadding")
+local SecondCredits_1 = Instance.new("Frame")
+local UICorner_12 = Instance.new("UICorner")
+local SecondImage_1 = Instance.new("ImageLabel")
+local UICorner_13 = Instance.new("UICorner")
+local SecondName_1 = Instance.new("TextLabel")
+local UIPadding_8 = Instance.new("UIPadding")
+local SecondDesc_1 = Instance.new("TextLabel")
+local UIPadding_9 = Instance.new("UIPadding")
+local ChangelogHolder_1 = Instance.new("Frame")
+local UICorner_14 = Instance.new("UICorner")
+local ChangelogBars_1 = Instance.new("ScrollingFrame")
+local FirstChange_1 = Instance.new("Frame")
+local UICorner_15 = Instance.new("UICorner")
+local FirstTitle_1 = Instance.new("TextLabel")
+local UIPadding_10 = Instance.new("UIPadding")
+local FirstDesc_2 = Instance.new("TextLabel")
+local UIPadding_11 = Instance.new("UIPadding")
+local ChangelogVersion_1 = Instance.new("TextLabel")
+local UIPadding_12 = Instance.new("UIPadding")
+local ChangelogTitle_1 = Instance.new("TextLabel")
+local UIPadding_13 = Instance.new("UIPadding")
+local InstaHolder_1 = Instance.new("Frame")
+local UICorner_16 = Instance.new("UICorner")
+local InstaHolder_2 = Instance.new("Frame")
+local UICorner_17 = Instance.new("UICorner")
+local InstaLogo_1 = Instance.new("ImageLabel")
+local InstaText_1 = Instance.new("TextLabel")
+local UIPadding_14 = Instance.new("UIPadding")
+local InstaTag_1 = Instance.new("TextLabel")
+local UIPadding_15 = Instance.new("UIPadding")
+local HomeTab_1 = Instance.new("Frame")
+local LogoHolder_2 = Instance.new("Frame")
+local UICorner_18 = Instance.new("UICorner")
+local LogoHolder_3 = Instance.new("Frame")
+local UICorner_19 = Instance.new("UICorner")
+local ImageLabel_1 = Instance.new("ImageLabel")
+local UICorner_20 = Instance.new("UICorner")
+local Welcome_1 = Instance.new("TextLabel")
+local UIPadding_16 = Instance.new("UIPadding")
+local DisplayName_1 = Instance.new("TextLabel")
+local UIPadding_17 = Instance.new("UIPadding")
+local UserName_1 = Instance.new("TextLabel")
+local UIPadding_18 = Instance.new("UIPadding")
+local QuickExecHolder_1 = Instance.new("Frame")
+local UICorner_21 = Instance.new("UICorner")
+local QuickExec_1 = Instance.new("Frame")
+local UICorner_22 = Instance.new("UICorner")
+local QuickExecTitle_1 = Instance.new("TextLabel")
+local UIPadding_19 = Instance.new("UIPadding")
+local QuickExecBoxHolder_1 = Instance.new("Frame")
+local UICorner_23 = Instance.new("UICorner")
+local QuickExecBox_1 = Instance.new("TextBox")
+local UIPadding_20 = Instance.new("UIPadding")
+local ClearBtnHolder_1 = Instance.new("Frame")
+local UICorner_24 = Instance.new("UICorner")
+local ClearBtn_1 = Instance.new("TextButton")
+local ExecBtnHolder_1 = Instance.new("Frame")
+local UICorner_25 = Instance.new("UICorner")
+local ExecBtn_1 = Instance.new("TextButton")
+local ScriptsHolder_1 = Instance.new("Frame")
+local UICorner_26 = Instance.new("UICorner")
+local Scripts_1 = Instance.new("Frame")
+local UICorner_27 = Instance.new("UICorner")
+local ScriptsScroll_1 = Instance.new("ScrollingFrame")
+local ScriptBtn1Holder_1 = Instance.new("Frame")
+local UICorner_28 = Instance.new("UICorner")
+local ScriptBtn1_1 = Instance.new("TextButton")
+local UIPadding_21 = Instance.new("UIPadding")
+local UIListLayout_1 = Instance.new("UIListLayout")
+local ScriptBtn2Holder_1 = Instance.new("Frame")
+local UICorner_29 = Instance.new("UICorner")
+local ScriptBtn2_1 = Instance.new("TextButton")
+local ScriptBtn3Holder_1 = Instance.new("Frame")
+local UICorner_30 = Instance.new("UICorner")
+local ScriptBtn3_1 = Instance.new("TextButton")
+local ScriptBtn4Holder_1 = Instance.new("Frame")
+local UICorner_31 = Instance.new("UICorner")
+local ScriptBtn4_1 = Instance.new("TextButton")
+local ScriptBtn5Holder_1 = Instance.new("Frame")
+local UICorner_32 = Instance.new("UICorner")
+local ScriptBtn5_1 = Instance.new("TextButton")
+local RecommendedTitle_1 = Instance.new("TextLabel")
+local ExecutorTab_1 = Instance.new("Frame")
+local ExecHolder1_1 = Instance.new("Frame")
+local UICorner_33 = Instance.new("UICorner")
+local ExecHolder2_1 = Instance.new("Frame")
+local UICorner_34 = Instance.new("UICorner")
+local ExecBoxHolder_1 = Instance.new("Frame")
+local UICorner_35 = Instance.new("UICorner")
+local ExecBox_1 = Instance.new("TextBox")
+local UIPadding_22 = Instance.new("UIPadding")
+local ExecutorTitle_1 = Instance.new("TextLabel")
+local UIPadding_23 = Instance.new("UIPadding")
+local ExecuteBtnHolder_1 = Instance.new("Frame")
+local UICorner_36 = Instance.new("UICorner")
+local ExecuteBtn_1 = Instance.new("TextButton")
+local ClearBtnHolder_2 = Instance.new("Frame")
+local UICorner_37 = Instance.new("UICorner")
+local ClearBtn_2 = Instance.new("TextButton")
+local CopyHolder_1 = Instance.new("Frame")
+local UICorner_38 = Instance.new("UICorner")
+local CopyBtn_1 = Instance.new("TextButton")
+local ToggleFrame_1 = Instance.new("Frame")
+local UICorner_40 = Instance.new("UICorner")
+local ToggleBtn_1 = Instance.new("ImageButton")
+local UICorner_41 = Instance.new("UICorner")
+
+
+-- Define
+local currentBar = CurrentBar_1
+
+-- MainTab
+local targetPositionMain = UDim2.new(0, 0,0.00636942685, 0)
+
+-- HomeTab
+local targetPositionHome = UDim2.new(0, 0,0.39756475385, 0)
+
+-- ExecutorTab
+local targetPositionExecute = UDim2.new(0, 0,0.78876008085, 0)
+
+-- Anim
+local tweenInfo = TweenInfo.new(
+    0.25, -- Duration
+    Enum.EasingStyle.Quad, -- Easing style
+    Enum.EasingDirection.Out, -- Easing direction
+    0, -- Number of repetitions (0 for once)
+    false, -- Reverses after reaching the goal
+    0 -- Delay between repetitions
+)
+
+-- Main Tween
+local tween1 = TweenService:Create(CurrentBar_1, tweenInfo, {Position = targetPositionMain})
+
+-- Home Tween
+local tween2= TweenService:Create(CurrentBar_1, tweenInfo, {Position = targetPositionHome})
+
+-- Execute Tween
+local tween3 = TweenService:Create(CurrentBar_1, tweenInfo, {Position = targetPositionExecute})
+
+
+
+-- Properties:
+PikachuY.Name = "PikachuY"
+PikachuY.Parent = game.CoreGui
+
+Main_1.Name = "Main"
+Main_1.Parent = PikachuY
+Main_1.AnchorPoint = Vector2.new(0.5, 0.5)
+Main_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Main_1.BackgroundTransparency = 0.4000000059604645
+Main_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Main_1.BorderSizePixel = 0
+Main_1.Position = UDim2.new(0.5, 0,0.499536186, 0)
+Main_1.Size = UDim2.new(0, 0,0, 0)
+
+local frame = Main_1
+
+local dragToggle = nil
+
+local dragSpeed = 0.25 -- the amount of speed you want the drag to be
+
+local dragStart = nil
+
+local startPos = nil
+
+
+
+local function updateInput(input)
+
+ local delta = input.Position - dragStart
+
+ local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+
+  startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+
+ game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+
+end
+
+
+
+frame.InputBegan:Connect(function(input)
+
+ if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+
+  dragToggle = true
+
+  dragStart = input.Position
+
+  startPos = frame.Position
+
+  input.Changed:Connect(function()
+
+   if input.UserInputState == Enum.UserInputState.End then
+
+    dragToggle = false
+
+   end
+
+  end)
+
+ end
+
+end)
+
+
+
+UIS.InputChanged:Connect(function(input)
+
+ if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+
+  if dragToggle then
+
+   updateInput(input)
+
+  end
+
+ end
+
+end)
+
+UICorner_1.Parent = Main_1
+UICorner_1.CornerRadius = UDim.new(0,15)
+
+Title_1.Name = "Title"
+Title_1.Parent = Main_1
+Title_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Title_1.BackgroundTransparency = 0.4000000059604645
+Title_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Title_1.BorderSizePixel = 0
+Title_1.Position = UDim2.new(0.0332541578, 0,0.0620155036, 0)
+Title_1.Size = UDim2.new(0, 121,0, 37)
+
+UICorner_2.Parent = Title_1
+
+PikachuYLogo_1.Name = "PikachuYLogo"
+PikachuYLogo_1.Parent = Title_1
+PikachuYLogo_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+PikachuYLogo_1.BackgroundTransparency = 1
+PikachuYLogo_1.BorderColor3 = Color3.fromRGB(0,0,0)
+PikachuYLogo_1.BorderSizePixel = 0
+PikachuYLogo_1.Position = UDim2.new(0.0743801668, 0,0.108108111, 0)
+PikachuYLogo_1.Size = UDim2.new(0, 21,0, 28)
+PikachuYLogo_1.Image = "rbxassetid://15312650729"
+
+Title_2.Name = "Title"
+Title_2.Parent = Title_1
+Title_2.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Title_2.BackgroundTransparency = 1
+Title_2.BorderColor3 = Color3.fromRGB(0,0,0)
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(0, 0,0.108108111, 0)
+Title_2.Size = UDim2.new(0, 121,0, 28)
+Title_2.Font = Enum.Font.RobotoCondensed
+
+Title_2.Text = "Pikachu Y"
+Title_2.TextColor3 = Color3.fromRGB(255,255,255)
+Title_2.TextSize = 15
+
+UIPadding_1.Parent = Title_2
+UIPadding_1.PaddingLeft = UDim.new(0,2)
+
+Version_1.Name = "Version"
+Version_1.Parent = Title_1
+Version_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Version_1.BackgroundTransparency = 1
+Version_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Version_1.BorderSizePixel = 0
+Version_1.Position = UDim2.new(0.69421488, 0,0.459459454, 0)
+Version_1.Size = UDim2.new(0, 30,0, 15)
+Version_1.Font = Enum.Font.RobotoCondensed
+
+Version_1.Text = "Beta"
+Version_1.TextColor3 = Color3.fromRGB(255,255,255)
+Version_1.TextSize = 12
+Version_1.TextStrokeColor3 = Color3.fromRGB(208,194,76)
+Version_1.TextStrokeTransparency = 0
+
+UIPadding_2.Parent = Version_1
+UIPadding_2.PaddingLeft = UDim.new(0,2)
+
+Etc_1.Name = "Etc"
+Etc_1.Parent = Main_1
+Etc_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Etc_1.BackgroundTransparency = 0.4000000059604645
+Etc_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Etc_1.BorderSizePixel = 0
+Etc_1.Position = UDim2.new(0.71496439, 0,0.0620155036, 0)
+Etc_1.Size = UDim2.new(0, 104,0, 37)
+
+UICorner_3.Parent = Etc_1
+
+local MinimumSize = UDim2.new(0, 50,0, 50)
+
+local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local sizeTweenMaximizeToggleGoal = {}
+sizeTweenMaximizeToggleGoal.Size = MinimumSize
+
+local sizeTweenMaximizeToggle = TweenService:Create(ToggleFrame_1, tweenInfo, sizeTweenMaximizeToggleGoal)
+
+
+local targetSize2 = UDim2.new(0, 0, 0, 0)
+
+local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local sizeTweenCloseGUIGoal = {}
+sizeTweenCloseGUIGoal.Size = targetSize2
+
+local sizeTweenCloseGUI = TweenService:Create(Main_1, tweenInfo, sizeTweenCloseGUIGoal)
+
+Close_1.Name = "Close"
+Close_1.Parent = Etc_1
+Close_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Close_1.BackgroundTransparency = 1
+Close_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Close_1.BorderSizePixel = 0
+Close_1.Position = UDim2.new(0.670000017, 0,0.0540000014, 0)
+Close_1.Size = UDim2.new(0, 33,0, 33)
+Close_1.Image = "rbxassetid://15312793384"
+
+Minimize_1.Name = "Minimize"
+Minimize_1.Parent = Etc_1
+Minimize_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Minimize_1.BackgroundTransparency = 1
+Minimize_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Minimize_1.BorderSizePixel = 0
+Minimize_1.Position = UDim2.new(0.0399999991, 0,0.108000003, 0)
+Minimize_1.Size = UDim2.new(0, 28,0, 28)
+Minimize_1.Image = "rbxassetid://15312818844"
+
+Maximize_1.Name = "Maximize"
+Maximize_1.Parent = Etc_1
+Maximize_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Maximize_1.BackgroundTransparency = 1
+Maximize_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Maximize_1.BorderSizePixel = 0
+Maximize_1.Position = UDim2.new(0.365384609, 0,0.108108111, 0)
+Maximize_1.Size = UDim2.new(0, 28,0, 28)
+Maximize_1.Image = "rbxassetid://15312816309"
+
+CurrentTab_1.Name = "CurrentTab"
+CurrentTab_1.Parent = Main_1
+CurrentTab_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+CurrentTab_1.BackgroundTransparency = 0.4000000059604645
+CurrentTab_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentTab_1.BorderSizePixel = 0
+CurrentTab_1.Position = UDim2.new(0.33491686, 0,0.0620155036, 0)
+CurrentTab_1.Size = UDim2.new(0, 154,0, 37)
+
+UICorner_4.Parent = CurrentTab_1
+
+CurrentImage_1.Name = "CurrentImage"
+CurrentImage_1.Parent = CurrentTab_1
+CurrentImage_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CurrentImage_1.BackgroundTransparency = 1
+CurrentImage_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentImage_1.BorderSizePixel = 0
+CurrentImage_1.Position = UDim2.new(0.0454545468, 0,0.135135129, 0)
+CurrentImage_1.Size = UDim2.new(0, 27,0, 27)
+CurrentImage_1.Image = "rbxassetid://15312723951"
+
+CurrentTitle_1.Name = "CurrentTitle"
+CurrentTitle_1.Parent = CurrentTab_1
+CurrentTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CurrentTitle_1.BackgroundTransparency = 1
+CurrentTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentTitle_1.BorderSizePixel = 0
+CurrentTitle_1.Position = UDim2.new(0.227272734, 0,0.108108111, 0)
+CurrentTitle_1.Size = UDim2.new(0, 119,0, 17)
+CurrentTitle_1.Font = Enum.Font.RobotoCondensed
+
+CurrentTitle_1.Text = "Script Info"
+CurrentTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+CurrentTitle_1.TextSize = 15
+CurrentTitle_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_3.Parent = CurrentTitle_1
+UIPadding_3.PaddingLeft = UDim.new(0,5)
+
+CurrentDesc_1.Name = "CurrentDesc"
+CurrentDesc_1.Parent = CurrentTab_1
+CurrentDesc_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CurrentDesc_1.BackgroundTransparency = 1
+CurrentDesc_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentDesc_1.BorderSizePixel = 0
+CurrentDesc_1.Position = UDim2.new(0.227272734, 0,0.567567587, 0)
+CurrentDesc_1.Size = UDim2.new(0, 119,0, 11)
+CurrentDesc_1.Font = Enum.Font.RobotoCondensed
+
+CurrentDesc_1.Text = "About Team Pika and Pikachu Y"
+CurrentDesc_1.TextColor3 = Color3.fromRGB(152,152,152)
+CurrentDesc_1.TextSize = 9
+CurrentDesc_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_4.Parent = CurrentDesc_1
+UIPadding_4.PaddingLeft = UDim.new(0,5)
+
+TabsHolder_1.Name = "TabsHolder"
+TabsHolder_1.Parent = Main_1
+TabsHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+TabsHolder_1.BackgroundTransparency = 0.5
+TabsHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+TabsHolder_1.BorderSizePixel = 0
+TabsHolder_1.Position = UDim2.new(0.0332541578, 0,0.232558146, 0)
+TabsHolder_1.Size = UDim2.new(0, 44,0, 184)
+
+UICorner_5.Parent = TabsHolder_1
+
+Tabs_1.Name = "Tabs"
+Tabs_1.Parent = TabsHolder_1
+Tabs_1.AnchorPoint = Vector2.new(0.5, 0.5)
+Tabs_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Tabs_1.BackgroundTransparency = 0.5
+Tabs_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Tabs_1.BorderSizePixel = 0
+Tabs_1.Position = UDim2.new(0.5, 0,0.5, 0)
+Tabs_1.Size = UDim2.new(0, 35,0, 174)
+
+UICorner_6.Parent = Tabs_1
+
+Main_2.Name = "Main"
+Main_2.Parent = Tabs_1
+Main_2.Active = true
+Main_2.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Main_2.BackgroundTransparency = 1
+Main_2.BorderColor3 = Color3.fromRGB(0,0,0)
+Main_2.BorderSizePixel = 0
+Main_2.Position = UDim2.new(0.171428576, 0,0.0517241396, 0)
+Main_2.Size = UDim2.new(0, 23,0, 23)
+Main_2.Image = "rbxassetid://15312723951"
+
+Home_1.Name = "Home"
+Home_1.Parent = Tabs_1
+Home_1.Active = true
+Home_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Home_1.BackgroundTransparency = 1
+Home_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Home_1.BorderSizePixel = 0
+Home_1.Position = UDim2.new(0.0571428575, 0,0.413793117, 0)
+Home_1.Size = UDim2.new(0, 30,0, 30)
+Home_1.Image = "rbxassetid://15312748718"
+
+Execute_1.Name = "Execute"
+Execute_1.Parent = Tabs_1
+Execute_1.Active = true
+Execute_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Execute_1.BackgroundTransparency = 1
+Execute_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Execute_1.BorderSizePixel = 0
+Execute_1.Position = UDim2.new(0.114142716, 0,0.804988444, 0)
+Execute_1.Size = UDim2.new(0, 27,0, 24)
+Execute_1.Image = "rbxassetid://15312760968"
+
+CurrentBarHolder_1.Name = "CurrentBarHolder"
+CurrentBarHolder_1.Parent = TabsHolder_1
+CurrentBarHolder_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CurrentBarHolder_1.BackgroundTransparency = 1
+CurrentBarHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentBarHolder_1.BorderSizePixel = 0
+CurrentBarHolder_1.Position = UDim2.new(0, 0,0.048913043, 0)
+CurrentBarHolder_1.Size = UDim2.new(0, 4,0, 166)
+
+CurrentBar_1.Name = "CurrentBar"
+CurrentBar_1.Parent = CurrentBarHolder_1
+CurrentBar_1.BackgroundColor3 = Color3.fromRGB(221,202,58)
+CurrentBar_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CurrentBar_1.BorderSizePixel = 0
+CurrentBar_1.Position = UDim2.new(0, 0,0.00636942685, 0)
+CurrentBar_1.Size = UDim2.new(0, 4,0, 29)
+
+UICorner_7.Parent = CurrentBar_1
+
+ItemsHolder_1.Name = "ItemsHolder"
+ItemsHolder_1.Parent = Main_1
+ItemsHolder_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ItemsHolder_1.BackgroundTransparency = 1
+ItemsHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ItemsHolder_1.BorderSizePixel = 0
+ItemsHolder_1.Position = UDim2.new(0.152102217, 0,0.23254253, 0)
+ItemsHolder_1.Size = UDim2.new(0, 340,0, 184)
+ItemsHolder_1.ClipsDescendants = true
+
+MainTab_1.Name = "MainTab"
+MainTab_1.Parent = ItemsHolder_1
+MainTab_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+MainTab_1.BackgroundTransparency = 1
+MainTab_1.BorderColor3 = Color3.fromRGB(0,0,0)
+MainTab_1.BorderSizePixel = 0
+MainTab_1.Size = UDim2.new(0, 340,0, 184)
+MainTab_1.Visible = true
+
+LogoHolder_1.Name = "LogoHolder"
+LogoHolder_1.Parent = MainTab_1
+LogoHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+LogoHolder_1.BackgroundTransparency = 0.4000000059604645
+LogoHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+LogoHolder_1.BorderSizePixel = 0
+LogoHolder_1.Size = UDim2.new(0, 147,0, 54)
+
+UICorner_8.Parent = LogoHolder_1
+
+TeamPikaLogo_1.Name = "TeamPikaLogo"
+TeamPikaLogo_1.Parent = LogoHolder_1
+TeamPikaLogo_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+TeamPikaLogo_1.BackgroundTransparency = 1
+TeamPikaLogo_1.BorderColor3 = Color3.fromRGB(0,0,0)
+TeamPikaLogo_1.BorderSizePixel = 0
+TeamPikaLogo_1.Position = UDim2.new(0.0425543748, 0,0.111185707, 0)
+TeamPikaLogo_1.Size = UDim2.new(0, 38,0, 41)
+TeamPikaLogo_1.Image = "rbxassetid://15312933977"
+
+TextLabel_1.Parent = LogoHolder_1
+TextLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+TextLabel_1.BackgroundTransparency = 1
+TextLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
+TextLabel_1.BorderSizePixel = 0
+TextLabel_1.Position = UDim2.new(0.306122452, 0,0.0370370373, 0)
+TextLabel_1.Size = UDim2.new(0, 94,0, 50)
+TextLabel_1.Font = Enum.Font.RobotoCondensed
+
+TextLabel_1.Text = "Team Pika"
+TextLabel_1.TextColor3 = Color3.fromRGB(255,255,255)
+TextLabel_1.TextSize = 22
+
+CreditsHolder_1.Name = "CreditsHolder"
+CreditsHolder_1.Parent = MainTab_1
+CreditsHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+CreditsHolder_1.BackgroundTransparency = 0.4000000059604645
+CreditsHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CreditsHolder_1.BorderSizePixel = 0
+CreditsHolder_1.Position = UDim2.new(0, 0,0.342391312, 0)
+CreditsHolder_1.Size = UDim2.new(0, 147,0, 121)
+
+UICorner_9.Parent = CreditsHolder_1
+
+AboutUs_1.Name = "AboutUs"
+AboutUs_1.Parent = CreditsHolder_1
+AboutUs_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+AboutUs_1.BackgroundTransparency = 1
+AboutUs_1.BorderColor3 = Color3.fromRGB(0,0,0)
+AboutUs_1.BorderSizePixel = 0
+AboutUs_1.Size = UDim2.new(0, 147,0, 25)
+AboutUs_1.Font = Enum.Font.RobotoCondensed
+
+AboutUs_1.Text = "About Us"
+AboutUs_1.TextColor3 = Color3.fromRGB(255,255,255)
+AboutUs_1.TextSize = 16
+AboutUs_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_5.Parent = AboutUs_1
+UIPadding_5.PaddingLeft = UDim.new(0,8)
+UIPadding_5.PaddingTop = UDim.new(0,8)
+
+FirstCredits_1.Name = "FirstCredits"
+FirstCredits_1.Parent = CreditsHolder_1
+FirstCredits_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+FirstCredits_1.BackgroundTransparency = 0.5
+FirstCredits_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstCredits_1.BorderSizePixel = 0
+FirstCredits_1.Position = UDim2.new(0.0410000011, 0,0.270000011, 0)
+FirstCredits_1.Size = UDim2.new(0, 133,0, 33)
+
+UICorner_10.Parent = FirstCredits_1
+
+FirstImage_1.Name = "FirstImage"
+FirstImage_1.Parent = FirstCredits_1
+FirstImage_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+FirstImage_1.BackgroundTransparency = 1
+FirstImage_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstImage_1.BorderSizePixel = 0
+FirstImage_1.Position = UDim2.new(0.0379999988, 0,0.0949999988, 0)
+FirstImage_1.Size = UDim2.new(0, 27,0, 27)
+FirstImage_1.Image = "rbxassetid://15312961675"
+
+UICorner_11.Parent = FirstImage_1
+UICorner_11.CornerRadius = UDim.new(0,6)
+
+FirstName_1.Name = "FirstName"
+FirstName_1.Parent = FirstCredits_1
+FirstName_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+FirstName_1.BackgroundTransparency = 1
+FirstName_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstName_1.BorderSizePixel = 0
+FirstName_1.Position = UDim2.new(0.241007179, 0,0, 0)
+FirstName_1.Size = UDim2.new(0, 100,0, 15)
+FirstName_1.Font = Enum.Font.RobotoCondensed
+
+FirstName_1.Text = "AdxnisRBX"
+FirstName_1.TextColor3 = Color3.fromRGB(255,255,255)
+FirstName_1.TextSize = 14
+FirstName_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_6.Parent = FirstName_1
+UIPadding_6.PaddingLeft = UDim.new(0,6)
+UIPadding_6.PaddingTop = UDim.new(0,4)
+
+FirstDesc_1.Name = "FirstDesc"
+FirstDesc_1.Parent = FirstCredits_1
+FirstDesc_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+FirstDesc_1.BackgroundTransparency = 1
+FirstDesc_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstDesc_1.BorderSizePixel = 0
+FirstDesc_1.Position = UDim2.new(0.241007179, 0,0.454545468, 0)
+FirstDesc_1.Size = UDim2.new(0, 100,0, 15)
+FirstDesc_1.Font = Enum.Font.RobotoCondensed
+
+FirstDesc_1.Text = "CEO & Developer"
+FirstDesc_1.TextColor3 = Color3.fromRGB(152,152,152)
+FirstDesc_1.TextSize = 10
+FirstDesc_1.TextWrapped = true
+FirstDesc_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_7.Parent = FirstDesc_1
+UIPadding_7.PaddingLeft = UDim.new(0,6)
+
+SecondCredits_1.Name = "SecondCredits"
+SecondCredits_1.Parent = CreditsHolder_1
+SecondCredits_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+SecondCredits_1.BackgroundTransparency = 0.5
+SecondCredits_1.BorderColor3 = Color3.fromRGB(0,0,0)
+SecondCredits_1.BorderSizePixel = 0
+SecondCredits_1.Position = UDim2.new(0.0410000011, 0,0.600000024, 0)
+SecondCredits_1.Size = UDim2.new(0, 133,0, 33)
+
+UICorner_12.Parent = SecondCredits_1
+
+SecondImage_1.Name = "SecondImage"
+SecondImage_1.Parent = SecondCredits_1
+SecondImage_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+SecondImage_1.BackgroundTransparency = 1
+SecondImage_1.BorderColor3 = Color3.fromRGB(0,0,0)
+SecondImage_1.BorderSizePixel = 0
+SecondImage_1.Position = UDim2.new(0.0379999988, 0,0.0949999988, 0)
+SecondImage_1.Size = UDim2.new(0, 27,0, 27)
+SecondImage_1.Image = "rbxassetid://15313003577"
+
+UICorner_13.Parent = SecondImage_1
+UICorner_13.CornerRadius = UDim.new(0,6)
+
+SecondName_1.Name = "SecondName"
+SecondName_1.Parent = SecondCredits_1
+SecondName_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+SecondName_1.BackgroundTransparency = 1
+SecondName_1.BorderColor3 = Color3.fromRGB(0,0,0)
+SecondName_1.BorderSizePixel = 0
+SecondName_1.Position = UDim2.new(0.241007179, 0,0, 0)
+SecondName_1.Size = UDim2.new(0, 100,0, 15)
+SecondName_1.Font = Enum.Font.RobotoCondensed
+
+SecondName_1.Text = "Untamed"
+SecondName_1.TextColor3 = Color3.fromRGB(255,255,255)
+SecondName_1.TextSize = 14
+SecondName_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_8.Parent = SecondName_1
+UIPadding_8.PaddingLeft = UDim.new(0,6)
+UIPadding_8.PaddingTop = UDim.new(0,4)
+
+SecondDesc_1.Name = "SecondDesc"
+SecondDesc_1.Parent = SecondCredits_1
+SecondDesc_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+SecondDesc_1.BackgroundTransparency = 1
+SecondDesc_1.BorderColor3 = Color3.fromRGB(0,0,0)
+SecondDesc_1.BorderSizePixel = 0
+SecondDesc_1.Position = UDim2.new(0.241007179, 0,0.454545468, 0)
+SecondDesc_1.Size = UDim2.new(0, 100,0, 15)
+SecondDesc_1.Font = Enum.Font.RobotoCondensed
+
+SecondDesc_1.Text = "Developer & Tester"
+SecondDesc_1.TextColor3 = Color3.fromRGB(152,152,152)
+SecondDesc_1.TextSize = 10
+SecondDesc_1.TextWrapped = true
+SecondDesc_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_9.Parent = SecondDesc_1
+UIPadding_9.PaddingLeft = UDim.new(0,6)
+
+ChangelogHolder_1.Name = "ChangelogHolder"
+ChangelogHolder_1.Parent = MainTab_1
+ChangelogHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+ChangelogHolder_1.BackgroundTransparency = 0.4000000059604645
+ChangelogHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ChangelogHolder_1.BorderSizePixel = 0
+ChangelogHolder_1.Position = UDim2.new(0.455882341, 0,0, 0)
+ChangelogHolder_1.Size = UDim2.new(0, 184,0, 126)
+
+UICorner_14.Parent = ChangelogHolder_1
+
+ChangelogBars_1.Name = "ChangelogBars"
+ChangelogBars_1.Parent = ChangelogHolder_1
+ChangelogBars_1.Active = true
+ChangelogBars_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ChangelogBars_1.BackgroundTransparency = 1
+ChangelogBars_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ChangelogBars_1.BorderSizePixel = 0
+ChangelogBars_1.Position = UDim2.new(0.0543478243, 0,0.269873232, 0)
+ChangelogBars_1.Size = UDim2.new(0, 164,0, 82)
+ChangelogBars_1.ClipsDescendants = true
+ChangelogBars_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+ChangelogBars_1.BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png"
+ChangelogBars_1.CanvasPosition = Vector2.new(0, 0)
+ChangelogBars_1.CanvasSize = UDim2.new(0, 0,0.5, 0)
+ChangelogBars_1.ElasticBehavior = Enum.ElasticBehavior.Never
+ChangelogBars_1.HorizontalScrollBarInset = Enum.ScrollBarInset.None
+ChangelogBars_1.MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+ChangelogBars_1.ScrollBarImageColor3 = Color3.fromRGB(0,0,0)
+ChangelogBars_1.ScrollBarImageTransparency = 1
+ChangelogBars_1.ScrollBarThickness = 1
+ChangelogBars_1.ScrollingDirection = Enum.ScrollingDirection.Y
+ChangelogBars_1.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png"
+ChangelogBars_1.VerticalScrollBarInset = Enum.ScrollBarInset.None
+ChangelogBars_1.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
+
+FirstChange_1.Name = "FirstChange"
+FirstChange_1.Parent = ChangelogBars_1
+FirstChange_1.BackgroundColor3 = Color3.fromRGB(92,83,33)
+FirstChange_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstChange_1.BorderSizePixel = 0
+FirstChange_1.Size = UDim2.new(0, 150,0, 35)
+
+UICorner_15.Parent = FirstChange_1
+
+FirstTitle_1.Name = "FirstTitle"
+FirstTitle_1.Parent = FirstChange_1
+FirstTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+FirstTitle_1.BackgroundTransparency = 1
+FirstTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstTitle_1.BorderSizePixel = 0
+FirstTitle_1.Position = UDim2.new(0, 0,0.0857142881, 0)
+FirstTitle_1.Size = UDim2.new(0, 150,0, 13)
+FirstTitle_1.Font = Enum.Font.RobotoCondensed
+
+FirstTitle_1.Text = "Beta Release | v0.0.1"
+FirstTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+FirstTitle_1.TextSize = 12
+FirstTitle_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_10.Parent = FirstTitle_1
+UIPadding_10.PaddingLeft = UDim.new(0,6)
+UIPadding_10.PaddingTop = UDim.new(0,4)
+
+FirstDesc_2.Name = "FirstDesc"
+FirstDesc_2.Parent = FirstChange_1
+FirstDesc_2.BackgroundColor3 = Color3.fromRGB(255,255,255)
+FirstDesc_2.BackgroundTransparency = 1
+FirstDesc_2.BorderColor3 = Color3.fromRGB(0,0,0)
+FirstDesc_2.BorderSizePixel = 0
+FirstDesc_2.Position = UDim2.new(0, 0,0.509022713, 0)
+FirstDesc_2.Size = UDim2.new(0, 150,0, 15)
+FirstDesc_2.Font = Enum.Font.RobotoCondensed
+FirstDesc_2.Text = "Released Pikachu Y Beta, version 0.0.1"
+FirstDesc_2.TextColor3 = Color3.fromRGB(255,255,255)
+FirstDesc_2.TextSize = 9
+FirstDesc_2.TextXAlignment = Enum.TextXAlignment.Left
+FirstDesc_2.TextYAlignment = Enum.TextYAlignment.Top
+
+UIPadding_11.Parent = FirstDesc_2
+UIPadding_11.PaddingLeft = UDim.new(0,6)
+UIPadding_11.PaddingRight = UDim.new(0,6)
+UIPadding_11.PaddingTop = UDim.new(0,2)
+
+ChangelogVersion_1.Name = "ChangelogVersion"
+ChangelogVersion_1.Parent = ChangelogHolder_1
+ChangelogVersion_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ChangelogVersion_1.BackgroundTransparency = 1
+ChangelogVersion_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ChangelogVersion_1.BorderSizePixel = 0
+ChangelogVersion_1.Position = UDim2.new(0.586957157, 0,0.0476190485, 0)
+ChangelogVersion_1.Size = UDim2.new(0, 75,0, 22)
+ChangelogVersion_1.Font = Enum.Font.RobotoCondensed
+
+ChangelogVersion_1.Text = "v0.0.1"
+ChangelogVersion_1.TextColor3 = Color3.fromRGB(152,152,152)
+ChangelogVersion_1.TextSize = 16
+ChangelogVersion_1.TextXAlignment = Enum.TextXAlignment.Right
+
+UIPadding_12.Parent = ChangelogVersion_1
+UIPadding_12.PaddingRight = UDim.new(0,10)
+
+ChangelogTitle_1.Name = "ChangelogTitle"
+ChangelogTitle_1.Parent = ChangelogHolder_1
+ChangelogTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ChangelogTitle_1.BackgroundTransparency = 1
+ChangelogTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ChangelogTitle_1.BorderSizePixel = 0
+ChangelogTitle_1.Position = UDim2.new(-0.00543411914, 0,0.0476190485, 0)
+ChangelogTitle_1.Size = UDim2.new(0, 75,0, 22)
+ChangelogTitle_1.Font = Enum.Font.RobotoCondensed
+
+ChangelogTitle_1.Text = "Changelog"
+ChangelogTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+ChangelogTitle_1.TextSize = 16
+ChangelogTitle_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_13.Parent = ChangelogTitle_1
+UIPadding_13.PaddingLeft = UDim.new(0,10)
+
+InstaHolder_1.Name = "InstaHolder"
+InstaHolder_1.Parent = MainTab_1
+InstaHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+InstaHolder_1.BackgroundTransparency = 0.4000000059604645
+InstaHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+InstaHolder_1.BorderSizePixel = 0
+InstaHolder_1.Position = UDim2.new(0.455882341, 0,0.733695626, 0)
+InstaHolder_1.Size = UDim2.new(0, 184,0, 49)
+
+UICorner_16.Parent = InstaHolder_1
+
+InstaHolder_2.Name = "InstaHolder"
+InstaHolder_2.Parent = MainTab_1
+InstaHolder_2.BackgroundColor3 = Color3.fromRGB(21,21,21)
+InstaHolder_2.BackgroundTransparency = 0.4000000059604645
+InstaHolder_2.BorderColor3 = Color3.fromRGB(0,0,0)
+InstaHolder_2.BorderSizePixel = 0
+InstaHolder_2.Position = UDim2.new(0.467647046, 0,0.760869563, 0)
+InstaHolder_2.Size = UDim2.new(0, 176,0, 38)
+
+UICorner_17.Parent = InstaHolder_2
+
+InstaLogo_1.Name = "InstaLogo"
+InstaLogo_1.Parent = InstaHolder_2
+InstaLogo_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+InstaLogo_1.BackgroundTransparency = 1
+InstaLogo_1.BorderColor3 = Color3.fromRGB(0,0,0)
+InstaLogo_1.BorderSizePixel = 0
+InstaLogo_1.Position = UDim2.new(0.0350792632, 0,0.0790533796, 0)
+InstaLogo_1.Size = UDim2.new(0, 32,0, 32)
+InstaLogo_1.Image = "rbxassetid://15313264252"
+
+InstaText_1.Name = "InstaText"
+InstaText_1.Parent = InstaHolder_2
+InstaText_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+InstaText_1.BackgroundTransparency = 1
+InstaText_1.BorderColor3 = Color3.fromRGB(0,0,0)
+InstaText_1.BorderSizePixel = 0
+InstaText_1.Position = UDim2.new(0.215909094, 0,0.0789473653, 0)
+InstaText_1.Size = UDim2.new(0, 138,0, 16)
+InstaText_1.Font = Enum.Font.RobotoCondensed
+
+InstaText_1.Text = "Follow us on Instagram!"
+InstaText_1.TextColor3 = Color3.fromRGB(255,255,255)
+InstaText_1.TextSize = 15
+InstaText_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_14.Parent = InstaText_1
+UIPadding_14.PaddingLeft = UDim.new(0,6)
+UIPadding_14.PaddingTop = UDim.new(0,4)
+
+InstaTag_1.Name = "InstaTag"
+InstaTag_1.Parent = InstaHolder_2
+InstaTag_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+InstaTag_1.BackgroundTransparency = 1
+InstaTag_1.BorderColor3 = Color3.fromRGB(0,0,0)
+InstaTag_1.BorderSizePixel = 0
+InstaTag_1.Position = UDim2.new(0.215909094, 0,0.5, 0)
+InstaTag_1.Size = UDim2.new(0, 138,0, 16)
+InstaTag_1.Font = Enum.Font.RobotoCondensed
+
+InstaTag_1.Text = "@pikachuystatus"
+InstaTag_1.TextColor3 = Color3.fromRGB(152,152,152)
+InstaTag_1.TextSize = 13
+InstaTag_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_15.Parent = InstaTag_1
+UIPadding_15.PaddingLeft = UDim.new(0,6)
+UIPadding_15.PaddingTop = UDim.new(0,4)
+
+HomeTab_1.Name = "HomeTab"
+HomeTab_1.Parent = ItemsHolder_1
+HomeTab_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+HomeTab_1.BackgroundTransparency = 1
+HomeTab_1.BorderColor3 = Color3.fromRGB(0,0,0)
+HomeTab_1.BorderSizePixel = 0
+HomeTab_1.Size = UDim2.new(0, 340,0, 184)
+HomeTab_1.Visible = false
+
+LogoHolder_2.Name = "LogoHolder"
+LogoHolder_2.Parent = HomeTab_1
+LogoHolder_2.BackgroundColor3 = Color3.fromRGB(21,21,21)
+LogoHolder_2.BackgroundTransparency = 0.4000000059604645
+LogoHolder_2.BorderColor3 = Color3.fromRGB(0,0,0)
+LogoHolder_2.BorderSizePixel = 0
+LogoHolder_2.Size = UDim2.new(0, 147,0, 54)
+
+UICorner_18.Parent = LogoHolder_2
+
+LogoHolder_3.Name = "LogoHolder"
+LogoHolder_3.Parent = LogoHolder_2
+LogoHolder_3.AnchorPoint = Vector2.new(0.5, 0.5)
+LogoHolder_3.BackgroundColor3 = Color3.fromRGB(21,21,21)
+LogoHolder_3.BackgroundTransparency = 0.4000000059604645
+LogoHolder_3.BorderColor3 = Color3.fromRGB(0,0,0)
+LogoHolder_3.BorderSizePixel = 0
+LogoHolder_3.Position = UDim2.new(0.5, 0,0.5, 0)
+LogoHolder_3.Size = UDim2.new(0, 137,0, 46)
+
+UICorner_19.Parent = LogoHolder_3
+
+ImageLabel_1.Parent = LogoHolder_3
+ImageLabel_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ImageLabel_1.BackgroundTransparency = 1
+ImageLabel_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ImageLabel_1.BorderSizePixel = 0
+ImageLabel_1.Position = UDim2.new(0.0437956192, 0,0.108695649, 0)
+ImageLabel_1.Size = UDim2.new(0, 35,0, 35)
+ImageLabel_1.ClipsDescendants = true
+ImageLabel_1.Image = profilePictureUrl
+
+UICorner_20.Parent = ImageLabel_1
+UICorner_20.CornerRadius = UDim.new(0,4)
+
+Welcome_1.Name = "Welcome"
+Welcome_1.Parent = LogoHolder_3
+Welcome_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+Welcome_1.BackgroundTransparency = 1
+Welcome_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Welcome_1.BorderSizePixel = 0
+Welcome_1.Position = UDim2.new(0.350364953, 0,0.0434782617, 0)
+Welcome_1.Size = UDim2.new(0, 89,0, 8)
+Welcome_1.Font = Enum.Font.RobotoCondensed
+
+Welcome_1.Text = "Welcome,"
+Welcome_1.TextColor3 = Color3.fromRGB(203,176,81)
+Welcome_1.TextSize = 9
+Welcome_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_16.Parent = Welcome_1
+UIPadding_16.PaddingTop = UDim.new(0,6)
+
+DisplayName_1.Name = "DisplayName"
+DisplayName_1.Parent = LogoHolder_3
+DisplayName_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+DisplayName_1.BackgroundTransparency = 1
+DisplayName_1.BorderColor3 = Color3.fromRGB(0,0,0)
+DisplayName_1.BorderSizePixel = 0
+DisplayName_1.Position = UDim2.new(0.350364953, 0,0.304347813, 0)
+DisplayName_1.Size = UDim2.new(0, 57,0, 21)
+DisplayName_1.Font = Enum.Font.RobotoCondensed
+
+DisplayName_1.Text = game.Players.LocalPlayer.DisplayName
+DisplayName_1.TextColor3 = Color3.fromRGB(255,255,255)
+DisplayName_1.TextSize = 16
+DisplayName_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_17.Parent = DisplayName_1
+
+UserName_1.Name = "UserName"
+UserName_1.Parent = LogoHolder_3
+UserName_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+UserName_1.BackgroundTransparency = 1
+UserName_1.BorderColor3 = Color3.fromRGB(0,0,0)
+UserName_1.BorderSizePixel = 0
+UserName_1.Position = UDim2.new(0.525291741, 0,0.698756993, 0)
+UserName_1.Size = UDim2.new(0, 63,0, 13)
+UserName_1.Font = Enum.Font.RobotoCondensed
+
+UserName_1.Text = "@"..game:GetService("Players").LocalPlayer.Name
+UserName_1.TextColor3 = Color3.fromRGB(255,255,255)
+UserName_1.TextSize = 9
+UserName_1.TextXAlignment = Enum.TextXAlignment.Right
+
+UIPadding_18.Parent = UserName_1
+UIPadding_18.PaddingBottom = UDim.new(0,4)
+UIPadding_18.PaddingRight = UDim.new(0,4)
+
+QuickExecHolder_1.Name = "QuickExecHolder"
+QuickExecHolder_1.Parent = HomeTab_1
+QuickExecHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+QuickExecHolder_1.BackgroundTransparency = 0.4000000059604645
+QuickExecHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+QuickExecHolder_1.BorderSizePixel = 0
+QuickExecHolder_1.Position = UDim2.new(0.455882341, 0,0, 0)
+QuickExecHolder_1.Size = UDim2.new(0, 184,0, 184)
+
+UICorner_21.Parent = QuickExecHolder_1
+
+QuickExec_1.Name = "QuickExec"
+QuickExec_1.Parent = QuickExecHolder_1
+QuickExec_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+QuickExec_1.BackgroundTransparency = 0.30000001192092896
+QuickExec_1.BorderColor3 = Color3.fromRGB(0,0,0)
+QuickExec_1.BorderSizePixel = 0
+QuickExec_1.Position = UDim2.new(0.0374039374, 0,0.0326086953, 0)
+QuickExec_1.Size = UDim2.new(0, 170,0, 171)
+
+UICorner_22.Parent = QuickExec_1
+
+QuickExecTitle_1.Name = "QuickExecTitle"
+QuickExecTitle_1.Parent = QuickExec_1
+QuickExecTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+QuickExecTitle_1.BackgroundTransparency = 1
+QuickExecTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+QuickExecTitle_1.BorderSizePixel = 0
+QuickExecTitle_1.Position = UDim2.new(-0.00543411914, 0,0.0476190336, 0)
+QuickExecTitle_1.Size = UDim2.new(0, 100,0, 22)
+QuickExecTitle_1.Font = Enum.Font.RobotoCondensed
+
+QuickExecTitle_1.Text = "Quick Executor"
+QuickExecTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+QuickExecTitle_1.TextSize = 16
+QuickExecTitle_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_19.Parent = QuickExecTitle_1
+UIPadding_19.PaddingLeft = UDim.new(0,10)
+
+QuickExecBoxHolder_1.Name = "QuickExecBoxHolder"
+QuickExecBoxHolder_1.Parent = QuickExec_1
+QuickExecBoxHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+QuickExecBoxHolder_1.BackgroundTransparency = 0.20000000298023224
+QuickExecBoxHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+QuickExecBoxHolder_1.BorderSizePixel = 0
+QuickExecBoxHolder_1.Position = UDim2.new(0.0432861336, 0,0.19050321, 0)
+QuickExecBoxHolder_1.Size = UDim2.new(0, 155,0, 102)
+
+UICorner_23.Parent = QuickExecBoxHolder_1
+
+QuickExecBox_1.Name = "QuickExecBox"
+QuickExecBox_1.Parent = QuickExecBoxHolder_1
+QuickExecBox_1.Active = true
+QuickExecBox_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+QuickExecBox_1.BackgroundTransparency = 1
+QuickExecBox_1.BorderColor3 = Color3.fromRGB(0,0,0)
+QuickExecBox_1.BorderSizePixel = 0
+QuickExecBox_1.CursorPosition = -1
+QuickExecBox_1.Size = UDim2.new(0, 155,0, 102)
+QuickExecBox_1.ClipsDescendants = true
+QuickExecBox_1.Font = Enum.Font.RobotoCondensed
+
+QuickExecBox_1.PlaceholderColor3 = Color3.fromRGB(152,152,152)
+QuickExecBox_1.PlaceholderText = "Insert text here..."
+QuickExecBox_1.Text = ""
+QuickExecBox_1.TextColor3 = Color3.fromRGB(152,152,152)
+QuickExecBox_1.TextSize = 11
+QuickExecBox_1.TextXAlignment = Enum.TextXAlignment.Left
+QuickExecBox_1.TextYAlignment = Enum.TextYAlignment.Top
+
+UIPadding_20.Parent = QuickExecBox_1
+UIPadding_20.PaddingBottom = UDim.new(0,6)
+UIPadding_20.PaddingLeft = UDim.new(0,6)
+UIPadding_20.PaddingRight = UDim.new(0,6)
+UIPadding_20.PaddingTop = UDim.new(0,6)
+
+ClearBtnHolder_1.Name = "ClearBtnHolder"
+ClearBtnHolder_1.Parent = QuickExec_1
+ClearBtnHolder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ClearBtnHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ClearBtnHolder_1.BorderSizePixel = 0
+ClearBtnHolder_1.Position = UDim2.new(0.0411764719, 0,0.842105269, 0)
+ClearBtnHolder_1.Size = UDim2.new(0, 62,0, 21)
+
+UICorner_24.Parent = ClearBtnHolder_1
+
+ClearBtn_1.Name = "ClearBtn"
+ClearBtn_1.Parent = ClearBtnHolder_1
+ClearBtn_1.Active = true
+ClearBtn_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ClearBtn_1.BackgroundTransparency = 1
+ClearBtn_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ClearBtn_1.BorderSizePixel = 0
+ClearBtn_1.Size = UDim2.new(0, 62,0, 21)
+ClearBtn_1.Font = Enum.Font.RobotoCondensed
+ClearBtn_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = ""
+end)
+
+ClearBtn_1.Text = "Clear"
+ClearBtn_1.TextColor3 = Color3.fromRGB(255,255,255)
+ClearBtn_1.TextSize = 14
+
+ExecBtnHolder_1.Name = "ExecBtnHolder"
+ExecBtnHolder_1.Parent = QuickExec_1
+ExecBtnHolder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ExecBtnHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecBtnHolder_1.BorderSizePixel = 0
+ExecBtnHolder_1.Position = UDim2.new(0.588235319, 0,0.842105269, 0)
+ExecBtnHolder_1.Size = UDim2.new(0, 62,0, 21)
+
+UICorner_25.Parent = ExecBtnHolder_1
+
+ExecBtn_1.Name = "ExecBtn"
+ExecBtn_1.Parent = ExecBtnHolder_1
+ExecBtn_1.Active = true
+ExecBtn_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ExecBtn_1.BackgroundTransparency = 1
+ExecBtn_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecBtn_1.BorderSizePixel = 0
+ExecBtn_1.Size = UDim2.new(0, 62,0, 21)
+ExecBtn_1.Font = Enum.Font.RobotoCondensed
+ExecBtn_1.MouseButton1Click:Connect(function()
+	local Success, Error = pcall(function()
+		loadstring(tostring(QuickExecBox_1.Text))()
+	end)
+	
+	if Success then
+		print("Quick Executed Script!")
+	else
+		assert(false, Error)
+	end
+end)
+
+ExecBtn_1.Text = "Execute"
+ExecBtn_1.TextColor3 = Color3.fromRGB(255,255,255)
+ExecBtn_1.TextSize = 14
+
+ScriptsHolder_1.Name = "ScriptsHolder"
+ScriptsHolder_1.Parent = HomeTab_1
+ScriptsHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+ScriptsHolder_1.BackgroundTransparency = 0.4000000059604645
+ScriptsHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptsHolder_1.BorderSizePixel = 0
+ScriptsHolder_1.Position = UDim2.new(0, 0,0.336956531, 0)
+ScriptsHolder_1.Size = UDim2.new(0, 147,0, 122)
+
+UICorner_26.Parent = ScriptsHolder_1
+
+Scripts_1.Name = "Scripts"
+Scripts_1.Parent = ScriptsHolder_1
+Scripts_1.AnchorPoint = Vector2.new(0.5, 0.5)
+Scripts_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+Scripts_1.BackgroundTransparency = 0.4000000059604645
+Scripts_1.BorderColor3 = Color3.fromRGB(0,0,0)
+Scripts_1.BorderSizePixel = 0
+Scripts_1.Position = UDim2.new(0.5, 0,0.493860722, 0)
+Scripts_1.Size = UDim2.new(0, 137,0, 113)
+
+UICorner_27.Parent = Scripts_1
+
+ScriptsScroll_1.Name = "ScriptsScroll"
+ScriptsScroll_1.Parent = Scripts_1
+ScriptsScroll_1.Active = true
+ScriptsScroll_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptsScroll_1.BackgroundTransparency = 1
+ScriptsScroll_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptsScroll_1.BorderSizePixel = 0
+ScriptsScroll_1.Position = UDim2.new(0.0437956192, 0,0.170380995, 0)
+ScriptsScroll_1.Size = UDim2.new(0, 125,0, 86)
+ScriptsScroll_1.ClipsDescendants = true
+ScriptsScroll_1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+ScriptsScroll_1.BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png"
+ScriptsScroll_1.CanvasPosition = Vector2.new(0, 0)
+ScriptsScroll_1.CanvasSize = UDim2.new(0, 0,0.5, 0)
+ScriptsScroll_1.ElasticBehavior = Enum.ElasticBehavior.Never
+ScriptsScroll_1.HorizontalScrollBarInset = Enum.ScrollBarInset.None
+ScriptsScroll_1.MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png"
+ScriptsScroll_1.ScrollBarImageColor3 = Color3.fromRGB(0,0,0)
+ScriptsScroll_1.ScrollBarImageTransparency = 1
+ScriptsScroll_1.ScrollBarThickness = 1
+ScriptsScroll_1.ScrollingDirection = Enum.ScrollingDirection.Y
+ScriptsScroll_1.TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png"
+ScriptsScroll_1.VerticalScrollBarInset = Enum.ScrollBarInset.None
+ScriptsScroll_1.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
+
+ScriptBtn1Holder_1.Name = "ScriptBtn1Holder"
+ScriptBtn1Holder_1.Parent = ScriptsScroll_1
+ScriptBtn1Holder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ScriptBtn1Holder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn1Holder_1.BorderSizePixel = 0
+ScriptBtn1Holder_1.Position = UDim2.new(0, 0,-3.24655076e-07, 0)
+ScriptBtn1Holder_1.Size = UDim2.new(0, 125,0, 20)
+
+UICorner_28.Parent = ScriptBtn1Holder_1
+
+ScriptBtn1_1.Name = "ScriptBtn1"
+ScriptBtn1_1.Parent = ScriptBtn1Holder_1
+ScriptBtn1_1.Active = true
+ScriptBtn1_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn1_1.BackgroundTransparency = 1
+ScriptBtn1_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn1_1.BorderSizePixel = 0
+ScriptBtn1_1.Size = UDim2.new(0, 125,0, 20)
+ScriptBtn1_1.Font = Enum.Font.RobotoCondensed
+ScriptBtn1_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()"
+end)
+
+ScriptBtn1_1.Text = "Infinite Yield"
+ScriptBtn1_1.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn1_1.TextSize = 14
+
+UIPadding_21.Parent = ScriptsScroll_1
+UIPadding_21.PaddingBottom = UDim.new(0,4)
+UIPadding_21.PaddingTop = UDim.new(0,4)
+
+UIListLayout_1.Parent = ScriptsScroll_1
+UIListLayout_1.Padding = UDim.new(0,4)
+UIListLayout_1.SortOrder = Enum.SortOrder.LayoutOrder
+
+ScriptBtn2Holder_1.Name = "ScriptBtn2Holder"
+ScriptBtn2Holder_1.Parent = ScriptsScroll_1
+ScriptBtn2Holder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ScriptBtn2Holder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn2Holder_1.BorderSizePixel = 0
+ScriptBtn2Holder_1.Position = UDim2.new(0, 0,-3.24655076e-07, 0)
+ScriptBtn2Holder_1.Size = UDim2.new(0, 125,0, 20)
+
+UICorner_29.Parent = ScriptBtn2Holder_1
+
+ScriptBtn2_1.Name = "ScriptBtn2"
+ScriptBtn2_1.Parent = ScriptBtn2Holder_1
+ScriptBtn2_1.Active = true
+ScriptBtn2_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn2_1.BackgroundTransparency = 1
+ScriptBtn2_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn2_1.BorderSizePixel = 0
+ScriptBtn2_1.Size = UDim2.new(0, 125,0, 20)
+ScriptBtn2_1.Font = Enum.Font.RobotoCondensed
+ScriptBtn2_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = "loadstring(game:HttpGet('https://cdn.wearedevs.net/scripts/Dex%20Explorer.txt'))()"
+end)
+
+ScriptBtn2_1.Text = "Dex Explorer V4"
+ScriptBtn2_1.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn2_1.TextSize = 14
+
+ScriptBtn3Holder_1.Name = "ScriptBtn3Holder"
+ScriptBtn3Holder_1.Parent = ScriptsScroll_1
+ScriptBtn3Holder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ScriptBtn3Holder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn3Holder_1.BorderSizePixel = 0
+ScriptBtn3Holder_1.Position = UDim2.new(0, 0,-3.24655076e-07, 0)
+ScriptBtn3Holder_1.Size = UDim2.new(0, 125,0, 20)
+
+UICorner_30.Parent = ScriptBtn3Holder_1
+
+ScriptBtn3_1.Name = "ScriptBtn3"
+ScriptBtn3_1.Parent = ScriptBtn3Holder_1
+ScriptBtn3_1.Active = true
+ScriptBtn3_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn3_1.BackgroundTransparency = 1
+ScriptBtn3_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn3_1.BorderSizePixel = 0
+ScriptBtn3_1.Size = UDim2.new(0, 125,0, 20)
+ScriptBtn3_1.Font = Enum.Font.RobotoCondensed
+ScriptBtn3_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua'))()"
+end)
+
+ScriptBtn3_1.Text = "Simple Spy"
+ScriptBtn3_1.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn3_1.TextSize = 14
+
+ScriptBtn4Holder_1.Name = "ScriptBtn4Holder"
+ScriptBtn4Holder_1.Parent = ScriptsScroll_1
+ScriptBtn4Holder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ScriptBtn4Holder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn4Holder_1.BorderSizePixel = 0
+ScriptBtn4Holder_1.Position = UDim2.new(0, 0,-3.24655076e-07, 0)
+ScriptBtn4Holder_1.Size = UDim2.new(0, 125,0, 20)
+
+UICorner_31.Parent = ScriptBtn4Holder_1
+
+ScriptBtn4_1.Name = "ScriptBtn4"
+ScriptBtn4_1.Parent = ScriptBtn4Holder_1
+ScriptBtn4_1.Active = true
+ScriptBtn4_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn4_1.BackgroundTransparency = 1
+ScriptBtn4_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn4_1.BorderSizePixel = 0
+ScriptBtn4_1.Size = UDim2.new(0, 125,0, 20)
+ScriptBtn4_1.Font = Enum.Font.RobotoCondensed
+ScriptBtn4_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = "loadstring(game:HttpGet('https://pastebin.com/raw/RsJWsvBg'))()"
+end)
+
+ScriptBtn4_1.Text = "Coordinates"
+ScriptBtn4_1.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn4_1.TextSize = 14
+
+ScriptBtn5Holder_1.Name = "ScriptBtn5Holder"
+ScriptBtn5Holder_1.Parent = ScriptsScroll_1
+ScriptBtn5Holder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ScriptBtn5Holder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn5Holder_1.BorderSizePixel = 0
+ScriptBtn5Holder_1.Position = UDim2.new(0, 0,-3.24655076e-07, 0)
+ScriptBtn5Holder_1.Size = UDim2.new(0, 125,0, 20)
+
+UICorner_32.Parent = ScriptBtn5Holder_1
+
+ScriptBtn5_1.Name = "ScriptBtn5"
+ScriptBtn5_1.Parent = ScriptBtn5Holder_1
+ScriptBtn5_1.Active = true
+ScriptBtn5_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn5_1.BackgroundTransparency = 1
+ScriptBtn5_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ScriptBtn5_1.BorderSizePixel = 0
+ScriptBtn5_1.Size = UDim2.new(0, 125,0, 20)
+ScriptBtn5_1.Font = Enum.Font.RobotoCondensed
+ScriptBtn5_1.MouseButton1Click:Connect(function()
+      QuickExecBox_1.Text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt', true))()"
+end)
+ScriptBtn5_1.Text = "Keyboard"
+ScriptBtn5_1.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptBtn5_1.TextSize = 14
+
+RecommendedTitle_1.Name = "RecommendedTitle"
+RecommendedTitle_1.Parent = Scripts_1
+RecommendedTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+RecommendedTitle_1.BackgroundTransparency = 1
+RecommendedTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+RecommendedTitle_1.BorderSizePixel = 0
+RecommendedTitle_1.Position = UDim2.new(0, 0,-8.10201186e-07, 0)
+RecommendedTitle_1.Size = UDim2.new(0, 137,0, 18)
+RecommendedTitle_1.Font = Enum.Font.RobotoCondensed
+
+RecommendedTitle_1.Text = "Recommded Scripts"
+RecommendedTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+RecommendedTitle_1.TextSize = 12
+
+ExecutorTab_1.Name = "ExecutorTab"
+ExecutorTab_1.Parent = ItemsHolder_1
+ExecutorTab_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ExecutorTab_1.BackgroundTransparency = 1
+ExecutorTab_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecutorTab_1.BorderSizePixel = 0
+ExecutorTab_1.Size = UDim2.new(0, 340,0, 184)
+ExecutorTab_1.Visible = false
+
+ExecHolder1_1.Name = "ExecHolder1"
+ExecHolder1_1.Parent = ExecutorTab_1
+ExecHolder1_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+ExecHolder1_1.BackgroundTransparency = 0.4000000059604645
+ExecHolder1_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecHolder1_1.BorderSizePixel = 0
+ExecHolder1_1.Position = UDim2.new(0.00294117653, 0,0, 0)
+ExecHolder1_1.Size = UDim2.new(0, 338,0, 184)
+
+UICorner_33.Parent = ExecHolder1_1
+
+ExecHolder2_1.Name = "ExecHolder2"
+ExecHolder2_1.Parent = ExecHolder1_1
+ExecHolder2_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+ExecHolder2_1.BackgroundTransparency = 0.4000000059604645
+ExecHolder2_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecHolder2_1.BorderSizePixel = 0
+ExecHolder2_1.Position = UDim2.new(0.0177514795, 0,0.0271958057, 0)
+ExecHolder2_1.Size = UDim2.new(0, 326,0, 174)
+
+UICorner_34.Parent = ExecHolder2_1
+
+ExecBoxHolder_1.Name = "ExecBoxHolder"
+ExecBoxHolder_1.Parent = ExecHolder2_1
+ExecBoxHolder_1.BackgroundColor3 = Color3.fromRGB(21,21,21)
+ExecBoxHolder_1.BackgroundTransparency = 0.20000000298023224
+ExecBoxHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecBoxHolder_1.BorderSizePixel = 0
+ExecBoxHolder_1.Position = UDim2.new(0.0189999063, 0,0.150000557, 0)
+ExecBoxHolder_1.Size = UDim2.new(0, 313,0, 109)
+
+UICorner_35.Parent = ExecBoxHolder_1
+
+ExecBox_1.Name = "ExecBox"
+ExecBox_1.Parent = ExecBoxHolder_1
+ExecBox_1.Active = true
+ExecBox_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ExecBox_1.BackgroundTransparency = 1
+ExecBox_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecBox_1.BorderSizePixel = 0
+ExecBox_1.CursorPosition = -1
+ExecBox_1.Size = UDim2.new(0, 313,0, 109)
+ExecBox_1.ClipsDescendants = true
+ExecBox_1.Font = Enum.Font.RobotoCondensed
+
+ExecBox_1.PlaceholderColor3 = Color3.fromRGB(152,152,152)
+ExecBox_1.PlaceholderText = "Insert text here..."
+ExecBox_1.Text = ""
+ExecBox_1.TextColor3 = Color3.fromRGB(152,152,152)
+ExecBox_1.TextSize = 11
+ExecBox_1.TextXAlignment = Enum.TextXAlignment.Left
+ExecBox_1.TextYAlignment = Enum.TextYAlignment.Top
+
+UIPadding_22.Parent = ExecBox_1
+UIPadding_22.PaddingBottom = UDim.new(0,6)
+UIPadding_22.PaddingLeft = UDim.new(0,6)
+UIPadding_22.PaddingRight = UDim.new(0,6)
+UIPadding_22.PaddingTop = UDim.new(0,6)
+
+ExecutorTitle_1.Name = "ExecutorTitle"
+ExecutorTitle_1.Parent = ExecHolder2_1
+ExecutorTitle_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ExecutorTitle_1.BackgroundTransparency = 1
+ExecutorTitle_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecutorTitle_1.BorderSizePixel = 0
+ExecutorTitle_1.Position = UDim2.new(0.0184049085, 0,0.0287356321, 0)
+ExecutorTitle_1.Size = UDim2.new(0, 313,0, 21)
+ExecutorTitle_1.Font = Enum.Font.RobotoCondensed
+
+ExecutorTitle_1.Text = "Executor"
+ExecutorTitle_1.TextColor3 = Color3.fromRGB(255,255,255)
+ExecutorTitle_1.TextSize = 14
+ExecutorTitle_1.TextXAlignment = Enum.TextXAlignment.Left
+
+UIPadding_23.Parent = ExecutorTitle_1
+UIPadding_23.PaddingLeft = UDim.new(0,1)
+
+ExecuteBtnHolder_1.Name = "ExecuteBtnHolder"
+ExecuteBtnHolder_1.Parent = ExecHolder2_1
+ExecuteBtnHolder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ExecuteBtnHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecuteBtnHolder_1.BorderSizePixel = 0
+ExecuteBtnHolder_1.Position = UDim2.new(0.0166360121, 0,0.830610931, 0)
+ExecuteBtnHolder_1.Size = UDim2.new(0, 64,0, 21)
+
+UICorner_36.Parent = ExecuteBtnHolder_1
+
+ExecuteBtn_1.Name = "ExecuteBtn"
+ExecuteBtn_1.Parent = ExecuteBtnHolder_1
+ExecuteBtn_1.Active = true
+ExecuteBtn_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ExecuteBtn_1.BackgroundTransparency = 1
+ExecuteBtn_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ExecuteBtn_1.BorderSizePixel = 0
+ExecuteBtn_1.Position = UDim2.new(-0.00251960754, 0,0, 0)
+ExecuteBtn_1.Size = UDim2.new(0, 62,0, 21)
+ExecuteBtn_1.Font = Enum.Font.RobotoCondensed
+
+ExecuteBtn_1.Text = "Execute"
+ExecuteBtn_1.TextColor3 = Color3.fromRGB(255,255,255)
+ExecuteBtn_1.TextSize = 14
+ExecuteBtn_1.MouseButton1Click:Connect(function()
+	local Success, Error = pcall(function()
+		loadstring(tostring(ExecBox_1.Text))()
+	end)
+	
+	if Success then
+		print("Executed Script!")
+	else
+		assert(false, Error)
+	end
+end)
+
+ClearBtnHolder_2.Name = "ClearBtnHolder"
+ClearBtnHolder_2.Parent = ExecHolder2_1
+ClearBtnHolder_2.BackgroundColor3 = Color3.fromRGB(208,175,59)
+ClearBtnHolder_2.BorderColor3 = Color3.fromRGB(0,0,0)
+ClearBtnHolder_2.BorderSizePixel = 0
+ClearBtnHolder_2.Position = UDim2.new(0.234427422, 0,0.830610931, 0)
+ClearBtnHolder_2.Size = UDim2.new(0, 64,0, 21)
+
+UICorner_37.Parent = ClearBtnHolder_2
+
+ClearBtn_2.Name = "ClearBtn"
+ClearBtn_2.Parent = ClearBtnHolder_2
+ClearBtn_2.Active = true
+ClearBtn_2.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ClearBtn_2.BackgroundTransparency = 1
+ClearBtn_2.BorderColor3 = Color3.fromRGB(0,0,0)
+ClearBtn_2.BorderSizePixel = 0
+ClearBtn_2.Size = UDim2.new(0, 62,0, 21)
+ClearBtn_2.Font = Enum.Font.RobotoCondensed
+ClearBtn_2.MouseButton1Click:Connect(function()
+      ExecBox_1.Text = ""
+end)
+
+ClearBtn_2.Text = "Clear"
+ClearBtn_2.TextColor3 = Color3.fromRGB(255,255,255)
+ClearBtn_2.TextSize = 14
+
+CopyHolder_1.Name = "CopyHolder"
+CopyHolder_1.Parent = ExecHolder2_1
+CopyHolder_1.BackgroundColor3 = Color3.fromRGB(208,175,59)
+CopyHolder_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CopyHolder_1.BorderSizePixel = 0
+CopyHolder_1.Position = UDim2.new(0.455286324, 0,0.830610931, 0)
+CopyHolder_1.Size = UDim2.new(0, 64,0, 21)
+
+UICorner_38.Parent = CopyHolder_1
+
+CopyBtn_1.Name = "CopyBtn"
+CopyBtn_1.Parent = CopyHolder_1
+CopyBtn_1.Active = true
+CopyBtn_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+CopyBtn_1.BackgroundTransparency = 1
+CopyBtn_1.BorderColor3 = Color3.fromRGB(0,0,0)
+CopyBtn_1.BorderSizePixel = 0
+CopyBtn_1.Position = UDim2.new(0.015625, 0,0, 0)
+CopyBtn_1.Size = UDim2.new(0, 62,0, 21)
+CopyBtn_1.Font = Enum.Font.RobotoCondensed
+CopyBtn_1.MouseButton1Click:Connect(function()
+      setclipboard(ExecBox_1.Text)
+end)
+
+CopyBtn_1.Text = "Copy"
+CopyBtn_1.TextColor3 = Color3.fromRGB(255,255,255)
+CopyBtn_1.TextSize = 14
+
+ToggleFrame_1.Name = "ToggleFrame"
+ToggleFrame_1.Parent = PikachuY
+ToggleFrame_1.AnchorPoint = Vector2.new(0.5, 0.5)
+ToggleFrame_1.BackgroundColor3 = Color3.fromRGB(0,0,0)
+ToggleFrame_1.BackgroundTransparency = 0.4000000059604645
+ToggleFrame_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ToggleFrame_1.BorderSizePixel = 0
+ToggleFrame_1.Position = UDim2.new(0.05, 0,0.5, 0)
+ToggleFrame_1.Size = UDim2.new(0, 0,0, 0)
+
+UICorner_40.Parent = ToggleFrame_1
+UICorner_40.CornerRadius = UDim.new(0,45)
+
+
+local targetSize3 = UDim2.new(0, 421,0, 258)
+
+local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local sizeTweenOpenGUIGoal = {}
+sizeTweenOpenGUIGoal.Size = targetSize3
+
+local sizeTweenOpenGUI = TweenService:Create(Main_1, tweenInfo, sizeTweenOpenGUIGoal)
+
+
+
+local targetSize = UDim2.new(0, 0, 0, 0)
+
+local tweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local sizeTweenMinimizeToggleGoal = {}
+sizeTweenMinimizeToggleGoal.Size = targetSize
+
+local sizeTweenMinimizeToggle = TweenService:Create(ToggleFrame_1, tweenInfo, sizeTweenMinimizeToggleGoal)
+
+ToggleBtn_1.Name = "ToggleBtn"
+ToggleBtn_1.Parent = ToggleFrame_1
+ToggleBtn_1.Active = true
+ToggleBtn_1.Visible = true
+ToggleBtn_1.BackgroundColor3 = Color3.fromRGB(255,255,255)
+ToggleBtn_1.BackgroundTransparency = 1
+ToggleBtn_1.BorderColor3 = Color3.fromRGB(0,0,0)
+ToggleBtn_1.BorderSizePixel = 0
+ToggleBtn_1.Position = UDim2.new(0.25999999, 0,0.200000152, 0)
+ToggleBtn_1.Size = UDim2.new(0, 24,0, 29)
+ToggleBtn_1.Image = "rbxassetid://15312933977"
+ToggleBtn_1.Visible = false
+ToggleBtn_1.MouseButton1Click:Connect(function()
+   ToggleBtn_1.Visible = false
+   sizeTweenMinimizeToggle:Play()
+   sizeTweenOpenGUI:Play()
+   wait(0.25)
+   ItemsHolder_1.Visible = true
+    TabsHolder_1.Visible = true
+    CurrentTab_1.Visible = true
+    Etc_1.Visible = true
+    Title_1.Visible = true
+end)
+
+UICorner_41.Parent = ToggleBtn_1
+UICorner_41.CornerRadius = UDim.new(0,45)
+
+local frame2 = ToggleFrame_1
+
+local dragToggle = nil
+
+local dragSpeed = 0.25 -- the amount of speed you want the drag to be
+
+local dragStart = nil
+
+local startPos = nil
+
+
+
+local function updateInput(input)
+
+ local delta = input.Position - dragStart
+
+ local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+
+  startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+
+ game:GetService('TweenService'):Create(frame2, TweenInfo.new(dragSpeed), {Position = position}):Play()
+
+end
+
+
+
+frame2.InputBegan:Connect(function(input)
+
+ if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+
+  dragToggle = true
+
+  dragStart = input.Position
+
+  startPos = frame2.Position
+
+  input.Changed:Connect(function()
+
+   if input.UserInputState == Enum.UserInputState.End then
+
+    dragToggle = false
+
+   end
+
+  end)
+
+ end
+
+end)
+
+
+
+UIS.InputChanged:Connect(function(input)
+
+ if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+
+  if dragToggle then
+
+   updateInput(input)
+
+  end
+
+ end
+
+end)
+
+Close_1.MouseButton1Click:Connect(function()
+    sizeTweenCloseGUI:Play()
+    sizeTweenMaximizeToggle:Play()
+    ItemsHolder_1.Visible = false
+    TabsHolder_1.Visible = false
+    CurrentTab_1.Visible = false
+    Etc_1.Visible = false
+    Title_1.Visible = false
+    wait(0.25)
+    ToggleBtn_1.Visible = true
+end)
+
+Main_2.MouseButton1Click:Connect(function()
+    MainTab_1.Visible = true
+    HomeTab_1.Visible = false
+    ExecutorTab_1.Visible = false
+    tween1:Play()
+    CurrentImage_1.Image = "rbxassetid://15312723951"
+    CurrentTitle_1.Text = "Script Info"
+    CurrentDesc_1.Text = "About Team Pika and Pikachu Y"
+end)
+Home_1.MouseButton1Click:Connect(function()
+    MainTab_1.Visible = false
+    HomeTab_1.Visible = true
+    ExecutorTab_1.Visible = false
+    tween2:Play()
+    CurrentImage_1.Image = "rbxassetid://15312748718"
+    CurrentTitle_1.Text = "Home"
+    CurrentDesc_1.Text = "Quick Hacks and Player Info"
+end)
+Execute_1.MouseButton1Click:Connect(function()
+    MainTab_1.Visible = false
+    HomeTab_1.Visible = false
+    ExecutorTab_1.Visible = true
+    tween3:Play()
+    CurrentImage_1.Image = "rbxassetid://15312760968"
+    CurrentTitle_1.Text = "Executor"
+    CurrentDesc_1.Text = "Script Executor"
+end)
+
+ItemsHolder_1.Visible = false
+    TabsHolder_1.Visible = false
+    CurrentTab_1.Visible = false
+    Etc_1.Visible = false
+    Title_1.Visible = false
+    
+wait(1)
+ToggleBtn_1.Visible = false
+   sizeTweenMinimizeToggle:Play()
+   sizeTweenOpenGUI:Play()
+   wait(0.25)
+   ItemsHolder_1.Visible = true
+    TabsHolder_1.Visible = true
+    CurrentTab_1.Visible = true
+    Etc_1.Visible = true
+    Title_1.Visible = true
