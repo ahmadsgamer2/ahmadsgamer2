@@ -36,7 +36,7 @@ end
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-local Status1 = "FPS"..Fps" | PING: "..Ping" | World: "..StatusWorld
+local Status1 = "FPS"..Fps.." | PING: "..Ping.." | World: "..StatusWorld
 Status:SetDesc(Status1) 
 end
 
@@ -964,10 +964,11 @@ Options.AutoFarmBoss_Toggle:SetValue(false)
 
 AutoFarmBoss:OnChanged(function(value)
     _G.AutoFarmBoss = value
-    if _G.AutoFarmBoss == false then
-        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-    end
 end)
+
+if _G.AutoFarmBoss == false then
+    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+end
 
 local AutoFarmBossAll = Tabs.Main:AddToggle("AutoFarmBossAll_Toggle", {Title = "Auto Farm Boss [All]", Default = false })
 Options.AutoFarmBossAll_Toggle:SetValue(false)
