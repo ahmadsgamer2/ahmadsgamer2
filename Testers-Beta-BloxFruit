@@ -3995,6 +3995,7 @@ local StatusMirage = Tabs.Island:AddParagraph({
 })
 
 function UpdateStatusMirage()
+
 task.spawn(function()
 while task.wait() do
 pcall(function()
@@ -4020,12 +4021,13 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
 else
     MirageStatus = 'Mirage Island : ❌'
 end
-StatusMirage:SetDeso(MirageStatus..' | Full Moon: '..FullMoonStatus)
+
+StatusMirage:SetDesc(MirageStatus..' | Full Moon: '..FullMoonStatus)
 end
 
 spawn(function()
     pcall(function()
-        while task.wait() do
+        while wait() do
             UpdateStatusMirage()
         end
     end)
