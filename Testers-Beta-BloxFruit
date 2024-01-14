@@ -1,1 +1,23 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Zekrom-Hub-X/main/Zekrom-Hub-X-exe", true))()
+local SpeedHubX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Library.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Interface.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless"))()
+
+local Window = SpeedHubX:CreateWindow({
+    Title = "Speed Hub X | ".._G.Version,
+    SubTitle = "by AhmadV10",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(500, 460),
+    Acrylic = true, 
+    Theme = "vampire",
+    MinimizeKey = Enum.KeyCode.LeftControl 
+})
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "http://www.roblox.com/asset/?id=7040391851" }),
+}
+local Options = SpeedHubX.Options
+
+Tabs.Main:AddParagraph({
+    Title = "Home",
+    Content = ""
+})
