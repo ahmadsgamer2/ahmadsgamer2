@@ -36,7 +36,8 @@ end
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Status:SetDesc("FPS: "..Fps" | PING: "..Ping, " | World: "..StatusWorld) 
+local Status1 = "FPS"..Fps" | PING: "..Ping" | World: "..StatusWorld
+Status:SetDesc(Status1) 
 end
 
 spawn(function()
@@ -78,7 +79,244 @@ World3 = true
 ThreeWorld = true
 end
 
-loadstring(game:HttpGet("https://pastebin.com/raw/E5rrb3uZ"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/wR915Ri3"))()
+
+task.spawn(function()
+    game:GetService("RunService").Stepped:Connect(function()
+    pcall(function()
+        --[World 1]
+        if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or _G.TptoEventIsland or
+        --[World 2]
+        _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+        _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+        _G.AutoFactory or _G.AutoKillPiranha or
+        --[World 3]
+        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+        _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+        _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+        _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+        _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or _G.AutoTerrorshark or
+        Tushita_Quest2 or Tushita_Quest1 or
+        _G.TeleporttoSeaBeast  or _G.TPTOBOAT or 
+        Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+        --[Boss]
+        _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+        --[Mastery]
+        _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+        --[Raids]
+        _G.AutoRaids or _G.AutoNextPlace
+        then
+            if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+                local Highlight = Instance.new("Highlight")
+                Highlight.FillColor = Color3.new(0,0,0)
+                Highlight.OutlineColor = Color3.new(0,0,0)
+                Highlight.Parent = game.Players.LocalPlayer.Character;
+                end
+            if syn then
+                setfflag("HumanoidParallelRemoveNoPhysics", "False")
+                setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+                if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                end
+            else
+                if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
+                        if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                        end
+                        local BodyVelocity = Instance.new("BodyVelocity")
+                        BodyVelocity.Name = "BodyVelocity1"
+                        BodyVelocity.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                        BodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
+                        BodyVelocity.Velocity = Vector3.new(0, 0, 0)
+                    end
+                end
+                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end
+        else
+            game.Players.LocalPlayer.Character:FindFirstChild("Highlight"):Destroy();
+            if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
+                game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1"):Destroy();
+            end
+        end
+    end)
+    end)
+    end)
+    
+    spawn(function()
+    while wait(.1) do
+    pcall(function()
+        if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or _G.TptoEventIsland or
+        --[World 2]
+        _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+        _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+        _G.AutoFactory or _G.AutoKillPiranha or
+        --[World 3]
+        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+        _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+        _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+        _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+        _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or _G.AutoTerrorshark or
+        Tushita_Quest2 or Tushita_Quest1 or
+        _G.TeleporttoSeaBeast  or
+        _G.TPTOBOAT or 
+        Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+        --[Boss]
+        _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+        --[Mastery]
+        _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+        --[Raids]
+        _G.AutoRaids or _G.AutoNextPlace
+    then
+            if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+                wait(5)
+            end
+            PIO = false
+            if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+                local L_1 = Instance.new("BodyVelocity")
+                L_1.Name = "BodyGyrozz"
+                L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
+                L_1.Velocity = Vector3.new(0, 0, 0)
+            end
+        elseif PIO == false then
+            for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
+                if v.Name == "BodyGyrozz" then
+                    v:Destroy()
+                    PIO = true
+                end
+            end
+        end
+    end)
+    end
+    end)
+    
+    spawn(function()
+    game:GetService("RunService").Stepped:Connect(function()
+    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or _G.TptoEventIsland or
+    --[World 2]
+    _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+    _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+    _G.AutoFactory or _G.AutoKillPiranha or
+    --[World 3]
+    _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+    _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+    _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+    _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+    _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or _G.AutoTerrorshark or
+    Tushita_Quest2 or Tushita_Quest1 or
+    _G.TeleporttoSeaBeast   or
+    _G.TPTOBOAT or 
+    Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+    --[Boss]
+    _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+    --[Mastery]
+    _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+    --[Raids]
+    _G.AutoRaids or _G.AutoNextPlace
+    then
+        for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+            if v:IsA("BasePart") then
+                v.CanCollide = false
+            end
+        end
+    end
+    end)
+    end)
+    
+    function changestate()
+    game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.92,
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+    end
+    
+    spawn(function()
+    while task.wait() do
+    pcall(function()
+        if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+            _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or _G.TptoEventIsland or
+            --[World 2]
+            _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+            _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+            _G.AutoFactory or
+            --[World 3]
+            _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+            _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+            _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+            _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+            _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+            Tushita_Quest2 or Tushita_Quest1 or
+            _G.TeleporttoSeaBeast  or
+            _G.TPTOBOAT or 
+            Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+            --[Boss]
+            _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+            --[Mastery]
+            _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+            --[Raids]
+            _G.AutoRaids or _G.AutoNextPlace
+    then
+            if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                local Noclip = Instance.new("BodyVelocity")
+                Noclip.Name = "BodyClip"
+                Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
+                Noclip.Velocity = Vector3.new(0, 0, 0)
+            end
+        else
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+        end
+    end)
+    end
+    end)
+    
+    spawn(function() ------body velocity
+    game:GetService("RunService").Stepped:Connect(function()
+    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+            _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or _G.TptoEventIsland or
+            --[World 2]
+            _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+            _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+            _G.AutoFactory or
+            --[World 3]
+            _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+            _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
+            _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+            _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+            _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or _G.Auto_Cursed_Dual_Katana or
+            Tushita_Quest2 or Tushita_Quest1 or
+            _G.TeleporttoSeaBeast  or
+            _G.TPTOBOAT or 
+            Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+            --[Boss] 
+            _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+            --[Mastery]
+            _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+            --[Raids]
+            _G.AutoRaids or _G.AutoNextPlace
+        then
+        if not game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
+            local bv = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+            bv.Name = 'bv'
+            bv.MaxForce = Vector3.new(100000, 100000, 100000)
+            bv.Velocity = Vector3.new(0, 0, 0)
+        end
+    else
+        if game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
+            game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv'):Destroy()
+        end
+    end
+    end)
+end)
 
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
@@ -108,8 +346,6 @@ repeat wait(0) until game:IsLoaded()
 			end
 		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 	end
-
-    loadstring(game:HttpGet("https://pastebin.com/raw/gk5ZGF2f"))()
 
     Tabs.Main:AddParagraph({
         Title = "Config",
@@ -359,7 +595,7 @@ end)
     
 spawn(function()
     game:GetService("RunService").Heartbeat:Connect(function()
-        if _G.Settings.AutoFarm then
+        if _G.AutoFarm then
         if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
             setfflag("HumanoidParallelRemoveNoPhysics", "False")
             setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
