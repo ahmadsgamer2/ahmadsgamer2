@@ -17,6 +17,8 @@ local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
     Item = Window:AddTab({ Title = "Item", Icon = "swords" }),
     Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
+    Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
 }
 
 local Options = SpeedHubX.Options
@@ -3618,3 +3620,413 @@ spawn(function()
     end)
 end)
 
+listShop =  {"Refund Stat [2,500F]","Reroll Race [3,000F]","Haki [25,00$]", "Geppo [10,000$]", "Soru [100,000$]", "KenHaki [750,000$]", "Black Leg [150,000$]", "Electro [500,000$]", "Fishman Karate [750,000$]", "Dragon Claw [1,500F]",
+"Superhuman [3,000,000]", "Death Step [2,500,000/5,000F]", "Sharkman Karate [2,500,000/5,000F]", "Electric Claw [3,000,000/5,000F]", "Dragon Talon [3,000,000/5,000F]", "Godhuman [5,000,000/5,000F]", "SanguineArt [5,000,000/5,000F]", "Katana [1,000]",
+"Cutlass [1,000]", "Duel Katana [12,000]", "Iron Mace [25,000]", "Pipe [100,000]", "Triple Katana [60,000]", "Dual-Headed Blade [400,000]", "Bisento [1,000,000]", "Soul Cane [750,000]", "Slingshot [5,000]", "Musket [8,000]", "Flintlock [10,500]", "Refined Flintlock [65,000]", "Cannon [100,000]", "Kabucha [1500F]",
+"Black Cape [50,000]", "Toemo Ring [500,000]", "Swordsman Hat [150,000]"}
+
+local MultiDropdown = Tabs.Shop:AddDropdown("MultiDropdown1", {
+    Title = "Select Shop",
+    Description = "",
+    Values = listShop,
+    Multi = true,
+    Default = {"Refund Stat [2,500F]", "Swordsman Hat [150,000]"},
+})
+
+MultiDropdown:SetValue({
+    Melee = true,
+    Defense = true,
+    seven = false
+})
+
+MultiDropdown:OnChanged(function(Value)
+    _G.ListShopBuy = Value
+end)
+
+Tabs.Shop:AddButton({
+    Title = "Buy On Select Shop",
+    Description = "",
+    Callback = function()
+        if _G.ListShopBuy == "Refund Stat [2,500F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "2")   
+        elseif _G.ListShopBuy == "Reroll Race [3,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "1")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
+        elseif _G.ListShopBuy == "Haki [25,00$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
+        elseif _G.ListShopBuy == "Geppo [10,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Geppo")
+        elseif _G.ListShopBuy == "Soru [100,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Soru")
+        elseif _G.ListShopBuy == "KenHaki [750,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
+        elseif _G.ListShopBuy == "Black Leg [150,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
+        elseif _G.ListShopBuy == "Electro [500,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectro")
+        elseif _G.ListShopBuy == "Fishman Karate [750,000$]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyFishmanKarate")
+        elseif _G.ListShopBuy == "Dragon Claw [1,500F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "DragonClaw", "1")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "DragonClaw", "2")
+        elseif _G.ListShopBuy == "Superhuman [3,000,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+        elseif _G.ListShopBuy == "Death Step [2,500,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+        elseif _G.ListShopBuy == "Sharkman Karate [2,500,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate", true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+        elseif _G.ListShopBuy == "Electric Claw [3,000,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw", true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+        elseif _G.ListShopBuy == "Dragon Talon [3,000,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon", true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+        elseif _G.ListShopBuy == "Godhuman [5,000,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+        elseif _G.ListShopBuy == "SanguineArt [5,000,000/5,000F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+        elseif _G.ListShopBuy == "Katana [1,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Katana")
+        elseif _G.ListShopBuy == "Cutlass [1,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Cutlass")
+        elseif _G.ListShopBuy == "Duel Katana [12,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Duel Katana")
+        elseif _G.ListShopBuy == "Iron Mace [25,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Iron Mace")
+        elseif _G.ListShopBuy == "Pipe [100,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Pipe")
+        elseif _G.ListShopBuy == "Triple Katana [60,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Triple Katana")
+        elseif _G.ListShopBuy == "Dual-Headed Blade [400,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Dual-Headed Blade")
+        elseif _G.ListShopBuy == "Bisento [1,000,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Bisento")
+        elseif _G.ListShopBuy == "Soul Cane [750,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Soul Cane")
+        elseif _G.ListShopBuy == "Slingshot [5,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Slingshot")
+        elseif _G.ListShopBuy == "Musket [8,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Musket")
+        elseif _G.ListShopBuy == "Flintlock [10,500]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Flintlock")
+        elseif _G.ListShopBuy == "Refined Flintlock [65,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Refined Flintlock")
+        elseif _G.ListShopBuy == "Cannon [100,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Cannon")
+        elseif _G.ListShopBuy == "Kabucha [1500F]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "1")
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "2")
+        elseif _G.ListShopBuy == "Black Cape [50,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Black Cape")
+        elseif _G.ListShopBuy == "Toemo Ring [500,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Tomoe Ring")
+        elseif _G.ListShopBuy == "Swordsman Hat [150,000]" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
+        end
+    end
+})
+
+if World1 then
+    TeleportTable = {"StraterIsland", "Marine1", "Marine2", "Midle Town", "Jungle", "Pirate Village", "Desert",
+    "Frozen Village", "Colosseum", "Prison", "Mob Leader", "Magma Village", "UnderWater Gate", "UnderWater City",
+    "Fountain City", "Sky1", "Sky2", "Sky3" }
+    elseif World2 then
+    TeleportTable = { "Dock", "Mansion", "Kingdom Of Rose", "Cafe", "Sunflower Field", "Jeramy Mountain", "Colossuem",
+    "Factory", "The Bridge", "Green Bit", "Graveyard", "Dark Area", "Snow Mountain", "Hot Island", "Cold Island",
+    "Ice Castle", "Usopp's Island", "inscription Island", "Forgotten Island", "Ghost Ship" }
+    elseif World3 then
+    TeleportTable = { "Port Town", "Hydra Island", "Gaint Tree", "Mansion", "Castle on the Sea", "Haunted Castle",
+    "Icecream Island", "Peanut Island", "Lab", "Cake Loaf", "TikiOutpost" }
+end
+
+local SelectIslandSet = Tabs.Island:AddDropdown("Dropdown3", {
+    Title = "Select Island",
+    Values = TeleportTable,
+    Multi = false,
+    Default = 1,
+})
+
+if World1 then
+SelectIslandSet:SetValue("Marine1")
+elseif World2 then
+SelectIslandSet:SetValue("Mansion")
+elseif World3 then
+SelectIslandSet:SetValue("Hydra Island")
+end
+
+SelectIslandSet:OnChanged(function(value)
+    _G.SelectLocalTeleport = value
+end)
+
+Tabs.Island:AddButton({
+    Title = "Teleport To First World",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
+    end
+})
+
+Tabs.Island:AddButton({
+    Title = "Teleport To Second World",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+    end
+})
+
+Tabs.Island:AddButton({
+    Title = "Teleport To Third World",
+    Description = "",
+    Callback = function()
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou")
+    end
+})
+
+local TpToIslandToggle = Tabs.Island:AddToggle("TpToIsland_Toggle", {Title = "Teleport To Island", Default = false })
+Options.TpToIsland_Toggle:SetValue(false)
+
+TpToIslandToggle:OnChanged(function(value)
+    _G.TeleportIsland = value
+    if _G.TeleportIsland then
+    if World1  then
+        if _G.SelectLocalTeleport == "Jones Salad" then
+            toTarget(CFrame.new(1042.1501464844, 16.299360275269, 1444.3442382813))
+        end
+        if _G.SelectLocalTeleport == "Marine1" then
+            toTarget(CFrame.new(-2599.6655273438, 6.9146227836609, 2062.2216796875))
+        end
+        if _G.SelectLocalTeleport == "Marine2" then
+            toTarget(CFrame.new(-5081.3452148438, 85.221641540527, 4257.3588867188))
+        end
+        if _G.SelectLocalTeleport == "Midle Town" then
+            toTarget(CFrame.new(-655.97088623047, 7.878026008606, 1573.7612304688))
+        end
+        if _G.SelectLocalTeleport == "Jungle" then
+            toTarget(CFrame.new(-1499.9877929688, 22.877912521362, 353.87060546875))
+        end
+        if _G.SelectLocalTeleport == "Pirate Village" then
+            toTarget(CFrame.new(-1163.3889160156, 44.777843475342, 3842.8276367188))
+        end
+        if _G.SelectLocalTeleport == "Desert" then
+            toTarget(CFrame.new(954.02056884766, 6.6275520324707, 4262.611328125))
+        end
+        if _G.SelectLocalTeleport == "Frozen Village" then
+            toTarget(CFrame.new(1144.5270996094, 7.3292083740234, -1164.7322998047))
+        end
+        if _G.SelectLocalTeleport == "Colosseum" then
+            toTarget(CFrame.new(-1667.5869140625, 39.385631561279, -3135.5817871094))
+        end
+        if _G.SelectLocalTeleport == "Prison" then
+            toTarget(CFrame.new(4857.6982421875, 5.6780304908752, 732.75750732422))
+        end
+        if _G.SelectLocalTeleport == "Mob Leader" then
+            toTarget(CFrame.new(-2841.9604492188, 7.3560485839844, 5318.1040039063))
+        end
+        if _G.SelectLocalTeleport == "Magma Village" then
+            toTarget(CFrame.new(-5328.8740234375, 8.6164798736572, 8427.3994140625))
+        end
+        if _G.SelectLocalTeleport == "UnderWater Gate" then
+            toTarget(CFrame.new(3893.953125, 5.3989524841309, -1893.4851074219))
+        end
+        if _G.SelectLocalTeleport == "UnderWater City" then
+            toTarget(CFrame.new(61191.12109375, 18.497436523438, 1561.8873291016))
+        end
+        if _G.SelectLocalTeleport == "Fountain City" then
+            toTarget(CFrame.new(5244.7133789063, 38.526943206787, 4073.4987792969))
+        end
+        if _G.SelectLocalTeleport == "Sky1" then
+            toTarget(CFrame.new(-4878.0415039063, 717.71246337891, -2637.7294921875))
+        end
+        if _G.SelectLocalTeleport == "Sky2" then
+            toTarget(CFrame.new(-7899.6157226563, 5545.6030273438, -422.21798706055))
+        end
+        if _G.SelectLocalTeleport == "Sky3" then
+            toTarget(CFrame.new(-7868.5288085938, 5638.205078125, -1482.5548095703))
+        end
+    elseif World2 then
+        if _G.SelectLocalTeleport == "Dock" then
+            toTarget(CFrame.new(-12.519311904907, 19.302536010742, 2827.853515625))
+        end
+        if _G.SelectLocalTeleport == "Mansion" then
+            toTarget(CFrame.new(-390.34829711914, 321.89730834961, 869.00506591797))
+        end
+        if _G.SelectLocalTeleport == "Kingdom Of Rose" then
+            toTarget(CFrame.new(-388.29895019531, 138.35575866699, 1132.1662597656))
+        end
+        if _G.SelectLocalTeleport == "Cafe" then
+            toTarget(CFrame.new(-379.70889282227, 73.0458984375, 304.84692382813))
+        end
+        if _G.SelectLocalTeleport == "Sunflower Field" then
+            toTarget(CFrame.new(-1576.7171630859, 198.61849975586, 13.725157737732))
+        end
+        if _G.SelectLocalTeleport == "Jeramy Mountain" then
+            toTarget(CFrame.new(1986.3519287109, 448.95678710938, 796.70239257813))
+        end
+        if _G.SelectLocalTeleport == "Colossuem" then
+            toTarget(CFrame.new(-1871.8974609375, 45.820514678955, 1359.6843261719))
+        end
+        if _G.SelectLocalTeleport == "Factory" then
+            toTarget(CFrame.new(349.53750610352, 74.446998596191, -355.62420654297))
+        end
+        if _G.SelectLocalTeleport == "The Bridge" then
+            toTarget(CFrame.new(-1860.6354980469, 88.384948730469, -1859.1593017578))
+        end
+        if _G.SelectLocalTeleport == "Green Bit" then
+            toTarget(CFrame.new(-2202.3706054688, 73.097663879395, -2819.2687988281))
+        end
+        if _G.SelectLocalTeleport == "Graveyard" then
+            toTarget(CFrame.new(-5617.5927734375, 492.22183227539, -778.3017578125))
+        end
+        if _G.SelectLocalTeleport == "Dark Area" then
+            toTarget(CFrame.new(3464.7700195313, 13.375151634216, -3368.90234375))
+        end
+        if _G.SelectLocalTeleport == "Snow Mountain" then
+            toTarget(CFrame.new(561.23834228516, 401.44781494141, -5297.14453125))
+        end
+        if _G.SelectLocalTeleport == "Hot Island" then
+            toTarget(CFrame.new(-5505.9633789063, 15.977565765381, -5366.6123046875))
+        end
+        if _G.SelectLocalTeleport == "Cold Island" then
+            toTarget(CFrame.new(-5924.716796875, 15.977565765381, -4996.427734375))
+        end
+        if _G.SelectLocalTeleport == "Ice Castle" then
+            toTarget(CFrame.new(6111.7109375, 294.41259765625, -6716.4829101563))
+        end
+        if _G.SelectLocalTeleport == "Usopp's Island" then
+            toTarget(CFrame.new(4760.4985351563, 8.3444719314575, 2849.2426757813))
+        end
+        if _G.SelectLocalTeleport == "inscription Island" then
+            toTarget(CFrame.new(-5099.01171875, 98.241539001465, 2424.4035644531))
+        end
+        if _G.SelectLocalTeleport == "Forgotten Island" then
+            toTarget(CFrame.new(-3051.9514160156, 238.87203979492, -10250.807617188))
+        end
+        if _G.SelectLocalTeleport == "Ghost Ship" then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        end
+    elseif World3 then
+        if _G.SelectLocalTeleport == "Port Town" then
+            toTarget(CFrame.new(-275.21615600586, 43.755737304688, 5451.0659179688))
+        end
+        if _G.SelectLocalTeleport == "Mansion" then
+            local args = {
+                [1] = "requestEntrance",
+                [2] = Vector3.new(-12548.595703125, 337.17001342773, -7554.6103515625)
+            }
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        end
+        if _G.SelectLocalTeleport == "Castle on the Sea" then
+            local args = {
+                [1] = "requestEntrance",
+                [2] = Vector3.new(-5079.44677734375, 313.7293395996094, -3151.065185546875)
+            }
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        end
+        if _G.SelectLocalTeleport == "Hydra Island" then
+            toTarget(CFrame.new(5541.2685546875, 668.30456542969, 195.48069763184))
+        end
+        if _G.SelectLocalTeleport == "Gaint Tree" then
+            toTarget(CFrame.new(2276.0859375, 25.87850189209, -6493.03125))
+        end
+        if _G.SelectLocalTeleport == "Haunted Castle" then
+            toTarget(CFrame.new(-9515.07324, 142.130615, 5537.58398))
+        end
+        if _G.SelectLocalTeleport == "Icecream Island" then
+            toTarget(CFrame.new(-880.894531, 118.245354, -11030.7607, -0.867174983, 1.48501234e-09, 0.498003572,
+                2.70457789e-08, 1, 4.41129586e-08, -0.498003572, 5.1722548e-08, -0.867174983))
+        end
+        if _G.SelectLocalTeleport == "Peanut Island" then
+            toTarget(CFrame.new(-2124.06738, 44.0723495, -10179.8281, -0.623125494, -2.55908191e-07, -0.782121837,
+                -1.40530574e-07, 1, -2.15235005e-07, 0.782121837, -2.42063933e-08, -0.623125494))
+        end
+        if _G.SelectLocalTeleport == "Lab" then
+            toTarget(CFrame.new(-5057.146484375, 314.54132080078, -2934.7995605469))
+        end
+        if _G.SelectLocalTeleport == "Cake Loaf" then
+            toTarget(CFrame.new(-1977.36767578125, 251.509521484375, -12380.4189453125))
+        end
+        if _G.SelectLocalTeleport == "TikiOutpost" then
+            toTarget(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
+        end
+        end
+    end
+end)
+
+Tabs.Island:AddButton({
+    Title = "Stop Teleport",
+    Description = "",
+    Callback = function()
+        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end
+})
+
+Tabs.Island:AddButton({
+    Title = "Teleport To Advanced Fruit Dealer",
+    Description = "",
+    Callback = function()
+        toTarget(CFrame.new(game:GetService("Workspace").NPCs["Advanced Fruit Dealer"].Hair.Handle.Position))
+    end
+})
+
+Tabs.Island:AddButton({
+    Title = "Teleport To Legendary Sword Dealer",
+    Description = "",
+    Callback = function()
+        toTarget(CFrame.new(game:GetService("Workspace").NPCs["Legendary Sword Dealer"].Hair.Handle.Position))
+    end
+})
+
+Tabs.Island:AddButton({
+    Title = "Teleport To Master of Enhancement",
+    Description = "",
+    Callback = function()
+        toTarget(CFrame.new(game:GetService("Workspace").NPCs["Master of Enhancement"].Hair.Handle.Position))
+    end
+})
+
+local StatusMirage = Tabs.Island:AddParagraph({
+    Title = "Mirage Island",
+    Content = ""
+})
+
+function UpdateStatusMirage()
+task.spawn(function()
+while task.wait() do
+pcall(function()
+    if game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149431" then
+       FullMoonStatus = "🌑 : 100%"
+    elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149052" then
+        FullMoonStatus = "🌒 : 75%"
+    elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709143733" then
+        FullMoonStatus = "🌓 : 50%"
+    elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709150401" then
+        FullMoonStatus = "🌗 : 25%"
+    elseif game:GetService("Lighting").Sky.MoonTextureId == "http://www.roblox.com/asset/?id=9709149680" then
+        FullMoonStatus = "🌖 : 15%"
+    else
+        FullMoonStatus = "🌚 : 0%"
+    end
+end)
+end
+end)
+
+if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+   MirageStatus = 'Mirage Island : 🟢'
+else
+    MirageStatus = 'Mirage Island : ❌'
+end
+StatusMirage:SetDeso(MirageStatus..' | Full Moon: '..FullMoonStatus)
+end
+
+spawn(function()
+    pcall(function()
+        while task.wait() do
+            UpdateStatusMirage()
+        end
+    end)
+end)
