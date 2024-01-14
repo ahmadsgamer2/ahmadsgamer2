@@ -4402,17 +4402,17 @@ Options.infinityAbility_Toggle:SetValue(false)
 
 infinityAbilityToggle:OnChanged(function(value)
     _G.InfAbility = value
-    InfAbility()
 end)
 
+InfAbility()
 local NoDashCooldownToggle = Tabs.Island:AddToggle("NoDashCooldown_Toggle", {Title = "No Dash Cooldown", Default = false })
 Options.NoDashCooldown_Toggle:SetValue(false)
 
 NoDashCooldownToggle:OnChanged(function(value)
     _G.NoDashCooldown = value
-    DodgeNoCoolDown()
 end)
 
+DodgeNoCoolDown()
 function DodgeNoCoolDown()
     if _G.NoDashCooldown then
         for i, v in next, getgc() do
@@ -4437,9 +4437,9 @@ Options.infGeppo_Toggle:SetValue(false)
 
 infGeppoToggle:OnChanged(function(value)
     _G.InfinitiesSkyJump = value
-    SkyJumpNoCoolDown()
 end)
 
+SkyJumpNoCoolDown()
 function SkyJumpNoCoolDown()
     if _G.InfinitiesSkyJump then
         for i, v in next, getgc() do
