@@ -7,7 +7,7 @@ local Window = SpeedHubX:CreateWindow({
     Title = "Speed Hub X | ".._G.Version,
     SubTitle = "by AhmadV10",
     TabWidth = 160,
-    Size = UDim2.fromOffset(400, 450),
+    Size = UDim2.fromOffset(500, 350),
     Acrylic = true, 
     Theme = "Vampire",
     MinimizeKey = Enum.KeyCode.LeftControl 
@@ -22,10 +22,18 @@ local Status = Tabs.Main:AddParagraph({
     Content = "Status:"
 })
 
+if game.PlaceId == 2753915549 then
+StatusWorld = "1"
+elseif game.PlaceId == 4442272183 then
+StatusWorld = "2"
+elseif game.PlaceId == 7449423635 then
+StatusWorld = "3"
+end
+
 function UpdateFPS()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Status:SetDesc("Status: FPS: "..Fps " | PING: "..Ping) 
+Status:SetDesc("Status: FPS: "..Fps " | PING: "..Ping " | World: "..StatusWorld) 
 end
 
 spawn(function()
@@ -107,7 +115,7 @@ repeat wait(0) until game:IsLoaded()
 
     WeaponList = {"Melee","Sword", "Devil Fruit" }
 
-    local SetWeapon = Tabs.Main:AddDropdown("Dropdown", {
+    local SetWeapon = Tabs.Main:AddDropdown("DropdownWeapon", {
         Title = "Weapon",
         Values = WeaponList,
         Multi = false,
@@ -161,7 +169,7 @@ end)
 
 local MethodList = {"Upper","Behind","Below" }
 
-local SetMethod = Tabs.Main:AddDropdown("Dropdown", {
+local SetMethod = Tabs.Main:AddDropdown("DropdownMethod", {
     Title = "Method",
     Values = MethodList,
     Multi = false,
@@ -192,7 +200,7 @@ end)
 
 FastAttack = {"Slow","Fast","Extreme",}
 
-local SetAttack = Tabs.Main:AddDropdown("Dropdown", {
+local SetAttack = Tabs.Main:AddDropdown("DropdownAttackType", {
     Title = "Attack Type",
     Values = FastAttack,
     Multi = false,
@@ -250,7 +258,7 @@ Tabs.Main:AddParagraph({
 })
 
 local ChooseFarmList = {"Level", "Bone", "Katakuri", "Neareast Mobs"}
-local SetChooseFarm = Tabs.Main:AddDropdown("Dropdown", {
+local SetChooseFarm = Tabs.Main:AddDropdown("DropdownChoose", {
     Title = "Choose Farm",
     Values = ChooseFarmList,
     Multi = false,
@@ -264,7 +272,7 @@ SetChooseFarm:OnChanged(function(value)
 end)
 
 local EnableFarm = Tabs.Main:AddToggle("EnableFarm_Toggle", {Title = "Enable Farm", Default = false })
-
+Options.EnableFarm_Toggle:SetValue(false)
 EnableFarm:OnChanged(function(value)
     _G.NeareastFarm = value
     _G.AutoCakePrince = value
@@ -577,6 +585,8 @@ end)
 local ChestFarmGood = Tabs.Main:AddToggle("ChestFarmGood_Toggle", {Title = "Chest Farm [Good]", Default = false })
 
 local ChestFarmTween = Tabs.Main:AddToggle("ChestFarmTween_Toggle", {Title = "Chest Farm [Tween]", Default = false })
+Options.ChestFarmGood_Toggle:SetValue(false)
+Options.ChestFarmTween_Toggle:SetValue(false)
 
 ChestFarmTween:OnChanged(function(value)
     _G.AutoFarmChest = value
@@ -680,3 +690,12 @@ spawn(function()
         end
     end
 end)
+
+if World1 then
+    Tabs.Main:AddParagraph({
+        Title = "Status : World 1",
+        Content = ""
+    })
+
+
+end
