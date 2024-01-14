@@ -13,7 +13,7 @@ local Window = SpeedHubX:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "http://www.roblox.com/asset/?id=7040391851" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
 }
 local Options = SpeedHubX.Options
 
@@ -24,21 +24,24 @@ local Status = Tabs.Main:AddParagraph({
 
 if game.PlaceId == 2753915549 then
 StatusWorld = "1"
+
 elseif game.PlaceId == 4442272183 then
 StatusWorld = "2"
+
 elseif game.PlaceId == 7449423635 then
 StatusWorld = "3"
+
 end
 
-function UpdateFPS()
+function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Status:SetDesc("Status: FPS: "..Fps"\n | PING: "..Ping, "\n | World: "..StatusWorld) 
+Status:SetDesc("FPS: "..Fps" | PING: "..Ping, " | World: "..StatusWorld) 
 end
 
 spawn(function()
     while true do wait(.1)
-        UpdateFPS()
+        UpdateClient()
     end
 end)
 
@@ -688,11 +691,195 @@ spawn(function()
     end
 end)
 
+Tabs.Main:AddParagraph({
+    Title = "Farming Boss",
+    Content = ""
+})
+
+if World1 then
+    tableBoss = {"DauCoGhe Raid Boss [Lv. 7000]","The Gorilla King","Bobby","Yeti","Mob Leader","Vice Admiral","Warden","Chief Warden","Swan","Magma Admiral","Fishman Lord","Wysper","Thunder God","Cyborg","Saber Expert"}
+elseif World2 then
+    tableBoss = {"DauCoGhe Raid Boss [Lv. 8000]","Diamond","Jeremy","Fajita","Don Swan","Smoke Admiral","Cursed Captain","Darkbeard","Order","Awakened Ice Admiral","Tide Keeper"}
+elseif World3 then
+    tableBoss = {"DauCoGhe Raid Boss [Lv. 9000]","Stone","Island Empress","Kilo Admiral","Captain Elephant","Beautiful Pirate","rip_indra True Form","Longma","Soul Reaper","Cake Queen"}
+end
+
+local DropdownBoss = Tabs.Main:AddDropdown("DropdownBoss", {
+    Title = "Select Boss",
+    Values = tableBoss,
+    Multi = false,
+    Default = 1,
+})
+
+if World1 then
+    DropdownBoss:SetValue("The Gorilla King")
+elseif World2 then
+    DropdownBoss:SetValue("Diamond")
+elseif World3 then
+    DropdownBoss:SetValue("Stone")
+end
+
+DropdownBoss:OnChanged(function(value)
+    _G.SelectBoss = value
+end)
+
+local AutoFarmBoss = Tabs.Main:AddToggle("AutoFarmBoss_Toggle", {Title = "Auto Farm Boss", Default = false })
+Options.AutoFarmBoss_Toggle:SetValue(false)
+
+AutoFarmBoss:OnChanged(function(value)
+    _G.AutoFarmBoss = value
+    if _G.AutoFarmBoss == false then
+        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end
+end)
+
+local AutoFarmBossAll = Tabs.Main:AddToggle("AutoFarmBossAll_Toggle", {Title = "Auto Farm Boss [All]", Default = false })
+Options.AutoFarmBossAll_Toggle:SetValue(false)
+
+AutoFarmBossAll:OnChanged(function(value)
+    _G.AutoAllBoss = value
+    if _G.AutoAllBoss == false then
+        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end
+end)
+
+task.spawn(function()
+    while task.wait() do
+    if _G.AutoAllBoss then
+    pcall(function()
+        for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+            if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
+            then
+                repeat
+                    task.wait()
+                    StartMagnet = true
+                    FastAttack = true
+                    EquipWeapon(_G.SelectWeapon)
+                    v.Humanoid.WalkSpeed = 0
+                    v.HumanoidRootPart.CanCollide = false
+                    v.Head.CanCollide = false
+                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                    if not FastAttack then 
+                    game:GetService 'VirtualUser':CaptureController()
+                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    end
+                    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                until v.Humanoid.Health <= 0 or _G.AutoAllBoss == false or not v.Parent 
+            end
+        end
+    end)
+    end
+end
+end)
+
+task.spawn(function()
+    while task.wait() do
+    if _G.AutoFarmBoss then
+    pcall(function()
+        if game:GetService("Workspace").Enemies:FindFirstChild(_G.SelectBoss) then
+            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                if v.Name == _G.SelectBoss then
+                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                        repeat
+                            task.wait()
+                            EquipWeapon(_G.SelectWeapon)
+                            StartMagnet = true
+                            FastAttack = true
+                            v.HumanoidRootPart.CanCollide = false
+                            v.Humanoid.WalkSpeed = 0
+                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            if not FastAttack then
+                            game:GetService("VirtualUser"):CaptureController()
+                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+                            end
+                            sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius",math.huge)
+                        until not _G.AutoFarmBoss or not v.Parent or v.Humanoid.Health <= 0
+                    end
+                end
+            end
+        else
+            if game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss) then
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(_G.SelectBoss).HumanoidRootPart.CFrame * CFrame.new(0, 35, 0))
+            end
+        end
+    end)
+    end
+    end
+end)
+
 if World1 then
     Tabs.Main:AddParagraph({
         Title = "Status : World 1",
         Content = ""
     })
 
+    local AutoNewWorldToggle = Tabs.Main:AddToggle("AutoNewWorld_Toggle", {Title = "Auto New World", Default = false })
+    Options.AutoNewWorld_Toggle:SetValue(false)
 
+    AutoNewWorldToggle:OnChanged(function(value)
+        _G.AutoNewWorld = value
+        if _G.AutoNewWorld == false then
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        end
+    end)
+    task.spawn(function()
+        while task.wait() do
+            pcall(function()
+                if _G.AutoNewWorld then
+                    if game.Players.LocalPlayer.Data.Level.Value >= 700 then
+                        if _G.AutoFarm then
+                            _G.AutoFarm = false
+                        end
+                        if game.Workspace.Map.Ice.Door.CanCollide == true and game.Workspace.Map.Ice.Door.Transparency == 0 then
+                            wait(.5)
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("DressrosaQuestProgress", "Detective")
+                            EquipWeapon("Key")
+                            repeat
+                                task.wait()
+                                toTarget(CFrame.new(1347.7124, 37.3751602, -1325.6488))
+                            until (CFrame.new(1347.7124, 37.3751602, -1325.6488).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 3 or not _G.AutoNewWorld
+                            wait(3)
+                        elseif game.Workspace.Map.Ice.Door.CanCollide == false and game.Workspace.Map.Ice.Door.Transparency == 1 then
+                            if game:GetService("Workspace").Enemies:FindFirstChild("Ice Admiral") then
+                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                    if v.Name == "Ice Admiral" and v.Humanoid.Health > 0 then
+                                        repeat
+                                            task.wait()
+                                            if _G.AutoHaki then
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                            end
+                                            EquipWeapon(_G.SelectWeapon)
+                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                            FastAttack = true
+                                            if not _G.FastAttack then
+                                                game:GetService 'VirtualUser':CaptureController()
+                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            end
+                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+                                        until v.Humanoid.Health <= 0 or not v.Parent
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+                                    end
+                                end
+                            else
+                                toTarget(CFrame.new(1347.7124, 37.3751602, -1325.6488))
+                            end
+                        else
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
+                        end
+                    end
+                end
+            end)
+        end
+    end)
 end
