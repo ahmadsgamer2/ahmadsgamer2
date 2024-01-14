@@ -7,7 +7,7 @@ local Window = SpeedHubX:CreateWindow({
     Title = "Speed Hub X | ".._G.Version,
     SubTitle = "by AhmadV10",
     TabWidth = 160,
-    Size = UDim2.fromOffset(500, 350),
+    Size = UDim2.fromOffset(560, 350),
     Acrylic = true, 
     Theme = "Vampire",
     MinimizeKey = Enum.KeyCode.LeftControl 
@@ -33,7 +33,7 @@ end
 function UpdateFPS()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Status:SetDesc("Status: FPS: "..Fps, " | PING: "..Ping, " | World: "..StatusWorld) 
+Status:SetDesc("Status: FPS: "..Fps"\n | PING: "..Ping, "\n | World: "..StatusWorld) 
 end
 
 spawn(function()
@@ -280,9 +280,6 @@ EnableFarm:OnChanged(function(value)
     _G.AutoFarm = value
     _G.DoubleQuest = value
     getgenv().noclip = value
-    if value == false then
-        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-    end
 end)
 
 loadstring(game:HttpGet("https://pastebin.com/raw/XwkVe1U7"))()
