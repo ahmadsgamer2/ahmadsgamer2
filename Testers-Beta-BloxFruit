@@ -36,7 +36,7 @@ end
 function UpdateClient()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-local Status1 = "FPS: "..Fps.." | PING: "..Ping.." | World: "..StatusWorld
+local Status1 = " | PING: "..Ping.." | World: "..StatusWorld
 Status:SetDesc(Status1) 
 end
 
@@ -1255,9 +1255,6 @@ if World1 then
 
     AutoNewWorldToggle:OnChanged(function(value)
         _G.AutoNewWorld = value
-        if _G.AutoNewWorld == false then
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        end
     end)
     task.spawn(function()
         while task.wait() do
@@ -1318,3 +1315,138 @@ if World1 then
         end
     end)
 end
+
+if World2 then
+    Tabs.Main:AddParagraph({
+        Title = "Status : World 2",
+        Content = ""
+    })
+
+    local AutoNewWorld3Toggle = Tabs.Main:AddToggle("AutoNewWorld3_Toggle", {Title = "Auto New World Third", Default = false })
+    Options.AutoNewWorld3_Toggle:SetValue(false)
+
+    AutoNewWorld3Toggle:OnChanged(function(value)
+        _G.AutoThirdSea = value
+    end)
+    loadstring(game:HttpGet("https://pastebin.com/raw/9ZL7a721"))()
+end
+
+Tabs.Main:AddParagraph({
+    Title = "Farming Materail",
+    Content = ""
+})
+
+local DropdownMaterail = Tabs.Main:AddDropdown("DropdownMaterail", {
+    Title = "Select Materail",
+    Values = AllMaterial,
+    Multi = false,
+    Default = 1,
+})
+
+DropdownMaterail:SetValue("Conjured Cocoa")
+
+DropdownMaterail:OnChanged(function(value)
+    SelectModeMaterial = value
+end)
+
+local AutoFarmMaterailToggle = Tabs.Main:AddToggle("AutoMaterail_Toggle", {Title = "Auto Farm Material", Default = false })
+Options.AutoMaterail_Toggle:SetValue(false)
+
+AutoFarmMaterailToggle:OnChanged(function(value)
+    AutoFarmMaterial = value
+end)
+
+task.spawn(function()
+    while task.wait() do
+        if AutoFarmMaterial then
+            xpcall(function()
+                if (SelectModeMaterial ~= "") then
+                    CheckMaterial(SelectModeMaterial);
+                    if CustomFindFirstChild(MaterialMob) then
+                        for v0, v1 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if (AutoFarmMaterial and table.find(MaterialMob, v1.Name) and v1:FindFirstChild("HumanoidRootPart") and v1:FindFirstChild("Humanoid") and (v1.Humanoid.Health > 0)) then
+                                repeat
+                                    task.wait();
+                                    FarmtoTarget = toTarget(v1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 1));
+                                    if (v1:FindFirstChild("HumanoidRootPart") and v1:FindFirstChild("Humanoid") and ((v1.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150)) then
+                                        if FarmtoTarget then FarmtoTarget:Stop(); end
+                                        FastAttack = true;
+                                        EquipWeapon(_G.SelectWeapon);
+                                        spawn(function()
+                                            for v4, v5 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if (v5.Name == v1.Name) then
+                                                    spawn(function()
+                                                        if InMyNetWork(v5.HumanoidRootPart) then
+                                                            v5.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame;
+                                                            v5.Humanoid.JumpPower = 0;
+                                                            v5.Humanoid.WalkSpeed = 0;
+                                                            v5.HumanoidRootPart.CanCollide = false;
+                                                            v5.Humanoid:ChangeState(14);
+                                                            v5.Humanoid:ChangeState(16);
+                                                            v5.Humanoid:ChangeState(11);
+                                                            v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
+                                                        end
+                                                    end);
+                                                end
+                                            end
+                                        end);
+                                        if (game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and (game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150)) then
+                                            game:service("VirtualInputManager"):SendKeyEvent(true, "V", false,game);
+                                            game:service("VirtualInputManager"):SendKeyEvent(false, "V",false, game);
+                                        end
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 1);
+                                    end
+                                until not CustomFindFirstChild(MaterialMob) or not AutoFarmMaterial or (v1.Humanoid.Health <= 0) or not v1.Parent
+                                FastAttack = false;
+                            end
+                        end
+                    else
+                        FastAttack = false;
+                        Modstween = toTarget(CFrameMon);
+                        if (World1 and (table.find(MaterialMob, "Fishman Commando")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000)) then
+                            if Modstween then Modstween:Stop(); end
+                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                "requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875));
+                        elseif (World1 and not (table.find(MaterialMob, "Fishman Commando")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000)) then
+                            if Modstween then Modstween:Stop(); end
+                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                "requestEntrance", Vector3.new(3864.8515625, 6.6796875, -1926.7841796875));
+                        elseif (World1 and (table.find(MaterialMob, "God's Guard")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000)) then
+                            if Modstween then Modstween:Stop(); end
+                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                "requestEntrance",
+                                Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
+                        elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
+                            if Modstween then 
+                                Modstween:Stop()
+                                spawn(function()
+                                    if posrandom <= 1 then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 1 and posrandom <= 2 then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 2 and posrandom <= 3 then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 3 and posrandom <= 4  then
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                        posrandom = posrandom + 0.1
+                                elseif posrandom >=4 and posrandom <= 5 then
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                    posrandom = 0
+                                end
+                            end)
+                        end
+                           -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                        end
+                    end
+                end
+            end, function(x)
+                print("Auto Farm Material Error : " .. x)
+            end)
+        else
+            break;
+        end
+    end
+end)
