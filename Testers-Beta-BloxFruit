@@ -7,9 +7,9 @@ local Window = SpeedHubX:CreateWindow({
     Title = "Speed Hub X | ".._G.Version,
     SubTitle = "by AhmadV10",
     TabWidth = 160,
-    Size = UDim2.fromOffset(500, 460),
+    Size = UDim2.fromOffset(500, 400),
     Acrylic = true, 
-    Theme = "vampire",
+    Theme = "Vampire",
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 local Tabs = {
