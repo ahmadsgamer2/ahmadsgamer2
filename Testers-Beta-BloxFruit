@@ -33,7 +33,7 @@ end
 function UpdateFPS()
 local Fps = workspace:GetRealPhysicsFPS()
 local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
-Status:SetDesc("Status: FPS: "..Fps " | PING: "..Ping " | World: "..StatusWorld) 
+Status:SetDesc("Status: FPS: "..Fps, " | PING: "..Ping, " | World: "..StatusWorld) 
 end
 
 spawn(function()
