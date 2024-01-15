@@ -1289,12 +1289,17 @@ task.spawn(function()
     end)
 end)
 
-spawn(function()
+task.spawn(function()
     while true do task.wait()
         MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
     end
 end)
 
+task.spawn(function()
+    while true do task.wait()
+        MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
+    end
+end)
 
 Options.FastAttack_Toggle:SetValue(true)
 
