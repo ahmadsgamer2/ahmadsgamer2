@@ -1225,8 +1225,6 @@ function SaveSettings()
     end
 end
 
-LoadSettings()
-
     Tabs.Main:AddParagraph({
         Title = "Config",
         Content = ""
