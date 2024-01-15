@@ -1505,7 +1505,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
                     if Questtween then Questtween:Stop() end
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                    wait(0.9)
+                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                         if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", QuestName, LevelQuest)
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
@@ -1619,8 +1620,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
-                            
-                           spawn(function()
+                            spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                                     posrandom = posrandom + 0.1
@@ -1662,16 +1662,13 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Questtween then Questtween:Stop() end
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
+            elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                    wait(1)
+                wait(1)
+                if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
-                else
-                    toTarget(CFrameQuest)
                 end
             end
         elseif GetQuest.Visible == true then
@@ -1744,7 +1741,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
-                   spawn(function()
+                    spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                             posrandom = posrandom + 0.1
@@ -1786,16 +1783,13 @@ else
         elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
             if Questtween then Questtween:Stop() end
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                wait(1)
+            wait(1)
+            if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
-            else
-                toTarget(CFrameQuest)
             end
         end
     elseif GetQuest.Visible == true then
@@ -1882,13 +1876,12 @@ else
                         elseif posrandom >= 3 and posrandom <= 4  then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                             posrandom = posrandom + 0.1
-                    elseif posrandom >= 4 and posrandom <= 5 then
+                    elseif posrandom >=4 and posrandom <= 5 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                         posrandom = 0
                     end
                 end)
             end
-              --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
             end 
         end
     end
@@ -1963,7 +1956,18 @@ end)
 end
 end)
 
-
+spawn(function()
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if _G.Settings.AutoFarm then
+        if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
+            setfflag("HumanoidParallelRemoveNoPhysics", "False")
+            setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+            game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
+            end
+        end
+    end)
+end)
+    
 
 local ChestFarmGood = Tabs.Main:AddToggle("ChestFarmGood_Toggle", {Title = "Chest Farm [Good]", Default = false })
 
@@ -5672,8 +5676,6 @@ local StatusMirage = Tabs.Island:AddParagraph({
     Content = "Status: "
 })
 
-function UpdateStatusMirage()
-
 task.spawn(function()
 while task.wait() do
 pcall(function()
@@ -5694,19 +5696,23 @@ end)
 end
 end)
 
-if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-   MirageStatus = "Mirage Island : 🟢"
-else
-    MirageStatus = 'Mirage Island : ❌'
-end
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+            MirageStatus = "🟢"
+        else
+            MirageStatus = '❌'
+         end
+    end)
+ end
+end)
 
-StatusMirage:SetDesc(""..MirageStatus.." | Full Moon: "..FullMoonStatus.."")
-end
 
 spawn(function()
     pcall(function()
         while wait() do
-            UpdateStatusMirage()
+            StatusMirage:SetDesc("Mirage Island: "..MirageStatus.." | Full Moon: "..FullMoonStatus)
         end
     end)
 end)
