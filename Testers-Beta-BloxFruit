@@ -31,50 +31,6 @@ spawn(
 
 local lp = game.Players.LocalPlayer
 
-Frame_5.Parent = ScreenGui
-Frame_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_5.BorderSizePixel = 0
-Frame_5.Position = UDim2.new(0, 0, 0.447791159, 0)
-Frame_5.Size = UDim2.new(0, 200, 0, 51)
-
-TextButton.Parent = Frame_5
-TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0, 0, 0.0196078438, 0)
-TextButton.Size = UDim2.new(0, 100, 0, 50)
-TextButton.Font = Enum.Font.SourceSansBold
-TextButton.Text = "Next Players"
-TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextSize = 16.000
-TextButton.MouseButton1Down:Connect(
-    function()
-        NextplySelect = true
-        wait(0.5)
-        NextplySelect = false
-    end
-)
-
-UICorner_5.Parent = TextButton
-
-TextButton_2.Parent = Frame_5
-TextButton_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_2.BorderSizePixel = 0
-TextButton_2.Position = UDim2.new(0.5, 0, 0.0196078438, 0)
-TextButton_2.Size = UDim2.new(0, 100, 0, 50)
-TextButton_2.Font = Enum.Font.SourceSansBold
-TextButton_2.Text = "Hop Servers"
-TextButton_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_2.TextSize = 16.000
-TextButton_2.TextWrapped = true
-TextButton_2.MouseButton1Down:Connect(
-    function()
-        LetsGo = true
-    end
-)
-
 -- Function :
 function Hop()
     local PlaceID = game.PlaceId
