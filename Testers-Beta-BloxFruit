@@ -1265,22 +1265,6 @@ if _G.Method == nil then
     _G.Method = "Upper"
 end
 
-task.spawn(function()
-    while task.wait(0) do
-    pcall(function()
-        if _G.Method == "Behind" then
-            MethodFarm = CFrame.new(0, 0,  _G.DistanceAutoFarm)
-        elseif _G.Method == "Below" then
-            MethodFarm = CFrame.new(0, - _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(90), 0, 0)
-        elseif _G.Method == "Upper" then
-            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
-        else
-            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0)
-        end
-    end)
-    end
-end)
-
 FastAttack = {"Slow","Fast","Extreme",}
 
 local SetAttack = Tabs.Main:AddDropdown("DropdownAttackType", {
@@ -1342,6 +1326,22 @@ SetDistance:OnChanged(function(Value)
 end)
 _G.DistanceAutoFarm = 30
 SetDistance:SetValue(30)
+
+task.spawn(function()
+    while task.wait(0) do
+    pcall(function()
+        if _G.Method == "Behind" then
+            MethodFarm = CFrame.new(0, 0,  _G.DistanceAutoFarm)
+        elseif _G.Method == "Below" then
+            MethodFarm = CFrame.new(0, - _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(90), 0, 0)
+        elseif _G.Method == "Upper" then
+            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
+        else
+            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0)
+        end
+    end)
+    end
+end)
 
 Tabs.Main:AddParagraph({
     Title = "Farming",
