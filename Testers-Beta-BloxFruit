@@ -1291,25 +1291,7 @@ end)
 
 Options.FastAttack_Toggle:SetValue(true)
 
-local SetDistance = Tabs.Main:AddSlider("Slider", {
-    Title = "Distance Farm",
-    Description = "",
-    Default = 30,
-    Min = 1,
-    Max = 100,
-    Rounding = 1,
-    Callback = function(value)
-        _G.DistanceAutoFarm = value
-    end
-})
-
-SetDistance:OnChanged(function(Value)
-    _G.DistanceAutoFarm = value
-end)
 _G.DistanceAutoFarm = 30
-SetDistance:SetValue(30)
-
-
 
 Tabs.Main:AddParagraph({
     Title = "Farming",
