@@ -29,166 +29,7 @@ spawn(
     end
 )
 
--- Instances:
-
 local lp = game.Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local UIStroke = Instance.new("UIStroke")
-local Frame_2 = Instance.new("Frame")
-local UICorner_2 = Instance.new("UICorner")
-local TextLabel = Instance.new("TextLabel")
-local UICorner_3 = Instance.new("UICorner")
-local Frame_3 = Instance.new("Frame")
-local Frame_4 = Instance.new("Frame")
-local UICorner_4 = Instance.new("UICorner")
-local ImageLabel = Instance.new("ImageLabel")
-local Time = Instance.new("TextLabel")
-local Earned = Instance.new("TextLabel")
-local Total = Instance.new("TextLabel")
-local Frame_5 = Instance.new("Frame")
-local TextButton = Instance.new("TextButton")
-local UICorner_5 = Instance.new("UICorner")
-local TextButton_2 = Instance.new("TextButton")
-local UICorner_6 = Instance.new("UICorner")
-local UICorner_7 = Instance.new("UICorner")
-local Frame_6 = Instance.new("Frame")
-
--- Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.31215471, 0, 0.27510041, 0)
-Frame.Size = UDim2.new(0, 408, 0, 224)
-Frame.Draggable = true
-Frame.Visible = true
-Frame.Active = true
-
-UICorner.Parent = Frame
-
-UIStroke.Color = Color3.fromRGB(255, 255, 255)
-UIStroke.Parent = Frame
-
-Frame_2.Parent = Frame
-Frame_2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_2.BorderSizePixel = 0
-Frame_2.Size = UDim2.new(0, 408, 0, 43)
-
-UICorner_2.Parent = Frame_2
-
-TextLabel.Parent = Frame_2
-TextLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(0, 408, 0, 43)
-TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "Night Hub(Auto Bounty)"
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.TextSize = 18.000
-
-UICorner_3.Parent = TextLabel
-
-Frame_3.Parent = Frame
-Frame_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_3.BorderSizePixel = 0
-Frame_3.Position = UDim2.new(0, 0, 0.191964284, 0)
-Frame_3.Size = UDim2.new(0, 408, 0, 1)
-
-Frame_4.Parent = Frame
-Frame_4.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_4.BorderSizePixel = 0
-Frame_4.Position = UDim2.new(0, 0, 0.196428567, 0)
-Frame_4.Size = UDim2.new(0, 408, 0, 180)
-
-UICorner_4.Parent = Frame_4
-
-ImageLabel.Parent = Frame_4
-ImageLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-ImageLabel.BorderSizePixel = 0
-ImageLabel.Position = UDim2.new(0, 0, 0.0481336787, 0)
-ImageLabel.Size = UDim2.new(0, 161, 0, 150)
-ImageLabel.Image = "rbxassetid://15729933316"
-
-Time.Name = "Time"
-Time.Parent = Frame_4
-Time.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Time.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Time.BorderSizePixel = 0
-Time.Position = UDim2.new(0.394607842, 0, 0.100000001, 0)
-Time.Size = UDim2.new(0, 200, 0, 50)
-Time.Font = Enum.Font.SourceSansBold
-Time.Text = "Time : 0H 0M 0S"
-Time.TextColor3 = Color3.fromRGB(255, 255, 255)
-Time.TextSize = 16.000
-Time.TextWrapped = true
-function UpdateTime()
-    local GameTime = math.floor(workspace.DistributedGameTime + 0.5)
-    local Hour = math.floor(GameTime / (60 ^ 2)) % 24
-    local Minute = math.floor(GameTime / (60 ^ 1)) % 60
-    local Second = math.floor(GameTime / (60 ^ 0)) % 60
-    Time.Text = Hour .. "H " .. Minute .. "M " .. Second .. "S"
-end
-spawn(
-    function()
-        while task.wait() do
-            pcall(
-                function()
-                    UpdateTime()
-                end
-            )
-        end
-    end
-)
-
-Earned.Name = "Earned"
-Earned.Parent = Frame_4
-Earned.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Earned.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Earned.BorderSizePixel = 0
-Earned.Position = UDim2.new(0.419117659, 0, 0.361111104, 0)
-Earned.Size = UDim2.new(0, 180, 0, 50)
-Earned.Font = Enum.Font.SourceSansBold
-Earned.Text = "Earned : 0"
-Earned.TextColor3 = Color3.fromRGB(255, 255, 255)
-Earned.TextSize = 16.000
-start_bounty = lp.leaderstats["Bounty/Honor"].Value
-oldbty2 = lp.leaderstats["Bounty/Honor"].Value
-LocalEarn = 0
-earned = tonumber(lp.leaderstats["Bounty/Honor"].Value) - tonumber(start_bounty)
-start_bounty = lp.leaderstats["Bounty/Honor"].Value
-if earned > 0 then
-    LocalEarn = LocalEarn + earned
-    Earned.Text = "Earned : " .. LocalEarn
-end
-
-Total.Name = "Total"
-Total.Parent = Frame_4
-Total.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Total.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Total.BorderSizePixel = 0
-Total.Position = UDim2.new(0.394607842, 0, 0.600000024, 0)
-Total.Size = UDim2.new(0, 200, 0, 50)
-Total.Font = Enum.Font.SourceSansBold
-Total.Text = "Total Your Bounty : 0"
-Total.TextColor3 = Color3.fromRGB(255, 255, 255)
-Total.TextSize = 16.000
-spawn(
-    function()
-        while wait() do
-            Total.Text =
-                "Total Your Bounty :" .. " " .. game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value
-        end
-    end
-)
 
 Frame_5.Parent = ScreenGui
 Frame_5.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -342,17 +183,6 @@ spawn(
         end
     end
 )
-
-UICorner_6.Parent = TextButton_2
-
-UICorner_7.Parent = Frame_5
-
-Frame_6.Parent = Frame_5
-Frame_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame_6.BorderSizePixel = 0
-Frame_6.Position = UDim2.new(0.5, 0, 0, 0)
-Frame_6.Size = UDim2.new(0, 1, 0, 51)
 
 _G.AutoFarmBounty = true
 
@@ -964,6 +794,54 @@ spawn(
                         if game:GetService("Players").LocalPlayer.PlayerGui.Main.PvpDisabled.Visible == true then
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EnablePvp")
                         end
+                    end
+                end
+            end
+        )
+    end
+)
+
+spawn(
+    function()
+        pcall(
+            function()
+                while wait() do
+                    if _G.AutoFarmBounty then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+                    end
+                end
+            end
+        )
+    end
+)
+
+local deletions = {"LeftUpperArm","RightUpperArm","LeftLowerArm","RightLowerArm","LeftHand","RightHand"}
+
+spawn(
+    function()
+        pcall(
+            function()
+                while wait() do
+                    if _G.AutoFarmBounty then
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                                pcall(function()
+                                    for i,n in pairs(v.Character:GetChildren()) do
+                                        if (n.Name == "HumanoidRootPart") then
+                                            n.CanCollide = false
+                                            n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
+                                            n.Anchored = true
+                                            game.Players.LocalPlayer.Character:FindFirstChild("Punch"):Activate()
+                                            for i,m in pairs(n.Parent:GetChildren())do
+                                                if(table.find(deletions,m.Name))then
+                                                    m:Destroy()
+                                                end
+                                            end
+                                        end
+                                    end
+                                end)
+                            end
+                        end   
                     end
                 end
             end
