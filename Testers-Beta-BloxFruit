@@ -13,6 +13,25 @@ local Window = SpeedHubX:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl 
 })
 
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Item = Window:AddTab({ Title = "Item", Icon = "swords" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
+    Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
+    Raid = Window:AddTab({ Title = "Dungeon", Icon = "sword" }),
+    RaceV4 = Window:AddTab({ Title = "Race v4", Icon = "chevrons-right" }),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" }),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "mountain-snow" }),
+    Misc = Window:AddTab({ Title = "Miscellaneous", Icon = "list-plus" }),
+    Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),
+    Settings = Window:AddTab({ Title = "Setting", Icon = "settings" }),
+}
+
+local Options = SpeedHubX.Options
+
+do
+
 game:GetService("Players").LocalPlayer.Idled:connect(
 function()
     game:GetService("VirtualUser"):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
@@ -236,7 +255,6 @@ for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 end
 end)
 end    
-    -- [BringMon]
     task.spawn(function()
         while true do task.wait()
             if setscriptable then
@@ -262,9 +280,6 @@ end
                                 v.HumanoidRootPart.Transparency = 1
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
-                                --[[if v.Humanoid:FindFirstChild("Animator") then
-                                    v.Humanoid.Animator:Destroy()
-                                end]]
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                             end
@@ -1138,20 +1153,6 @@ function AttackFunction()
     end
 end
 
-local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Item = Window:AddTab({ Title = "Item", Icon = "swords" }),
-    Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
-    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
-    RaceV4 = Window:AddTab({ Title = "Race v4", Icon = "door-open" }),
-    Misc = Window:AddTab({ Title = "Miscellaneous", Icon = "list-plus" }),
-    Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),
-    Settings = Window:AddTab({ Title = "Setting", Icon = "settings" }),
-}
-
-local Options = SpeedHubX.Options
-
 local Status = Tabs.Main:AddParagraph({
     Title = "Home",
     Content = "Status:"
@@ -1290,20 +1291,16 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    while true do task.wait()
-        MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
-    end
-end)
-
-task.spawn(function()
-    while true do task.wait()
-        MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
-    end
+    pcall(function()
+    while task.wait() do
+        if true then
+            MethodFarm = CFrame.new(0,  30, 0) * CFrame.Angles(math.rad(0), 0, 0)
+           end
+        end
+    end)
 end)
 
 Options.FastAttack_Toggle:SetValue(true)
-
-_G.DistanceAutoFarm = 30
 
 Tabs.Main:AddParagraph({
     Title = "Farming",
@@ -4875,8 +4872,10 @@ Options.TpToIsland_Toggle:SetValue(false)
 
 TpToIslandToggle:OnChanged(function(value)
     _G.TeleportIsland = value
-    if _G.TeleportIsland then
-    if World1  then
+end)
+
+if _G.TeleportIsland then
+    if World1 then
         if _G.SelectLocalTeleport == "Jones Salad" then
             toTarget(CFrame.new(1042.1501464844, 16.299360275269, 1444.3442382813))
         end
@@ -5039,7 +5038,6 @@ TpToIslandToggle:OnChanged(function(value)
         end
         end
     end
-end)
 
 Tabs.Island:AddButton({
     Title = "Stop Teleport",
@@ -5846,3 +5844,4 @@ WhiteToggle:OnChanged(function(value)
      game:GetService("RunService"):Set3dRenderingEnabled(true)
     end
 end)
+end
