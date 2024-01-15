@@ -1144,6 +1144,7 @@ local Tabs = {
     Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
     Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
+    RaceV4 = Window:AddTab({ Title = "Race v4", Icon = "door-open" }),
     Misc = Window:AddTab({ Title = "Miscellaneous", Icon = "list-plus" }),
     Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),
     Settings = Window:AddTab({ Title = "Setting", Icon = "settings" }),
@@ -1345,39 +1346,71 @@ Tabs.Main:AddParagraph({
     Content = ""
 })
 
-local ChooseFarmList = {"Level", "Bone", "Katakuri", "Neareast Mobs"}
-local SetChooseFarm = Tabs.Main:AddDropdown("DropdownChoose", {
-    Title = "Choose Farm",
-    Values = ChooseFarmList,
-    Multi = false,
-    Default = 1,
-})
-
-SetChooseFarm:SetValue("Level") 
-
-SetChooseFarm:OnChanged(function(value)
-    _G.ChooseFarm = value
-end)
-
-local EnableFarm = Tabs.Main:AddToggle("EnableFarm_Toggle", {Title = "Enable Farm", Default = false })
+local EnableFarm = Tabs.Main:AddToggle("EnableFarm_Toggle", {Title = "Auto Farm Level", Default = false })
 Options.EnableFarm_Toggle:SetValue(false)
 
 EnableFarm:OnChanged(function(value)
-if _G.ChooseFarm == "Level" then
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
+end)
+
+local DoubleQuestToggle = Tabs.Main:AddToggle("DoubleQuest_Toggle", {Title = "Double Quest", Default = true })
+Options.DoubleQuest_Toggle:SetValue(true)
+
+DoubleQuestToggle:OnChanged(function(value)
     _G.DoubleQuest = value
-    getgenv().noclip = value
-elseif _G.ChooseFarm == "Katakuri" then
-    _G.AutoCakePrince = value
-elseif _G.ChooseFarm == "Neareast Mobs" then
+end)
+
+local EnableNeareastFarm = Tabs.Main:AddToggle("EnableFarmNeareast_Toggle", {Title = "Auto Farm Neareast Mob", Default = false })
+Options.EnableFarmNeareast_Toggle:SetValue(false)
+
+EnableNeareastFarm:OnChanged(function(value)
     _G.NeareastFarm = value
     _G.Settings.NeareastFarm = value
-elseif _G.ChooseFarm == "Bone" then
-    _G.AutoFarmBone  = value
-    _G.Settings.AutoFarmBone = value
+end)
+
+spawn(function()
+    while wait(.1) do
+        if _G.Settings.NeareastFarm then
+            pcall(function()
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name and v:FindFirstChild("Humanoid") then
+                        if v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                            repeat
+                                game:GetService("RunService").Heartbeat:wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                    local args = {
+                                        [1] = "Buso"
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                end
+                                PosMon = v.HumanoidRootPart.CFrame
+                                v.HumanoidRootPart.CanCollide = false
+                                v.Humanoid.WalkSpeed = 0
+                                v.Head.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                v.Humanoid:ChangeState(11)
+                                v.Humanoid:ChangeState(14)
+                                v.Humanoid:ChangeState(16)
+                                StartMagnet = true
+                                FastAttack = true
+                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                if not FastAttack then
+                                game:GetService 'VirtualUser':CaptureController()
+                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                end
+                                
+                                PosMon = v.HumanoidRootPart.CFrame
+                            until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+                        end
+                    end
+                end
+            end)
+        end
     end
 end)
+
 
 posrandom = 0
 randomposenelfastfarm = 0
@@ -1920,7 +1953,6 @@ local SubQuest = false
 local oldmob = Name
 local oldcheckquest = NameMon
 
-if _G.ChooseFarm == "Level" then
 task.spawn(function()
 while wait() do
 pcall(function()
@@ -1969,220 +2001,8 @@ pcall(function()
 end)
 end
 end)
-end
 
-if _G.ChooseFarm == "Katakuri" then
-    task.spawn(function()
-        while task.wait() do
-            pcall(function() 
-            if _G.AutoCakePrince  then
-                if game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
-                        for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                            if _G.AutoCakePrince  and string.find(v.Name, "Cake Prince") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Farmtween = toTarget(v.HumanoidRootPart.CFrame)
-                                    elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        if Farmtween then
-                                            Farmtween:Stop()
-                                        end
-                                        if _G.AutoCakePrince  and game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
-                                            _G.FastType = "Normal"
-                                        else
-                                            _G.FastType = "Fast"
-                                        end
-                                        FastAttack = true 
-                                        if _G.AutoHaki then
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                        end
-                                        EquipWeapon(_G.SelectWeapon)
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        if not _G.FastAttack then
-                                            game:GetService 'VirtualUser':CaptureController()
-                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        end
-                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid:ChangeState(11)
-                                        v.Humanoid:ChangeState(14)
-                                        v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    end
-                                until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
-                                FastAttack = false
-                            end
-                        end
-                    else
-                        if game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 and (CFrame.new(-1990.672607421875, 4532.99951171875, -14973.6748046875).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude >= 100 then -- 2000
-                            FastAttack = false
-                            Questtween = toTarget(CFrame.new(-2174.35546875, 69.97904968261719, -12396.609375))
-                            if (CFrame.new(-2174.35546875, 69.97904968261719, -12396.609375).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                if Questtween then Questtween:Stop() end
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2151.82153,149.315704, -12404.9053)
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2174.35546875,69.97904968261719, -12396.609375)
-                                wait(.1)
-                            end
-                        end
-                    end
-                else
-                    if game:GetService("Workspace").Enemies:FindFirstChild("Cookie Crafter") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Guard") or game:GetService("Workspace").Enemies:FindFirstChild("Baking Staff") or game:GetService("Workspace").Enemies:FindFirstChild("Head Baker") then
-                        for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                            if string.find(v.Name, "Cookie") or string.find(v.Name, "Cake") or string.find(v.Name, "Baking") or string.find(v.Name, "Head")  and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
-                                        Farmtween = toTarget(v.HumanoidRootPart.CFrame)
-                                    elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                                        if Farmtween then
-                                            Farmtween:Stop()
-                                        end
-                                        _G.FastType = "Fast"
-                                        FastAttack = true
-                                        StartMagnet = true
-                                        if _G.AutoHaki then
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                        end
-                                        EquipWeapon(_G.SelectWeapon)
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        if not _G.FastAttack then
-                                            game:GetService 'VirtualUser':CaptureController()
-                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        end
-                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid:ChangeState(11)
-                                        v.Humanoid:ChangeState(14)
-                                        v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    end
-                                until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
-                                StartMagnet = false
-                                FastAttack = false
-                            end
-                        end
-                    else
-                        Questtween = toTarget(CFrame.new(-2079.6826171875, 227.9525909423828, -12321.923828125))
-                        if (CFrame.new(-2079.6826171875, 227.9525909423828, -12321.923828125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
-                            if Questtween then Questtween:Stop() end
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2079.6826171875,227.9525909423828, -12321.923828125)
-                            end
-                        end
-                    end
-                end
-            end)
-        end
-    end)
-end
 
-if _G.ChooseFarm == "Bone" then
-local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.Settings.AutoFarmBone then
-                if GetQuestBone.Visible == false and _G.AccetpQuestBone then
-                    CFrameQuestBone = CFrame.new(-9513, 172, 6079)
-                    if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", "HauntedQuest2", 2)
-                else
-                    toTarget(CFrameQuestBone)
-                end
-        elseif GetQuestBone.Visible == true or not _G.AccetpQuestBone then
-                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
-                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                repeat
-                                    task.wait()
-                                    StartMagnet = true
-                                    FastAttack = true
-                                    if _G.AutoHaki then
-                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                        end
-                                    end
-                                    EquipWeapon(_G.SelectWeapon)
-                                    PosMon = v.HumanoidRootPart.CFrame
-                                    if not _G.FastAttack then
-                                        game:GetService 'VirtualUser':CaptureController()
-                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                    end
-                                    v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                    v.HumanoidRootPart.Transparency = 1
-                                    v.Humanoid.JumpPower = 0
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid:ChangeState(11)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
-                                StartMagnet = false
-                                FastAttack = false
-                            end
-                        end
-                    end
-                else
-                    two(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
-                    end
-                end
-            end
-        end)
-    end
-end)
-end
-
-if _G.ChooseFarm == "Neareast Mobs" then
-    spawn(function()
-        while wait(.1) do
-            if _G.Settings.NeareastFarm then
-                pcall(function()
-                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if v.Name and v:FindFirstChild("Humanoid") then
-                            if v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
-                                repeat
-                                    game:GetService("RunService").Heartbeat:wait()
-                                    EquipWeapon(_G.SelectWeapon)
-                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                        local args = {
-                                            [1] = "Buso"
-                                        }
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                    end
-                                    PosMon = v.HumanoidRootPart.CFrame
-                                    v.HumanoidRootPart.CanCollide = false
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Head.CanCollide = false
-                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                    v.Humanoid:ChangeState(11)
-                                    v.Humanoid:ChangeState(14)
-                                    v.Humanoid:ChangeState(16)
-                                    StartMagnet = true
-                                    FastAttack = true
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    if not FastAttack then
-                                    game:GetService 'VirtualUser':CaptureController()
-                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                    end
-                                    
-                                    PosMon = v.HumanoidRootPart.CFrame
-                                until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
-                            end
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-end
 
 local ChestFarmGood = Tabs.Main:AddToggle("ChestFarmGood_Toggle", {Title = "Chest Farm [Good]", Default = false })
 
