@@ -1292,10 +1292,8 @@ end)
 
 task.spawn(function()
     pcall(function()
-    while task.wait() do
-        if true then
+    while true do
             MethodFarm = CFrame.new(0,  30, 0) * CFrame.Angles(math.rad(0), 0, 0)
-           end
         end
     end)
 end)
