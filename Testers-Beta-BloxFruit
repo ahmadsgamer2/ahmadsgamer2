@@ -1322,7 +1322,7 @@ SetDistance:OnChanged(function(Value)
 end)
 _G.DistanceAutoFarm = 30
 SetDistance:SetValue(30)
-_G.Method == "Behind"
+_G.Method = "Behind"
 
 task.spawn(function()
     while task.wait(0) do
