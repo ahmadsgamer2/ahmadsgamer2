@@ -655,15 +655,33 @@ end)
 
 local EnableFarm = Tabs.Main:AddToggle("EnableFarm_Toggle", {Title = "Enable Farm", Default = false })
 Options.EnableFarm_Toggle:SetValue(false)
+
+if _G.ChooseFarm == "Level" then
 EnableFarm:OnChanged(function(value)
-    _G.NeareastFarm = value
-    _G.AutoCakePrince = value
-    _G.AutoFarmBone  = value
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     _G.DoubleQuest = value
     getgenv().noclip = value
-end)
+    end)
+end
+
+if _G.ChooseFarm == "Bone" then 
+EnableFarm:OnChanged(function(value)
+    _G.AutoFarmBone  = value
+    end)
+end
+
+if _G.ChooseFarm == "Katakuri" then 
+EnableFarm:OnChanged(function(value)
+    _G.AutoCakePrince = value
+    end)
+end
+
+if _G.ChooseFarm == "Neareast Mobs" then 
+    EnableFarm:OnChanged(function(value)
+        _G.NeareastFarm = value
+    end)
+end
 
 loadstring(game:HttpGet("https://pastebin.com/raw/btubPdVP"))()
 
