@@ -660,6 +660,7 @@ if _G.ChooseFarm == "Level" then
 EnableFarm:OnChanged(function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
+    SaveSettings()
     _G.DoubleQuest = value
     getgenv().noclip = value
     end)
@@ -681,6 +682,7 @@ if _G.ChooseFarm == "Neareast Mobs" then
     EnableFarm:OnChanged(function(value)
         _G.NeareastFarm = value
         _G.Settings.NeareastFarm = value
+        SaveSettings()
     end)
 end
 
@@ -769,7 +771,7 @@ spawn(function()
     end)
 end)
 
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ปิดวาร์ปเร็ว",Icon = "rbxassetid://14645512457",Duration = 1})
+
 task.spawn(function()
     while task.wait() do
         pcall(function() 
@@ -4113,12 +4115,12 @@ end
 end)
 
 if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-   MirageStatus = 'Mirage Island : 🟢'
+   MirageStatus = "Mirage Island : 🟢"
 else
     MirageStatus = 'Mirage Island : ❌'
 end
 
-StatusMirage:SetDesc(MirageStatus..' | Full Moon: '..FullMoonStatus)
+StatusMirage:SetDesc(MirageStatus.." | Full Moon: "..FullMoonStatus)
 end
 
 spawn(function()
