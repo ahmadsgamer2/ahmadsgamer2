@@ -1309,7 +1309,7 @@ end)
 _G.DistanceAutoFarm = 30
 SetDistance:SetValue(30)
 
-MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
+
 
 Tabs.Main:AddParagraph({
     Title = "Farming",
@@ -1365,7 +1365,7 @@ spawn(function()
                                 v.Humanoid:ChangeState(16)
                                 StartMagnet = true
                                 FastAttack = true
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 if not FastAttack then
                                 game:GetService 'VirtualUser':CaptureController()
                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -1432,7 +1432,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         else
                                             _G.FastType = "Fast"
                                         end
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                 until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
@@ -1441,7 +1441,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     end
                 end
             elseif game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad") then
-                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad").HumanoidRootPart.CFrame * MethodFarm)
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Royal Squad").HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
             elseif game:GetService("Workspace").Enemies:FindFirstChild("Shanda") then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     if v.Name == "Shanda" then
@@ -1475,7 +1475,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         else
                                             _G.FastType = "Fast"
                                         end
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                 until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
@@ -1484,7 +1484,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     end
                 end
             elseif game:GetService("ReplicatedStorage"):FindFirstChild("Shanda") then
-                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Shanda").HumanoidRootPart.CFrame * MethodFarm)
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild("Shanda").HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
             end
         else
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))			
@@ -1576,7 +1576,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                             if string.find(GetQuestTitle.Text, QuestName) then
                                 repeat wait()
                                     if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
-                                        FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     elseif v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
                                         if FarmtoTarget then FarmtoTarget:Stop() end
                                         StartMagnet = true
@@ -1596,7 +1596,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
                                             game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
                                         end
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                         FastAttack = true
                                         EquipWeapon(_G.SelectWeapon)
                                     end
@@ -1689,7 +1689,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                         if string.find(GetQuestTitle.Text, NameMon) then
                             repeat task.wait()
-                                FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                                     if FarmtoTarget then FarmtoTarget:Stop() end
                                     if _G.AutoHaki then
@@ -1723,7 +1723,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
                                         game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
                                     end
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                 end
                             until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                             StartMagnet = false
@@ -1813,7 +1813,7 @@ else
                 if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                     if string.find(GetQuestTitle.Text, NameMon) then
                         repeat wait()
-                            FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                                 if FarmtoTarget then FarmtoTarget:Stop() end
                                 if _G.AutoHaki then
@@ -1848,7 +1848,7 @@ else
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
                                     game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
                                 end
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                             end
                         until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         StartMagnet = false
@@ -2226,7 +2226,7 @@ task.spawn(function()
                     v.HumanoidRootPart.CanCollide = false
                     v.Head.CanCollide = false
                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                     if not FastAttack then 
                     game:GetService 'VirtualUser':CaptureController()
                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -2256,7 +2256,7 @@ task.spawn(function()
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             if not FastAttack then
                             game:GetService("VirtualUser"):CaptureController()
                             game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
@@ -2317,7 +2317,7 @@ if World1 then
                                                 end
                                             end
                                             EquipWeapon(_G.SelectWeapon)
-                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                             FastAttack = true
                                             if not _G.FastAttack then
                                                 game:GetService 'VirtualUser':CaptureController()
@@ -2434,7 +2434,7 @@ task.spawn(function()
                                                         task.wait()
                                                         EquipWeapon(_G.SelectWeapon)
                                                     end
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                                     PosMon = v.HumanoidRootPart.CFrame
                                                     if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -2479,7 +2479,7 @@ task.spawn(function()
                                         task.wait()
                                         EquipWeapon(_G.SelectWeapon)
                                     end
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService 'VirtualUser':CaptureController()
@@ -2535,7 +2535,7 @@ task.spawn(function()
                                         end
                                     end
                                     EquipWeapon(_G.SelectWeapon)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService 'VirtualUser':CaptureController()
@@ -2703,7 +2703,7 @@ spawn(function()
                                         repeat wait()
                                             AutoHaki()
                                             EquipWeapon(_G.Select_Weapon)
-                                            two(v.HumanoidRootPart.CFrame * MethodFarm)
+                                            two(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                             v.HumanoidRootPart.CanCollide = false
                                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                             game:GetService'VirtualUser':CaptureController()
@@ -2787,7 +2787,7 @@ function()
                                                             v.Humanoid:ChangeState(11)
                                                             v.Humanoid:ChangeState(14)
                                                             v.Humanoid:ChangeState(16)
-                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                                         end
                                                     until not v.Parent or v.Humanoid.Health <= 0 or
                                                         _G.AutoBartiloQuest == false or
@@ -2869,7 +2869,7 @@ function()
                                             v.Humanoid:ChangeState(11)
                                             v.Humanoid:ChangeState(14)
                                             v.Humanoid:ChangeState(16)
-                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                         end
                                     until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartiloQues == false
                                     FastAttack = false
@@ -2969,7 +2969,7 @@ task.spawn(
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     until _G.AutoDarkCoat == false or v.Humanoid.Health <= 0
                                     StartMagnet = false
                                     FastAttack = false
@@ -3025,7 +3025,7 @@ task.spawn(function()
                         v.Humanoid:ChangeState(11)
                         v.Humanoid:ChangeState(14)
                         v.Humanoid:ChangeState(16)
-                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                     until not _G.AutoEctoplasm or not v.Parent or v.Humanoid.Health <= 0
                     StartMagnet = false
                     FastAttack = false
@@ -3139,7 +3139,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or not _G.AutoRengoku or not v.Parent or v.Humanoid.Health <= 0
                             StartMagnet = false
                                 FastAttack = false
@@ -3191,7 +3191,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until not _G.AutoSwanGlasses or v.Humanoid.Health <= 0
                             StartMagnet = false
                             FastAttack = false
@@ -3255,7 +3255,7 @@ task.spawn(function()
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
                                 FastAttack = false
@@ -3293,7 +3293,7 @@ task.spawn(function()
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
                                 FastAttack = false
@@ -3331,7 +3331,7 @@ task.spawn(function()
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
                                 FastAttack = false
@@ -3369,7 +3369,7 @@ task.spawn(function()
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
                                     FastAttack = false
@@ -3407,7 +3407,7 @@ task.spawn(function()
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
                                 FastAttack = false
@@ -3494,7 +3494,7 @@ task.spawn(function()
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
                                     StartMagnet = false
                                     FastAttack = false
@@ -3535,7 +3535,7 @@ task.spawn(function()
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
                                     StartMagnet = false
                                     FastAttack = false
@@ -3646,7 +3646,7 @@ task.spawn(function()
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid:ChangeState(11)
-                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                         until not YamaQuest2 or not v.Parent or v.Humanoid.Health <= 0
                         StartMagnet = false
                         FastAttack = false
@@ -3692,7 +3692,7 @@ task.spawn(function()
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid:ChangeState(11)
-                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             MagnetMobAura = true
                             if delay then
                                 delay(1,function()
@@ -3858,7 +3858,7 @@ spawn(function()
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
-                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                                     FarmPos = v.HumanoidRootPart.CFrame
                                                     MonFarm = v.Name
                                                    
@@ -3973,7 +3973,7 @@ function Elite()
                                             if Farmtween then
                                                 Farmtween:Stop()
                                             end
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * MethodFarm
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                             FastAttack = true
                                             EquipWeapon(_G.SelectWeapon)
                                         end
@@ -3989,7 +3989,7 @@ function Elite()
                                             if Farmtween then
                                                 Farmtween:Stop()
                                             end
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * MethodFarm
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                             FastAttack = true
                                             EquipWeapon(_G.SelectWeapon)
                                         end
@@ -4005,7 +4005,7 @@ function Elite()
                                             if Farmtween then
                                                 Farmtween:Stop()
                                             end
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * MethodFarm
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v .HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
                                             FastAttack = true
                                             EquipWeapon(_G.SelectWeapon)
                                         end
@@ -4089,7 +4089,7 @@ spawn(function()
                                 EquipWeapon(_G.SelectWeapon)
                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
                                 StartMagnet = true
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                 if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
                                     game:GetService("VirtualUser"):CaptureController()
                                     game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
@@ -4102,7 +4102,7 @@ spawn(function()
                     if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
                         for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
                             if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             end
                         end
                     end
@@ -4199,7 +4199,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
                             StartMagnet = false
                             FastAttack = false
@@ -4257,7 +4257,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until not _G.AutoBuddySwords or v.Humanoid.Health <= 0
                             StartMagnet = false
                             FastAttack = false
@@ -4310,7 +4310,7 @@ task.spawn(function()
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     StartMagnet = false
                                     FastAttack = false
@@ -4357,7 +4357,7 @@ task.spawn(function()
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                                     until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     StartMagnet = false
                                     FastAttack = false
@@ -4420,7 +4420,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until not _G.AutoCavander or v.Humanoid.Health <= 0
                             StartMagnet = false
                             FastAttack = false
@@ -4492,7 +4492,7 @@ task.spawn(function()
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
                             v.Humanoid:ChangeState(16)
-                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                         until not _G.AutoTushitaSword or not v.Parent or v.Humanoid.Health <= 0
                         StartMagnet = false
                         FastAttack = false
@@ -4543,7 +4543,7 @@ task.spawn(function()
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
                             v.Humanoid:ChangeState(16)
-                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                         until not _G.AutoSerpentBow or not v.Parent or v.Humanoid.Health <= 0
                         StartMagnet = false
                         FastAttack = false
@@ -4595,7 +4595,7 @@ task.spawn(function()
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
-                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0))
                             until not _G.AutoDarkDagger or not v.Parent or v.Humanoid.Health <= 0
                             StartMagnet = false
                                 FastAttack = false
