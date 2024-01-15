@@ -184,8 +184,8 @@ spawn(function()
     end)
 end)
 
+getgenv().setting['LockPlayers'] = true
 game:GetService("UserInputService").InputBegan:Connect(function(io, p)
-    if io.KeyCode == getgenv().setting['LockPlayersBind'] then
         if getgenv().setting['LockPlayers'] then
             loackplayerslabel.Text = "Lock Players | OFF"
             getgenv().setting['LockPlayers'] = false
@@ -195,8 +195,7 @@ game:GetService("UserInputService").InputBegan:Connect(function(io, p)
             getgenv().setting['LockPlayers'] = true
             print(getgenv().setting['LockPlayers'])
         end
-    end
-    if io.KeyCode == getgenv().setting['resetPlayersBind'] then
+    if getgenv().setting['resetPlayersBind'] then
         Playersaimbot = nil
         PlayersPosition = nil
         ImageProfile.Image = ''
