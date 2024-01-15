@@ -1261,10 +1261,6 @@ SetMethod:OnChanged(function(value)
     _G.Method = value
 end)
 
-if _G.Method == nil then
-    _G.Method = "Upper"
-end
-
 FastAttack = {"Slow","Fast","Extreme",}
 
 local SetAttack = Tabs.Main:AddDropdown("DropdownAttackType", {
@@ -1326,6 +1322,7 @@ SetDistance:OnChanged(function(Value)
 end)
 _G.DistanceAutoFarm = 30
 SetDistance:SetValue(30)
+_G.Method == "Behind"
 
 task.spawn(function()
     while task.wait(0) do
@@ -1366,17 +1363,21 @@ local EnableFarm = Tabs.Main:AddToggle("EnableFarm_Toggle", {Title = "Enable Far
 Options.EnableFarm_Toggle:SetValue(false)
 
 EnableFarm:OnChanged(function(value)
+if _G.ChooseFarm == "Level" then
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     _G.DoubleQuest = value
     getgenv().noclip = value
-    _G.AutoFarmBone  = value
+elseif _G.ChooseFarm == "Katakuri" then
     _G.AutoCakePrince = value
+elseif _G.ChooseFarm == "Neareast Mobs" then
     _G.NeareastFarm = value
     _G.Settings.NeareastFarm = value
+elseif _G.ChooseFarm == "Bone" then
     _G.AutoFarmBone  = value
     _G.Settings.AutoFarmBone = value
-    end)
+    end
+end)
 
 posrandom = 0
 randomposenelfastfarm = 0
