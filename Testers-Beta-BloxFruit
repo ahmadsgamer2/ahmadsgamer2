@@ -660,7 +660,6 @@ if _G.ChooseFarm == "Level" then
 EnableFarm:OnChanged(function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
-    SaveSettings()
     _G.DoubleQuest = value
     getgenv().noclip = value
     end)
@@ -682,7 +681,6 @@ if _G.ChooseFarm == "Neareast Mobs" then
     EnableFarm:OnChanged(function(value)
         _G.NeareastFarm = value
         _G.Settings.NeareastFarm = value
-        SaveSettings()
     end)
 end
 
@@ -706,8 +704,6 @@ local NoLoopDuplicate = false
 local SubQuest = false
 local oldmob = Name
 local oldcheckquest = NameMon
-
-
 
 task.spawn(function()
 while wait() do
