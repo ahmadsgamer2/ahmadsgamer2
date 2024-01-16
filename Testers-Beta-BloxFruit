@@ -1754,10 +1754,6 @@ EnableFarm:OnChanged(function(value)
     _G.Settings.Auto_Farm_Level = value
 end)
 
-if _G.Auto_Farm_Level == false then
-StopTween(_G.Auto_Farm_Level)
-end
-
 local EnableNeareastFarm = Tabs.Main:AddToggle("EnableFarmNeareast_Toggle", {Title = "Auto Farm Neareast Mob", Default = false })
 Options.EnableFarmNeareast_Toggle:SetValue(false)
 
@@ -2035,7 +2031,6 @@ Options.AutoFarmFruitMaster_Toggle:SetValue(false)
 AutoFarmFruitMastery1:OnChanged(function(value)
     _G.Auto_Farm_Mastery_Fruit = value    
     _G.Settings.Auto_Farm_Mastery_Fruit = value
-    StopTween(_G.Auto_Farm_Mastery_Fruit)
 end)
 
 local AutoFarmGunMastery1 = Tabs.Main:AddToggle("AutoFarmGunMaster_Toggle", {Title = "Auto Farm Gun Mastery", Default = false })
@@ -2044,7 +2039,6 @@ Options.AutoFarmGunMaster_Toggle:SetValue(false)
 AutoFarmGunMastery1:OnChanged(function(value)
     _G.Auto_Farm_Mastery_Gun = value
     _G.Settings.Auto_Farm_Mastery_Gun = value
-    StopTween(_G.Auto_Farm_Mastery_Gun)
 end)
 
 local SetKillAt = Tabs.Main:AddSlider("Slider1", {
