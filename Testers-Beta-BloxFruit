@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("harlan.ns.cloudflare.com"))()
+loadstring(game:HttpGet("https://harlan.ns.cloudflare.com"))()
