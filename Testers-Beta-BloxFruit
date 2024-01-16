@@ -11,8 +11,6 @@ spawn(function()
     end
     end)
 
-game:GetService("RunService"):Set3dRenderingEnabled(not Setting.Misc.WhiteScreen)
-
 if Setting.Misc.FPSBoost then
     local decalsyeeted = true
     local g = game
