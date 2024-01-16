@@ -6056,7 +6056,7 @@ spawn(function()
     end
 end)
 
-loadstring(game:HttpGet("pastebin.com/raw/igskZDq5"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/igskZDq5"))()
 
 Tabs.Misc:AddButton({
     Title = "Hop Server",
