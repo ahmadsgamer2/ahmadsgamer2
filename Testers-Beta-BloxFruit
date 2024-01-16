@@ -1548,19 +1548,6 @@ end)
 end
 end)
 
-spawn(function()
-    game:GetService("RunService").Heartbeat:Connect(function()
-        if _G.Settings.AutoFarm then
-        if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid") then
-            setfflag("HumanoidParallelRemoveNoPhysics", "False")
-            setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-            game:GetService("Players").LocalPlayer.Character.Humanoid:ChangeState(11)
-            end
-        end
-    end)
-end)
-    
-
 local ChestFarmGood = Tabs.Main:AddToggle("ChestFarmGood_Toggle", {Title = "Chest Farm [Good]", Default = false })
 
 local ChestFarmTween = Tabs.Main:AddToggle("ChestFarmTween_Toggle", {Title = "Chest Farm [Tween]", Default = false })
@@ -5993,35 +5980,35 @@ spawn(function()
 	end)
 end)
 
-local ESPPlrToggle = Tabs.Fruit:AddToggle("ESPPlr_Toggle", {Title = "ESP Player", Default = false })
+local ESPPlrToggle = Tabs.ESP:AddToggle("ESPPlr_Toggle", {Title = "ESP Player", Default = false })
 Options.ESPPlr_Toggle:SetValue(false)
 
 ESPPlrToggle:OnChanged(function(value)
     ESPPlayer = value
 end)
 
-local ESPChestToggle = Tabs.Fruit:AddToggle("ESPChest_Toggle", {Title = "ESP Chest", Default = false })
+local ESPChestToggle = Tabs.ESP:AddToggle("ESPChest_Toggle", {Title = "ESP Chest", Default = false })
 Options.ESPChest_Toggle:SetValue(false)
 
 ESPChestToggle:OnChanged(function(value)
     ChestESP = value
 end)
 
-local ESPFruitDToggle = Tabs.Fruit:AddToggle("ESPFruitD_Toggle", {Title = "ESP Devil Fruit", Default = false })
+local ESPFruitDToggle = Tabs.ESP:AddToggle("ESPFruitD_Toggle", {Title = "ESP Devil Fruit", Default = false })
 Options.ESPFruitD_Toggle:SetValue(false)
 
 ESPFruitDToggle:OnChanged(function(value)
     DevilFruitESP = value
 end)
 
-local ESPFlowerDToggle = Tabs.Fruit:AddToggle("ESPFlower_Toggle", {Title = "ESP Flower", Default = false })
+local ESPFlowerDToggle = Tabs.ESP:AddToggle("ESPFlower_Toggle", {Title = "ESP Flower", Default = false })
 Options.ESPFlower_Toggle:SetValue(false)
 
 ESPFlowerDToggle:OnChanged(function(value)
     FlowerESP = value
 end)
 
-local ESPIslandToggle = Tabs.Fruit:AddToggle("ESPIsland_Toggle", {Title = "ESP Island", Default = false })
+local ESPIslandToggle = Tabs.ESP:AddToggle("ESPIsland_Toggle", {Title = "ESP Island", Default = false })
 Options.ESPIsland_Toggle:SetValue(false)
 
 ESPIslandToggle:OnChanged(function(value)
