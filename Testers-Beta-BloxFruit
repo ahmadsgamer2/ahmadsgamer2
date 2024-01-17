@@ -1,24 +1,207 @@
-local Original = hookfunction
-hookfunction = function(func, newFunc)
-    if tostring(func) == "hookfunction" then
-        game.Players.LocalPlayer:Kick("hookfunction detected!")
+local Auth = {}
+
+getgenv().SendDiagnostic = false
+getgenv().DebugPrint = false
+local LOADSTRING  = clonefunction(loadstring)
+local HttpGet  = clonefunction(game.HttpGet)
+local req = (request or syn.request) or game.HttpGet
+
+if islclosure(getgenv().request or syn.request) then while true do end end -- ANTI REQUEST TAMPERING
+if islclosure(getgenv().tostring) then while true do end end -- ANTI TOSTRING TAMPERING
+if islclosure(getgenv().setmetatable) then while true do end end -- ANTI SETMETATALBE TAMPERING
+if islclosure(getgenv().hookfunc) then while true do end end -- ANTI Hookfunc TAMPERING
+if islclosure(getgenv().hookfunction) then while true do end end -- ANTI Hookfunction TAMPERING
+if islclosure(getgenv().gethwid or getgenv().hwid_get) then while true do end end -- ANTI GetHwid TAMPERING
+
+local function RandomString(length) -- RANDOMSTRING
+    local randomString = ""
+    for i = 1, length do
+        local randomNumber = math.random(97, 122)
+        randomString = randomString .. string.char(randomNumber)
     end
-    return Original(func, newFunc)
+    return tostring(randomString)
 end
 
-local old
-old = hookmetamethod(
-    game,
-    "__namecall",
-    function(self, ...)
-        local method = tostring(getnamecallmethod())
-        if string.lower(method) == "hookfunction" then
-            return wait(9e9)
-        end
-        return old(self, ...)
-    end
-)
+print("Anti-Http SPY")
+print("________________________________________________________")
 
+
+
+function Auth:LoadScript(Configs) -- Load Script | PandaAuth
+    spawn(function()
+        pcall(game.HttpGet, game, getgenv().setmetatable({}, {
+            __tostring = function()
+                while true do end;return "HAHAHAHAHAHA"
+            end,
+        }))
+        req(getgenv().setmetatable({
+            Url = "https://example.net",
+            Method = "GET"
+        },{
+            __newindex = function(self,key,value)
+                return rawset(self,key,setmetatable({},{
+                    __tostring = function()
+                        while true do end;return "HAHAHAHAHAHA"
+                    end
+                }))
+            end,
+            __tostring = function()
+                while true do end;return "HAHAHAHAHAHA"
+            end,
+            __len = function()
+                while true do end;
+            end,
+            __concat = function()
+                spawn(function()
+                    game:Shutdown()
+                end)
+                while true do end;
+            end,
+        }))
+    end)
+    
+    local x = {
+        url = "https://google.com",
+        fakeurl = "https://google.com/%s",
+        faketable = {
+            "BloxFruit",
+            "KingLegacy",
+            "Minecraft.lua"
+        }
+    }
+
+    local random_ = math.random(5,13)
+    for i = 1,20 do
+        if random_ == i then
+            LOADSTRING(HttpGet(Configs.url))();
+        else
+            local randomNum = math.random(1,2)
+            if randomNum == 1 then
+                text = Configs.fakeurl:format(Configs.faketable[math.random(1,#Configs.faketable)])
+            elseif randomNum == 2 then
+                text = Configs.fakeurl .. RandomString(7)
+            end
+            HttpGet(text)
+        end
+    end
+end
+
+function Auth:HttpGet(Configs)
+    spawn(function()
+        pcall(game.HttpGet, game, getgenv().setmetatable({}, {
+            __tostring = function()
+                while true do end;return "HAHAHAHAHAHA"
+            end,
+        }))
+        req(getgenv().setmetatable({
+            Url = "https://example.net",
+            Method = "GET"
+        },{
+            __newindex = function(self,key,value)
+                return rawset(self,key,setmetatable({},{
+                    __tostring = function()
+                        while true do end;return "HAHAHAHAHAHA"
+                    end
+                }))
+            end,
+            __tostring = function()
+                while true do end;return "HAHAHAHAHAHA"
+            end,
+            __len = function()
+                while true do end;
+            end,
+            __concat = function()
+                spawn(function()
+                    game:Shutdown()
+                end)
+                while true do end;
+            end,
+        }))
+    end)
+
+    local x = {
+        url = "https://google.com",
+        fakeurl = "https://google.com/%s",
+        faketable = {
+            "BloxFruit",
+            "KingLegacy",
+            "Minecraft.lua"
+        }
+    }
+
+    local HttpGot
+    local random_ = math.random(5,13)
+    for i = 1,20 do
+        if random_ == i then
+            HttpGot = HttpGet(Configs.url)
+        else
+            local randomNum = math.random(1,2)
+            if randomNum == 1 then
+                text = Configs.fakeurl:format(Configs.faketable[math.random(1,#Configs.faketable)])
+            elseif randomNum == 2 then
+                text = Configs.fakeurl .. RandomString(7)
+            end
+            HttpGet(text)
+        end
+    end
+
+    return HttpGot
+end
+
+pcall(game.HttpGet, game, getgenv().setmetatable({}, {
+    __tostring = function()
+        while true do end;return "HAHAHAHAHAHA"
+    end,
+}))
+-- SECOND PROTECT MAYBE WORK
+req(getgenv().setmetatable({
+    Url = "https://example.net",
+	Method = "GET"
+},{
+    __newindex = function(self,key,value)
+        return rawset(self,key,setmetatable({},{
+            __tostring = function()
+                while true do end;return "HAHAHAHAHAHA"
+            end
+        }))
+    end,
+    __tostring = function()
+        while true do end;return "HAHAHAHAHAHA"
+    end,
+    __len = function()
+        while true do end;
+    end,
+    __concat = function()
+        spawn(function()
+            game:Shutdown()
+        end)
+        while true do end;
+    end,
+}))
+
+local antihookrequest
+antihookrequest = hookfunction(getgenv().hookfunction and getgenv().hookfunc,function(x,y,z)
+    if x == req then
+        while true do end
+        return "HAHAHA"
+    end
+    return antihookrequest(x,y,z)
+end)
+
+local antisetreadonly
+antisetreadonly = hookfunction(getgenv().setreadonly,function(x,y)
+    if x == Auth then
+        return antisetreadonly(x,true)
+    end
+    return antisetreadonly(x,y)
+end)
+
+setmetatable(Auth, {
+    __newindex = function()
+    end,
+    __metatable = false
+})
+setreadonly(Auth,true)
 
 local HttpSpy = Instance.new("ScreenGui")
 local Backgroud = Instance.new("Frame")
