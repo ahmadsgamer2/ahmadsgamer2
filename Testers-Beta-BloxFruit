@@ -1,20 +1,14 @@
-local function detectHookFunction()
-    local HookFunction_D = hookfunction
-    hookfunction = function(func, newFunc)
-        if tostring(func) == "hookfunction" then
-            game.Players.LocalPlayer:Kick("hookfunction detected!")
-            return nil
-        end
-        return HookFunction_D(func, newFunc)
+local Original = hookfunction
+hookfunction = function(func, newFunc)
+    if tostring(func) == "hookfunction" then
+        game.Players.LocalPlayer:Kick("hookfunction detected!")
+        return nil
     end
+    return Original(func, newFunc)
 end
-detectHookFunction()
 
--- Gui to Lua
--- Version: 3.2
- 
--- Instances:
- 
+
+
 local HttpSpy = Instance.new("ScreenGui")
 local Backgroud = Instance.new("Frame")
 local TitleText = Instance.new("TextLabel")
