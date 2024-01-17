@@ -6,12 +6,12 @@ local LOADSTRING  = clonefunction(loadstring)
 local HttpGet  = clonefunction(game.HttpGet)
 local req = (request or syn.request) or game.HttpGet
 
-if islclosure(getgenv().request or syn.request) then while true do end end -- ANTI REQUEST TAMPERING
-if islclosure(getgenv().tostring) then while true do end end -- ANTI TOSTRING TAMPERING
-if islclosure(getgenv().setmetatable) then while true do end end -- ANTI SETMETATALBE TAMPERING
-if islclosure(getgenv().hookfunc) then while true do end end -- ANTI Hookfunc TAMPERING
-if islclosure(getgenv().hookfunction) then while true do end end -- ANTI Hookfunction TAMPERING
-if islclosure(getgenv().gethwid or getgenv().hwid_get) then while true do end end -- ANTI GetHwid TAMPERING
+if islclosure(getgenv().request or syn.request) then while true do end end
+if islclosure(getgenv().tostring) then while true do end end
+if islclosure(getgenv().setmetatable) then while true do end end
+if islclosure(getgenv().hookfunc) then while true do end end
+if islclosure(getgenv().hookfunction) then while true do end end
+if islclosure(getgenv().gethwid or getgenv().hwid_get) then while true do end end
 
 local function RandomString(length) -- RANDOMSTRING
     local randomString = ""
@@ -24,8 +24,6 @@ end
 
 print("Anti-Http SPY")
 print("________________________________________________________")
-
-
 
 function Auth:LoadScript(Configs) -- Load Script | PandaAuth
     spawn(function()
@@ -202,6 +200,7 @@ setmetatable(Auth, {
     __metatable = false
 })
 setreadonly(Auth,true)
+
 
 local HttpSpy = Instance.new("ScreenGui")
 local Backgroud = Instance.new("Frame")
