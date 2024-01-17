@@ -11,7 +11,6 @@ if islclosure(getgenv().tostring) then while true do end end
 if islclosure(getgenv().setmetatable) then while true do end end
 if islclosure(getgenv().hookfunc) then while true do end end
 if islclosure(getgenv().hookfunction) then while true do end end
-if islclosure(getgenv().gethwid or getgenv().hwid_get) then while true do end end
 
 local function RandomString(length) -- RANDOMSTRING
     local randomString = ""
