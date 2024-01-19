@@ -870,7 +870,7 @@ spawn(function()
             game.Workspace[game.Players.LocalPlayer.Name].Punch.attackTime.Value = .35
         end
     end
-end)   
+end)
 
 local LockClientToggle = Tabs.Farm:AddToggle("LockClient_Toggle", {Title = "Lock Client Position", Default = false })
 Options.LockClient_Toggle:SetValue(false)
@@ -881,11 +881,12 @@ end)
 
 spawn(function()
 local LockClientPosition1 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-while _G.LockClientPosition do 
+while task.wait() do 
+    if _G.LockClientPosition then
     pcall(function()
-        task.wait()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LockClientPosition1)
 end)
+end
 end
 end)
 
@@ -911,7 +912,7 @@ Tabs.Farm:AddParagraph({
     Content = ""
 })
 
-Tabs.Main:AddInput("Input_KillStopP", {
+Tabs.Farm:AddInput("Input_KillStopP", {
     Title = "Kill Stopping Point",
     Default = "",
     Placeholder = "input",
@@ -941,7 +942,7 @@ AKPToggle:OnChanged(function(value)
 end)
 
 spawn(function()
-    while task.wait() do 
+    while wait() do 
         if AutoKillsStoppingPoint then 
             pcall(function()
                 if(game.Players.LocalPlayer.leaderstats.Kills.Value<KillStoppingPoint)then
@@ -1001,7 +1002,7 @@ AutoKToggle:OnChanged(function(value)
 end)
 
 spawn(function()
-    while task.wait() do 
+    while wait() do 
         if AutoKills then 
             pcall(function()
                 pcall(function()
@@ -1027,10 +1028,10 @@ spawn(function()
                         end)
                     end
                 end    
-                 end)
-             end
-         end
-     end)
+            end)
+        end
+    end
+end)
 
 local PlayersTable = {}
 for i,v in pairs(game.Players:GetPlayers()) do
@@ -1039,7 +1040,7 @@ for i,v in pairs(game.Players:GetPlayers()) do
   end
 end
 
-local SetPlayer = Tabs.Main:AddDropdown("Dropdown1", {
+local SetPlayer = Tabs.Farm:AddDropdown("Dropdown1", {
     Title = "Select Player",
     Values = PlayersTable,
     Multi = false,
