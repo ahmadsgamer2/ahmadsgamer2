@@ -829,7 +829,7 @@ FastPunchToggle:OnChanged(function(value)
     FastPunch = value    
 end)
 
-if FastPunch == true then
+if FastPunch then
     game.Workspace[game.Players.LocalPlayer.Name].Punch.attackTime.Value = .06
 else
     game.Workspace[game.Players.LocalPlayer.Name].Punch.attackTime.Value = .35
