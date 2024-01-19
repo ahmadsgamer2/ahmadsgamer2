@@ -153,19 +153,52 @@ local Window = SpeedHubX:CreateWindow({
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-    Item = Window:AddTab({ Title = "Item", Icon = "swords" }),
-    Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),
-    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),
-    Raid = Window:AddTab({ Title = "Dungeon", Icon = "sword" }),
-    RaceV4 = Window:AddTab({ Title = "Race v4", Icon = "chevrons-right" }),
-    Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" }),
-    ESP = Window:AddTab({ Title = "ESP", Icon = "mountain-snow" }),
-    Misc = Window:AddTab({ Title = "Miscellaneous", Icon = "list-plus" }),
-    Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),wait(1),
+    Item = Window:AddTab({ Title = "Item", Icon = "swords" }),wait(),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "plus-circle" }),wait(1),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),wait(1),
+    Island = Window:AddTab({ Title = "Island", Icon = "palmtree" }),wait(1),
+    Raid = Window:AddTab({ Title = "Dungeon", Icon = "sword" }),wait(1),
+    RaceV4 = Window:AddTab({ Title = "Race v4", Icon = "chevrons-right" }),wait(1),
+    Fruit = Window:AddTab({ Title = "Fruit", Icon = "apple" }),wait(1),
+    ESP = Window:AddTab({ Title = "ESP", Icon = "mountain-snow" }),wait(1),
+    Misc = Window:AddTab({ Title = "Miscellaneous", Icon = "list-plus" }),wait(1),
+    Visual = Window:AddTab({ Title = "Visual", Icon = "scan-face" }),wait(1),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),wait(1),
 }
+
+if game.CoreGui:FindFirstChild("SpeedHubXOpenClose") then
+    game.CoreGui:FindFirstChild("SpeedHubXOpenClose"):Destroy()
+end
+
+local UIStroke = Instance.new("UIStroke")
+local UICorner = Instance.new("UICorner")
+
+local ScreenGui = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "SpeedHubXOpenClose"
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+
+ImageButton.Parent = ScreenGui
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
+ImageButton.Draggable = true
+ImageButton.Position = UDim2.new(0.102097899, 0, 0.0742971897, 0)
+ImageButton.Size = UDim2.new(0, 59, 0, 49)
+ImageButton.Image = "rbxassetid://15511158491"
+
+UICorner.Name = "MainCorner"
+UICorner.CornerRadius = UDim.new(0, 9)
+UICorner.Parent = ImageButton
+
+ImageButton.MouseButton1Down:connect(function()
+game:GetService("VirtualInputManager"):SendKeyEvent(true,127,false,game)
+game:GetService("VirtualInputManager"):SendKeyEvent(false,127,false,game)
+end)
 
 local Options = SpeedHubX.Options
 
@@ -7458,36 +7491,3 @@ WhiteToggle:OnChanged(function(value)
     end
 end)
 end
-
-if game.CoreGui:FindFirstChild("SpeedHubXOpenClose") then
-    game.CoreGui:FindFirstChild("SpeedHubXOpenClose"):Destroy()
-end
-
-local UIStroke = Instance.new("UIStroke")
-local UICorner = Instance.new("UICorner")
-
-local ScreenGui = Instance.new("ScreenGui")
-local ImageButton = Instance.new("ImageButton")
-
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "SpeedHubXOpenClose"
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-
-ImageButton.Parent = ScreenGui
-ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BorderColor3 = Color3.fromRGB(255, 0, 0)
-ImageButton.Draggable = true
-ImageButton.Position = UDim2.new(0.102097899, 0, 0.0742971897, 0)
-ImageButton.Size = UDim2.new(0, 59, 0, 49)
-ImageButton.Image = "rbxassetid://15511158491"
-
-UICorner.Name = "MainCorner"
-UICorner.CornerRadius = UDim.new(0, 9)
-UICorner.Parent = ImageButton
-
-ImageButton.MouseButton1Down:connect(function()
-game:GetService("VirtualInputManager"):SendKeyEvent(true,127,false,game)
-game:GetService("VirtualInputManager"):SendKeyEvent(false,127,false,game)
-end)
