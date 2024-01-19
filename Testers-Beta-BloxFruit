@@ -1,26 +1,11 @@
+
+local SpeedHubX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Library.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Interface.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless"))()
 spawn(function()
 	if _G.SpeedHubX_Protect == true then
-		pcall(function()
-		hookfunction(print, function(...)
-			game.Players.LocalPlayer:Kick("Anti Http Spy By Speed Hub X")
-			game:Shutdown()
-			while true do end
-			return
-		end)
-		hookfunction(warn, function(...)
-			game.Players.LocalPlayer:Kick("Anti Http Spy By Speed Hub X")
-			game:Shutdown()
-			while true do end
-			return
-		end)
-		hookfunction(error, function(...)
-			game.Players.LocalPlayer:Kick("Anti Http Spy")
-			game:Shutdown()
-			while true do end
-			return
-		end)
-	
-		
+		pcall(function()	
 	hookfunction(print, function(a)
 		if string.find(a:lower(), "http") then
 			game.Players.LocalPlayer:Kick("Anti Http Spy By Speed Hub X")
@@ -79,12 +64,6 @@ spawn(function()
 			getgenv().rconsolewarn = nil
 			getgenv().rconsoleinfo = nil
 			getgenv().rconsolerr = nil
-			getrenv().print = function(...) while true do end return end
-			getrenv().warn = function(...) while true do end return end
-			getrenv().error = function(...) while true do end return end
-			getgenv().print = function(...) while true do end return end
-			getgenv().warn = function(...) while true do end return end
-			getgenv().error = function(...) while true do end return end
 			getgenv().clonefunction = function(...) while true do end return end
 			game.CoreGui.ChildAdded:Connect(function(c)
 				if(string.lower(c.Name) == 'devconsolemaster') then
@@ -146,10 +125,6 @@ spawn(function()
 		end
 	end)
 _G.SpeedHubX_Protect = true
-local SpeedHubX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Library.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Interface.lua"))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless"))()
 repeat wait() until game:IsLoaded()
 local Window = SpeedHubX:CreateWindow({
     Title = "Speed Hub X | ".._G.Version,
