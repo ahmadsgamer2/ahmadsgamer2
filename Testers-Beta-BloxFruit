@@ -1,648 +1,1342 @@
-_G.Key_System = true
-if _G.Key_System == true then
-local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Speed_Hub_X_GameList"))()
+_G.SpeedHubX_Protect = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/ahmadsgamer2/main/Protect.lua"))()
+local SpeedHubX = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Library.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Interface.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Key-System%20%26%20Keyless"))()
 
-function CheckingGame1()
+repeat wait() until game:IsLoaded()
+local Window = SpeedHubX:CreateWindow({
+    Title = "Speed Hub X | ".._G.Version,
+    SubTitle = "by AhmadV10",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(560, 350),
+    Acrylic = true, 
+    Theme = "Vampire",
+    MinimizeKey = Enum.KeyCode.Delete 
+})
 
-    getgenv().Get =
-        setmetatable(
-        {},
-        {
-            __index = function(A, B)
-                return game:GetService(B)
-            end
-        }
-    )
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),wait(1),
+    AutoFarm = Window:AddTab({ Title = "Auto Farm", Icon = "muscle" }),wait(1),
+    Farm = Window:AddTab({ Title = "Farm", Icon = "gym" }),wait(1),
+    Rebirths = Window:AddTab({ Title = "Rebirths", Icon = "refresh-ccw" }),wait(1),
+    Crystal = Window:AddTab({ Title = "Crystal", Icon = "gem-ccw" }),wait(1),
+    Wehbook = Window:AddTab({ Title = "Wehbook", Icon = "webhook" }),wait(1),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),wait(1),
+
+}
+
+local Options = SpeedHubX.Options
+
+do
+
+    local Status = Tabs.Main:AddParagraph({
+        Title = "Home",
+        Content = "Status:"
+    })
     
-    for i, v in pairs(Games) do
-        if i == game.PlaceId then
-            loadstring(game:HttpGet(v))()
+    
+    function UpdateClient()
+    local Fps = workspace:GetRealPhysicsFPS()
+    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local Status1 = "Ping: "..Ping..""
+    Status:SetDesc(Status1) 
+    end
+    
+    spawn(function()
+        while true do wait(.1)
+            UpdateClient()
         end
+    end)
+    
+    Tabs.Main:AddButton({
+        Title = "Join Discord - Speed Hub X",
+        Description = "Invite Discord Speed Hub X!",
+        Callback = function()
+            setclipboard(_G.Discord)
+        end
+    })
+
+    Tabs.Main:AddParagraph({
+        Title = "Main",
+        Content = ""
+    })
+
+    Tabs.Main:AddInput("Input_Speed", {
+        Title = "WalkSpeed",
+        Default = "",
+        Placeholder = "input",
+        Numeric = false, 
+        Finished = false,
+        Callback = function(value)
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tonumber(value)
+        end
+    })
+
+    
+    Tabs.Main:AddInput("Input_Jump", {
+        Title = "WalkJump",
+        Default = "",
+        Placeholder = "input",
+        Numeric = false, 
+        Finished = false,
+        Callback = function(value)
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = tonumber(value)
+        end
+    })
+
+    Tabs.Main:AddInput("Input_Gravity", {
+        Title = "Gravity",
+        Default = "",
+        Placeholder = "input",
+        Numeric = false, 
+        Finished = false,
+        Callback = function(value)
+            game.Workspace.Gravity = tonumber(value)
+        end
+    })
+    
+    Tabs.Main:AddInput("Input_HipHeight", {
+        Title = "HipHeight",
+        Default = "",
+        Placeholder = "input",
+        Numeric = false, 
+        Finished = false,
+        Callback = function(value)
+            game.Players.LocalPlayer.Character.Humanoid.HipHeight = tonumber(value)
+        end
+    })
+
+    Tabs.Main:AddInput("Input_SetSize", {
+        Title = "Set Size",
+        Default = "",
+        Placeholder = "input",
+        Numeric = false, 
+        Finished = false,
+        Callback = function(value)
+            SetSize = tonumber(value)
+        end
+    })
+    local SetSizeToggle = Tabs.Main:AddToggle("SetSize_Toggle", {Title = "Auto Set Size", Default = false })
+    Options.SetSize_Toggle:SetValue(false)
+    
+    SetSizeToggle:OnChanged(function(value)
+        _G.AutoSetSize = value    
+    end)
+
+    spawn(function()
+        while wait() do
+            if _G.AutoSetSize then
+                pcall(function()
+                    game:GetService("ReplicatedStorage").rEvents.changeSpeedSizeRemote:InvokeServer("changeSize", SetSize)
+                end)
+            end
+        end
+    end)
+
+function GetDistanceFromFrostGym()
+    return (FrostGym.Position-game.Players.LocalPlayer.HuamnoidRootPart.Positions).magnitude
+end
+
+function GetDistanceFromMythicalGym()
+    return (MythicalGym.Position-game.Players.LocalPlayer.HuamnoidRootPart.Positions).magnitude
+end
+
+function GetDistanceFromEternalGym()
+    return (EternalGym.Position-game.Players.LocalPlayer.HuamnoidRootPart.Positions).magnitude
+end
+
+function GetDistanceFromLegendsGym()
+    return (LegendsGym.Position-game.Players.LocalPlayer.HuamnoidRootPart.Positions).magnitude
+end
+
+function CheckForFists()
+    if(not game.Players.LocalPlayer.Character:WaitForChild("Punch",.01))then
+        return false
+    else
+        return true
     end
 end
-local LibVersion = "v2" 
-local LibType = "roblox" 
-local ServiceID = "speedhub" 
 
-local PandaAuth = loadstring(game:HttpGet('https://pandadevelopment.net/servicelib?service='..ServiceID..'&core='..LibType..'&param='..LibVersion))()
+Tabs.AutoFarm:AddParagraph({
+    Title = "Frost Gym",
+    Content = ""
+})
 
-        do
-            local ui = game.CoreGui:FindFirstChild("VoidLib")
-             if ui then
-                 ui:Destroy()
-             end
-         end
-         
-         local UserInputService = game:GetService("UserInputService")
-         local TweenService = game:GetService("TweenService")
-         
-         local function MakeDraggable(topbarobject, object)
-             local Dragging = nil
-             local DragInput = nil
-             local DragStart = nil
-             local StartPosition = nil
-         
-             local function Update(input)
-                 local Delta = input.Position - DragStart
-                 local pos =
-                     UDim2.new(
-                         StartPosition.X.Scale,
-                         StartPosition.X.Offset + Delta.X,
-                         StartPosition.Y.Scale,
-                         StartPosition.Y.Offset + Delta.Y
-                     )
-                 local Tween = TweenService:Create(object, TweenInfo.new(0.2), {Position = pos})
-                 Tween:Play()
-             end
-         
-             topbarobject.InputBegan:Connect(
-                 function(input)
-                     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-                         Dragging = true
-                         DragStart = input.Position
-                         StartPosition = object.Position
-         
-                         input.Changed:Connect(
-                             function()
-                                 if input.UserInputState == Enum.UserInputState.End then
-                                     Dragging = false
-                                 end
-                             end
-                         )
-                     end
-                 end
-             )
-         
-             topbarobject.InputChanged:Connect(
-                 function(input)
-                     if
-                         input.UserInputType == Enum.UserInputType.MouseMovement or
-                         input.UserInputType == Enum.UserInputType.Touch
-                     then
-                         DragInput = input
-                     end
-                 end
-             )
-         
-             UserInputService.InputChanged:Connect(
-                 function(input)
-                     if input == DragInput and Dragging then
-                         Update(input)
-                     end
-                 end
-             )
-         end
-         
-  local library = {}
-  
-  function library:AddWindow(text,keybind)
-      local bind = keybind or Enum.KeyCode.RightControl
-      local ff = false
-      local currenttab = ""
-  
-      local DoctorShiba = Instance.new("ScreenGui")
-      DoctorShiba.Name = "VoidLib"
-      DoctorShiba.Parent = game.CoreGui
-      DoctorShiba.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-  
-      local Main = Instance.new("Frame")
-      Main.Name = "Main"
-      Main.Parent = DoctorShiba
-      Main.AnchorPoint = Vector2.new(0.5, 0.5)
-      Main.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-      Main.BackgroundTransparency = 0
-      Main.BorderSizePixel = 0
-      Main.ClipsDescendants = true
-      Main.Position = UDim2.new(0.499526083, 0, 0.499241292, 0)
-      Main.Size = UDim2.new(0, 475, 0, 205)
-      
-      local MainCorner = Instance.new("UICorner")
-      MainCorner.Name = "MainCorner"
-      MainCorner.CornerRadius = UDim.new(0, 9)
-      MainCorner.Parent = Main
-      
-      local DropdownStroke = Instance.new("UIStroke")
- 
-      DropdownStroke.Name = "UIStroke"
-      DropdownStroke.Parent = Main
-      DropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-      DropdownStroke.Color = Color3.fromRGB(225,0,0)
-      DropdownStroke.LineJoinMode = Enum.LineJoinMode.Round
-      DropdownStroke.Thickness = 0.7
-      DropdownStroke.Transparency = 0.10
-      DropdownStroke.Enabled = true
-      DropdownStroke.Archivable = true
-  
-      local Top = Instance.new("Frame")
-      Top.Name = "Top"
-      Top.Parent = Main
-      Top.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-      Top.BackgroundTransparency = 1.000
-      Top.BorderSizePixel = 0
-      Top.Size = UDim2.new(0, 0, 0, 0)
-      
-      local TopCorner = Instance.new("UICorner")
-      TopCorner.Name = "MainCorner"
-      TopCorner.CornerRadius = UDim.new(0, 9)
-      TopCorner.Parent = Top
-  
-      local Page = Instance.new("Frame")
-      Page.Name = "Page"
-      Page.Parent = Main
-      Page.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-      Page.BackgroundTransparency = 0
-      Page.BorderSizePixel = 0
-      Page.Size = UDim2.new(0, 0, 0, 0)
-      
-      local PageCorner = Instance.new("UICorner")
-      PageCorner.Name = "MainCorner"
-      PageCorner.CornerRadius = UDim.new(0, 9)
-      PageCorner.Parent = Page
-  
-      local ScrollPage = Instance.new("ScrollingFrame")
-      ScrollPage.Name = "ScrollPage"
-      ScrollPage.Parent = Page
-      ScrollPage.Active = true
-      ScrollPage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-      ScrollPage.BackgroundTransparency = 1.000
-      ScrollPage.BorderSizePixel = 0
-      ScrollPage.Position = UDim2.new(0, 0, 0.086, 0)
-      ScrollPage.Size = UDim2.new(0, 125, 0, 290)
-      ScrollPage.CanvasSize = UDim2.new(0, 0, 0, 0)
-      ScrollPage.ScrollBarThickness = 0
-      local PageList = Instance.new("UIListLayout")
-      PageList.Name = "PageList"
-      PageList.Parent = ScrollPage
-      PageList.SortOrder = Enum.SortOrder.LayoutOrder
-      PageList.Padding = UDim.new(0, 7)
-  
-      local PagePadding = Instance.new("UIPadding")
-      PagePadding.Name = "PagePadding"
-      PagePadding.Parent = ScrollPage
-      PagePadding.PaddingTop = UDim.new(0, 5)
-      PagePadding.PaddingLeft = UDim.new(0, 28)
-      
-      local ScrollPageCorner = Instance.new("UICorner")
-      ScrollPageCorner.Name = "ScrollPageCorner"
-      ScrollPageCorner.CornerRadius = UDim.new(0, 9)
-      ScrollPageCorner.Parent = ScrollPage
-  
-      local TabFolder = Instance.new("Folder")
-      TabFolder.Name = "TabFolder"
-      TabFolder.Parent = Main
-  
-      MakeDraggable(Top,Main)
-  
-      local uihide = false
-  
-      UserInputService.InputBegan:Connect(function(input)
-          if input.KeyCode == bind then
-              if uihide == false then
-                  uihide = true
-                  Main:TweenSize(UDim2.new(0, 0, 0, 0),"In","Quad",0.2,true)
-              else
-                  uihide = false
-                  Main:TweenSize(UDim2.new(0, 600, 0, 350),"Out","Quad",0.2,true)
-              end
-          end
-      end)
-  
-      local uitab = {}
-  
-      function uitab:AddTab(text,image)
-          local Image = image or 6023426915
-  
-          local PageButton = Instance.new("TextButton")
-          PageButton.Name = "PageButton"
-          PageButton.Parent = ScrollPage
-          PageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-          PageButton.BackgroundTransparency = 1.000
-          PageButton.BorderSizePixel = 0
-          PageButton.Position = UDim2.new(0.100, 0, 0.029787235, 0)
-          PageButton.Size = UDim2.new(0, 0, 0, 0)
-          PageButton.AutoButtonColor = false
-          PageButton.Font = Enum.Font.GothamSemibold
-          PageButton.Text = text
-          PageButton.TextColor3 = Color3.fromRGB(225, 225, 225)
-          PageButton.TextSize = 11.000
-          PageButton.TextXAlignment = Enum.TextXAlignment.Left
-          
-          local PageImage = Instance.new("ImageLabel")
-          PageImage.Name = "PageImage"
-          PageImage.Parent = PageButton
-          PageImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-          PageImage.BackgroundTransparency = 1.000
-          PageImage.Position = UDim2.new(0, -20, 0, 3)
-          PageImage.Size = UDim2.new(0, 0, 0, 0)
-          PageImage.Image = "rbxassetid://"..tostring(Image)
-  
-          local MainTab = Instance.new("Frame")
-          MainTab.Name = "MainTab"
-          MainTab.Parent = TabFolder
-          MainTab.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-          MainTab.BorderSizePixel = 0
-          MainTab.Position = UDim2.new(0, 0, 0, -2)
-          MainTab.Size = UDim2.new(0, 475, 0, 205)
-          MainTab.Visible = false
-          
-          local MainTabCorner = Instance.new("UICorner")
-          MainTabCorner.Name = "MainTabCorner"
-          MainTabCorner.CornerRadius = UDim.new(0, 9)
-          MainTabCorner.Parent = MainTab
-  
-          local ScrollTab = Instance.new("ScrollingFrame")
-          ScrollTab.Name = "ScrollTab"
-          ScrollTab.Parent = MainTab
-          ScrollTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-          ScrollTab.BackgroundTransparency = 1.000
-          ScrollTab.BorderSizePixel = 0
-          ScrollTab.Position = UDim2.new(0, 0, 0.057, 0)
-          ScrollTab.Size = UDim2.new(0, 475, 0, 330)
-          ScrollTab.CanvasSize = UDim2.new(0, 0, 0, 0)
-          ScrollTab.ScrollBarThickness = 3
-  
-          local TabList = Instance.new("UIListLayout")
-          TabList.Name = "TabList"
-          TabList.Parent = ScrollTab
-          TabList.SortOrder = Enum.SortOrder.LayoutOrder
-          TabList.Padding = UDim.new(0, 5)
-  
-          local TabPadding = Instance.new("UIPadding")
-          TabPadding.Name = "TabPadding"
-          TabPadding.Parent = ScrollTab
-          TabPadding.PaddingLeft = UDim.new(0, 10)
-          TabPadding.PaddingTop = UDim.new(0, 10)
-  
-          PageButton.MouseButton1Click:Connect(function()
-              currenttab = MainTab.Name
-              for i,v in next, TabFolder:GetChildren() do 
-                  if v.Name == "MainTab" then
-                      v.Visible = false
-                  end
-              end
-              MainTab.Visible = true
-  
-              for i,v in next, ScrollPage:GetChildren() do 
-                  if v:IsA("TextButton") then
-                      TweenService:Create(
-                          v,
-                          TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                          {TextColor3 = Color3.fromRGB(225, 225, 225)}
-                      ):Play()
-                  end
-                  TweenService:Create(
-                      PageButton,
-                      TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                      {TextColor3 = Color3.fromRGB(190, 190, 190)}
-                  ):Play()
-              end
-          end)
-  
-          if ff == false then
-              TweenService:Create(
-                  PageButton,
-                  TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                  {TextColor3 = Color3.fromRGB(190, 190, 190)}
-              ):Play()
-              for i,v in next, TabFolder:GetChildren() do 
-                  if v.Name == "MainTab" then
-                      v.Visible = false
-                  end
-                  MainTab.Visible = true
-              end
-              ff = true
-          end
-  
-          game:GetService("RunService").Stepped:Connect(function()
-              pcall(function()
-                  ScrollPage.CanvasSize = UDim2.new(0,0,0,PageList.AbsoluteContentSize.Y + 10)
-                  ScrollTab.CanvasSize = UDim2.new(0,0,0,TabList.AbsoluteContentSize.Y + 30)
-              end)
-          end)
-          
-          local main = {}
-          
-          function main:AddButton(text,callback)
-              local Button = Instance.new("TextButton")
-  
-              Button.Name = "Button"
-              Button.Parent = ScrollTab
-              Button.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-              Button.BackgroundTransparency = 0.1
-              Button.BorderSizePixel = 0
-              Button.Size = UDim2.new(0, 455, 0, 30)
-              Button.AutoButtonColor = false
-              Button.Font = Enum.Font.Gotham
-              Button.Text = text
-              Button.TextColor3 = Color3.fromRGB(225, 225, 225)
-              Button.TextSize = 11.000
-              Button.TextWrapped = true
-              
-              local ButtonCorner = Instance.new("UICorner")
-              ButtonCorner.Name = "ButtonCorner"
-              ButtonCorner.CornerRadius = UDim.new(0, 5)
-              ButtonCorner.Parent = Button
-              
-              local ButtonStroke = Instance.new("UIStroke")
- 
-              ButtonStroke.Name = "UIStroke"
-              ButtonStroke.Parent = Button
-              ButtonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-              ButtonStroke.Color = Color3.fromRGB(255,0,0)
-              ButtonStroke.LineJoinMode = Enum.LineJoinMode.Round
-              ButtonStroke.Thickness = 0.7
-              ButtonStroke.Transparency = 0.10
-              ButtonStroke.Enabled = true
-              ButtonStroke.Archivable = true
-              
-              Button.MouseEnter:Connect(function()
-                  TweenService:Create(
-                      Button,
-                      TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                      {TextColor3 = Color3.fromRGB(255, 255, 255)}
-                  ):Play()
-              end)
-              
-              Button.MouseLeave:Connect(function()
-                  TweenService:Create(
-                      Button,
-                      TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-                      {TextColor3 = Color3.fromRGB(225, 225, 225)}
-                  ):Play()
-              end)
-              
-              Button.MouseButton1Click:Connect(function()
-                  callback()
-                  Button.TextSize = 0
-                  TweenService:Create(
-                      Button,
-                      TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.Out),
-                      {TextSize = 11}
-                  ):Play()
-              end)
-          end
-  
-          function main:AddTextbox(text,holder,disappear,callback)
-              local Textboxx = Instance.new("Frame")
-              local TextboxxCorner = Instance.new("UICorner")
-              local TextboxTitle = Instance.new("TextLabel")
-              local TextboxTitle2 = Instance.new("TextLabel")
-              local Textbox = Instance.new("TextBox")
-              local TextboxCorner = Instance.new("UICorner")
-  
-              Textboxx.Name = "Textboxx"
-              Textboxx.Parent = ScrollTab
-              Textboxx.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-              Textboxx.Size = UDim2.new(0, 455, 0, 45)
-  
-              TextboxxCorner.CornerRadius = UDim.new(0, 5)
-              TextboxxCorner.Name = "TextboxxCorner"
-              TextboxxCorner.Parent = Textboxx
-              
-              local DropdownStroke = Instance.new("UIStroke")
- 
-              DropdownStroke.Name = "UIStroke"
-              DropdownStroke.Parent = Textboxx
-              DropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-              DropdownStroke.Color = Color3.fromRGB(255,0,0)
-              DropdownStroke.LineJoinMode = Enum.LineJoinMode.Round
-              DropdownStroke.Thickness = 0.7
-              DropdownStroke.Transparency = 0.10
-              DropdownStroke.Enabled = true
-              DropdownStroke.Archivable = true
-  
-              TextboxTitle.Name = "TextboxTitle"
-              TextboxTitle.Parent = Textboxx
-              TextboxTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-              TextboxTitle.BackgroundTransparency = 1.000
-              TextboxTitle.Position = UDim2.new(0, 15, 0, 0)
-              TextboxTitle.Size = UDim2.new(0, 300, 0, 30)
-              TextboxTitle.Font = Enum.Font.Gotham
-              TextboxTitle.Text = text
-              TextboxTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
-              TextboxTitle.TextSize = 14.000
-              TextboxTitle.TextXAlignment = Enum.TextXAlignment.Left
- 
-              TextboxTitle2.Name = "TextboxTitle2"
-              TextboxTitle2.Parent = Textboxx
-              TextboxTitle2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-              TextboxTitle2.BackgroundTransparency = 1.000
-              TextboxTitle2.Position = UDim2.new(0, 12, 0, 17)
-              TextboxTitle2.Size = UDim2.new(0, 300, 0, 30)
-              TextboxTitle2.Font = Enum.Font.Gotham
-              TextboxTitle2.Text = "TIP: Press get key and paste the, ".."\n".."link at your browser for get key"
-              TextboxTitle2.TextColor3 = Color3.fromRGB(225, 225, 225)
-              TextboxTitle2.TextSize = 9.000
-              TextboxTitle2.TextXAlignment = Enum.TextXAlignment.Left
-  
-              Textbox.Name = "Textbox"
-              Textbox.Parent = Textboxx
-              Textbox.BackgroundColor3 = Color3.fromRGB(5, 5, 5)
-              Textbox.Position = UDim2.new(0, 200, 0, 5)
-              Textbox.Size = UDim2.new(0, 250, 0, 35)
-              Textbox.Font = Enum.Font.Gotham
-              Textbox.PlaceholderText = "Enter Your Key Here.."
-              Textbox.Text = holder
-              Textbox.TextColor3 = Color3.fromRGB(225, 225, 225)
-              Textbox.TextSize = 11.000
-              Textbox.TextWrapped = true
-  
-              Textbox.FocusLost:Connect(function()
-                  if #Textbox.Text > 0 then
-                      callback(Textbox.Text)
-                  end
-              end)
-  
-              TextboxCorner.Name = "TextboxCorner"
-              TextboxCorner.CornerRadius = UDim.new(0, 5)
-              TextboxCorner.Parent = Textbox
-          end
-          function main:AddLine()
-              local Line = Instance.new("Frame")
-              local Linee = Instance.new("Frame")
-  
-              Line.Name = "Line"
-              Line.Parent = ScrollTab
-              Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-              Line.BackgroundTransparency = 1.000
-              Line.ClipsDescendants = true
-              Line.Size = UDim2.new(0, 455, 0, 20)
-  
-              Linee.Name = "Linee"
-              Linee.Parent = Line
-              Linee.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-              Linee.BorderSizePixel = 0
-              Linee.Position = UDim2.new(0, 0, 0, 10)
-              Linee.Size = UDim2.new(0, 455, 0, 2)
-          end
-          function main:AddLabel(text)
-              local Label = Instance.new("TextLabel")
-              local PaddingLabel = Instance.new("UIPadding")
-              local labell = {}
-      
-              Label.Name = "Label"
-              Label.Parent = ScrollTab
-              Label.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-              Label.BackgroundTransparency = 1.000
-              Label.Size = UDim2.new(0, 455, 0, 20)
-              Label.Font = Enum.Font.Gotham
-              Label.TextColor3 = Color3.fromRGB(225, 225, 225)
-              Label.TextSize = 11.000
-              Label.Text = text
-              Label.TextXAlignment = Enum.TextXAlignment.Left
-  
-              PaddingLabel.PaddingLeft = UDim.new(0,10)
-              PaddingLabel.Parent = Label
-              PaddingLabel.Name = "PaddingLabel"
-              
-              local MainCorner = Instance.new("UICorner")
-              MainCorner.Name = "MainCorner"
-              MainCorner.CornerRadius = UDim.new(0, 5)
-              MainCorner.Parent = Label
-              
-              local DropdownStroke = Instance.new("UIStroke")
- 
-              DropdownStroke.Name = "UIStroke"
-              DropdownStroke.Parent = Label
-              DropdownStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-              DropdownStroke.Color = Color3.fromRGB(225,225,225)
-              DropdownStroke.LineJoinMode = Enum.LineJoinMode.Round
-              DropdownStroke.Thickness = 0.6
-              DropdownStroke.Transparency = 0.8
-              DropdownStroke.Enabled = true
-              DropdownStroke.Archivable = true
-      
-              function labell:Set(newtext)
-                  Label.Text = newtext
-              end
-  
-              return labell
-          end
-          
-          return main
-      end
-      return uitab
-  end
-        
-         _G.Settings = {
-            KeyInput = "";
-        }
-        
-        local foldername = "Speed Hub Key Folder"
-        local filename = "TodaysKey.json"
-         
-        function saveSettings()
-            local HttpService = game:GetService("HttpService")
-            local json = HttpService:JSONEncode(_G.Settings)
-            if (writefile) then
-                if isfolder(foldername) then
-                    if isfile(foldername.."\\"..filename) then
-                        writefile(foldername.."\\"..filename, json)
-                    else
-                        writefile(foldername.."\\"..filename, json)
-                    end
-                else
-                    makefolder(foldername)
-                    writefile(foldername.."\\"..filename, json)
+local FrostLiftToggle = Tabs.AutoFarm:AddToggle("FrostLift_Toggle", {Title = "Auto Frost Lift", Default = false })
+Options.FrostLift_Toggle:SetValue(false)
+
+FrostLiftToggle:OnChanged(function(value)
+    AutoFrostLift = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoFrostLift then 
+            pcall(function()
+                pcall(function()
+                tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-2917.4716796875, 50.30097579956055, -209.56387329101562)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Lift"].interactSeat)
+            end)
+            pcall(function()
+                if(FrostGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-2917.4716796875, 50.30097579956055, -209.56387329101562)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Lift"].interactSeat)
                 end
-            end
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Frost Lift"].interactSeat)
+            end)
         end
-        
-        function loadSettings()
-            local HttpService = game:GetService("HttpService")
-            if isfile(foldername.."\\"..filename) then
-                _G.Settings = HttpService:JSONDecode(readfile(foldername.."\\"..filename))
-            end
-        end
-         
-        loadSettings()
-         --------------------------------------------------------------------
-         local Void = library:AddWindow("Speed Hub X",Enum.KeyCode.RightControl)
-         --------------------------------------------------------------------
-         local Main = Void:AddTab("Main","6026568198")
-         --------------------------------------------------------------------
-        local Status = Main:AddLabel("                                                               Waiting..")
-        
-        if isfolder(foldername) then
-        Status:Set("                                                               Waiting..")
-        else
-        Status:Set("                                                               Speed Hub X")
-        end
-        
-        function Check()
-            if  PandaAuth:ValidateKey(ServiceID, Value) then 
-                Status:Set("                                                             Checking Key..")
-                wait(0.5)
-                Status:Set("                                                             Valid Key")
-                wait(.50)
-                Status:Set("                                                             Loading Script..")
-                wait(1)
-                game.CoreGui.VoidLib:Destroy()
-                wait()
-                CheckingGame1()
-                else
-                if isfolder(foldername) then
-                Status:Set("                                                              Checking Key..")
-                wait(0.5)
-                Status:Set("                                                              Invaild Key!")
-                wait(5)
-                Status:Set("                                                               Waiting..")
-                end
-                if _G.KeyInput == "" then
-                Status:Set("                                                             Text Something..")
-                wait(5)
-                Status:Set("                                                               Waiting..")
-                end
-            end
-        end
-        
-        _G.KeyInput = _G.Settings.KeyInput
-        Main:AddTextbox("Key System",_G.Settings.KeyInput,false,function(value)
-        _G.KeyInput = value
-        _G.Settings.KeyInput = value
-        saveSettings()
-        end)
-        
-        Main:AddButton("Check Key",function()
-        Check()
-        end)
-        
-        Main:AddButton("Get Key",function()
-            setclipboard(PandaAuth:GetKey(ServiceID))
-            Status:Set("                                      Succesfully Copied Paste In Your Browser")
-        wait(10)
-        Status:Set("                                                               Waiting..")
-        end)
-        Main:AddButton("Copy Link Discord : Speed Hub X", function()
-            setclipboard(_G.Discord)
-        Status:Set("                                      Succesfully Copied Link Discord")
-        end)
-
-        Main:AddLabel("                                                    https://discord.gg/63RnQqq9Dz")
-
-        if isfolder(foldername) then
-        Check()
-        end
-     elseif _G.Key_System == false then
-        local A = loadstring(game:HttpGet("https://raw.githubusercontent.com/ahmadsgamer2/Speed-Hub-X/main/Speed_Hub_X_GameList"))()
-
-        function CheckingGame1()
-        
-            getgenv().Get =
-                setmetatable(
-                {},
-                {
-                    __index = function(A, B)
-                        return game:GetService(B)
-                    end
-                }
-            )
-            
-            for i, v in pairs(Games) do
-                if i == game.PlaceId then
-                    loadstring(game:HttpGet(v))()
-                end
-            end
-        end
-        CheckingGame1()
     end
+end)
+
+local FrostPressToggle = Tabs.AutoFarm:AddToggle("FrostPress_Toggle", {Title = "Auto Frost Press", Default = false })
+Options.FrostPress_Toggle:SetValue(false)
+
+FrostPressToggle:OnChanged(function(value)
+    AutoFrostLift = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoFrostPress then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-3008.670166015625, 43.35686111450195, -337.7469177246094)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Press"].interactSeat)
+            end)
+            pcall(function()
+                if(FrostGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-3008.670166015625, 43.35686111450195, -337.7469177246094)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Press"].interactSeat)
+                end
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Frost Press"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local FrostSquatToggle = Tabs.AutoFarm:AddToggle("FrostSquat_Toggle", {Title = "Auto Frost Squat", Default = false })
+Options.FrostSquat_Toggle:SetValue(false)
+
+FrostSquatToggle:OnChanged(function(value)
+    AutoFrostSquat = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoFrostSquat then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-2720.05126953125, 41.30986022949219, -591.2591552734375)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Squat"].interactSeat)
+            end)
+            pcall(function()
+                if(FrostGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-2720.05126953125, 41.30986022949219, -591.2591552734375)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Frost Squat"].interactSeat)
+                end
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Frost Squat"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local FrostForzenRockToggle = Tabs.AutoFarm:AddToggle("FrostForzenRock_Toggle", {Title = "Auto Punch Forzen Rock", Default = false })
+Options.FrostForzenRock_Toggle:SetValue(false)
+
+FrostForzenRockToggle:OnChanged(function(value)
+    AutoFrostSquat = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoPunchForzen then 
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2578.36328125, 19.70667266845703, -275.8367004394531)
+                wait()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+
+Tabs.AutoFarm:AddParagraph({
+    Title = "Mystical Gym",
+    Content = ""
+})
+
+local MysticalPullupToggle = Tabs.AutoFarm:AddToggle("MysticalPullup_Toggle", {Title = "Auto Mystical Pullup", Default = false })
+Options.MysticalPullup_Toggle:SetValue(false)
+
+MysticalPullupToggle:OnChanged(function(value)
+    AutoMysticalPullup = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMysticalPullup then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2487.120849609375, 27.50991439819336, 848.2891235351562)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Pullup"].interactSeat)
+            end)
+            pcall(function()
+                if(MythicalGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2487.120849609375, 27.50991439819336, 848.2891235351562)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Pullup"].interactSeat)
+                end
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Mythical Pullup"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MysticalThrowToggle = Tabs.AutoFarm:AddToggle("MysticalThrow_Toggle", {Title = "Auto Mystical Throw", Default = false })
+Options.MysticalThrow_Toggle:SetValue(false)
+
+MysticalThrowToggle:OnChanged(function(value)
+    AutoMysticalPullup = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMysticalThrow then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2667.74072265625, 52.331321716308594, 1203.333740234375)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Throw"].interactSeat)
+            end)
+            pcall(function()
+                if(MythicalGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2667.74072265625, 52.331321716308594, 1203.333740234375)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Throw"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Mythical Throw"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MysticalPressToggle = Tabs.AutoFarm:AddToggle("MysticalPress_Toggle", {Title = "Auto Mystical Press", Default = false })
+Options.MysticalPress_Toggle:SetValue(false)
+
+MysticalPressToggle:OnChanged(function(value)
+    AutoMysticalPress = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMysticalPress then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2369.700439453125, 38.63844680786133, 1243.021728515625)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Press"].interactSeat)
+            end)
+            pcall(function()
+                if(MythicalGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(2369.700439453125, 38.63844680786133, 1243.021728515625)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Mythical Press"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Mythical Press"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MysticalPunchToggle = Tabs.AutoFarm:AddToggle("MysticalPunch_Toggle", {Title = "Auto Punch Mystic Rock", Default = false })
+Options.MysticalPunch_Toggle:SetValue(false)
+
+MysticalPunchToggle:OnChanged(function(value)
+    AutoPunchMystical = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoPunchMystical then 
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2223.702392578125, 7.702450752258301, 1257.4989013671875)
+                wait()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+Tabs.AutoFarm:AddParagraph({
+    Title = "Eternal Gym",
+    Content = ""
+})
+
+local EternalGymToggle = Tabs.AutoFarm:AddToggle("EternalGym_Toggle", {Title = "Auto Eternal Gym", Default = false })
+Options.EternalGym_Toggle:SetValue(false)
+
+EternalGymToggle:OnChanged(function(value)
+    AutoEternalGym = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoEternalGym then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-7173.341796875, 49.53500747680664, -1105.027587890625)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Eternal Press"].interactSeat)
+            end)
+            pcall(function()
+                if(EternalGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-7173.341796875, 49.53500747680664, -1105.027587890625)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Eternal Press"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Eternal Press"].interactSeat)
+            end)
+        end
+    end
+end)
+
+
+local EternalPunchToggle = Tabs.AutoFarm:AddToggle("EternalPunch_Toggle", {Title = "Auto Punch Eternal Rock", Default = false })
+Options.EternalPunch_Toggle:SetValue(false)
+
+EternalPunchToggle:OnChanged(function(value)
+    AutoEternalRock = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoEternalRock then 
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7222.64208984375, 18.294635772705078, -1272.2418212890625)
+                wait()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+
+Tabs.AutoFarm:AddParagraph({
+    Title = "Legends Gym",
+    Content = ""
+})
+
+local LegendsPullupToggle = Tabs.AutoFarm:AddToggle("LegendsPullup_Toggle", {Title = "Auto Legends Pullup", Default = false })
+Options.LegendsPullup_Toggle:SetValue(false)
+
+LegendsPullupToggle:OnChanged(function(value)
+    AutoLegendsPullup = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoLegendsPullup then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4304.02392578125, 1017.6897583007812, -4122.27734375)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Pullup"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4304.02392578125, 1017.6897583007812, -4122.27734375)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Pullup"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Legends Pullup"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local LegendsSquatToggle = Tabs.AutoFarm:AddToggle("LegendsSquat_Toggle", {Title = "Auto Legends Squat", Default = false })
+Options.LegendsSquat_Toggle:SetValue(false)
+
+LegendsSquatToggle:OnChanged(function(value)
+    AutoLegendsSquat = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoLegendsSquat then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4439.7734375, 1031.3472900390625, -4058.48681640625)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Squat"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4439.7734375, 1031.3472900390625, -4058.48681640625)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Squat"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Legends Squat"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local LegendsLiftToggle = Tabs.AutoFarm:AddToggle("LegendsLift_Toggle", {Title = "Auto Legends Lift", Default = false })
+Options.LegendsLift_Toggle:SetValue(false)
+
+LegendsLiftToggle:OnChanged(function(value)
+    AutoLegendslift = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoLegendslift then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4532.2177734375, 1033.2388916015625, -4002.712158203125)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Lift"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(4532.2177734375, 1033.2388916015625, -4002.712158203125)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Legends Lift"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Legends Lift"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local LegendsRockToggle = Tabs.AutoFarm:AddToggle("LegendsRock_Toggle", {Title = "Auto Punch Legends Rock", Default = false })
+Options.LegendsRock_Toggle:SetValue(false)
+
+LegendsRockToggle:OnChanged(function(value)
+    AutoLegendslift = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoLegendRock then 
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4184.5927734375, 1004.1063842773438, -4056.351318359375)
+                task.wait()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+Tabs.AutoFarm:AddParagraph({
+    Title = "Muscle King Gym",
+    Content = ""
+})
+
+local MuscleKingToggle = Tabs.AutoFarm:AddToggle("MuscleKing_Toggle", {Title = "Auto Muscle King Lift", Default = false })
+Options.MuscleKing_Toggle:SetValue(false)
+
+MuscleKingToggle:OnChanged(function(value)
+    AutoMuscleKingLift = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMuscleKingLift then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8772.970703125, 59.93893051147461, -5663.5625)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Lift"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8772.970703125, 59.93893051147461, -5663.5625)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Lift"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Muscle King Lift"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MuscleKingSquatToggle = Tabs.AutoFarm:AddToggle("MuscleKingSquat_Toggle", {Title = "Auto Muscle King Squat", Default = false })
+Options.MuscleKingSquat_Toggle:SetValue(false)
+
+MuscleKingSquatToggle:OnChanged(function(value)
+    AutoMuscleKingSquat = value    
+end)
+
+
+spawn(function()
+    while task.wait() do 
+        if AutoMuscleKingSquat then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8758.4423828125, 56.14729309082031, -6043.0693359375)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Squat"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8758.4423828125, 56.14729309082031, -6043.0693359375)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Squat"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Muscle King Squat"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MuscleKingBenchToggle = Tabs.AutoFarm:AddToggle("MuscleKingBench_Toggle", {Title = "Auto Muscle King Bench", Default = false })
+Options.MuscleKingBench_Toggle:SetValue(false)
+
+MuscleKingBenchToggle:OnChanged(function(value)
+    AutoMuscleKingBench = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMuscleKingBench then 
+            pcall(function()
+                pcall(function()
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8590.2353515625, 50.157737731933594, -6044.59521484375)}):Play()
+                wait(.5)
+                game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Bench"].interactSeat)
+            end)
+            pcall(function()
+                if(LegendsGym.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 600 then
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(.40, Enum.EasingStyle.Linear)
+                    tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-8590.2353515625, 50.157737731933594, -6044.59521484375)}):Play()
+                    wait(.5)
+                    game:GetService("ReplicatedStorage").rEvents.machineInteractRemote:InvokeServer("useMachine", workspace.machinesFolder["Muscle King Bench"].interactSeat)
+                end 
+            end)
+            game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep", workspace.machinesFolder["Muscle King Bench"].interactSeat)
+            end)
+        end
+    end
+end)
+
+local MuscleKingRockToggle = Tabs.AutoFarm:AddToggle("MuscleKingRock_Toggle", {Title = "Auto Punch Muscle King Rock", Default = false })
+Options.MuscleKingRock_Toggle:SetValue(false)
+
+MuscleKingRockToggle:OnChanged(function(value)
+    AutoMuscleKingRock = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoMuscleKingRock then 
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8985.7763671875, 20.164634704589844, -6136.46337890625)
+                task.wait()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+local SitupsToggle = Tabs.Farm:AddToggle("Situps_Toggle", {Title = "Auto Situps", Default = false })
+Options.Situps_Toggle:SetValue(false)
+
+SitupsToggle:OnChanged(function(value)
+    AutoSitups = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoSitups then 
+            pcall(function()
+                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ClassName == "Tool" and v.Name == "Situps" then
+                    v.Parent = game.Players.LocalPlayer.Character
+                    end
+                    end
+                game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep")
+            end)
+        end
+    end
+end)
+
+local PushupsToggle = Tabs.Farm:AddToggle("Pushups_Toggle", {Title = "Auto Pushups", Default = false })
+Options.Pushups_Toggle:SetValue(false)
+
+PushupsToggle:OnChanged(function(value)
+    AutoPushups = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoPushups then 
+            pcall(function()
+                for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if v.ClassName == "Tool" and v.Name == "Pushups" then
+                    v.Parent = game.Players.LocalPlayer.Character
+                    end
+                    end
+                game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep")
+            end)
+        end
+    end
+end)
+
+local WeightToggle = Tabs.Farm:AddToggle("Weight_Toggle", {Title = "Auto Weight", Default = false })
+Options.Weight_Toggle:SetValue(false)
+
+WeightToggle:OnChanged(function(value)
+    AutoWeight = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoWeight then 
+            pcall(function()
+                pcall(function()
+                game.Players.LocalPlayer.Backpack.Weight.Parent = game.Players.LocalPlayer.Character
+                end)
+                game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep")
+            end)
+        end
+    end
+end)
+
+local PunchToggle = Tabs.Farm:AddToggle("Punch_Toggle", {Title = "Auto Punch", Default = false })
+Options.Punch_Toggle:SetValue(false)
+
+PunchToggle:OnChanged(function(value)
+    AutoPunch = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoPunch then 
+            pcall(function()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()
+                end)
+            end)
+        end
+    end
+end)
+
+local FastPunchToggle = Tabs.Farm:AddToggle("FastPunch_Toggle", {Title = "Unlock Punch Fast", Default = false })
+Options.FastPunch_Toggle:SetValue(false)
+
+FastPunchToggle:OnChanged(function(value)
+    FastPunch = value    
+end)
+
+if FastPunch == true then
+    game.Workspace[game.Players.LocalPlayer.Name].Punch.attackTime.Value = .06
+else
+    game.Workspace[game.Players.LocalPlayer.Name].Punch.attackTime.Value = .35
+end
+
+local LockClientToggle = Tabs.Farm:AddToggle("LockClient_Toggle", {Title = "Lock Client Position", Default = false })
+Options.LockClient_Toggle:SetValue(false)
+
+LockClientToggle:OnChanged(function(value)
+    _G.LockClientPosition = value    
+end)
+
+spawn(function()
+local LockClientPosition1 = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+while _G.LockClientPosition do 
+    pcall(function()
+        task.wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LockClientPosition1)
+end)
+end
+end)
+
+local JoinBrawlToggle = Tabs.Farm:AddToggle("JoinBrawl_Toggle", {Title = "Auto Join Brawl", Default = false })
+Options.JoinBrawl_Toggle:SetValue(false)
+
+JoinBrawlToggle:OnChanged(function(value)
+    AutoBrawl = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoBrawl then 
+            pcall(function()
+                game:GetService("ReplicatedStorage").rEvents.brawlEvent:FireServer("joinBrawl")
+            end)
+        end
+    end
+end)
+
+Tabs.Farm:AddParagraph({
+    Title = "Kill Farm",
+    Content = ""
+})
+
+Tabs.Main:AddInput("Input_KillStopP", {
+    Title = "Kill Stopping Point",
+    Default = "",
+    Placeholder = "input",
+    Numeric = false, 
+    Finished = false,
+    Callback = function(value)
+        KillStoppingPoint = tonumber(value)
+    end
+})
+
+local deletions = {"LeftUpperArm","RightUpperArm","LeftLowerArm","RightLowerArm","LeftHand","RightHand"}
+local stander = Instance.new("Part",game.Workspace)
+stander.Size = Vector3.new(1000,1,1000)
+stander.Anchored = true
+stander.Position = Vector3.new(338.941, 7485.44, 2208.97)
+
+local safestander = Instance.new("Part",game.Workspace)
+safestander.Size = Vector3.new(1000,1,1000)
+safestander.Anchored = true
+safestander.Position = Vector3.new(338.941, 7800.44, 2208.97)
+
+local AKPToggle = Tabs.Farm:AddToggle("AKP_Toggle", {Title = "Auto Kills (Kill Stopping Point)", Default = false })
+Options.AKP_Toggle:SetValue(false)
+
+AKPToggle:OnChanged(function(value)
+    AutoKillsStoppingPoint = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoKillsStoppingPoint then 
+            pcall(function()
+                if(game.Players.LocalPlayer.leaderstats.Kills.Value<KillStoppingPoint)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(338.941, 7500.44, 2208.97)
+                        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Punch"))
+                    end)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                            pcall(function()
+                                for i,n in pairs(v.Character:GetChildren()) do
+                                    if (n.Name == "HumanoidRootPart") then
+                                        n.CanCollide = false
+                                        n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
+                                        n.Anchored = true
+                                        game.Players.LocalPlayer.Character:FindFirstChild("Punch"):Activate()
+                                        for i,m in pairs(n.Parent:GetChildren())do
+                                            if(table.find(deletions,m.Name))then
+                                                m:Destroy()
+                                            end
+                                        end
+                                    end
+                                end
+                            end)
+                        end
+                    end
+                end
+           end)
+      end
+  end
+end)
+
+local LKSPToggle = Tabs.Farm:AddToggle("LKSP_Toggle", {Title = "Leave Game On Kill Stopping Point", Default = false })
+Options.LKSP_Toggle:SetValue(false)
+
+LKSPToggle:OnChanged(function(value)
+    LeaveGameKills = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if LeaveGameKills then 
+            pcall(function()
+                if(game.Players.LocalPlayer.leaderstats.Kills.Value>KillStoppingPoint)then
+                    game:Shutdown()
+                 end
+             end)
+         end
+     end
+end)
+
+local AutoKToggle = Tabs.Farm:AddToggle("AutoK_Toggle", {Title = "Auto Kill", Default = false })
+Options.AutoK_Toggle:SetValue(false)
+
+AutoKToggle:OnChanged(function(value)
+    AutoKills = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoKills then 
+            pcall(function()
+                pcall(function()
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(338.941, 7500.44, 2208.97)
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack:FindFirstChild("Punch"))
+                end)
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if (v:IsA("Player") and v.Name ~= game.Players.LocalPlayer.Name) then
+                        pcall(function()
+                            for i,n in pairs(v.Character:GetChildren()) do
+                                if (n.Name == "HumanoidRootPart") then
+                                    n.CanCollide = false
+                                    n.CFrame = game.Players.LocalPlayer.Character.LeftHand.CFrame
+                                    n.Anchored = true
+                                    game.Players.LocalPlayer.Character:FindFirstChild("Punch"):Activate()
+                                    for i,m in pairs(n.Parent:GetChildren())do
+                                        if(table.find(deletions,m.Name))then
+                                            m:Destroy()
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+                    end
+                end    
+                 end)
+             end
+         end
+     end)
+
+local PlayersTable = {}
+for i,v in pairs(game.Players:GetPlayers()) do
+  if v ~= game.Players.LocalPlayer then
+      table.insert(PlayersTable, v.Name)
+  end
+end
+
+local SetPlayer = Tabs.Main:AddDropdown("Dropdown1", {
+    Title = "Select Player",
+    Values = PlayersTable,
+    Multi = false,
+    Default = 1,
+})
+SetPlayer:SetValue("") 
+
+SetPlayer:OnChanged(function(value)
+    SelectPlayerKills = value
+end)
+
+local AutoKPToggle = Tabs.Farm:AddToggle("AutoKP_Toggle", {Title = "Auto Kills Players", Default = false })
+Options.AutoKP_Toggle:SetValue(false)
+
+AutoKPToggle:OnChanged(function(value)
+    AutoKillsPlayer = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoKillsPlayer then 
+            pcall(function()
+                if(CheckForFists()==false)then
+                    pcall(function()
+                        game.Players.LocalPlayer.Backpack.Punch.Parent = game.Players.LocalPlayer.Character
+                    end)
+                end
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Punch:Activate()                
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(338.941, 7500.44, 2208.97)
+                if game.Workspace[SelectPlayerKills].Humanoid.MaxHealth <= game.Players.LocalPlayer.Character.Humanoid.MaxHealth*3 then
+                    game.Workspace[SelectPlayerKills].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 1
+                 end
+             end)
+         end)
+    end
+end
+end)
+
+Tabs.Rebirths:AddInput("Input_RebirthsStopP", {
+    Title = "Rebirths Stopping Point",
+    Default = "",
+    Placeholder = "input",
+    Numeric = false, 
+    Finished = false,
+    Callback = function(value)
+        RebirthStoppingPoint = tonumber(value)
+    end
+})
+
+local AutoRSPToggle = Tabs.Rebirths:AddToggle("AutoRSP_Toggle", {Title = "Auto Rebirths (Rebirths Stopping Point)", Default = false })
+Options.AutoRSP_Toggle:SetValue(false)
+
+AutoRSPToggle:OnChanged(function(value)
+    AutoRebirthsStoppingPoint = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoRebirthsStoppingPoint then 
+            pcall(function()
+                    if(game.Players.LocalPlayer.leaderstats.Rebirths.Value<RebirthStoppingPoint)then
+                        game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
+                  end
+             end)
+         end
+     end
+end)
+
+local AutoLOSPToggle = Tabs.Rebirths:AddToggle("AutoLOSP_Toggle", {Title = "Auto Rebirths (Rebirths Stopping Point)", Default = false })
+Options.AutoLOSP_Toggle:SetValue(false)
+
+AutoLOSPToggle:OnChanged(function(value)
+    LeaveGameStoppingPoint = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if LeaveGameStoppingPoint then 
+            pcall(function()
+                if(game.Players.LocalPlayer.leaderstats.Rebirths.Value>RebirthStoppingPoint)then
+                    game:Shutdown()
+                  end
+             end)
+         end
+     end
+end)
+
+local AutoRoggle = Tabs.Rebirths:AddToggle("AutoR_Toggle", {Title = "Auto Rebirths", Default = false })
+Options.AutoR_Toggle:SetValue(false)
+
+AutoRoggle:OnChanged(function(value)
+    AutoRebirths = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoRebirths then 
+            pcall(function()
+                game:GetService("ReplicatedStorage").rEvents.rebirthRemote:InvokeServer("rebirthRequest")
+             end)
+         end
+     end
+end)
+
+local SelectCrystalName = {"Blue Crystal", "Green Crystal", "Frost Crystal", "Mythical Crystal", "Inferno Crystal", "Legends Crystal", "Dark Nebula Crystal", "Muscle Elite Crystal", "Galaxy Oracle Crystal", "Battle Legends Crystal", "Sky Eclipse Crystal"}
+
+local SetCrystal = Tabs.Crystal:AddDropdown("Dropdown2", {
+    Title = "Select Crystal",
+    Values = SelectCrystalName,
+    Multi = false,
+    Default = 1,
+})
+SetCrystal:SetValue("") 
+
+SetCrystal:OnChanged(function(value)
+    SelectCrystal = value
+end)
+
+local AutoOCoggle = Tabs.Crystal:AddToggle("AutoOC_Toggle", {Title = "Auto Open Crystal", Default = false })
+Options.AutoOC_Toggle:SetValue(false)
+
+AutoOCoggle:OnChanged(function(value)
+    AutoOpenCrystal = value    
+end)
+
+spawn(function()
+    while task.wait() do 
+        if AutoOpenCrystal then 
+            pcall(function()
+                game.ReplicatedStorage.rEvents.openCrystalRemote:InvokeServer('openCrystal', SelectCrystal)                  
+             end)
+         end
+     end
+end)
+
+Tabs.Wehbook:AddInput("Input_URLW", {
+    Title = "URL Wehbook",
+    Default = "",
+    Placeholder = "input",
+    Numeric = false, 
+    Finished = false,
+    Callback = function(value)
+        URLWEHBOOK = value
+    end
+})
+
+local SetTimeSent = Tabs.Wehbook:AddSlider("Slider1", {
+    Title = "Time Wait Send",
+    Description = "",
+    Default = 5,
+    Min = 0,
+    Max = 50,
+    Rounding = 1,
+    Callback = function(value)
+        TimeSendWait = tonumber(value)
+    end
+})
+
+SetTimeSent:OnChanged(function(value)
+    TimeSendWait = tonumber(value)
+end)
+
+SetTimeSent:SetValue(5)
+
+local AutoStatsWoggle = Tabs.Wehbook:AddToggle("AutoStatsW_Toggle", {Title = "Start Stats All", Default = false })
+Options.AutoStatsW_Toggle:SetValue(false)
+
+AutoStatsWoggle:OnChanged(function(value)
+    StartStatsGame = value    
+end)
+
+spawn(function()
+    while wait(TimeSendWait) do 
+        if StartStatsGame then 
+            pcall(function()
+                local WebHook = URLWEHBOOK
+                local GetName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId) 
+                local url = WebHook
+                local data = {
+                   ["content"] = "",
+                   ["embeds"] = {
+                       {
+                           ["title"] = "Muscle Legends | STATS",
+                           ["description"] = "** Username: **" ..game.Players.LocalPlayer.Name.." \n ** Strength: **" ..game.Players.LocalPlayer.leaderstats["Strength"].Value.. " \n ** Gems: **" ..game.Players.LocalPlayer["Gems"].Value.. " \n ** Rebirths: **" ..game.Players.LocalPlayer.leaderstats["Rebirths"].Value.. " \n ** Durability: **" ..game.Players.LocalPlayer["Durability"].Value.. " \n ** Agility: **" ..game.Players.LocalPlayer["Agility"].Value.. " \n ** Kills: ** "..game.Players.LocalPlayer.leaderstats["Kills"].Value.. "", 
+                           ["type"] = "rich",
+                           ["color"] = tonumber(65311),
+                           ["image"] = {
+                               ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                                   tostring(game:GetService("Players").LocalPlayer.Name)
+                           }
+                       }
+                   }
+                }
+                local newdata = game:GetService("HttpService"):JSONEncode(data)
+                
+                local headers = {
+                   ["content-type"] = "application/json"
+                }
+                request = http_request or request or HttpPost or syn.request
+                local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+                request(abcdef)
+            
+            end)
+        end
+    end
+end) 
+
+local InfJumpoggle = Tabs.Settings:AddToggle("InfJump_Toggle", {Title = "Infinits Jump", Default = false })
+Options.InfJump_Toggle:SetValue(false)
+
+InfJumpoggle:OnChanged(function(value)
+    InfJump = value
+end)
+
+game.UserInputService.JumpRequest:connect(function()
+    if InfJump then
+    player.Character.Humanoid:ChangeState('Jumping')
+    end
+end)
+
+local NoclpM_toggle = Tabs.Settings:AddToggle("NoclpM_Toggle", {Title = "Noclip", Default = false })
+Options.NoclpM_Toggle:SetValue(false)
+
+NoclpM_toggle:OnChanged(function(value)
+    NoClip = value
+end)
+
+spawn(function()
+    while wait() do 
+        if NoClip then 
+            pcall(function()
+                game.RunService.Stepped:wait()
+                for i, v in pairs(player.Character:GetDescendants()) do
+                    if v:IsA('BasePart') then
+                        v.CanCollide = false
+                    end
+                end             
+            end)
+         end
+     end
+end)
+
+Tabs.Settings:AddButton({
+    Title = "Fps/Ping",
+    Description = "",
+    Callback = function()
+        for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+            if v:IsA("BasePart") and not v.Parent:FindFirstChild("Humanoid") then
+                v.Material = Enum.Material.SmoothPlastic
+                if v:IsA("Texture") then
+                    v:Destroy()
+                end
+            end
+        end    
+    end
+})
+
+Tabs.Settings:AddButton({
+    Title = "Anti Crash",
+    Description = "",
+    Callback = function()
+        local function Check(v)
+            if v:IsA'Part' then
+                v.Material = Enum.Material.Plastic;
+            elseif v.ClassName:match'Light' then
+                v:Destroy'';
+            elseif v.ClassName:match'Effect' then
+                pcall(function()
+                    v.Enabled = false;
+                end);
+            end;
+        end;
+        
+        local Lighting = game:GetService'Lighting';
+        for i, v in next, Lighting:GetChildren'' do
+            Check(v);
+        end;
+        
+        Lighting.DescendantAdded:Connect(Check);
+        
+        for i, v in next, workspace:GetDescendants() do
+            Check(v);
+        end;
+        
+        workspace.DescendantAdded:Connect(Check);  
+    end
+})
+
+Tabs.Settings:AddButton({
+    Title = "CPU-10",
+    Description = "",
+    Callback = function()
+        local a = game
+        local b = a.Workspace
+        local c = a.Lighting
+        local d = b.Terrain
+        d.WaterWaveSize = 0
+        d.WaterWaveSpeed = 0
+        d.WaterReflectance = 0
+        d.WaterTransparency = 0
+        c.GlobalShadows = false
+        c.FogEnd = 9e9
+        settings().Rendering.QualityLevel = "Level01"
+        for e, f in pairs(a:GetDescendants()) do
+           if f:IsA("Part") or f:IsA("Union") or f:IsA("CornerWedgePart") or f:IsA("TrussPart") then
+               f.Reflectance = 0
+           elseif f:IsA("Decal") or f:IsA("Texture") then
+               f.Transparency = 0
+           elseif f:IsA("ParticleEmitter") or f:IsA("Trail") then
+               f.Lifetime = NumberRange.new(0)
+           elseif f:IsA("Explosion") then
+               f.BlastPressure = 0
+               f.BlastRadius = 0
+           elseif f:IsA("Fire") or f:IsA("SpotLight") or f:IsA("Smoke") or f:IsA("Sparkles") then
+               f.Enabled = false
+           elseif f:IsA("MeshPart") then
+               f.Reflectance = 0
+           end
+           if f:IsA("Fire") then
+               f:Destroy()
+               wait()
+           end
+           if string.find(f.Name:lower(), "door") then
+               f:Destroy()
+           end
+           if string.find(f.Name:lower(), "tree") then
+               f:Destroy()
+           end
+           if f:IsA("ParticleEmitter") then
+                f:Destroy()
+            end
+        end  
+    end
+})
+
+end
